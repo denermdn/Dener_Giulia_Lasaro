@@ -7,11 +7,6 @@ class Canhao{
         this.peso = 1;
     }
 
-    update(){
-        this.vy += this.peso;
-        this.y += this.vy;
-    }
-
 	draw(){
 		ctx.beginPath();
 		ctx.arc(this.x, this.y, 30,
