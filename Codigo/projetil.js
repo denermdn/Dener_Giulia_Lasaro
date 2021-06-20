@@ -8,7 +8,6 @@ class Projetil{
         this.g = 0.1;
         limite = y;
 
-        console.log("value", this.limite);
     }
     
 	draw(){
@@ -22,6 +21,8 @@ class Projetil{
         if (this.y <= limite){
             this.y += this.vy;
             this.x += this.vx; 
+        } else {
+            console.log("x: "+ this.x + ", y: "+ this.y)
         }
         this.vy += this.g;
         
