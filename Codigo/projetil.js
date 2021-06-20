@@ -19,9 +19,10 @@ class Projetil{
     update(){
         if (this.y <= limY){
             this.y += this.vy;
+            this.x += this.vx; 
         }
         this.vy += this.g;
-        this.x += this.vx;
+        
     }
 }
 
