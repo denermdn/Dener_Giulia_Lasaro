@@ -1,19 +1,21 @@
 class Canhao{
-    constructor(){
-        this.x = 100;
-        this.y = 100;
-        this.vx = 0;
-        this.vy = 0;
-        this.peso = 1;
+    constructor(x, y, vx, vy){
+        this.x = x;
+        this.y = y;
+        this.vx = vx;
+        this.vy = vy;
     }
 
 	draw(){
-		ctx.beginPath();
-		ctx.arc(this.x, this.y, 30,
-			0, Math.PI*2);
-		ctx.fillStyle = 'red';
-		ctx.fill();
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(Math.atan(this.vy/this.vx));
+            ctx.beginPath();
+            ctx.fillStyle = "yellow";        
+            ctx.rect(-30, -25, 60, 50);
+            ctx.fill();
+        ctx.stroke();
+        ctx.restore();
 	}
 }
 
-const canhao = new Canhao();
