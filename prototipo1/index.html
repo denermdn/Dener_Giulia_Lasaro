@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link type="text/css" rel="stylesheet" href="css/estilos.css" />
+	<title>Teste Views</title>
+
+</head>
+
+<body>
+	<!-- <div id="canvaswrap"> -->
+	<!-- <canvas id="canvas" style="display: none; position: absolute;" width="1800" height="900"></canvas> -->
+	<div id="canvaswrap">
+		<div id="tela-escura">
+			<div id="menu">
+				<div id="playbutton">PLAY</div>
+			</div>
+		</div> 
+		
+		<div id="campodados">
+				<br>
+				<br>
+				Velocidade inicial: <input name="campo1" id="campo1" value="130" /><br>
+				<div class="horizontal-center">
+					<button id="botaolancar" onclick="requestAnimationFrame(sInt);">LANÇAR</button>
+				</div>
+		</div>
+		
+		<canvas id="canvas" style="display: block;"></canvas>
+	</div>
+	
+	<script src="js/cenario.js"></script> 
+	<script src="js/canhao.js"></script>
+	<script src="js/projetil.js"></script>
+	<script src="js/posicao.js"></script>
+	<script src="main.js"></script>
+	<script src="js/scripts.js"></script>
+
+</body>
+
+</html>
