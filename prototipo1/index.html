@@ -2,40 +2,80 @@
 <html>
 
 <head>
-	<link type="text/css" rel="stylesheet" href="css/estilos.css" />
-	<title>Teste Views</title>
+	<link type="text/css" rel="stylesheet" href="estilos/style.css" />
+	<title>TBPT</title>
 
 </head>
 
 <body>
-	<!-- <div id="canvaswrap"> -->
-	<!-- <canvas id="canvas" style="display: none; position: absolute;" width="1800" height="900"></canvas> -->
-	<div id="canvaswrap">
-		<div id="tela-escura">
-			<div id="menu">
-				<div id="playbutton">PLAY</div>
-			</div>
-		</div> 
-		
-		<div id="campodados">
-				<br>
-				<br>
-				Velocidade inicial: <input name="campo1" id="campo1" value="130" /><br>
-				<div class="horizontal-center">
-					<button id="botaolancar" onclick="requestAnimationFrame(sInt);">LANÇAR</button>
-				</div>
-		</div>
-		
-		<canvas id="canvas" style="display: block;"></canvas>
-	</div>
-	
-	<script src="js/cenario.js"></script> 
-	<script src="js/canhao.js"></script>
-	<script src="js/projetil.js"></script>
-	<script src="js/posicao.js"></script>
-	<script src="main.js"></script>
-	<script src="js/scripts.js"></script>
 
+	<!-- <canvas id="canvas" style="display: none; position: absolute;"></canvas> -->
+	<div id="exitbutton">X</div>
+	<div id="campodados">
+		<br>
+		<br>
+		Velocidade inicial: <input name="campo1" id="campo1" value="130" /><br>
+		<div class="horizontal-center">
+			<button id="botaolancar" onclick="requestAnimationFrame(sInt)">LANÇAR</button>
+		</div>
+	</div>
+	</div>
+
+	<div id="tela-escura">
+		<div id="menu">
+			<table>
+				<tr>
+					<td style="background-color: red; border-top-left-radius: 40px">Perfil</td>
+					<td style="background-color: green; border-top-right-radius: 40px">Ranking</td>
+				</tr>
+				<tr>
+					<td id="gamemode" style="background-color: yellow; border-bottom-left-radius: 40px">Modos
+						<br>de<br>Jogo</td>
+					<td id="tsair" style="background-color: blue; border-bottom-right-radius: 40px">Sair</td>
+				</tr>
+			</table>
+		</div>
+
+
+		<div id="modeselect">
+			<table>
+				<tr>
+					<td style="background-color: red; border-top-left-radius: 40px">Introdução</td>
+					<td id="modoLivre" style="background-color: green; border-top-right-radius: 40px">Modo<br>Livre</td>
+				</tr>
+				<tr>
+					<td id="gamemode" style="background-color: yellow; border-bottom-left-radius: 40px">Modo
+						<br>Competitivo</td>
+					<td id="gsair"style="background-color: blue; border-bottom-right-radius: 40px">Sair</td>
+				</tr>
+			</table>
+		</div>
+
+
+
+		<div id="confirmexit">Deseja Sair?
+			<br>
+			<button id="confirmar">Sim</button>
+			<button id="desconfirmar">Não</button>
+		</div>
+
+	</div>
+	<div>
+		<div id="canvaswrap">
+			<canvas id="canvas">
+
+				<canvas id="canvas_c" display: block;></canvas>
+
+			</canvas>
+
+		</div>
+	</div>
+	<!-- <script src="scripts/scripts.js"></script> -->
+	<script src="scripts/cenario.js"></script>
+	<script src="scripts/canhao.js"></script>
+	<script src="scripts/projetil.js"></script>
+	<script src="scripts/posicao.js"></script>
+	<script src="scripts/main.js"></script>
 </body>
 
 </html>

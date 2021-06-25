@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+*{
+  margin:0;
+  padding:0;
+}
+
+body {
+  overflow: hidden;
+}
+
+td {
+  color: black;
+  text-shadow: 0px 0px 8px white;
+  width: 195px;
+  height: 203px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#tela-escura {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  display: none;
+  color: white;
+  /* padding-top: 20px; */
+  position: absolute;
+  background-color: gray;
+}
+
+
+
+#menu{
+  width: 21%;
+  height: 41%;
+  display: none;
+  margin-left: 42%;
+  margin-top: 10%;
+  border-radius: 10%;
+  background-color: darkgray;
+  box-shadow: 0px 0px 20px black; 
+}
+
+#modeselect{
+  width: 21%;
+  height: 41%;
+  display: none;
+  margin-left: 42%;
+  margin-top: 10%;
+  border-radius: 10%;
+  background-color: darkgray;
+  box-shadow: 0px 0px 20px black;
+}
+
+#confirmexit{
+  width: 10%;
+  height: 10%;
+  text-align: center;
+  color: black;
+  display: none;
+  margin-left: 42%;
+  margin-top: 20%;
+  border-radius: 10%;
+  background-color: darkgray;
+  box-shadow: 0px 0px 20px black;
+  
+}
+
+#playbutton{
+  
+  vertical-align: bottom;
+  width: 20%;
+  height: 5%;
+  text-align: center;
+  margin-left: 40%;
+  position: relative;
+  top: 95%;
+  border-radius: 9%;
+  background-color: orange;
+}
+
+#exitbutton{
+  font-size: 30px;
+  vertical-align: top;
+  left: 97%;
+  width: 3%;
+  height: 3%;
+  text-align: center;
+ 
+  display: none;
+  position: absolute;
+  border-radius: 9%;
+  background-color: gray;
+  border: 1px solid black;
+}
+
+#modeselection{
+  
+  vertical-align: bottom;
+  width: 20%;
+  height: 5%;
+  text-align: center;
+  margin-left: 40%;
+  position: relative;
+  top: 95%;
+  border-radius: 9%;
+  background-color: orange;
+}
+
+#campodados{
+ width: 21%;
+ height: 41%;
+ display: none;
+ position: absolute;
+ margin-left: 0%;
+ margin-top: 2%;
+ border-radius: 10%;
+ background-color: darkgray;
+ box-shadow: 0px 0px 30px white;
+ opacity: 0.5;
+}
+
+.horizontal-center {
+ margin: 0;
+ position: absolute;
+ left: 50%;
+ -ms-transform: translateX(-50%);
+ transform: translateX(-50%);
+}
+
+/* Descomentar isso para o código do Dener funcionar */
+/* canvas{
+  display: none;
+  position: absolute;
+} 
+
+#topcanhao{
+  max-width: 150px;
+  content: url('topcanhao2.png');
+  transform-origin: 38% 83%;
+  transform: rotate(-19deg);
+  position: absolute;
+  left: 26px; 
+  top: 750px; 
+}
+    
+#rodacanhao{
+  max-width: 75px;
+  content: url('roda2.png');
+  transform-origin: center center;
+  transform: rotate(-45deg);
+  position: absolute;
+  left: 45px;
+  top: 798px;
+} */

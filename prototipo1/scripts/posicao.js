@@ -3,5 +3,4 @@ class Posicao{
         this.posX = posX;
         this.posY = posY;
     }
-
 }
