@@ -8,11 +8,23 @@ body {
   overflow: hidden;
 }
 
+table {
+  width: 100%;
+  height: 100%;
+}
+
+tr{
+  width: 50%;
+  height: 50%;
+  border-radius: 8px;
+}
+
 td {
+  border-radius: 8px;
   color: black;
   text-shadow: 0px 0px 8px white;
-  width: 195px;
-  height: 203px;
+  width:50%;
+  height:50%;
   text-align: center;
   font-size: 30px;
   font-weight: bold;
@@ -29,20 +41,31 @@ td {
   background-color: gray;
 }
 
+.container {
+  width: 24%;
+  height: 41%;
+  display: none;
+  /* margin-left: 42%; */
+  margin: auto;
+  margin-top: 10%;
+  border-radius: 5%;
+  background-color: darkgray;
+  box-shadow: 0px 0px 20px black; 
 
+}
 
-#menu{
+/* #menu{
   width: 21%;
   height: 41%;
   display: none;
-  margin-left: 42%;
+  margin: auto;
   margin-top: 10%;
-  border-radius: 10%;
+  border-radius: 5%;
   background-color: darkgray;
   box-shadow: 0px 0px 20px black; 
-}
+} */
 
-#modeselect{
+/* #modeselect{
   width: 21%;
   height: 41%;
   display: none;
@@ -51,7 +74,7 @@ td {
   border-radius: 10%;
   background-color: darkgray;
   box-shadow: 0px 0px 20px black;
-}
+} */
 
 #confirmexit{
   width: 10%;
@@ -87,7 +110,6 @@ td {
   width: 3%;
   height: 3%;
   text-align: center;
- 
   display: none;
   position: absolute;
   border-radius: 9%;
@@ -96,7 +118,6 @@ td {
 }
 
 #modeselection{
-  
   vertical-align: bottom;
   width: 20%;
   height: 5%;

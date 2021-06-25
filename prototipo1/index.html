@@ -4,11 +4,9 @@
 <head>
 	<link type="text/css" rel="stylesheet" href="estilos/style.css" />
 	<title>TBPT</title>
-
 </head>
 
 <body>
-
 	<!-- <canvas id="canvas" style="display: none; position: absolute;"></canvas> -->
 	<div id="exitbutton">X</div>
 	<div id="campodados">
@@ -20,39 +18,36 @@
 		</div>
 	</div>
 	</div>
-
 	<div id="tela-escura">
-		<div id="menu">
+		<div class="container"  id="menu">
 			<table>
 				<tr>
-					<td style="background-color: red; border-top-left-radius: 40px">Perfil</td>
-					<td style="background-color: green; border-top-right-radius: 40px">Ranking</td>
+					<td style="background-color: red;">Perfil</td>
+					<td style="background-color: green;">Ranking</td>
 				</tr>
 				<tr>
-					<td id="gamemode" style="background-color: yellow; border-bottom-left-radius: 40px">Modos
-						<br>de<br>Jogo</td>
-					<td id="tsair" style="background-color: blue; border-bottom-right-radius: 40px">Sair</td>
+					<td id="gamemode" style="background-color: yellow;">Modos
+						<br>de<br>Jogo
+					</td>
+					<td id="tsair" style="background-color: blue;">Sair</td>
+				</tr>
+				
+			</table>
+		</div>
+		<div class="container" id="modeselect">
+			<table>
+				<tr>
+					<td style="background-color: red;">Introdução</td>
+					<td id="modoLivre" style="background-color: green;">Modo<br>Livre</td>
+				</tr>
+				<tr>
+					<td id="gamemode" style="background-color: yellow;">Modo
+						<br>Competitivo
+					</td>
+					<td id="gsair" style="background-color: blue;">Sair</td>
 				</tr>
 			</table>
 		</div>
-
-
-		<div id="modeselect">
-			<table>
-				<tr>
-					<td style="background-color: red; border-top-left-radius: 40px">Introdução</td>
-					<td id="modoLivre" style="background-color: green; border-top-right-radius: 40px">Modo<br>Livre</td>
-				</tr>
-				<tr>
-					<td id="gamemode" style="background-color: yellow; border-bottom-left-radius: 40px">Modo
-						<br>Competitivo</td>
-					<td id="gsair"style="background-color: blue; border-bottom-right-radius: 40px">Sair</td>
-				</tr>
-			</table>
-		</div>
-
-
-
 		<div id="confirmexit">Deseja Sair?
 			<br>
 			<button id="confirmar">Sim</button>
@@ -63,7 +58,7 @@
 	<div>
 		<div id="canvaswrap">
 			<canvas id="canvas">
-
+<!-- Acho que isso não aparece -->
 				<canvas id="canvas_c" display: block;></canvas>
 
 			</canvas>

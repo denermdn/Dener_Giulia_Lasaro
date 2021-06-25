@@ -96,7 +96,7 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#tsair")) {
-      window.close();
+      // window.close();
   }
 });
 //window.close()
