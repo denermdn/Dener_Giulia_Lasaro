@@ -104,11 +104,10 @@ const cenario = new Cenarios(9.8, 0, canvas.width, canvas.height);
 const canhao = new Canhao(45, 0);
 function loop() {
     cenario.desenhar(context);
-    canhao.draw(context, (canvas.height - 70));
-    document.addEventListener("keydown", canhao.move());
-    canhao.lancarProjetil();
+    // canhao.draw(context, (canvas.height - 70));
+    canhao.rodar(context, canvas.height, canvas.width);
+    // canhao.lancarProjetil();
     requestAnimationFrame(loop);
-    canhao.rodar(context);
 }
-
+window.addEventListener("keydown", canhao.move);
 loop();

@@ -5,7 +5,6 @@ class Projetil {
         this.trajetoria = true;
         this.angulo = 0;
     }
-
     desenhar(context){
         
     }
