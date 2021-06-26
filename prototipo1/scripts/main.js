@@ -106,7 +106,8 @@ document.addEventListener("click", (event) => {
 });
 
 const cenario = new Cenarios(9.8, 0, canvas.width, canvas.height);
-const canhao = new Canhao(0, 0);
+const canhao = new Canhao(0);
+window.addEventListener("keydown", canhao.move);
 function loop() {
     cenario.desenhar(context);
     canhao.draw(context);
@@ -114,5 +115,4 @@ function loop() {
     // canhao.lancarProjetil();
     requestAnimationFrame(loop);
 }
-window.addEventListener("keydown", canhao.move);
 loop();
