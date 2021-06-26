@@ -118,9 +118,7 @@ td {
   bottom: 3%;
   right: 3%;
   border-radius: 10%;
-  background-color: gray;
-  border: 1px solid black;
-  z-index: 10;
+  z-index: 13;
   cursor: pointer;
 }
 

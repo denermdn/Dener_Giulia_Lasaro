@@ -26,6 +26,7 @@ const exitb = document.getElementById('exitbutton');
 const tmenu = document.getElementById('menu');
 const confirme = document.getElementById('confirmexit');
 const gmenu = document.getElementById('modeselect');
+const cbtrajetoria = document.getElementById('trajetoria');
 telaEscura.style.display = "block";
 tmenu.style.display = "block";
 
