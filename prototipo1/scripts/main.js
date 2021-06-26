@@ -8,6 +8,10 @@ canvas_2.width = window.innerWidth;
 canvas_2.height = window.innerHeight;
 var context_2 = canvas_2.getContext("2d");
 
+var canvas_3 = document.getElementById("canvas_p")
+canvas_3.width = window.innerWidth;
+canvas_3.height = window.innerHeight;
+var context_3 = canvas_3.getContext("2d");
 
 const telaEscura = document.getElementById("tela-escura");
 const minhatela = document.getElementById('canvaswrap');
@@ -89,6 +93,7 @@ document.addEventListener("click", (event) => {
       minhatela.style.display = "block";
       campodados.style.display = "block";
       exitb.style.display = "block";
+      loop();
   }
 });
 
@@ -103,11 +108,14 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#tsair")) {
       // window.close();
   }
+});document.addEventListener("click", (event) => {
+  if (event.target.matches("#tsair")) {
+      // window.close();
+  }
 });
 
 const cenario = new Cenarios(9.8, 0, canvas.width, canvas.height);
 const canhao = new Canhao(0);
-window.addEventListener("keydown", canhao.move);
 function loop() {
     cenario.desenhar(context);
     canhao.draw(context);
@@ -115,4 +123,23 @@ function loop() {
     // canhao.lancarProjetil();
     requestAnimationFrame(loop);
 }
+window.addEventListener("keydown", canhao.move);
 loop();
+
+
+const cenario = new Cenarios(9.8, 0, canvas.width, canvas.height);
+const canhao = new Canhao(0, 0);
+const projetil = new Projetil(10, canhao.getPosicao());
+function loop() {
+    cenario.desenhar(context);
+    canhao.draw(context);
+    canhao.rodar(context_2);
+ 
+    projetil.desenhar(context_3, canvas.height, 50, 55);
+    // canhao.lancarProjetil();
+    requestAnimationFrame(loop);
+}
+window.addEventListener("keydown", canhao.move);
+//document.addEventListener("click", (event) = > {projetil.desenhar(context_3);});
+
+//loop();
