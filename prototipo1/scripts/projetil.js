@@ -20,7 +20,7 @@ class Projetil {
     }
 
     update(altura){
-        var limY = altura - 135;
+        var limY = altura - 113;
         console.log(limY)
         if (this.posicao.posY <= limY){
             this.posicao.posY += this.vy;

@@ -118,7 +118,7 @@ function loop() {
     canhao.draw(context);
     canhao.rodar(context_2);
 
-    projetil.desenhar(context_3, canvas.height, 50, 35);
+    projetil.desenhar(context_3, canvas.height, 40, 33);
     // canhao.lancarProjetil();
     requestAnimationFrame(loop);
 }
