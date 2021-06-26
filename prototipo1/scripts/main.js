@@ -93,6 +93,7 @@ document.addEventListener("click", (event) => {
       minhatela.style.display = "block";
       campodados.style.display = "block";
       exitb.style.display = "block";
+      loop();
   }
 });
 
@@ -111,12 +112,17 @@ document.addEventListener("click", (event) => {
 
 const cenario = new Cenarios(9.8, 0, canvas.width, canvas.height);
 const canhao = new Canhao(0);
-window.addEventListener("keydown", canhao.move);
+const projetil = new Projetil(10, canhao.posicao);
 function loop() {
     cenario.desenhar(context);
     canhao.draw(context);
     canhao.rodar(context_2);
+
+    projetil.desenhar(context_3, canvas.height, 50, 35);
     // canhao.lancarProjetil();
     requestAnimationFrame(loop);
 }
-loop();
+
+window.addEventListener("keydown", canhao.move);
+
+//loop();
