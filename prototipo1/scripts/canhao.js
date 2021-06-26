@@ -38,7 +38,6 @@ class Canhao {
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(aux_angulo);
-    //  ctx.strokeRect(0, 0, canvas.width, canvas.height);
     this.draw_(ctx);
     ctx.restore();
     console.log("TEste");
@@ -51,7 +50,6 @@ class Canhao {
     var px2 = 73;
     var vo = 130;
     var g = 9.8;
-    // var auxc = this.transform - 19;
     var tecla = event.keyCode;
     if (tecla == 37) {
       if (this.angulo < 90) {

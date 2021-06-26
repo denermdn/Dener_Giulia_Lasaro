@@ -8,64 +8,70 @@ canvas_2.width = window.innerWidth;
 canvas_2.height = window.innerHeight;
 var context_2 = canvas_2.getContext("2d");
 
-var context_3 = document.getElementById("canvas_p")
-context_3.width = window.innerWidth;
-context_3.height = window.innerHeight;
-var context_3 = context_3.getContext("2d");
+var canvas_3 = document.getElementById("canvas_p")
+canvas_3.width = window.innerWidth;
+canvas_3.height = window.innerHeight;
+var context_3 = canvas_3.getContext("2d");
+
+var canvas_4 = document.getElementById("canvas_b")
+canvas_4.width = window.innerWidth;
+canvas_4.height = window.innerHeight;
+var context_4 = canvas_4.getContext("2d");
+
 
 const telaEscura = document.getElementById("tela-escura");
 const minhatela = document.getElementById('canvaswrap');
 const campodados = document.getElementById('campodados');
 const exitb = document.getElementById('exitbutton');
-const tmenu = document.getElementById('menu'); 
+const tmenu = document.getElementById('menu');
 const confirme = document.getElementById('confirmexit');
 const gmenu = document.getElementById('modeselect');
 telaEscura.style.display = "block";
 tmenu.style.display = "block";
 
 document.addEventListener("click", (event) => {
-    if (event.target.matches("#playbutton")) {
-        telaEscura.style.display = "none";
-        minhatela.style.display = "block";
-        campodados.style.display = "block";
-        exitb.style.display = "block";
-    }
+  if (event.target.matches("#playbutton")) {
+    telaEscura.style.display = "none";
+    minhatela.style.display = "block";
+    campodados.style.display = "block";
+    exitb.style.display = "block";
+  }
 });
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#exitbutton")) {
-      telaEscura.style.display= "block";
-      tmenu.style.display= "none";
-      confirme.style.display= "block";
+    telaEscura.style.display = "block";
+    tmenu.style.display = "none";
+    confirme.style.display = "block";
 
   }
 });
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#confirmar")) {
-      confirme.style.display = "none";
-      tmenu.style.display = "block";
+    confirme.style.display = "none";
+    tmenu.style.display = "block";
   }
 });
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#desconfirmar")) {
-      confirme.style.display = "none";
-      telaEscura.style.display = "none";
+    confirme.style.display = "none";
+    telaEscura.style.display = "none";
   }
 });
 
-// document.addEventListener("mouseover", (event) => {
-//   if (event.target.matches("#campodados") || event.target.matches("#campo1") || event.target.matches(".horizontal-center") || event.target.matches("#botaolancar")) {
-//     campodados.style.opacity = "1";
-//   }
-// });
+document.addEventListener("mouseover", (event) => {
+  if (event.target.matches("#campodados") || event.target.matches("#campo1") || event.target.matches(".horizontal-center") || event.target.matches("#botaolancar")) {
+    campodados.style.opacity = "1";
+  }
+});
 
-// document.addEventListener("mouseout", (event) => {
-//   if (event.target.matches("#campodados") || event.target.matches("#campo1") || event.target.matches(".horizontal-center") || event.target.matches("#botaolancar")) {
-//     campodados.style.opacity = "0.5";
-//   }
-// });
+document.addEventListener("mouseout", (event) => {
+  if (event.target.matches("#campodados") || event.target.matches("#campo1") || event.target.matches(".horizontal-center") || event.target.matches("#botaolancar")) {
+    campodados.style.opacity = "0.5";
+  }
+});
 
 document.addEventListener("mouseover", (event) => {
   if (event.target.matches("#exitbutton")) {
@@ -81,32 +87,32 @@ document.addEventListener("mouseout", (event) => {
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#gamemode")) {
-      tmenu.style.display="none";
-      gmenu.style.display="block";
+    tmenu.style.display = "none";
+    gmenu.style.display = "block";
   }
 });
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#modoLivre")) {
-      telaEscura.style.display = "none";
-      gmenu.style.display="none";
-      minhatela.style.display = "block";
-      campodados.style.display = "block";
-      exitb.style.display = "block";
-      loop();
+    telaEscura.style.display = "none";
+    gmenu.style.display = "none";
+    minhatela.style.display = "block";
+    campodados.style.display = "block";
+    exitb.style.display = "block";
+    loop();
   }
 });
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#gsair")) {
-      tmenu.style.display="block";
-      gmenu.style.display="none";
+    tmenu.style.display = "block";
+    gmenu.style.display = "none";
   }
 });
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#tsair")) {
-      // window.close();
+    // window.close();
   }
 });
 
@@ -114,13 +120,14 @@ const cenario = new Cenarios(9.8, 0, canvas.width, canvas.height);
 const canhao = new Canhao(0);
 const projetil = new Projetil(10, canhao.posicao);
 function loop() {
-    cenario.desenhar(context);
-    canhao.draw(context);
-    canhao.rodar(context_2);
+  cenario.desenhar(context);
+  canhao.draw(context);
+  canhao.rodar(context_2);
 
-    projetil.desenhar(context_3, canvas.height, 50, 35);
-    // canhao.lancarProjetil();
-    requestAnimationFrame(loop);
+  projetil.desenhar(context_3, canvas_3.height, 50, 35);
+  projetil.drawBall(context_4, canvas_4.height, 50, 35);
+  // canhao.lancarProjetil();
+  requestAnimationFrame(loop);
 }
 
 window.addEventListener("keydown", canhao.move);

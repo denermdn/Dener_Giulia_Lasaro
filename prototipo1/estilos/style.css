@@ -57,7 +57,7 @@ td {
 
 #canvaswrap{
   position: absolute;
-  z-index: 3;
+  z-index: 5;
 }
 
 #canvas_p{
@@ -67,6 +67,10 @@ td {
 #canvas_c{
   position: absolute;
   z-index: 3;
+}
+#canvas_b{
+  position: absolute;
+  z-index: 4;
 }
 #canvas{
   position: absolute;
