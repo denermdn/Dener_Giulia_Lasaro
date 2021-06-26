@@ -129,7 +129,6 @@ function loop() {
   // canhao.lancarProjetil();
   requestAnimationFrame(loop);
 }
-
-window.addEventListener("keydown", canhao.move);
+  window.addEventListener("keydown", canhao.move);
 
 //loop();
