@@ -62,10 +62,6 @@ td {
 
 #canvas_c{
   position: absolute;
-  z-index: 3;
-}
-#canvas_p{
-  position: absolute;
   z-index: 2;
 }
 #canvas{
