@@ -8,6 +8,10 @@ canvas_2.width = window.innerWidth;
 canvas_2.height = window.innerHeight;
 var context_2 = canvas_2.getContext("2d");
 
+var context_3 = document.getElementById("canvas_p")
+context_3.width = window.innerWidth;
+context_3.height = window.innerHeight;
+var context_3 = context_3.getContext("2d");
 
 const telaEscura = document.getElementById("tela-escura");
 const minhatela = document.getElementById('canvaswrap');
