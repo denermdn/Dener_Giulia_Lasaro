@@ -49,8 +49,8 @@ class Cenarios {
         context.drawImage(chao[0],
             drawChao.xOrigin + 20, drawChao.yOrigin,
             drawChao.width_origin, drawChao.height_origin,
-            this.largura / 2, drawChao.yDestination,
-            drawChao.width_destination + 10, drawChao.height_destination
+            (this.largura / 2)-1, drawChao.yDestination,
+            drawChao.width_destination + 12, drawChao.height_destination
         );
     }
 

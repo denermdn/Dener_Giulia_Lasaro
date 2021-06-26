@@ -3,9 +3,14 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 var context = canvas.getContext("2d");
 
+var canvas_2 = document.getElementById("canvas_c")
+canvas_2.width = window.innerWidth;
+canvas_2.height = window.innerHeight;
+var context_2 = canvas_2.getContext("2d");
+
 
 const telaEscura = document.getElementById("tela-escura");
-const minhatela = document.getElementById('canvas');
+const minhatela = document.getElementById('canvaswrap');
 const campodados = document.getElementById('campodados');
 const exitb = document.getElementById('exitbutton');
 const tmenu = document.getElementById('menu'); 
@@ -46,17 +51,17 @@ document.addEventListener("click", (event) => {
   }
 });
 
-document.addEventListener("mouseover", (event) => {
-  if (event.target.matches("#campodados") || event.target.matches("#campo1") || event.target.matches(".horizontal-center") || event.target.matches("#botaolancar")) {
-    campodados.style.opacity = "1";
-  }
-});
+// document.addEventListener("mouseover", (event) => {
+//   if (event.target.matches("#campodados") || event.target.matches("#campo1") || event.target.matches(".horizontal-center") || event.target.matches("#botaolancar")) {
+//     campodados.style.opacity = "1";
+//   }
+// });
 
-document.addEventListener("mouseout", (event) => {
-  if (event.target.matches("#campodados") || event.target.matches("#campo1") || event.target.matches(".horizontal-center") || event.target.matches("#botaolancar")) {
-    campodados.style.opacity = "0.5";
-  }
-});
+// document.addEventListener("mouseout", (event) => {
+//   if (event.target.matches("#campodados") || event.target.matches("#campo1") || event.target.matches(".horizontal-center") || event.target.matches("#botaolancar")) {
+//     campodados.style.opacity = "0.5";
+//   }
+// });
 
 document.addEventListener("mouseover", (event) => {
   if (event.target.matches("#exitbutton")) {
@@ -99,13 +104,13 @@ document.addEventListener("click", (event) => {
       // window.close();
   }
 });
-//window.close()
+
 const cenario = new Cenarios(9.8, 0, canvas.width, canvas.height);
-const canhao = new Canhao(45, 0);
+const canhao = new Canhao(0, 0);
 function loop() {
     cenario.desenhar(context);
-    // canhao.draw(context, (canvas.height - 70));
-    canhao.rodar(context, canvas.height, canvas.width);
+    canhao.draw(context);
+    canhao.rodar(context_2);
     // canhao.lancarProjetil();
     requestAnimationFrame(loop);
 }

@@ -25,7 +25,6 @@ tr{
 td {
   border-radius: 8px;
   color: black;
-  /* text-shadow: 0px 0px 18px white; */
   width:50%;
   height:50%;
   text-align: center;
@@ -39,44 +38,37 @@ td {
   opacity: 1;
   display: none;
   color: white;
-  /* padding-top: 20px; */
   position: absolute;
   background-color: gray;
+  z-index: 10;
 }
 
 .container {
   width: 24%;
   height: 41%;
   display: none;
-  /* margin-left: 42%; */
   margin: auto;
   margin-top: 10%;
-  border-radius: 5%;
-  background-color: darkgray;
+  border-radius: 3%;
+  background-color: rgb(248, 245, 245);
   box-shadow: 0px 0px 20px black; 
+  cursor: pointer;
 }
 
-/* #menu{
-  width: 21%;
-  height: 41%;
-  display: none;
-  margin: auto;
-  margin-top: 10%;
-  border-radius: 5%;
-  background-color: darkgray;
-  box-shadow: 0px 0px 20px black; 
-} */
+#canvaswrap{
+  position: absolute;
+  z-index: 3;
+}
 
-/* #modeselect{
-  width: 21%;
-  height: 41%;
-  display: none;
-  margin-left: 42%;
-  margin-top: 10%;
-  border-radius: 10%;
-  background-color: darkgray;
-  box-shadow: 0px 0px 20px black;
-} */
+#canvas_c{
+  position: absolute;
+  z-index: 2;
+}
+#canvas{
+  position: absolute;
+  z-index: 1;
+}
+
 
 #confirmexit{
   width: 10%;
@@ -92,31 +84,20 @@ td {
   
 }
 
-#playbutton{
-  
-  vertical-align: bottom;
-  width: 20%;
-  height: 5%;
-  text-align: center;
-  margin-left: 40%;
-  position: relative;
-  top: 95%;
-  border-radius: 9%;
-  background-color: orange;
-}
-
 #exitbutton{
-  font-size: 30px;
-  vertical-align: top;
-  left: 97%;
+  font-size: 20px;
   width: 3%;
   height: 3%;
   text-align: center;
   display: none;
   position: absolute;
-  border-radius: 9%;
+  top: 1%;
+  left: 96.5%;
+  border-radius: 3%;
   background-color: gray;
   border: 1px solid black;
+  z-index: 9;
+  cursor: pointer;
 }
 
 #modeselection{
@@ -132,24 +113,24 @@ td {
 }
 
 #campodados{
- width: 21%;
- height: 41%;
- display: none;
- position: absolute;
- margin-left: 0%;
- margin-top: 2%;
- border-radius: 10%;
- background-color: darkgray;
- box-shadow: 0px 0px 30px white;
- opacity: 0.5;
+  width: 21%;
+  height: 41%;
+  display: none;
+  position: absolute;
+  margin-left: 1%;
+  margin-top: 1%;
+  border-radius: 2%;
+  background-color: darkgray;
+  opacity: 0.5;
+  z-index: 8;
 }
 
 .horizontal-center {
- margin: 0;
- position: absolute;
- left: 50%;
- -ms-transform: translateX(-50%);
- transform: translateX(-50%);
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 /* Descomentar isso para o código do Dener funcionar */
