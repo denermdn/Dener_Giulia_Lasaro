@@ -60,21 +60,10 @@ class Projetil {
             this.posicao.posY += this.vy;
             this.posicao.posX += this.vx;
         }
-        // this.posicao.posY += this.vy;
-        //this.posicao.posX += this.vx;
 
-        //this.posicao.posX += this.vx
         this.vy += this.g;
         console.log(this.posicao.posX);
 
     }
-
-    // atualizaPosicao(angulo, posicao){
-    //     this.angulo = angulo;
-    //     this.posicao = posicao;
-
-    //     this.vx = this.velocidade0 * Math.cos(this.angulo);
-    //     this.vy = this.velocidade0 * Math.sin(this.angulo);
-    // }
 
 }

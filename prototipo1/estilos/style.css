@@ -8,6 +8,7 @@
 body {
   overflow: hidden;
   font-family: 'Architects Daughter', cursive;
+  background-color: gray;
   /* font-family: 'Indie Flower', cursive; */
 }
 
@@ -32,6 +33,21 @@ td {
   font-weight: bold;
 }
 
+input{
+  padding: 10px;
+  border:none;
+  outline: none;
+  font-size: 20px;
+}
+
+button{
+    font-family: 'Architects Daughter', cursive;
+    background-color:  #d5dbdb;
+    border: none;
+    padding: 5px;
+    border-radius: 10%;
+    font-size: 15px;
+}
 #tela-escura {
   width: 100%;
   height: 100%;
@@ -115,8 +131,8 @@ td {
   text-align: center;
   display: inline;
   position: absolute;
-  bottom: 3%;
-  right: 3%;
+  bottom: 5%;
+  right: 5%;
   border-radius: 10%;
   z-index: 13;
   cursor: pointer;
@@ -154,6 +170,24 @@ td {
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
+
+#login{
+
+  display: absolute;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0px;
+  transform: translate(-50%,-50%);
+  padding: 50px;
+  border-radius: 2%;
+  color: black;
+  background-color:darkgray;
+  opacity: 0.5;
+
+}
+
+
 
 /* Descomentar isso para o código do Dener funcionar */
 /* canvas{
