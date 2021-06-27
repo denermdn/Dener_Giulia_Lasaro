@@ -7,14 +7,14 @@ var dados_sprite = {
 }
 class Projetil {
     constructor(angulo, posicao) {
-        this.velocidade0 = 60;
+        this.velocidade0 = document.getElementById("campo1").value;
         this.trajetoria = true;
         this.angulo = angulo;
         this.posicao = Object.assign({}, posicao);
         this.g = 9.8;
         this.componentes();
         this.alcance;
-
+        console.log(this.velocidade);
         this._init();
     }
 
@@ -24,11 +24,13 @@ class Projetil {
     }
     
     componentes() {
+        this.velocidade0= document.getElementById("campo1").value;
         this.vx = this.velocidade0 * Math.cos((this.angulo * Math.PI) / 180);//(this.angulo*Math.PI)/180);
         this.vy = -this.velocidade0 * Math.sin((this.angulo * Math.PI) / 180);//(this.angulo*Math.PI)/180);
         this.alcance =  this.vx * 2 *((-this.vy)/(this.g*0.5));
-        console.log(this.vx);
-        console.log(this.vy);
+        
+        // console.log(this.vx);
+        // console.log(this.vy);
     }
 
 
