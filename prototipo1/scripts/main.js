@@ -114,6 +114,8 @@ document.addEventListener("click", (event) => {
 document.addEventListener("click", (event) => {
   if (event.target.matches("#tsair")) {
     // window.close();
+    // <a href="./login.html">Voltar à tela de login</a>
+    window.location.replace("./login.html");
   }
 });
 
