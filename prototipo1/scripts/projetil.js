@@ -33,7 +33,9 @@ class Projetil {
 
 
     desenhar(context, altura, tamX, tamY) {
-        //context.clearContext();
+        if(this.trajetoria == false){
+            context.clearRect(0,0,canvas.width,canvas.height);            
+        }
         context.beginPath();
         context.arc(this.posicao.posX + tamX, this.posicao.posY + tamY, 5, 0, Math.PI * 2);
         context.fillStyle = 'red';
