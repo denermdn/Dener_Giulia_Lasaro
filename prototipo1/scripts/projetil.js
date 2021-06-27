@@ -7,7 +7,7 @@ var dados_sprite = {
 }
 class Projetil {
     constructor(angulo, posicao) {
-        this.velocidade0 = 130;
+        this.velocidade0 = 60;
         this.trajetoria = true;
         this.angulo = angulo;
         this.posicao = Object.assign({}, posicao);
@@ -23,18 +23,18 @@ class Projetil {
         projetil_sprite[0].src = "./imagens/balls.png";
     }
 
-    componentes(){
-        
-        this.vx =  this.velocidade0 * Math.cos((this.angulo*Math.PI)/180);//(this.angulo*Math.PI)/180);
-        this.vy =  -this.velocidade0 * Math.sin((this.angulo*Math.PI)/180);//(this.angulo*Math.PI)/180);
+    componentes() {
+
+        this.vx = this.velocidade0 * Math.cos((this.angulo * Math.PI) / 180);//(this.angulo*Math.PI)/180);
+        this.vy = -this.velocidade0 * Math.sin((this.angulo * Math.PI) / 180);//(this.angulo*Math.PI)/180);
         console.log(this.vx);
         console.log(this.vy);
     }
 
 
     desenhar(context, altura, tamX, tamY) {
-        if(this.trajetoria == false){
-            context.clearRect(0,0,canvas.width,canvas.height);            
+        if (this.trajetoria == false) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
         }
         context.beginPath();
         context.arc(this.posicao.posX + tamX, this.posicao.posY + tamY, 5, 0, Math.PI * 2);
@@ -53,10 +53,7 @@ class Projetil {
             40, 40);
     }
 
-    // update(altura) {
-    //     var limY = altura - 135;
-
-    update(altura){
+    update(altura) {
         var limY = altura - 135;
         console.log(limY)
         if (this.posicao.posY <= limY) {

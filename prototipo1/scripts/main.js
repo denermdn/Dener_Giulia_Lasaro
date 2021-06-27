@@ -117,19 +117,19 @@ document.addEventListener("click", (event) => {
   }
 });
 
+var lancar= false;
 document.addEventListener("click", (event) => {
 
   if (event.target.matches("#botaolancar")) {
-      // window.close();
-      projetil.angulo= Math.floor(((180 * (-aux_angulo+ 0.4375)) / Math.PI));
-      console.log(projetil.angulo);
-      projetil.componentes();
-      setInterval(launch,1);
+    projetil.angulo = Math.floor(((180 * (-aux_angulo + 0.4375)) / Math.PI));
+    console.log(projetil.angulo);
+    projetil.componentes();
+    lancar= true;
+    // setInterval(launch, 1);
   }
 });
 
-function launch(){
-
+function launch() {
   projetil.desenhar(context_3, canvas.height, 40, 33);
 }
 
@@ -141,16 +141,19 @@ function loop() {
   canhao.draw(context);
   canhao.rodar(context_2);
 
-  if(cbtrajetoria.checked){
+  if (cbtrajetoria.checked) {
     projetil.trajetoria = true;
-  } else{
+  } else {
     projetil.trajetoria = false;
   }
   //projetil.desenhar(context_3, canvas_3.height, 50, 35);
-  projetil.drawBall(context_4, canvas_4.height, 50, 35);
+  if(lancar){
+    projetil.desenhar(context_3, canvas.height, 40, 33)
+    projetil.drawBall(context_4, canvas_4.height, 50, 35);
+  }
   // canhao.lancarProjetil();
   requestAnimationFrame(loop);
 }
-  window.addEventListener("keydown", canhao.move);
+window.addEventListener("keydown", canhao.move);
 
 //loop();
