@@ -35,6 +35,12 @@ td {
   text-align: center;
   font-size: 180%;
   font-weight: bold;
+  
+}
+
+td:hover{
+  box-shadow:0 4px 6px#666;
+  letter-spacing: 1.2px;
 }
 
 input{
@@ -58,6 +64,7 @@ button{
 button:hover {
   background-color: #6fa8a8 !important;
   color: white !important;
+  letter-spacing: 1.1px;
 }
 
 th {
@@ -82,7 +89,7 @@ th {
 }
 
 .container {
-  width: 24%;
+  width: 25%;
   height: 41%;
   display: none;
   margin: auto;
@@ -119,12 +126,9 @@ th {
   width: 400px; 
   text-align: center;
   margin:0;
-  /* background: greenyellow; */
   position: fixed;
-  /* border: 1px solid red; */
   top: 40px; 
   left: calc(50% - 200px);
-  /* left: 50%; */
 }
 #confirmexit{
   /* width: 10%;
