@@ -27,8 +27,9 @@
 		<br>
 		<div>
 			<br><br>
-			<input type="checkbox" id="trajetoria" name="traj" checked>
-			<label for="traj">Marcar Trajetória</label>
+			<input style="cursor: pointer;" type="checkbox" id="trajetoria" name="traj"
+			checked>
+	 		<label for="traj">Marcar Trajetória</label>
 		</div>
 	</div>
 	</div>
@@ -40,7 +41,7 @@
 			<table>
 				<tr>
 					<td style="background-color: red;">Perfil</td>
-					<td style="background-color: green;">Ranking</td>
+					<td id="rank" style="background-color: green;">Ranking</td>
 				</tr>
 				<tr>
 					<td id="gamemode" style="background-color: yellow;">Modos
@@ -66,6 +67,8 @@
 		</div>
 		<div id="confirmexit">Deseja Sair?
 			<br>
+			<br>
+			
 			<button id="confirmar">Sim</button>
 			<button id="desconfirmar">Não</button>
 		</div>

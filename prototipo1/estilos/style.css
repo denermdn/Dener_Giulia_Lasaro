@@ -51,6 +51,23 @@ button{
     padding: 5px;
     border-radius: 10%;
     font-size: 15px;
+    cursor: pointer;
+    pointer-events: auto;
+    
+}
+button:hover {
+  background-color: #6fa8a8 !important;
+  color: white !important;
+}
+
+th {
+  width: 33.33%;
+  height: 33.33%;
+}
+.novotr{
+  width: 33.33%;
+  height: 33.33%;
+  border-radius: 8px;
 }
 
 #tela-escura {
