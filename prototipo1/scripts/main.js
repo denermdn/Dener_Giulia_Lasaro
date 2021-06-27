@@ -70,7 +70,7 @@ document.addEventListener("mouseover", (event) => {
 
 document.addEventListener("mouseout", (event) => {
   if (event.target.matches("#campodados") || event.target.matches("#campo1") || event.target.matches(".horizontal-center") || event.target.matches("#botaolancar")) {
-    campodados.style.opacity = "0.5";
+    campodados.style.opacity = "0.8";
   }
 });
 
@@ -90,6 +90,7 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#gamemode")) {
     tmenu.style.display = "none";
     gmenu.style.display = "block";
+    document.querySelector(".titulo").textContent = "Teste";
   }
 });
 
