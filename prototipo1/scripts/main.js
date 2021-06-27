@@ -26,6 +26,7 @@ const exitb = document.getElementById('exitbutton');
 const tmenu = document.getElementById('menu');
 const confirme = document.getElementById('confirmexit');
 const gmenu = document.getElementById('modeselect');
+const cbtrajetoria = document.getElementById('trajetoria');
 telaEscura.style.display = "block";
 tmenu.style.display = "block";
 
@@ -117,6 +118,7 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
+<<<<<<< HEAD
   if (event.target.matches("#botaolancar")) {
       // window.close();
       projetil.angulo= Math.floor(((180 * (-aux_angulo+ 0.4375)) / Math.PI));
@@ -131,6 +133,12 @@ function launch(){
   projetil.desenhar(context_3, canvas.height, 40, 33);
 }
 
+=======
+  if (event.target.matches("#sobre")) {
+  }
+});
+
+>>>>>>> 4a5da0864fbb109a181fd408cf97a79304bf490d
 const cenario = new Cenarios(9.8, 0, canvas.width, canvas.height);
 const canhao = new Canhao(0);
 const projetil = new Projetil(10, canhao.posicao);

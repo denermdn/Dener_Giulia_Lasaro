@@ -2,6 +2,7 @@
 <html>
 
 <head>
+	<meta charset="UTF-8">
 	<link type="text/css" rel="stylesheet" href="estilos/style.css" />
 	<!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,12 +14,21 @@
 <body>
 	<!-- <canvas id="canvas" style="display: none; position: absolute;"></canvas> -->
 	<div id="exitbutton">X</div>
+	<div id="sobre">
+		<a href="https://github.com/denermdn/Dener_Giulia_Lasaro" target="_blank"><button>Sobre</button></a>
+	</div>
 	<div id="campodados">
 		<br>
 		<br>
 		Velocidade inicial: <input name="campo1" id="campo1" value="130" /><br>
 		<div class="horizontal-center">
 			<button id="botaolancar" onclick="requestAnimationFrame(canhao.lancarProjetil)">LANÇAR</button>
+		</div>
+		<br>
+		<div>
+			<input type="checkbox" id="trajetoria" name="traj"
+			checked>
+	 		<label for="traj">Marcar Trajetória</label>
 		</div>
 	</div>
 	</div>
@@ -57,13 +67,14 @@
 			<button id="confirmar">Sim</button>
 			<button id="desconfirmar">Não</button>
 		</div>
+		
 	</div>
 	<div>
 		<div id="canvaswrap">
-			<canvas id="canvas"></canvas>
-			<canvas id="canvas_c"></canvas>
-			<canvas id="canvas_p"></canvas>
-			<canvas id="canvas_b"></canvas>
+				<canvas id="canvas"></canvas>
+				<canvas id="canvas_c"></canvas>
+				<canvas id="canvas_p"></canvas>
+				<canvas id="canvas_b"></canvas>
 		</div>
 	</div>
 	<!-- <script src="scripts/scripts.js"></script> -->
