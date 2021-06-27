@@ -67,7 +67,10 @@
 	</div>
 	</div>
 	<div id="tela-escura">
-		<div class="container"  id="menu">
+		<div>
+			<h1 class="titulo">Menu</h1>
+		</div>
+		<div class="container" id="menu">
 			<table>
 				<tr>
 					<td style="background-color: red;">Perfil</td>
@@ -79,38 +82,36 @@
 					</td>
 					<td id="tsair" style="background-color: blue;">Sair</td>
 				</tr>
-				
 			</table>
 		</div>
 		<div class="container" id="modeselect">
 			<table>
 				<tr>
-					<td style="background-color: red;">Introdução</td>
-					<td id="modoLivre" style="background-color: green;">Modo<br>Livre</td>
+					<td style="background-color: blue;">Introdução</td>
+					<td id="modoLivre" style="background-color: yellow;">Modo<br>Livre</td>
 				</tr>
 				<tr>
-					<td id="gamemode" style="background-color: yellow;">Modo
+					<td id="gamemode" style="background-color: green;">Modo
 						<br>Competitivo
 					</td>
-					<td id="gsair" style="background-color: blue;">Sair</td>
+					<td id="voltar" style="background-color: red;">Voltar</td>
 				</tr>
 			</table>
 		</div>
-		<div id="confirmexit">Deseja Sair?
+		<div class="container" id="confirmexit">Deseja Sair?
 			<br>
 			<br>
-			
-			<button id="confirmar">Sim</button>
-			<button id="desconfirmar">Não</button>
+			<button class="botoes_sair" id="confirmar">Sim</button>
+			<button class="botoes_sair" id="desconfirmar">Não</button>
 		</div>
-		
+
 	</div>
 	<div>
 		<div id="canvaswrap">
-				<canvas id="canvas"></canvas>
-				<canvas id="canvas_c"></canvas>
-				<canvas id="canvas_p"></canvas>
-				<canvas id="canvas_b"></canvas>
+			<canvas id="canvas"></canvas>
+			<canvas id="canvas_c"></canvas>
+			<canvas id="canvas_p"></canvas>
+			<canvas id="canvas_b"></canvas>
 		</div>
 	</div>
 	<!-- <script src="scripts/scripts.js"></script> -->

@@ -35,6 +35,12 @@ td {
   text-align: center;
   font-size: 180%;
   font-weight: bold;
+  
+}
+
+td:hover{
+  box-shadow:0 4px 6px#666;
+  letter-spacing: 1.2px;
 }
 
 
@@ -54,11 +60,12 @@ button{
     font-size: 15px;
     cursor: pointer;
     pointer-events: auto;
-    
 }
+
 button:hover {
   background-color: #6fa8a8 !important;
   color: white !important;
+  letter-spacing: 1.1px;
 }
 
 th {
@@ -98,7 +105,7 @@ th {
 }
 
 .container {
-  width: 24%;
+  width: 25%;
   height: 41%;
   display: none;
   margin: auto;
@@ -131,19 +138,28 @@ th {
   z-index: 1;
 }
 
-
+.titulo{
+  width: 400px; 
+  text-align: center;
+  margin:0;
+  position: fixed;
+  top: 40px; 
+  left: calc(50% - 200px);
+}
 #confirmexit{
-  width: 10%;
+  /* width: 10%;
   height: 10%;
   text-align: center;
   color: black;
   display: none;
-  margin-left: 42%;
-  margin-top: 20%;
-  border-radius: 10%;
-  background-color: darkgray;
-  box-shadow: 0px 0px 20px black;
-  
+  margin:auto;
+  border-radius: 10%; */
+  font-size: 200%;
+  font-weight: bold;
+  text-align: center;
+  background-color: darkgray; 
+  color: black;  
+  /* box-shadow: 0px 0px 20px black; */
 }
 
 #exitbutton{
@@ -196,7 +212,7 @@ th {
   margin-left: 1%;
   margin-top: 1%;
   border-radius: 2%;
-  background-color: darkgray;
+  background-color: #ca6048;
   opacity: 0.5;
   z-index: 8;
   text-align: left;
@@ -219,7 +235,6 @@ th {
 }
 
 #login{
-
   display: absolute;
   position: absolute;
   top: 50%;
@@ -231,33 +246,10 @@ th {
   color: black;
   background-color:darkgray;
   opacity: 0.5;
-
 }
 
-
-
-/* Descomentar isso para o código do Dener funcionar */
-/* canvas{
-  display: none;
-  position: absolute;
-} 
-
-#topcanhao{
-  max-width: 150px;
-  content: url('topcanhao2.png');
-  transform-origin: 38% 83%;
-  transform: rotate(-19deg);
-  position: absolute;
-  left: 26px; 
-  top: 750px; 
+.botoes_sair{
+    height: 30%;
+    width: 35%;
+    font-size: 60%;
 }
-    
-#rodacanhao{
-  max-width: 75px;
-  content: url('roda2.png');
-  transform-origin: center center;
-  transform: rotate(-45deg);
-  position: absolute;
-  left: 45px;
-  top: 798px;
-} */
