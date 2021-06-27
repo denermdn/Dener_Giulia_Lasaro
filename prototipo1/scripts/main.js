@@ -18,6 +18,9 @@ canvas_4.width = window.innerWidth;
 canvas_4.height = window.innerHeight;
 var context_4 = canvas_4.getContext("2d");
 
+var texto_menu = "Menu";
+var texto_selecaoModo = "Seleção de Modos";
+var texto_sair = "Vitória sem luta é triunfo sem glória.";
 
 const telaEscura = document.getElementById("tela-escura");
 const minhatela = document.getElementById('canvaswrap');
@@ -44,7 +47,7 @@ document.addEventListener("click", (event) => {
     telaEscura.style.display = "block";
     tmenu.style.display = "none";
     confirme.style.display = "block";
-
+    document.querySelector(".titulo").textContent = texto_sair;
   }
 });
 
@@ -52,6 +55,7 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#confirmar")) {
     confirme.style.display = "none";
     tmenu.style.display = "block";
+    document.querySelector(".titulo").textContent = texto_menu;
   }
 });
 
@@ -90,7 +94,7 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#gamemode")) {
     tmenu.style.display = "none";
     gmenu.style.display = "block";
-    document.querySelector(".titulo").textContent = "Teste";
+    document.querySelector(".titulo").textContent = texto_selecaoModo;
   }
 });
 
@@ -106,9 +110,10 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
-  if (event.target.matches("#gsair")) {
+  if (event.target.matches("#voltar")) {
     tmenu.style.display = "block";
     gmenu.style.display = "none";
+    document.querySelector(".titulo").textContent = texto_menu;
   }
 });
 
