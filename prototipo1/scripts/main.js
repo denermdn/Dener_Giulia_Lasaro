@@ -129,9 +129,9 @@ document.addEventListener("click", (event) => {
   }
 });
 
-function launch() {
-  projetil.desenhar(context_3, canvas.height, 40, 33);
-}
+// function launch() {
+//   projetil.desenhar(context_3, canvas.height, 40, 33);
+// }
 
 const cenario = new Cenarios(9.8, 0, canvas.width, canvas.height);
 const canhao = new Canhao(0);
