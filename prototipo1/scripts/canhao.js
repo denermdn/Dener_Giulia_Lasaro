@@ -27,9 +27,9 @@ class Canhao {
     context.drawImage(canhao_e_roda[this.id][0], -44, -65, 116, 80);
   }
 
-  lancarProjetil() {
-    console.log("Lancei" + this.posicao.posX);
-  }
+  // lancarProjetil() {
+  //   console.log("Lancei" + this.posicao.posX);
+  // }
 
   rodar(ctx) {
     let x = 42 + this.posicao.posX;

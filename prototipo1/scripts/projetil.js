@@ -11,9 +11,9 @@ class Projetil {
         this.trajetoria = true;
         this.angulo = angulo;
         this.posicao = Object.assign({}, posicao);
-
         this.g = 9.8;
         this.componentes();
+        this.alcance;
 
         this._init();
     }
@@ -22,11 +22,11 @@ class Projetil {
         projetil_sprite[0] = new Image();
         projetil_sprite[0].src = "./imagens/balls.png";
     }
-
+    
     componentes() {
-
         this.vx = this.velocidade0 * Math.cos((this.angulo * Math.PI) / 180);//(this.angulo*Math.PI)/180);
         this.vy = -this.velocidade0 * Math.sin((this.angulo * Math.PI) / 180);//(this.angulo*Math.PI)/180);
+        this.alcance =  this.vx * 2 *((-this.vy)/(this.g*0.5));
         console.log(this.vx);
         console.log(this.vy);
     }
@@ -63,7 +63,5 @@ class Projetil {
 
         this.vy += this.g;
         console.log(this.posicao.posX);
-
     }
-
 }

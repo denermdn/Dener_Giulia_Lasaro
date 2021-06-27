@@ -117,14 +117,15 @@ document.addEventListener("click", (event) => {
   }
 });
 
-var lancar= false;
+var lancar = false;
 document.addEventListener("click", (event) => {
 
   if (event.target.matches("#botaolancar")) {
     projetil.angulo = Math.floor(((180 * (-aux_angulo + 0.4375)) / Math.PI));
     console.log(projetil.angulo);
     projetil.componentes();
-    lancar= true;
+    alvo.setPosicao(projetil.alcance, canvas.height-70);
+    lancar = true;
     // setInterval(launch, 1);
   }
 });
@@ -136,6 +137,7 @@ document.addEventListener("click", (event) => {
 const cenario = new Cenarios(9.8, 0, canvas.width, canvas.height);
 const canhao = new Canhao(0);
 const projetil = new Projetil(10, canhao.posicao);
+const alvo = new Alvo();
 function loop() {
   cenario.desenhar(context);
   canhao.draw(context);
@@ -147,7 +149,8 @@ function loop() {
     projetil.trajetoria = false;
   }
   //projetil.desenhar(context_3, canvas_3.height, 50, 35);
-  if(lancar){
+  if (lancar) {
+    alvo.draw(context);
     projetil.desenhar(context_3, canvas.height, 40, 33)
     projetil.drawBall(context_4, canvas_4.height, 50, 35);
   }
