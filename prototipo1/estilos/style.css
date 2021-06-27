@@ -52,6 +52,16 @@ button{
     border-radius: 10%;
     font-size: 15px;
 }
+th {
+  width: 33.33%;
+  height: 33.33%;
+}
+.novotr{
+  width: 33.33%;
+  height: 33.33%;
+  border-radius: 8px;
+}
+
 #tela-escura {
   width: 100%;
   height: 100%;
