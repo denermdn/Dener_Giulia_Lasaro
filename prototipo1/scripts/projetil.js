@@ -53,6 +53,17 @@ class Projetil {
             40, 40);
     }
 
+
+    calcxdiferenca(altura){
+        // var aux_conta=(this.posicao.posX + tamX - 16) - this.vx;
+        // var aux_conta2=this.posicao.posX + tamX - 16;
+        // aux_conta=aux_conta/aux_conta2;
+        // aux_conta2=aux_conta2+this.vx*aux_conta;
+        // return aux_conta2;
+        var alt=(altura-135)/(this.posicao.posY*100);
+        this.posicao.posX=this.posicao.posX-(this.posicao.posX*alt);
+    }
+    
     update(altura) {
         var limY = altura - 135;
         console.log(limY)

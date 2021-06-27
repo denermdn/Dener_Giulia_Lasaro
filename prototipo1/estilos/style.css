@@ -9,6 +9,10 @@ body {
   overflow: hidden;
   font-family: 'Architects Daughter', cursive;
   background-color: gray;
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+   user-select: none;
   /* font-family: 'Indie Flower', cursive; */
 }
 
