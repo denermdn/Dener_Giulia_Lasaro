@@ -116,6 +116,21 @@ document.addEventListener("click", (event) => {
   }
 });
 
+document.addEventListener("click", (event) => {
+  if (event.target.matches("#botaolancar")) {
+      // window.close();
+      projetil.angulo= Math.floor(((180 * (-aux_angulo+ 0.4375)) / Math.PI));
+      console.log(projetil.angulo);
+      projetil.componentes();
+      setInterval(launch,1);
+  }
+});
+
+function launch(){
+
+  projetil.desenhar(context_3, canvas.height, 40, 33);
+}
+
 const cenario = new Cenarios(9.8, 0, canvas.width, canvas.height);
 const canhao = new Canhao(0);
 const projetil = new Projetil(10, canhao.posicao);
@@ -124,7 +139,7 @@ function loop() {
   canhao.draw(context);
   canhao.rodar(context_2);
 
-  projetil.desenhar(context_3, canvas_3.height, 50, 35);
+  //projetil.desenhar(context_3, canvas_3.height, 50, 35);
   projetil.drawBall(context_4, canvas_4.height, 50, 35);
   // canhao.lancarProjetil();
   requestAnimationFrame(loop);

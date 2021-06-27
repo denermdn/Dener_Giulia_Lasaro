@@ -7,14 +7,13 @@ var dados_sprite = {
 }
 class Projetil {
     constructor(angulo, posicao) {
-        this.velocidade0 = 0.17;
+        this.velocidade0 = 130;
         this.trajetoria = true;
-        this.angulo = 10;
+        this.angulo = angulo;
         this.posicao = Object.assign({}, posicao);
 
-        this.g = 0.25;
-        this.vx = -100 * this.velocidade0 * Math.sin(this.angulo);
-        this.vy = 100 * this.velocidade0 * Math.cos(this.angulo);
+        this.g = 9.8;
+        this.componentes();
 
         this._init();
     }
@@ -23,6 +22,15 @@ class Projetil {
         projetil_sprite[0] = new Image();
         projetil_sprite[0].src = "./imagens/balls.png";
     }
+
+    componentes(){
+        
+        this.vx =  this.velocidade0 * Math.cos((this.angulo*Math.PI)/180);//(this.angulo*Math.PI)/180);
+        this.vy =  -this.velocidade0 * Math.sin((this.angulo*Math.PI)/180);//(this.angulo*Math.PI)/180);
+        console.log(this.vx);
+        console.log(this.vy);
+    }
+
 
     desenhar(context, altura, tamX, tamY) {
         //context.clearContext();
