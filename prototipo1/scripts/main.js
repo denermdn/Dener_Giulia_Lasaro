@@ -26,7 +26,7 @@ const exitb = document.getElementById('exitbutton');
 const tmenu = document.getElementById('menu');
 const confirme = document.getElementById('confirmexit');
 const gmenu = document.getElementById('modeselect');
-const cbtrajetoria = document.getElementById('trajetoria');
+const cbtrajetoria = document.getElementById('trajet');
 telaEscura.style.display = "block";
 tmenu.style.display = "block";
 
@@ -63,13 +63,13 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("mouseover", (event) => {
-  if (event.target.matches("#campodados") || event.target.matches("#campo1") || event.target.matches(".horizontal-center") || event.target.matches("#botaolancar")) {
+  if (event.target.matches("#campodados") || event.target.matches("#tdcampodados1") || event.target.matches("#tdcampodados2") || event.target.matches(".horizontal-center") || event.target.matches("#botaolancar") || event.target.matches("#divtrajetoria") || event.target.matches("#trajet") || event.target.matches("#trajet2")) {
     campodados.style.opacity = "1";
   }
 });
 
 document.addEventListener("mouseout", (event) => {
-  if (event.target.matches("#campodados") || event.target.matches("#campo1") || event.target.matches(".horizontal-center") || event.target.matches("#botaolancar")) {
+  if (event.target.matches("#campodados") || event.target.matches("#campo1") || event.target.matches(".horizontal-center") || event.target.matches("#botaolancar") || event.target.matches("#divtrajetoria") || event.target.matches("#trajet") || event.target.matches("#trajet2")) {
     campodados.style.opacity = "0.5";
   }
 });
