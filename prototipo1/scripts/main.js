@@ -68,48 +68,49 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("mouseover", (event) => {
-  if (event.target.matches("#campodados") || event.target.matches("#tdcampodados1") || event.target.matches("#tdcampodados2") || event.target.matches(".horizontal-center") || event.target.matches("#botaolancar") || event.target.matches("#divtrajetoria") || event.target.matches("#trajet") || event.target.matches("#trajet2")) {
+  if (event.target.matches(".tabdados") || event.target.matches("#harrypotter") || event.target.matches("#botaolancar") || event.target.matches("#trajet") || event.target.matches(".inputdados")) {
     campodados.style.opacity = "1";
   }
 });
 
 document.addEventListener("mouseout", (event) => {
-  if (event.target.matches("#campodados") || event.target.matches("#campo1") || event.target.matches(".horizontal-center") || event.target.matches("#botaolancar") || event.target.matches("#divtrajetoria") || event.target.matches("#trajet") || event.target.matches("#trajet2")) {
+  if (event.target.matches(".tabdados") || event.target.matches("#harrypotter") || event.target.matches("#botaolancar") || event.target.matches("#trajet") || event.target.matches(".inputdados")) {
     campodados.style.opacity = "0.5";
   }
 });
-// document.addEventListener("mouseover", (event) => {
-  //   if (event.target.matches("cds")) {
-    //     campodados.style.opacity = "1";
-    //   }
-    // });
-    
-    // document.addEventListener("mouseout", (event) => {
-      //   if (event.target.matches("cd")) {
-        //     campodados.style.opacity = "0.5";
-        //   }
-        // });
-        
-        document.addEventListener("mouseover", (event) => {
-          if (event.target.matches("#exitbutton")) {
-            exitb.style.backgroundColor = "red";
-          }
-        });
-        
-        document.addEventListener("mouseout", (event) => {
-          if (event.target.matches("#exitbutton")) {
-            exitb.style.backgroundColor = "gray";
-          }
-        });
-        
-        document.addEventListener("click", (event) => {
-          if (event.target.matches("#gamemode")) {
-            tmenu.style.display = "none";
-            gmenu.style.display = "block";
-            document.querySelector(".titulo").textContent = texto_selecaoModo;
-          }
-        });
-        
+
+document.addEventListener("mouseover", (event) => {
+  if (event.target.matches("cd")) {
+    campodados.style.opacity = "1";
+  }
+});
+
+document.addEventListener("mouseout", (event) => {
+  if (event.target.matches("cd")) {
+    campodados.style.opacity = "0.5";
+  }
+});
+
+document.addEventListener("mouseover", (event) => {
+  if (event.target.matches("#exitbutton")) {
+    exitb.style.backgroundColor = "red";
+  }
+});
+
+document.addEventListener("mouseout", (event) => {
+  if (event.target.matches("#exitbutton")) {
+    exitb.style.backgroundColor = "gray";
+  }
+});
+
+document.addEventListener("click", (event) => {
+  if (event.target.matches("#gamemode")) {
+    tmenu.style.display = "none";
+    gmenu.style.display = "block";
+    document.querySelector(".titulo").textContent = texto_selecaoModo;
+  }
+});
+
 document.addEventListener("click", (event) => {
   if (event.target.matches("#modoLivre")) {
     telaEscura.style.display = "none";
@@ -147,17 +148,18 @@ document.addEventListener("click", (event) => {
 
 var lancar = false;
 document.addEventListener("click", (event) => {
-  
-  if (event.target.matches("#botaolancar")) {
-     projetil.angulo = Math.floor(((180 * (-aux_angulo + 0.4375)) / Math.PI));
-    
+
+  if (event.target.matches("#botaolancar") && !lancar) {
+    projetil.angulo = Math.floor(((180 * (-aux_angulo + 25 * Math.PI / 180)) / Math.PI));
+
     console.log(projetil.angulo);
     projetil.componentes();
-    alvo.setPosicao(projetil.alcance, canvas.height-70);
+    alvo.setPosicao(projetil.alcance - 46, canvas.height - 70);
     lancar = true;
-    document.getElementById('campo7').value=(projetil.alcance-46).toFixed(2);
-    document.getElementById('campo5').value=(projetil.tempo).toFixed(2);
-    document.getElementById('campo8').value=(projetil.altura_maxima).toFixed(2);
+    document.getElementById('campo7').value = (projetil.alcance - 46).toFixed(2);
+    document.getElementById('campo5').value = (projetil.tempo).toFixed(2);
+    document.getElementById('campo8').value = (projetil.altura_maxima).toFixed(2);
+
   }
 });
 
@@ -175,10 +177,10 @@ function loop() {
   cenario.desenhar(context);
   canhao.draw(context);
   canhao.rodar(context_2);
-  
-  
 
-  
+
+
+
   if (cbtrajetoria.checked) {
     projetil.trajetoria = true;
   } else {
@@ -191,13 +193,16 @@ function loop() {
     projetil.drawBall(context_4, canvas_4.height, 50, 35);
   }
 
-  angulo = parseFloat(document.getElementById('campo6').value= Math.floor(((180 * (-aux_angulo + 25*Math.PI/180)) / Math.PI)));
-  velocidade=parseFloat(document.getElementById('campo1').value);
-  vox=velocidade*Math.cos(-aux_angulo + 25*Math.PI/180);
-  voy=velocidade*Math.sin(-aux_angulo + 25*Math.PI/180);
-  document.getElementById('campo2').value=vox.toFixed(2);
-  document.getElementById('campo3').value=voy.toFixed(2);
-  console.log(vox+","+Math.cos(angulo) +","+angulo+","+velocidade );
+  angulo = parseFloat(document.getElementById('campo6').value = Math.floor(((180 * (-aux_angulo + 25 * Math.PI / 180)) / Math.PI)));
+  velocidade = parseFloat(document.getElementById('campo1').value);
+  vox = velocidade * Math.cos(-aux_angulo + 25 * Math.PI / 180);
+  voy = velocidade * Math.sin(-aux_angulo + 25 * Math.PI / 180);
+  if (vox < 0) {
+    vox = vox * -1;
+  }
+  document.getElementById('campo2').value = vox.toFixed(2);
+  document.getElementById('campo3').value = voy.toFixed(2);
+  console.log(vox + "," + Math.cos(angulo) + "," + angulo + "," + velocidade);
   console.log(angulo);
   console.log(velocidade);
   console.log(Math.ceil(Math.cos(angulo)));

@@ -103,6 +103,13 @@ th {
   font-weight: bold;
 }
 
+.cd td:hover{
+  opacity: 1;
+}
+
+.cd tr:hover{
+  opacity: 1;
+}
 /* .novotr{
   width: 33.33%;
   height: 33.33%;

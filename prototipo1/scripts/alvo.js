@@ -17,7 +17,7 @@ class Alvo {
     }
 
     draw(context) {
-        context.drawImage(sprite_alvo, this.alvo_posicao.posX, this.alvo_posicao.posY, 60, 20);
+        context.drawImage(sprite_alvo, this.alvo_posicao.posX, this.alvo_posicao.posY, 200, 20);
         // context.fillStyle ='red';
         // context.fillRect(this.alvo_posicao.posX, this.alvo_posicao.posY , 100, 100);
         // console.log(this.alvo_posicao.posX + ' ' + this.alvo_posicao.posY + ' ' + "AQUI");
