@@ -73,13 +73,8 @@ document.addEventListener("mouseover", (event) => {
 });
 
 document.addEventListener("mouseout", (event) => {
-<<<<<<< HEAD
   if (event.target.matches("#campodados") || event.target.matches("#campo1") || event.target.matches(".horizontal-center") || event.target.matches("#botaolancar") || event.target.matches("#divtrajetoria") || event.target.matches("#trajet") || event.target.matches("#trajet2")) {
     campodados.style.opacity = "0.5";
-=======
-  if (event.target.matches("#campodados") || event.target.matches("#campo1") || event.target.matches(".horizontal-center") || event.target.matches("#botaolancar")) {
-    campodados.style.opacity = "0.8";
->>>>>>> 850bdc9c79b469b97f8128569e14381121c4a49b
   }
 });
 
