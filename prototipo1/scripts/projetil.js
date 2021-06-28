@@ -25,9 +25,11 @@ class Projetil {
     
     componentes() {
         this.velocidade0= document.getElementById("campo1").value;
+        // this.vx = this.velocidade0 * Math.cos(this.angulo);//(this.angulo*Math.PI)/180);
         this.vx = this.velocidade0 * Math.cos((this.angulo * Math.PI) / 180);//(this.angulo*Math.PI)/180);
+        // this.vy = -this.velocidade0 * Math.sin(this.angulo);//(this.angulo*Math.PI)/180);
         this.vy = -this.velocidade0 * Math.sin((this.angulo * Math.PI) / 180);//(this.angulo*Math.PI)/180);
-        this.alcance =  this.vx * 2 *((-this.vy)/(this.g*0.5));
+        this.alcance =  this.vx * 2 *((-this.vy)/(this.g)) + 46;
         
         // console.log(this.vx);
         // console.log(this.vy);
@@ -51,7 +53,7 @@ class Projetil {
         context.drawImage(projetil_sprite[0],
             dados_sprite.xOrigin, dados_sprite.yOrigin,
             dados_sprite.width, dados_sprite.height,
-            this.posicao.posX + tamX - 16, this.posicao.posY + tamY - 13,
+            this.posicao.posX + tamX - 32, this.posicao.posY + tamY - 13,
             40, 40);
     }
 
@@ -62,7 +64,7 @@ class Projetil {
         // aux_conta=aux_conta/aux_conta2;
         // aux_conta2=aux_conta2+this.vx*aux_conta;
         // return aux_conta2;
-        var alt=(altura-135)/(this.posicao.posY*100);
+        var alt=(altura-135)/(this.posicao.posY);
         this.posicao.posX=this.posicao.posX-(this.posicao.posX*alt);
     }
     
@@ -70,11 +72,11 @@ class Projetil {
         var limY = altura - 135;
         console.log(limY)
         if (this.posicao.posY <= limY) {
-            this.posicao.posY += this.vy;
-            this.posicao.posX += this.vx;
+            this.posicao.posY += this.vy/8;
+            this.posicao.posX += this.vx/8;
         }
 
-        this.vy += this.g;
+        this.vy += this.g/8;
         console.log(this.posicao.posX);
     }
 }

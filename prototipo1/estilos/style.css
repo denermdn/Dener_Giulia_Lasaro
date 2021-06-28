@@ -32,7 +32,6 @@ table {
   text-align: center;
   font-size: 180%;
   font-weight: bold;
-  
 }
 
 .container td:hover{
@@ -51,6 +50,15 @@ table {
 }
 
 #login input{
+  padding: 2%;
+  border:none;
+  width: 90%;
+  outline: none;
+   height: 60%;
+  font-size: 100%; 
+}
+
+#rankingg input{
   padding: 2%;
   border:none;
   width: 90%;

@@ -1,5 +1,6 @@
 var canhao_e_roda = new Array(1);
-var aux_angulo = 0.4375;
+// var aux_angulo = 0.4375;
+var aux_angulo = 25*Math.PI/180;
 class Canhao {
   constructor(id) {
     this.angulo = 0;
@@ -51,10 +52,11 @@ class Canhao {
     var vo = 130;
     var g = 9.8;
     var tecla = event.keyCode;
+    var incremento=Math.PI/180;
     if (tecla == 37) {
       if (this.angulo < 90) {
         // aux_angulo -= 0.03;
-        aux_angulo -= 0.0175;
+        aux_angulo -= incremento;
       }
       // this.angulo = (this.angulo * Math.PI) / 180;
       // console.log(t);
@@ -64,7 +66,7 @@ class Canhao {
     } else if (tecla == 39) {
       if (this.angulo > 0) {
         // aux_angulo += 0.03;
-        aux_angulo += 0.0175;
+        aux_angulo += incremento;
       }
     } else if (tecla == 40 && (pay <= -25)) {
       // this.angulo++;
@@ -74,7 +76,8 @@ class Canhao {
       vx = vo * Math.cos(py);
       vy = vo * Math.sin(py);
     }
-    this.angulo = Math.floor(((180 * (-aux_angulo + 0.4375)) / Math.PI));
+    // this.angulo = Math.floor(((180 * (-aux_angulo + 0.4375)) / Math.PI));
+    this.angulo = aux_angulo;
     console.log("Angulo= " + this.angulo + "t= " + aux_angulo);
   }
 }

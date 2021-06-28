@@ -30,6 +30,7 @@ const tmenu = document.getElementById('menu');
 const confirme = document.getElementById('confirmexit');
 const gmenu = document.getElementById('modeselect');
 const cbtrajetoria = document.getElementById('trajet');
+
 telaEscura.style.display = "block";
 tmenu.style.display = "block";
 
@@ -78,37 +79,37 @@ document.addEventListener("mouseout", (event) => {
   }
 });
 // document.addEventListener("mouseover", (event) => {
-//   if (event.target.matches("cds")) {
-//     campodados.style.opacity = "1";
-//   }
-// });
-
-// document.addEventListener("mouseout", (event) => {
-//   if (event.target.matches("cd")) {
-//     campodados.style.opacity = "0.5";
-//   }
-// });
-
-document.addEventListener("mouseover", (event) => {
-  if (event.target.matches("#exitbutton")) {
-    exitb.style.backgroundColor = "red";
-  }
-});
-
-document.addEventListener("mouseout", (event) => {
-  if (event.target.matches("#exitbutton")) {
-    exitb.style.backgroundColor = "gray";
-  }
-});
-
-document.addEventListener("click", (event) => {
-  if (event.target.matches("#gamemode")) {
-    tmenu.style.display = "none";
-    gmenu.style.display = "block";
-    document.querySelector(".titulo").textContent = texto_selecaoModo;
-  }
-});
-
+  //   if (event.target.matches("cds")) {
+    //     campodados.style.opacity = "1";
+    //   }
+    // });
+    
+    // document.addEventListener("mouseout", (event) => {
+      //   if (event.target.matches("cd")) {
+        //     campodados.style.opacity = "0.5";
+        //   }
+        // });
+        
+        document.addEventListener("mouseover", (event) => {
+          if (event.target.matches("#exitbutton")) {
+            exitb.style.backgroundColor = "red";
+          }
+        });
+        
+        document.addEventListener("mouseout", (event) => {
+          if (event.target.matches("#exitbutton")) {
+            exitb.style.backgroundColor = "gray";
+          }
+        });
+        
+        document.addEventListener("click", (event) => {
+          if (event.target.matches("#gamemode")) {
+            tmenu.style.display = "none";
+            gmenu.style.display = "block";
+            document.querySelector(".titulo").textContent = texto_selecaoModo;
+          }
+        });
+        
 document.addEventListener("click", (event) => {
   if (event.target.matches("#modoLivre")) {
     telaEscura.style.display = "none";
@@ -146,9 +147,10 @@ document.addEventListener("click", (event) => {
 
 var lancar = false;
 document.addEventListener("click", (event) => {
-
+  
   if (event.target.matches("#botaolancar")) {
     projetil.angulo = Math.floor(((180 * (-aux_angulo + 0.4375)) / Math.PI));
+    //projetil.angulo = aux_angulo;
     console.log(projetil.angulo);
     projetil.componentes();
     alvo.setPosicao(projetil.alcance, canvas.height-70);
@@ -159,13 +161,21 @@ document.addEventListener("click", (event) => {
 
 const cenario = new Cenarios(9.8, 0, canvas.width, canvas.height);
 const canhao = new Canhao(0);
-const projetil = new Projetil(10, canhao.posicao);
+const projetil = new Projetil(0, canhao.posicao);
 const alvo = new Alvo();
+
+var angulo;
+var velocidade;
+var vox;
+var voy;
 function loop() {
   cenario.desenhar(context);
   canhao.draw(context);
   canhao.rodar(context_2);
+  
+  
 
+  
   if (cbtrajetoria.checked) {
     projetil.trajetoria = true;
   } else {
@@ -177,6 +187,20 @@ function loop() {
     projetil.desenhar(context_3, canvas.height, 40, 33)
     projetil.drawBall(context_4, canvas_4.height, 50, 35);
   }
+
+  angulo = parseFloat(document.getElementById('campo6').value= Math.floor(((180 * (-aux_angulo + 25*Math.PI/180)) / Math.PI)));
+  velocidade=parseFloat(document.getElementById('campo1').value);
+  vox=velocidade*Math.cos(-aux_angulo + 25*Math.PI/180);
+  voy=velocidade*Math.sin(-aux_angulo + 25*Math.PI/180);
+  document.getElementById('campo2').value=vox.toFixed(2);
+  document.getElementById('campo3').value=voy.toFixed(2);
+  console.log(vox+","+Math.cos(angulo) +","+angulo+","+velocidade );
+  console.log(angulo);
+  console.log(velocidade);
+  console.log(Math.ceil(Math.cos(angulo)));
+  console.log(vox);
+  console.log(voy);
+
   // canhao.lancarProjetil();
   requestAnimationFrame(loop);
 }
