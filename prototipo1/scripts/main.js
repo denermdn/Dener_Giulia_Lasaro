@@ -159,7 +159,6 @@ document.addEventListener("click", (event) => {
     document.getElementById('campo7').value = (projetil.alcance - 46).toFixed(2);
     document.getElementById('campo5').value = (projetil.tempo).toFixed(2);
     document.getElementById('campo8').value = (projetil.altura_maxima).toFixed(2);
-
   }
 });
 
