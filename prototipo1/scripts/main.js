@@ -77,6 +77,17 @@ document.addEventListener("mouseout", (event) => {
     campodados.style.opacity = "0.5";
   }
 });
+// document.addEventListener("mouseover", (event) => {
+//   if (event.target.matches("cds")) {
+//     campodados.style.opacity = "1";
+//   }
+// });
+
+// document.addEventListener("mouseout", (event) => {
+//   if (event.target.matches("cd")) {
+//     campodados.style.opacity = "0.5";
+//   }
+// });
 
 document.addEventListener("mouseover", (event) => {
   if (event.target.matches("#exitbutton")) {
@@ -142,13 +153,9 @@ document.addEventListener("click", (event) => {
     projetil.componentes();
     alvo.setPosicao(projetil.alcance, canvas.height-70);
     lancar = true;
-    // setInterval(launch, 1);
   }
 });
 
-// function launch() {
-//   projetil.desenhar(context_3, canvas.height, 40, 33);
-// }
 
 const cenario = new Cenarios(9.8, 0, canvas.width, canvas.height);
 const canhao = new Canhao(0);
