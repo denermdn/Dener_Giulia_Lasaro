@@ -13,7 +13,7 @@ body {
   -moz-user-select: -moz-none;
   -ms-user-select: none;
    user-select: none;
-  /* font-family: 'Indie Flower', cursive; */
+  /* font-family: 'Indie Flower', cursive**; */
 }
 
 table {
@@ -74,8 +74,6 @@ th {
   height: 33.33%;
 }
 
-
-
 .cd tr{
   width: 50%;
   height: auto;
@@ -88,13 +86,6 @@ th {
   
   text-align: right;
   font-size: 100%;
-}
-
-
-.novotr{
-  width: 33.33%;
-  height: 33.33%;
-  border-radius: 8px;
 }
 
 #tela-escura {
