@@ -17,51 +17,56 @@
 	<div id="sobre">
 		<a href="https://github.com/denermdn/Dener_Giulia_Lasaro" target="_blank"><button>Sobre</button></a>
 	</div>
-	<div id="campodados">
-		<br>
-		<br>
-		<table class="tablecampodados">
+	<div  class="cd" id="campodados">
+		<table >
 			<tr>
-				<td id="tdcampodados1">Velocidade inicial:</td>
-				<td id="tdcampodados2"> <input class="camporesposta" name="campo1" id="campo1" value="130" /></td>
+				<td>Velocidade:</td>
+				<td> <input name="campo1" id="campo1" value="130" /></td>
+			</tr>
+			<tr >
+				<td>Vox:</td>
+				<td> <input   name="campo2" id="campo2" value="130" /></td>
+			</tr>
+			<tr >
+				<td>Voy:</td>
+				<td> <input name="campo3" id="campo3" value="130" /></td>
+			</tr>
+			<tr >
+				<td>Gravidade:</td>
+				<td> <input  name="campo4" id="campo4" value="9.8" /></td>
+			</tr>
+			<tr >
+				<td>Tempo:</td>
+				<td> <input  name="campo5" id="campo5" value="0" /></td>
+			</tr>
+			<tr >
+				<td>Angulo:</td>
+				<td> <input  name="campo6" id="campo5" value="0" /></td>
+			</tr>
+			<tr >
+				<td>Alcance Horizontal:</td>
+				<td> <input  name="campo7" id="campo6" value="0" /></td>
+			</tr>
+			<tr >
+				<td>Altura Máxima:</td>
+				<td> <input  name="campo8" id="campo7" value="0" /></td>
 			</tr>
 			<tr>
-				<td id="tdcampodados1">Vox:</td>
-				<td id="tdcampodados2"> <input class="camporesposta" name="campo1" id="campo1" value="130" /></td>
+				<td>
+					<div id="divtrajetoria">
+						<input id="trajet" style="cursor: pointer;" type="checkbox" id="trajetoria" name="traj" checked > 
+						 <label id="trajet2" for="traj">Marcar Trajetória</label>
+					</div>
+				</td>
 			</tr>
 			<tr>
-				<td id="tdcampodados1">Voy:</td>
-				<td id="tdcampodados2"> <input class="camporesposta" name="campo1" id="campo1" value="130" /></td>
+				<td colspan="2" style="text-align: center;">
+					<button id="botaolancar">LANÇAR</button>
+				</td>
 			</tr>
-			<tr >
-				<td id="tdcampodados1">Gravidade:</td>
-				<td id="tdcampodados2"> <input class="camporesposta" name="campo1" id="campo2" value="9.8" /></td>
-			</tr>
-			<tr >
-				<td id="tdcampodados1">Tempo:</td>
-				<td id="tdcampodados2"> <input class="camporesposta" name="campo1" id="campo3" value="0" /></td>
-			</tr>
-			<tr >
-				<td id="tdcampodados1">Angulo:</td>
-				<td id="tdcampodados2"> <input class="camporesposta" name="campo1" id="campo4" value="0" /></td>
-			</tr>
-			<tr >
-				<td id="tdcampodados1">Alcance Horizontal:</td>
-				<td id="tdcampodados2"> <input class="camporesposta" name="campo1" id="campo4" value="0" /></td>
-			</tr>
-			<tr >
-				<td id="tdcampodados1">Altura Máxima:</td>
-				<td id="tdcampodados2"> <input class="camporesposta" name="campo1" id="campo4" value="0" /></td>
-			</tr>
+
+			
 		</table>
-		<div id="divtrajetoria">
-			<input id="trajet" style="cursor: pointer;" type="checkbox" id="trajetoria" name="traj"
-			checked>
-	 		<label id="trajet2" for="traj">Marcar Trajetória</label>
-		</div>
-		<div class="horizontal-center">
-			<button id="botaolancar">LANÇAR</button>
-		</div>
 		<br>
 		
 	</div>

@@ -21,13 +21,13 @@ table {
   height: 100%;
 }
 
-tr{
+.container tr{
   width: 50%;
   height: 50%;
   border-radius: 8px;
 }
 
-td {
+.container td {
   border-radius: 8px;
   color: black;
   width:50%;
@@ -38,7 +38,7 @@ td {
   
 }
 
-td:hover{
+.container td:hover{
   box-shadow:0 4px 6px#666;
   letter-spacing: 1.2px;
 }
@@ -48,7 +48,8 @@ input{
   padding: 10px;
   border:none;
   outline: none;
-  font-size: 20px;
+  /* height: 10%; */
+  font-size: 10px;
 }
 
 button{
@@ -73,19 +74,22 @@ th {
   height: 33.33%;
 }
 
-.tablecampodados{
-  width: 100%;
-  height: 10%;
-  font-size: 70%;
+
+
+.cd tr{
+  width: 50%;
+  height: auto;
+  border-radius: 8px;
 }
 
-#tdcampodados1{
+.cd td{
+  width: 50%;
+  height: auto;
+  
   text-align: right;
+  font-size: 100%;
 }
 
-#tdcampodados2{
-  text-align: left;
-}
 
 .novotr{
   width: 33.33%;
@@ -115,6 +119,28 @@ th {
   box-shadow: 0px 0px 20px black; 
   cursor: pointer;
 }
+
+.cd{
+  width: 21%;
+  height: 50%;  
+  display: none;
+  position: absolute;
+  margin-left: 1%;
+  margin-top: 1%;
+  border-radius: 2%;
+  background-color: #ca6048;
+  opacity: 0.5;
+  z-index: 8;
+  text-align: left; 
+}
+
+.camporesposta{
+  width: 20%;
+  height: 10%;
+  text-align: start;
+  font-size: 50%;
+}
+
 
 #canvaswrap{
   position: absolute;
@@ -202,27 +228,6 @@ th {
   top: 95%;
   border-radius: 9%;
   background-color: orange;
-}
-
-#campodados{
-  width: 21%;
-  height: 41%;
-  display: none;
-  position: absolute;
-  margin-left: 1%;
-  margin-top: 1%;
-  border-radius: 2%;
-  background-color: #ca6048;
-  opacity: 0.5;
-  z-index: 8;
-  text-align: left;
-}
-
-.camporesposta{
-  width: 40%;
-  height: 5%;
-  text-align: start;
-  font-size: 70%;
 }
 
 
