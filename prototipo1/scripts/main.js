@@ -149,12 +149,15 @@ var lancar = false;
 document.addEventListener("click", (event) => {
   
   if (event.target.matches("#botaolancar")) {
-    projetil.angulo = Math.floor(((180 * (-aux_angulo + 0.4375)) / Math.PI));
-    //projetil.angulo = aux_angulo;
+     projetil.angulo = Math.floor(((180 * (-aux_angulo + 0.4375)) / Math.PI));
+    
     console.log(projetil.angulo);
     projetil.componentes();
     alvo.setPosicao(projetil.alcance, canvas.height-70);
     lancar = true;
+    document.getElementById('campo7').value=(projetil.alcance-46).toFixed(2);
+    document.getElementById('campo5').value=(projetil.tempo).toFixed(2);
+    document.getElementById('campo8').value=(projetil.altura_maxima).toFixed(2);
   }
 });
 

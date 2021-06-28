@@ -11,9 +11,11 @@ class Projetil {
         this.trajetoria = true;
         this.angulo = angulo;
         this.posicao = Object.assign({}, posicao);
-        this.g = 9.8;
+        this.g =9.8;
         this.componentes();
         this.alcance;
+        this.tempo;
+        this.altura_maxima;
         console.log(this.velocidade);
         this._init();
     }
@@ -31,7 +33,8 @@ class Projetil {
         this.vy = -this.velocidade0 * Math.sin((this.angulo * Math.PI) / 180);//(this.angulo*Math.PI)/180);
         this.alcance =  this.vx * 2 *((-this.vy)/(this.g)) + 46;
         
-        // console.log(this.vx);
+        this.tempo=(this.alcance-46)/this.vx;
+        this.altura_maxima=Math.pow(this.vy,2)/(this.g*2);
         // console.log(this.vy);
     }
 
