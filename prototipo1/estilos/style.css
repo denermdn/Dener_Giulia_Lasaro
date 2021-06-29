@@ -66,6 +66,9 @@ table {
   font-size: 100%;
 }
 
+.inputdados{
+  width: 10%;
+}
 button {
   font-family: 'Architects Daughter', cursive;
   background-color: #d5dbdb;
