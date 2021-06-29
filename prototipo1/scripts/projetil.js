@@ -9,7 +9,7 @@ var dados_sprite = {
 class Projetil {
     constructor(angulo, posicao) {
         this.em_movimento=false;
-        this.trajetoria = true;
+        //this.trajetoria = true;
         this.angulo = 0;
         this.posicao = Object.assign({}, posicao);
         this.g = 9.8;
@@ -44,7 +44,7 @@ class Projetil {
     reset(posicao){
         this.velocidade0 = document.getElementById("campo1").value;
         this.angulo = 0;
-        this.trajetoria = true;
+        //this.trajetoria = true;
         //this.alcance=0;
         //this.tempo=0;
         //this.altura_maxima=0;
@@ -53,9 +53,9 @@ class Projetil {
     }
 
     desenhar(context, altura, tamX, tamY) {
-        if (this.trajetoria == false) {
-            context.clearRect(0, 0, canvas.width, canvas.height);
-        }
+        // if (this.trajetoria == false) {
+        //     context.clearRect(0, 0, canvas.width, canvas.height);
+        // }
         context.beginPath();
         context.arc(this.posicao.posX + tamX, this.posicao.posY + tamY, 5, 0, Math.PI * 2);
         context.fillStyle = 'red';

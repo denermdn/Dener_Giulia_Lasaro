@@ -164,6 +164,7 @@ th {
 #canvas_p {
   position: absolute;
   z-index: 2;
+  display: inline;
 }
 
 #canvas_c {

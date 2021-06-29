@@ -68,13 +68,13 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("mouseover", (event) => {
-  if (event.target.matches(".tabdados") || event.target.matches("#harrypotter") || event.target.matches("#botaolancar") || event.target.matches("#trajet") || event.target.matches(".inputdados")) {
+  if (event.target.matches(".tabdados") || event.target.matches("#tabeladados") || event.target.matches("#botaolancar") || event.target.matches("#trajet") || event.target.matches(".inputdados")) {
     campodados.style.opacity = "1";
   }
 });
 
 document.addEventListener("mouseout", (event) => {
-  if (event.target.matches(".tabdados") || event.target.matches("#harrypotter") || event.target.matches("#botaolancar") || event.target.matches("#trajet") || event.target.matches(".inputdados")) {
+  if (event.target.matches(".tabdados") || event.target.matches("#tabeladados") || event.target.matches("#botaolancar") || event.target.matches("#trajet") || event.target.matches(".inputdados")) {
     campodados.style.opacity = "0.3";
   }
 });
@@ -190,9 +190,11 @@ function loop() {
 
 
   if (cbtrajetoria.checked) {
-    projetil.trajetoria = true;
+    //projetil.trajetoria = true;
+    canvas_p.style.display = "inline";
   } else {
-    projetil.trajetoria = false;
+    //projetil.trajetoria = false;
+    canvas_p.style.display = "none";
   }
   if (lancar) {
     alvo.draw(context);
