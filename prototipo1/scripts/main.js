@@ -75,7 +75,7 @@ document.addEventListener("mouseover", (event) => {
 
 document.addEventListener("mouseout", (event) => {
   if (event.target.matches(".tabdados") || event.target.matches("#harrypotter") || event.target.matches("#botaolancar") || event.target.matches("#trajet") || event.target.matches(".inputdados")) {
-    campodados.style.opacity = "0.5";
+    campodados.style.opacity = "0.3";
   }
 });
 
@@ -152,10 +152,15 @@ document.addEventListener("click", (event) => {
     projetil.componentes();
     alvo.setPosicao(projetil.alcance - 46, canvas.height - 70);
     lancar = true;
+    projetil.reset(canhao.posicao);
+    context_3.clearRect(0, 0, canvas.width, canvas.height);
     document.getElementById('campo7').value = (projetil.alcance - 46).toFixed(2);
     document.getElementById('campo5').value = (projetil.tempo).toFixed(2);
     document.getElementById('campo8').value = (projetil.altura_maxima).toFixed(2);
+
+    projetil.em_movimento=1;
   }
+
 });
 
 
@@ -173,6 +178,17 @@ function loop() {
   canhao.draw(context);
   canhao.rodar(context_2);
 
+  if(projetil.em_movimento!=1){
+    
+    
+    lancar=false;
+    if(projetil.em_movimento==2)
+    alvo.draw(context);
+    
+  }
+
+
+
   if (cbtrajetoria.checked) {
     projetil.trajetoria = true;
   } else {
@@ -180,9 +196,10 @@ function loop() {
   }
   if (lancar) {
     alvo.draw(context);
-    projetil.desenhar(context_3, canvas.height, 40, 33)
+    projetil.desenhar(context_3, canvas.height, 40, 33);
     projetil.drawBall(context_4, canvas_4.height, 50, 35);
   }
+
 
   angulo = parseFloat(document.getElementById('campo6').value = Math.floor(((180 * (-aux_angulo + 25 * Math.PI / 180)) / Math.PI)));
   velocidade = parseFloat(document.getElementById('campo1').value);
