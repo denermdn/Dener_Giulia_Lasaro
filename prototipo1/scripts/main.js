@@ -190,9 +190,11 @@ function loop() {
 
 
   if (cbtrajetoria.checked) {
-    projetil.trajetoria = true;
+    //projetil.trajetoria = true;
+    canvas_p.style.display = "inline";
   } else {
-    projetil.trajetoria = false;
+    //projetil.trajetoria = false;
+    canvas_p.style.display = "none";
   }
   if (lancar) {
     alvo.draw(context);
