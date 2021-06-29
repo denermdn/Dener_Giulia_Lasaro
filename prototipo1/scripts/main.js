@@ -112,7 +112,7 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
-  if (event.target.matches("#modoLivre")) {
+  if (event.target.matches("#modoLivre") || event.target.matches("#modoCompetitivo")) {
     telaEscura.style.display = "none";
     gmenu.style.display = "none";
     minhatela.style.display = "block";
