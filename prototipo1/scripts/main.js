@@ -68,13 +68,13 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("mouseover", (event) => {
-  if (event.target.matches(".tabdados") || event.target.matches("#harrypotter") || event.target.matches("#botaolancar") || event.target.matches("#trajet") || event.target.matches(".inputdados")) {
+  if (event.target.matches(".tabdados") || event.target.matches("#tabeladados") || event.target.matches("#botaolancar") || event.target.matches("#trajet") || event.target.matches(".inputdados")) {
     campodados.style.opacity = "1";
   }
 });
 
 document.addEventListener("mouseout", (event) => {
-  if (event.target.matches(".tabdados") || event.target.matches("#harrypotter") || event.target.matches("#botaolancar") || event.target.matches("#trajet") || event.target.matches(".inputdados")) {
+  if (event.target.matches(".tabdados") || event.target.matches("#tabeladados") || event.target.matches("#botaolancar") || event.target.matches("#trajet") || event.target.matches(".inputdados")) {
     campodados.style.opacity = "0.3";
   }
 });
