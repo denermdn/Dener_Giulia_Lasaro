@@ -1,6 +1,6 @@
-*{
-  margin:0;
-  padding:0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -10,7 +10,7 @@ body {
   -webkit-user-select: none;
   -moz-user-select: -moz-none;
   -ms-user-select: none;
-   user-select: none;
+  user-select: none;
 }
 
 table {
@@ -18,7 +18,7 @@ table {
   height: 100%;
 }
 
-.container tr{
+.container tr {
   width: 50%;
   height: 50%;
   border-radius: 0.05%;
@@ -27,49 +27,48 @@ table {
 .container td {
   border-radius: 5%;
   color: black;
-  width:50%;
-  height:50%;
+  width: 50%;
+  height: 50%;
   text-align: center;
   font-size: 180%;
   font-weight: bold;
 }
 
-.container td:hover{
-  box-shadow:0 4px 6px #666;
+.container td:hover {
+  box-shadow: 0 4px 6px #666;
   letter-spacing: 1.2px;
 }
 
-
-.cd input{
+.cd input {
   height: 80%;
   width: 80%;
-  border:none;
+  border: none;
   outline: none;
   font-size: 100%;
-  text-align:center;
+  text-align: center;
 }
 
-#login input{
+#login input {
   padding: 2%;
-  border:none;
+  border: none;
   width: 90%;
   outline: none;
-   height: 60%;
-  font-size: 100%; 
+  height: 60%;
+  font-size: 100%;
 }
 
-#rankingg input{
+#rankingg input {
   padding: 2%;
-  border:none;
+  border: none;
   width: 90%;
   outline: none;
-   height: 60%;
-  font-size: 100%; 
+  height: 60%;
+  font-size: 100%;
 }
 
-button{
+button {
   font-family: 'Architects Daughter', cursive;
-  background-color:  #d5dbdb;
+  background-color: #d5dbdb;
   border: none;
   padding: 5px;
   border-radius: 10%;
@@ -89,13 +88,12 @@ th {
   height: 33.33%;
 }
 
-.cd tr{
+.cd tr {
   width: 50%;
   height: auto;
-  /* border-radius: 8px; */
 }
 
-.cd td{
+.cd td {
   width: 50%;
   height: auto;
   text-align: right;
@@ -103,18 +101,13 @@ th {
   font-weight: bold;
 }
 
-.cd td:hover{
+.cd td:hover {
   opacity: 1;
 }
 
-.cd tr:hover{
+.cd tr:hover {
   opacity: 1;
 }
-/* .novotr{
-  width: 33.33%;
-  height: 33.33%;
-  border-radius: 8px;
-} */
 
 #tela-escura {
   width: 100%;
@@ -135,13 +128,13 @@ th {
   margin-top: 10%;
   border-radius: 3%;
   background-color: rgb(248, 245, 245);
-  box-shadow: 0px 0px 20px black; 
+  box-shadow: 0px 0px 20px black;
   cursor: pointer;
 }
 
-.cd{
+.cd {
   width: 21%;
-  height: 50%;  
+  height: 50%;
   display: none;
   position: absolute;
   margin-left: 1%;
@@ -150,81 +143,76 @@ th {
   background-color: #ca6048;
   opacity: 0.5;
   z-index: 8;
-  text-align: left; 
+  text-align: left;
 }
 
-.camporesposta{
+.camporesposta {
   width: 20%;
   height: 10%;
   text-align: start;
   font-size: 50%;
 }
 
-
-#canvaswrap{
+#canvaswrap {
   position: absolute;
   z-index: 5;
 }
 
-#canvas_p{
+#canvas_p {
   position: absolute;
   z-index: 2;
 }
-#canvas_c{
+
+#canvas_c {
   position: absolute;
   z-index: 3;
 }
-#canvas_b{
+
+#canvas_b {
   position: absolute;
   z-index: 4;
 }
-#canvas{
+
+#canvas {
   position: absolute;
   z-index: 1;
 }
 
-.titulo{
-  width: 400px; 
+.titulo {
+  width: 400px;
   text-align: center;
-  margin:0;
+  margin: 0;
   position: fixed;
-  top: 40px; 
+  top: 40px;
   left: calc(50% - 200px);
 }
 
-#confirmexit{
-  /* width: 10%;
-  height: 10%;
-  text-align: center;
-  color: black;
-  display: none;
-  margin:auto;
-  border-radius: 10%; */
+#confirmexit {
   font-size: 200%;
   font-weight: bold;
   text-align: center;
-  background-color: darkgray; 
-  color: black;  
-  /* box-shadow: 0px 0px 20px black; */
+  background-color: darkgray;
+  color: black;
 }
 
-#exitbutton{
-  font-size: 20px;
+#exitbutton {
+  font-size: 130%;
   width: 3%;
   height: 3%;
   text-align: center;
   display: none;
   position: absolute;
+  line-height: 100%;
   top: 1%;
   left: 96.5%;
-  border-radius: 3%;
+  border-radius: 5%;
   background-color: gray;
   border: 1px solid black;
   z-index: 9;
   cursor: pointer;
 }
 
-#sobre{
+#sobre {
   font-size: 25px;
   width: 15px;
   height: 10px;
@@ -238,7 +226,7 @@ th {
   cursor: pointer;
 }
 
-#modeselection{
+#modeselection {
   vertical-align: bottom;
   width: 20%;
   height: 5%;
@@ -250,7 +238,6 @@ th {
   background-color: orange;
 }
 
-
 .horizontal-center {
   margin: 0;
   position: absolute;
@@ -259,7 +246,7 @@ th {
   transform: translateX(-50%);
 }
 
-#login{
+#login {
   text-align: center;
   display: absolute;
   position: absolute;
@@ -267,15 +254,15 @@ th {
   left: 50%;
   margin: 0px;
   width: 20%;
-  transform: translate(-50%,-50%);
-  padding: 2%; 
+  transform: translate(-50%, -50%);
+  padding: 2%;
   border-radius: 2%;
   color: black;
-  background-color:darkgray;
+  background-color: darkgray;
   opacity: 0.5;
 }
 
-#ranking{
+#ranking {
   text-align: center;
   display: absolute;
   position: absolute;
@@ -283,16 +270,16 @@ th {
   left: 50%;
   margin: 0px;
   width: 40%;
-  transform: translate(-50%,-50%);
-  padding: 2%; 
+  transform: translate(-50%, -50%);
+  padding: 2%;
   border-radius: 2%;
   color: black;
-  background-color:darkgray;
+  background-color: darkgray;
   opacity: 0.5;
 }
 
-.botoes_sair{
-    height: 30%;
-    width: 35%;
-    font-size: 60%;
+.botoes_sair {
+  height: 30%;
+  width: 35%;
+  font-size: 60%;
 }

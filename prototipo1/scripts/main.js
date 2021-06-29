@@ -132,16 +132,12 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#tsair")) {
-    // window.close();
-    // <a href="./login.html">Voltar à tela de login</a>
     window.location.replace("./login.html");
   }
 });
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#rank")) {
-    // window.close();
-    // <a href="./login.html">Voltar à tela de login</a>
     window.location.replace("./Ranking.html");
   }
 });
@@ -165,7 +161,7 @@ document.addEventListener("click", (event) => {
 
 const cenario = new Cenarios(9.8, 0, canvas.width, canvas.height);
 const canhao = new Canhao(0);
-const projetil = new Projetil(0, canhao.posicao);
+const projetil = new Projetil(canhao.posicao);
 const alvo = new Alvo();
 
 var angulo;
@@ -177,15 +173,11 @@ function loop() {
   canhao.draw(context);
   canhao.rodar(context_2);
 
-
-
-
   if (cbtrajetoria.checked) {
     projetil.trajetoria = true;
   } else {
     projetil.trajetoria = false;
   }
-  //projetil.desenhar(context_3, canvas_3.height, 50, 35);
   if (lancar) {
     alvo.draw(context);
     projetil.desenhar(context_3, canvas.height, 40, 33)
@@ -208,9 +200,6 @@ function loop() {
   console.log(vox);
   console.log(voy);
 
-  // canhao.lancarProjetil();
   requestAnimationFrame(loop);
 }
 window.addEventListener("keydown", canhao.move);
-
-//loop();
