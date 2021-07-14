@@ -29,6 +29,7 @@ const exitb = document.getElementById('exitbutton');
 const tmenu = document.getElementById('menu');
 const confirme = document.getElementById('confirmexit');
 const gmenu = document.getElementById('modeselect');
+const smenu = document.getElementById('playselect');
 const cbtrajetoria = document.getElementById('trajet');
 
 telaEscura.style.display = "block";
@@ -56,6 +57,16 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#confirmar")) {
     confirme.style.display = "none";
     tmenu.style.display = "block";
+    aux_angulo=0;
+    canhao.rodar(context_2);
+    aux_angulo=25 * Math.PI / 180;
+    projetil.em_movimento=0;
+    context_2.clearRect(0, 0, canvas.width, canvas.height);
+    context_3.clearRect(0, 0, canvas.width, canvas.height);
+    context_4.clearRect(0, 0, canvas.width, canvas.height);
+    document.getElementById('campo7').value = 0;
+    document.getElementById('campo5').value = 0;
+    document.getElementById('campo8').value = 0;
     document.querySelector(".titulo").textContent = texto_menu;
   }
 });
@@ -112,7 +123,7 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
-  if (event.target.matches("#modoLivre") || event.target.matches("#modoCompetitivo")) {
+  if (event.target.matches("#modoLivre")) {
     telaEscura.style.display = "none";
     gmenu.style.display = "none";
     minhatela.style.display = "block";
@@ -123,9 +134,24 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
+  if (event.target.matches("#modoCompetitivo")) {
+    gmenu.style.display = "none";
+    smenu.style.display = "block";
+  }
+});
+
+document.addEventListener("click", (event) => {
   if (event.target.matches("#voltar")) {
     tmenu.style.display = "block";
     gmenu.style.display = "none";
+    document.querySelector(".titulo").textContent = texto_menu;
+  }
+});
+
+document.addEventListener("click", (event) => {
+  if (event.target.matches("#exitp")) {
+    smenu.style.display = "none";
+    gmenu.style.display = "block";
     document.querySelector(".titulo").textContent = texto_menu;
   }
 });
@@ -218,6 +244,7 @@ function loop() {
   console.log(Math.ceil(Math.cos(angulo)));
   console.log(vox);
   console.log(voy);
+
 
   requestAnimationFrame(loop);
 }

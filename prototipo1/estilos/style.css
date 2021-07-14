@@ -242,6 +242,18 @@ th {
   background-color: orange;
 }
 
+#playselection {
+  vertical-align: bottom;
+  width: 20%;
+  height: 5%;
+  text-align: center;
+  margin-left: 40%;
+  position: relative;
+  top: 95%;
+  border-radius: 9%;
+  background-color: orange;
+}
+
 .horizontal-center {
   margin: 0;
   position: absolute;
