@@ -53,8 +53,7 @@ class Canhao {
       } 
       
     }
-    // this.angulo = Math.floor(((180 * (-aux_angulo + 0.4375)) / Math.PI));
+    
     this.angulo = aux_angulo;
-    // console.log("Angulo= " + this.angulo + "t= " + aux_angulo);
   }
 }
