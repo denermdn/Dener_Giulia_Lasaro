@@ -50,10 +50,9 @@ class Canhao {
     if (tecla == 39) {
       if (this.angulo > 0) {
         aux_angulo += incremento;
-      } 
-      
+      }
+
     }
-    
     this.angulo = aux_angulo;
   }
 }

@@ -1,9 +1,10 @@
-class ModoLivre extends Jogar{
+class ModoLivre extends Jogar {
 
-    recebeResposta(){
+    recebeResposta() {
 
     }
-    enviaResposta(){
-        
+    enviaResposta() {
+
     }
+    
 }

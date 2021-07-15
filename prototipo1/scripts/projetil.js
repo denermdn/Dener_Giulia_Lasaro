@@ -8,8 +8,7 @@ var dados_sprite = {
 }
 class Projetil {
     constructor(angulo, posicao) {
-        this.em_movimento=false;
-        //this.trajetoria = true;
+        this.em_movimento = false;
         this.angulo = 0;
         this.posicao = Object.assign({}, posicao);
         this.g = 9.8;
@@ -21,7 +20,7 @@ class Projetil {
         this._init();
     }
 
-    
+
     _init() {
         projetil_sprite[0] = new Image();
         projetil_sprite[0].src = "./imagens/balls.png";
@@ -41,21 +40,18 @@ class Projetil {
         context.clearRect(0, 0, context.width, context.height);
     }
 
-    reset(posicao){
+    reset(posicao) {
         this.velocidade0 = document.getElementById("campo1").value;
         this.angulo = 0;
         //this.trajetoria = true;
         //this.alcance=0;
         //this.tempo=0;
         //this.altura_maxima=0;
-        this.posicao.posX=posicao.posX;
-        this.posicao.posY=posicao.posY;
+        this.posicao.posX = posicao.posX;
+        this.posicao.posY = posicao.posY;
     }
 
     desenhar(context, altura, tamX, tamY) {
-        // if (this.trajetoria == false) {
-        //     context.clearRect(0, 0, canvas.width, canvas.height);
-        // }
         context.beginPath();
         context.arc(this.posicao.posX + tamX, this.posicao.posY + tamY, 5, 0, Math.PI * 2);
         context.fillStyle = 'red';
@@ -85,14 +81,14 @@ class Projetil {
     }
 
     update(altura) {
-        var limY = altura - 159 ;
+        var limY = altura - 159;
         console.log(limY)
-        if (this.posicao.posY <= limY ) {
+        if (this.posicao.posY <= limY) {
             this.posicao.posY += this.vy / 8;
             this.posicao.posX += this.vx / 8;
         }
-        else{
-            this.em_movimento=2;
+        else {
+            this.em_movimento = 2;
         }
 
         this.vy += this.g / 8;
