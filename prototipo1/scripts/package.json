@@ -1,0 +1,22 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gravaDados.js",
+  "scripts": {
+    "test": "node gravaDados.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denermdn/Dener_Giulia_Lasaro.git"
+  },
+  "author": "Giulia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/denermdn/Dener_Giulia_Lasaro/issues"
+  },
+  "homepage": "https://github.com/denermdn/Dener_Giulia_Lasaro#readme",
+  "dependencies": {
+    "pg": "^8.6.0"
+  }
+}
