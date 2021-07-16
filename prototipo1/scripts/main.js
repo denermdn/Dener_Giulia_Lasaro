@@ -33,6 +33,7 @@ const smenu = document.getElementById('playselect');
 const cbtrajetoria = document.getElementById('trajet');
 var em_jogo = false;
 var modoJogo = "";
+var dificuldade = "";
 
 telaEscura.style.display = "block";
 tmenu.style.display = "block";
@@ -134,37 +135,53 @@ document.addEventListener("click", (event) => {
   }
 });
 
-function auxBlock(){
-    telaEscura.style.display = "none";
-    minhatela.style.display = "block";
-    campodados.style.display = "block";
-    exitb.style.display = "block";
+function auxBlock() {
+  if (modoJogo == "C") {
+    smenu.style.display = "none";
+  }
+  else {
+    gmenu.style.display = "none";
+  }
+  em_jogo = true;
+  telaEscura.style.display = "none";
+  minhatela.style.display = "block";
+  campodados.style.display = "block";
+  exitb.style.display = "block";
+  loop();
 }
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#modoLivre")) {
-    gmenu.style.display = "none";
     auxBlock();
-    em_jogo = true;
-    modoJogo= "L";
-    loop();
+    modoJogo = "L";
   }
 });
-
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#modoCompetitivo")) {
     gmenu.style.display = "none";
     smenu.style.display = "block";
+    modoJogo = "C";
   }
 });
+
 document.addEventListener("click", (event) => {
-  if(event.target.matches("#faseFacil")){
-    smenu.style.display = "none";
-    modoJogo = "C";
+  if (event.target.matches("#faseFacil")) {
+    dificuldade = "F";
     auxBlock();
-    em_jogo = true;
-    loop();
+  }
+})
+document.addEventListener("click", (event) => {
+  if (event.target.matches("#faseMedia")) {
+    dificuldade = "M";
+    auxBlock();
+  }
+})
+
+document.addEventListener("click", (event) => {
+  if (event.target.matches("#faseDificil")) {
+    dificuldade = "D";
+    auxBlock();
   }
 })
 
@@ -198,11 +215,9 @@ document.addEventListener("click", (event) => {
 
 var lancar = false;
 document.addEventListener("click", (event) => {
-
+  
   if (event.target.matches("#botaolancar") && !lancar) {
     projetil.angulo = Math.floor(((180 * (-aux_angulo + 25 * Math.PI / 180)) / Math.PI));
-
-    console.log(projetil.angulo);
     projetil.componentes();
     alvo.setPosicao(projetil.alcance - 46, canvas.height - 70);
     lancar = true;
@@ -211,14 +226,21 @@ document.addEventListener("click", (event) => {
     document.getElementById('campo7').value = (projetil.alcance - 46).toFixed(2);
     document.getElementById('campo5').value = (projetil.tempo).toFixed(2);
     document.getElementById('campo8').value = (projetil.altura_maxima).toFixed(2);
-
+    
     projetil.em_movimento = 1;
   }
-
+  
 });
 
 
 ///////////////////////////////////////////////////////////////
+function toRadiano(angulo){
+  return (angulo* Math.PI / 180);
+}
+
+function toGrau(angulo){
+  return (angulo*180)/Math.PI;
+}
 const cenario = new Cenarios(9.8, 0, canvas.width, canvas.height);
 const canhao = new Canhao(0);
 const projetil = new Projetil(canhao.posicao);
@@ -227,14 +249,19 @@ const alvo = new Alvo();
 var velocidade, vox, voy, gravidade, tempo, angulo, alcance, hmax;
 
 function calcular() {
-  let aux = -aux_angulo + 25 * Math.PI / 180;
+  // let aux = -aux_angulo + 25 * Math.PI / 180;
+  let aux = (-aux_angulo) + toRadiano(25);
   velocidade = parseFloat(document.getElementById('campo1').value);
-  angulo = parseFloat(document.getElementById('campo6').value = Math.floor(((180 * (aux)) / Math.PI)));
+  angulo = parseFloat(document.getElementById('campo6').value = Math.floor(toGrau(aux)));
   vox = velocidade * Math.cos(aux);
   voy = velocidade * Math.sin(aux);
   if (vox < 0) {
     vox = vox * -1;
   }
+  gravidade = calc_Gravidade(voy, projetil.altura_maxima);
+  tempo = calc_TempoVoo(voy, gravidade);
+  alcance = calc_Alcance(vox, tempo); 
+  hmax = calc_AlturaMax(voy, gravidade);
 }
 
 
@@ -255,7 +282,7 @@ function modoLivre() {
   if (lancar) {
     alvo.draw(context);
     projetil.desenhar(context_3, canvas.height, 40, 33);
-    projetil.drawBall(context_4, canvas_4.height, 50, 35);
+    projetil.drawBall(context_4, 50, 35);
   }
   // angulo = parseFloat(document.getElementById('campo6').value = Math.floor(((180 * (-aux_angulo + 25 * Math.PI / 180)) / Math.PI)));
   // velocidade = parseFloat(document.getElementById('campo1').value);
@@ -271,24 +298,47 @@ function modoLivre() {
 }
 
 
-function bloqueiaCampos(){
-  for(let i=1; i<9; i++){
+function bloqueiaCampos() {
+  for (let i = 1; i < 9; i++) {
     document.getElementById('campo' + i).disabled = true;
+    document.getElementById('campo' + i).style.border = '1px solid red';
   }
 }
 
-function faseFacil(){
-  bloqueiaCampos();
-  modoLivre();
+function faseFacil() {
+  console.log("Fácil");
+
+}
+
+function faseMedia() {
+  console.log("Média");
+
+}
+
+function faseDificil() {
+  console.log("Difícil");
+
 }
 
 function modoCompetitivo() {
-  faseFacil();
+  bloqueiaCampos();
+  switch (dificuldade) {
+    case "F":
+      faseFacil();
+      break;
+    case "M":
+      faseMedia();
+      break;
+    case "D":
+      faseDificil();
+      break;
+  }
+  modoLivre();
 }
 
 function loop() {
   if (em_jogo) {
-    switch(modoJogo) {
+    switch (modoJogo) {
       case "L":
         modoLivre();
         break;
