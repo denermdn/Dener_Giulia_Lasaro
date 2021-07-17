@@ -1,19 +1,18 @@
 let textos = [
-  'Bem vindo ao introdutorio do TBPT, onde voce aprendera o básico para utilizar a nossa gamificação!',
-  'Ao fundo temos a estrutura principal da nossa gamificação.',
-  'Nossa fase é composto pelo nosso canhão, que é de onde será arremessado o nosso projetil.',
-  'Temos também o cenário. Fique atento ao plano de fundo, pois a gravidade muda conforme o cenário muda',
-  'Temos o nosso projetil, que é o elemento que será arremessado assim que solicitado.',
-  'E por fim, temos a principal ferramenta do jogo: a tabela de variáveis.',
-  'Por ela você poderá digitar valores referentes ao lançamento de projéteis desejado.',
+  'Bem vindo ao introdutorio do TBPT, onde voce aprendera o básico para utilizar a nossa gamificação! 1',
+  'Ao fundo temos a estrutura principal da nossa gamificação. 2',
+  'Nossa fase é composto pelo nosso canhão, que é de onde será arremessado o nosso projetil. 3',
+  'Temos também o cenário. Fique atento ao plano de fundo, pois a gravidade muda conforme o cenário muda 4',
+  'E por fim, temos a principal ferramenta do jogo: a tabela de variáveis. 5',
+  'Por ela você poderá digitar valores referentes ao lançamento de projéteis desejado. 6',
   'No modo livre, digite o valores que quizer na tabela e ela calculará os demais valores.',
-  'Fique ATENTO! Nem todos os valores de váriaveis combinados geram outros valores, como o exemplo da tabela.',
-  'No modo competitivo, alguns valores virão travados. Voce pode perceber a diferença entre valores trabados e destravados na tabela.',
-  'O objetivo no modo competitivo é calcular os valores que não estão travados na tabela.',
-  'Use as formulas de lançamento de projéteis e seu conhecimento sobre Física para achar a resposta correta.',
-  'No modo competitivo, sua pontuação aparecerá aqui, e ela condiz com a corretude e tempo de resposta de cada fase.',
-  'Quanto menor o tempo de resposta e quanto mais perto da resposta estiver os valores digitados, mais pontos serão ganhos.',
-  'Boa sorte, e bons estudos!'
+  'Fique ATENTO! Nem todos os valores de váriaveis combinados geram outros valores, como o exemplo da tabela. 7',
+  'No modo competitivo, alguns valores virão travados. Voce pode perceber a diferença entre valores trabados e destravados na tabela. 8',
+  'O objetivo no modo competitivo é calcular os valores que não estaram travados na tabela. 9',
+  'Use as formulas de lançamento de projéteis e seu conhecimento sobre Física para achar a resposta correta. 10',
+  'No modo competitivo, sua pontuação aparecerá aqui, e ela condiz com a corretude e tempo de resposta de cada fase. 11',
+  'Quanto menor o tempo de resposta e quanto mais perto da resposta estiver os valores digitados, mais pontos serão ganhos. 12',
+  'Boa sorte, e bons estudos! 14'
 ];
 var ntextos = textos.length;
 var contatextos = 0;
@@ -74,6 +73,7 @@ document.addEventListener("click", (event) => {
     telaEscura.style.display = "block";
     tmenu.style.display = "none";
     confirme.style.display = "block";
+
     document.querySelector(".titulo").textContent = texto_sair;
   }
 });
@@ -86,6 +86,8 @@ document.addEventListener("click", (event) => {
     canhao.rodar(context_2);
     aux_angulo = 25 * Math.PI / 180;
     projetil.em_movimento = 0;
+    em_jogo = false;
+    context.clearRect(0, 0, canvas.width, canvas.height);
     context_2.clearRect(0, 0, canvas.width, canvas.height);
     context_3.clearRect(0, 0, canvas.width, canvas.height);
     context_4.clearRect(0, 0, canvas.width, canvas.height);
@@ -95,7 +97,6 @@ document.addEventListener("click", (event) => {
     document.querySelector(".titulo").textContent = texto_menu;
     modoJogo = "FF";
     bloqueiaCampos();
-    em_jogo = false;
   }
 });
 
@@ -166,7 +167,7 @@ document.addEventListener("click", (event) => {
     contatextos = 0;
     exibeIntroducao();
     em_jogo = true;
-    modoJogo = "L";
+    modoJogo = "T";
     loop();
   }
 });
@@ -262,7 +263,7 @@ var velocidade, vox, voy, gravidade, tempo, angulo, alcance, hmax;
 var lancar = false;
 document.addEventListener("click", (event) => {
 
-  if (event.target.matches("#botaolancar") && !lancar) {
+  if (event.target.matches("#botaolancar") && !lancar && modoJogo != 'T') {
     // projetil.angulo = Math.floor(((180 * (-aux_angulo + toRadiano(25))) / Math.PI));
     projetil.angulo = Math.floor(toGrau(-aux_angulo + toRadiano(25)));
     projetil.componentes();
@@ -359,25 +360,71 @@ function exibeIntroducao() {
       telaEscura.style.display = "block";
       telaEscura.style.opacity = 0.7;
       exitb.style.zIndex = 12;
+      campodados.style.display = "none";
       break;
     case 1:
+      cenario.desenhar(context);
+      canhao.draw(context);
+      canhao.rodar(context_2);
+      campodados.style.display = "block";
       break;
     case 2:
-      canvas.style.zIndex = 12;
+      campodados.style.display = "none";
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      canhao.draw(context);
+      canhao.rodar(context_2);
       break;
     case 3:
-      canvas.style.zIndex = 1;
+      context_2.clearRect(0, 0, canvas.width, canvas.height);
+      cenario.desenhar(context);
       break;
-    case 15:
+    case 4:
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      campodados.style.display = "block";
+      campodados.style.zIndex = 12;
+      campodados.style.opacity = 1;
+      break;
+    case 5:
+      campodados.style.opacity = 1;
+      break;
+    case 6:
+      campodados.style.opacity = 1;
+      break;
+    case 7:
+      campodados.style.opacity = 0.7;
+      campodados.style.zIndex = 8;
+      break;
+    case 8:
+      campodados.style.zIndex = 12;
+      campodados.style.opacity = 1;
+      modoJogo = 'C';
+      pos = 1;
+      bloqueiaCampos();
+      modoJogo = 'T';
+      break;
+    case 9:
+      campodados.style.opacity = 1;
+      break;
+    case 10:
+      campodados.style.zIndex = 8;
+      campodados.style.opacity = 1;
+      campodados.style.display = "none";
+      break;
+    case 14:
+      bloqueiaCampos();
+      telaEscura.style.opacity = 1;
       telaEscura.style.display = "none";
-      telaEscura.style.opacity=1;
+      campodados.style.display = "block";
+      modoJogo = 'L';
+      contatextos++;
       break;
   }
 
+
   document.querySelector(".titulo").textContent = textos[contatextos];
-  if (contatextos < ntextos)
-    requestAnimationFrame(exibeIntroducao);
 }
+
+
 var campos = [1, 2, 3, 7, 5, 6, 8];
 function bloqueiaCampos() {
   for (let i = 1; i < 9; i++) {
@@ -440,6 +487,7 @@ function loop() {
         modoCompetitivo();
         break;
       case "T":
+        exibeIntroducao();
         break;
     }
     requestAnimationFrame(loop);
