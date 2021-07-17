@@ -34,6 +34,7 @@ const cbtrajetoria = document.getElementById('trajet');
 var em_jogo = false;
 var modoJogo = "";
 var dificuldade = "";
+var pos;
 
 telaEscura.style.display = "block";
 tmenu.style.display = "block";
@@ -71,6 +72,8 @@ document.addEventListener("click", (event) => {
     document.getElementById('campo5').value = 0;
     document.getElementById('campo8').value = 0;
     document.querySelector(".titulo").textContent = texto_menu;
+    modoJogo= "FF";
+    bloqueiaCampos();
     em_jogo = false;
   }
 });
@@ -152,8 +155,8 @@ function auxBlock() {
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#modoLivre")) {
-    auxBlock();
     modoJogo = "L";
+    auxBlock();
   }
 });
 
@@ -168,6 +171,7 @@ document.addEventListener("click", (event) => {
 document.addEventListener("click", (event) => {
   if (event.target.matches("#faseFacil")) {
     dificuldade = "F";
+    pos = Math.floor(Math.random() * 4);
     auxBlock();
   }
 })
@@ -213,55 +217,69 @@ document.addEventListener("click", (event) => {
   }
 });
 
+var velocidade, vox, voy, gravidade, tempo, angulo, alcance, hmax;
 var lancar = false;
 document.addEventListener("click", (event) => {
-  
+
   if (event.target.matches("#botaolancar") && !lancar) {
-    projetil.angulo = Math.floor(((180 * (-aux_angulo + 25 * Math.PI / 180)) / Math.PI));
+    // projetil.angulo = Math.floor(((180 * (-aux_angulo + toRadiano(25))) / Math.PI));
+    projetil.angulo = Math.floor(toGrau(-aux_angulo + toRadiano(25)));
     projetil.componentes();
     alvo.setPosicao(projetil.alcance - 46, canvas.height - 70);
     lancar = true;
     projetil.reset(canhao.posicao);
     context_3.clearRect(0, 0, canvas.width, canvas.height);
-    document.getElementById('campo7').value = (projetil.alcance - 46).toFixed(2);
-    document.getElementById('campo5').value = (projetil.tempo).toFixed(2);
-    document.getElementById('campo8').value = (projetil.altura_maxima).toFixed(2);
-    
+
+    vox = calc_Vx(velocidade, toRadiano(angulo));
+    voy = calc_Vy(velocidade, toRadiano(angulo));
+
+    gravidade = calc_Gravidade(voy, projetil.altura_maxima);
+    tempo = calc_TempoVoo(voy, gravidade);
+    alcance = calc_Alcance(vox, tempo);
+    hmax = calc_AlturaMax(voy, gravidade);
+
+    document.getElementById('campo5').value = (tempo).toFixed(2);
+    document.getElementById('campo7').value = (alcance).toFixed(2);
+    document.getElementById('campo8').value = (hmax).toFixed(2);
+
     projetil.em_movimento = 1;
   }
-  
+
 });
 
 
 ///////////////////////////////////////////////////////////////
-function toRadiano(angulo){
-  return (angulo* Math.PI / 180);
+function toRadiano(angulo) {
+  return (angulo * Math.PI / 180);
 }
 
-function toGrau(angulo){
-  return (angulo*180)/Math.PI;
+function toGrau(angulo) {
+  return (angulo * 180) / Math.PI;
 }
-const cenario = new Cenarios(9.8, 0, canvas.width, canvas.height);
+const cenario = new Cenarios(9.8, 1, canvas.width, canvas.height);
 const canhao = new Canhao(0);
 const projetil = new Projetil(canhao.posicao);
 const alvo = new Alvo();
 
-var velocidade, vox, voy, gravidade, tempo, angulo, alcance, hmax;
 
 function calcular() {
   // let aux = -aux_angulo + 25 * Math.PI / 180;
   let aux = (-aux_angulo) + toRadiano(25);
   velocidade = parseFloat(document.getElementById('campo1').value);
   angulo = parseFloat(document.getElementById('campo6').value = Math.floor(toGrau(aux)));
-  vox = velocidade * Math.cos(aux);
-  voy = velocidade * Math.sin(aux);
   if (vox < 0) {
     vox = vox * -1;
   }
-  gravidade = calc_Gravidade(voy, projetil.altura_maxima);
-  tempo = calc_TempoVoo(voy, gravidade);
-  alcance = calc_Alcance(vox, tempo); 
-  hmax = calc_AlturaMax(voy, gravidade);
+  // vox = velocidade * Math.cos(aux);
+  // voy = velocidade * Math.sin(aux);
+  // console.log(velocidade + "a"); 
+  // console.log(vox +"a");
+  // console.log(voy +"a");
+  // console.log(gravidade +"a");
+  // console.log(tempo +"a");
+  // console.log(angulo +"a");
+  // console.log(alcance +"a");
+  // console.log(hmax +"a");
 }
 
 
@@ -284,39 +302,51 @@ function modoLivre() {
     projetil.desenhar(context_3, canvas.height, 40, 33);
     projetil.drawBall(context_4, 50, 35);
   }
-  // angulo = parseFloat(document.getElementById('campo6').value = Math.floor(((180 * (-aux_angulo + 25 * Math.PI / 180)) / Math.PI)));
-  // velocidade = parseFloat(document.getElementById('campo1').value);
-  // vox = velocidade * Math.cos(-aux_angulo + 25 * Math.PI / 180);
-  // voy = velocidade * Math.sin(-aux_angulo + 25 * Math.PI / 180);
-  // if (vox < 0) {
-  //   vox = vox * -1;
-  // }
-  calcular();
 
-  document.getElementById('campo2').value = vox.toFixed(2);
-  document.getElementById('campo3').value = voy.toFixed(2);
+  calcular();
+  try {
+    document.getElementById('campo2').value = vox.toFixed(2);
+    document.getElementById('campo3').value = voy.toFixed(2);
+
+  } catch (e) {
+
+  }
 }
 
 
+var campos = [1, 2, 3, 7, 5, 6, 8];
 function bloqueiaCampos() {
   for (let i = 1; i < 9; i++) {
-    document.getElementById('campo' + i).disabled = true;
-    document.getElementById('campo' + i).style.border = '1px solid red';
+    if (modoJogo == "C") {
+      let cor = "green"
+      if (i != campos[pos]) {
+        document.getElementById('campo' + i).disabled = true;
+        cor = "red";
+      }
+      document.getElementById('campo' + i).style.border = '2px solid ' + cor;
+    }
+    else {
+      document.getElementById('campo' + i).disabled = false;
+      document.getElementById('campo' + i).style.border = 'none';
+
+    }
+
   }
 }
 
 function faseFacil() {
-  console.log("Fácil");
+  // console.log("Fácil");
+  // console.log(campos[pos] + ' ' + pos + 'Aqui');
 
 }
 
 function faseMedia() {
-  console.log("Média");
+  // console.log("Média");
 
 }
 
 function faseDificil() {
-  console.log("Difícil");
+  // console.log("Difícil");
 
 }
 
