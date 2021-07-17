@@ -232,6 +232,23 @@ th {
   cursor: pointer;
 }
 
+#pontuacao {
+  font-size: 130%;
+  width: 10%;
+  height: 3%;
+  text-align: center;
+  display: none;
+  position: absolute;
+  line-height: 100%;
+  top: 1%;
+  left: 65.5%;
+  border-radius: 5%;
+  background-color: gray;
+  border: 1px solid black;
+  z-index: 9;
+  cursor: pointer;
+}
+
 #sobre {
   font-size: 25px;
   width: 15px;

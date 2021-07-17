@@ -47,6 +47,7 @@ const telaEscura = document.getElementById("tela-escura");
 const minhatela = document.getElementById('canvaswrap');
 const campodados = document.getElementById('campodados');
 const exitb = document.getElementById('exitbutton');
+const pontuacao = document.getElementById('pontuacao');
 const tmenu = document.getElementById('menu');
 const confirme = document.getElementById('confirmexit');
 const gmenu = document.getElementById('modeselect');
@@ -57,6 +58,8 @@ var modoJogo = "";
 var dificuldade = "";
 var pos;
 var resposta;
+var saida = 0;
+
 
 telaEscura.style.display = "block";
 tmenu.style.display = "block";
@@ -75,7 +78,7 @@ document.addEventListener("click", (event) => {
     telaEscura.style.display = "block";
     tmenu.style.display = "none";
     confirme.style.display = "block";
-
+    saida = 1;
     document.querySelector(".titulo").textContent = texto_sair;
   }
 });
@@ -89,6 +92,9 @@ document.addEventListener("click", (event) => {
     aux_angulo = 25 * Math.PI / 180;
     projetil.em_movimento = 0;
     em_jogo = false;
+    campodados.style.display = "none";
+    campodados.style.opacity = 1;
+    telaEscura.style.opacity = 1;
     context.clearRect(0, 0, canvas.width, canvas.height);
     context_2.clearRect(0, 0, canvas.width, canvas.height);
     context_3.clearRect(0, 0, canvas.width, canvas.height);
@@ -104,9 +110,10 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#desconfirmar")) {
+    saida = 0;
+    if (modoJogo != 'T')
+      telaEscura.style.display = "none";
     confirme.style.display = "none";
-    telaEscura.style.display = "none";
-
   }
 });
 
@@ -165,7 +172,9 @@ document.addEventListener("click", (event) => {
 document.addEventListener("click", (event) => {
   if (event.target.matches("#introducao")) {
     gmenu.style.display = "none";
+    saida = 0;
     contatextos = 0;
+    parar = 1;
     em_jogo = true;
     modoJogo = "T";
     auxBlock();
@@ -173,7 +182,7 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
-  if (event.target.matches("#tela-escura")) {
+  if (event.target.matches("#tela-escura") && saida != 1) {
     console.log(contatextos);
     if (contatextos <= 15)
       contatextos++;
@@ -192,6 +201,7 @@ function auxBlock() {
   minhatela.style.display = "block";
   campodados.style.display = "block";
   exitb.style.display = "block";
+  pontuacao.style.display="block";
   loop();
 }
 
@@ -199,6 +209,7 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#modoLivre")) {
     modoJogo = "L";
     auxBlock();
+    pontuacao.style.display="none";
   }
 });
 
@@ -206,6 +217,7 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#modoCompetitivo")) {
     gmenu.style.display = "none";
     smenu.style.display = "block";
+    pontuacao.textContent="Pontos : 0";
     modoJogo = "C";
   }
 });
@@ -373,63 +385,162 @@ function modoLivre() {
 }
 
 function exibeIntroducao() {
+
   switch (contatextos) {
+
     case 0:
       telaEscura.style.display = "block";
       telaEscura.style.opacity = 0.7;
       exitb.style.zIndex = 12;
       campodados.style.display = "none";
+      pontuacao.style.display="none";
       break;
+
     case 1:
-      cenario.desenhar(context);
-      canhao.draw(context);
-      canhao.rodar(context_2);
-      campodados.style.display = "block";
+      if(confirme.style.display!='block'){
+        cenario.desenhar(context);
+        canhao.draw(context);
+        canhao.rodar(context_2);
+        campodados.style.display = "block";
+      }
+      else
+      {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context_2.clearRect(0, 0, canvas.width, canvas.height);
+        campodados.style.display = "none";
+      }
       break;
+
     case 2:
-      campodados.style.display = "none";
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      canhao.draw(context);
-      canhao.rodar(context_2);
+      if(confirme.style.display!='block'){
+
+        campodados.style.display = "none";
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        canhao.draw(context);
+        canhao.rodar(context_2);
+      }
+      else
+      {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context_2.clearRect(0, 0, canvas.width, canvas.height);
+      }
       break;
+
     case 3:
-      context_2.clearRect(0, 0, canvas.width, canvas.height);
-      cenario.desenhar(context);
+      if(confirme.style.display!='block'){
+        context_2.clearRect(0, 0, canvas.width, canvas.height);
+        cenario.desenhar(context);
+      }
+      else
+      {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+      }
       break;
+
     case 4:
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      campodados.style.display = "block";
-      campodados.style.zIndex = 12;
-      campodados.style.opacity = 1;
+
+      if(confirme.style.display!='block')
+      {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        campodados.style.display = "block";
+        campodados.style.zIndex = 12;
+        campodados.style.opacity = 1;
+      }
+      else
+      campodados.style.display = "none";
+
       break;
+
     case 5:
+
+      if(confirme.style.display!='block')
       campodados.style.opacity = 1;
+      else
+      campodados.style.opacity = 0;
+
       break;
+
     case 6:
+
+      if(confirme.style.display!='block')
       campodados.style.opacity = 1;
+      else
+      campodados.style.opacity = 0;
       break;
+
     case 7:
-      campodados.style.opacity = 0.7;
-      campodados.style.zIndex = 8;
+      if(confirme.style.display!='block')
+      {
+        campodados.style.opacity = 0.7;
+        campodados.style.zIndex = 8;
+      }
+      else
+      {
+        campodados.style.opacity = 0;
+      }
       break;
+
     case 8:
-      campodados.style.zIndex = 12;
-      campodados.style.opacity = 1;
-      modoJogo = 'C';
-      pos = 1;
-      bloqueiaCampos();
-      modoJogo = 'T';
+      if(confirme.style.display!='block')
+      {
+        campodados.style.zIndex = 12;
+        campodados.style.opacity = 1;
+        modoJogo = 'C';
+        pos = 1;
+        bloqueiaCampos();
+        modoJogo = 'T';
+      }
+      else
+      {
+        campodados.style.opacity = 0;
+      }
       break;
+
     case 9:
+
+      if(confirme.style.display!='block')
       campodados.style.opacity = 1;
+      else
+      campodados.style.opacity = 0;
+
       break;
+
     case 10:
       campodados.style.zIndex = 8;
-      campodados.style.opacity = 1;
+      campodados.style.opacity = 0.7;
       campodados.style.display = "none";
       break;
-    case 14:
-      bloqueiaCampos();
+
+    case 11:
+      if(confirme.style.display!='block')
+      {
+        campodados.style.zIndex = 8;
+        pontuacao.textContent="Pontos : 2578";
+        pontuacao.style.display="block";
+        pontuacao.style.zIndex=12;
+      }
+      else
+      {
+        pontuacao.style.display="none";
+        pontuacao.style.zIndex=9;
+      }
+      break;
+
+      case 12:
+        if(confirme.style.display!='block')
+        pontuacao.style.display="block";
+      else
+      pontuacao.style.display="none";
+        break;
+
+      case 13:
+        pontuacao.style.zIndex=9;
+        pontuacao.style.display="none";
+        pontuacao.textContent="Pontos : 0";
+      break;
+      
+      case 14:
+        bloqueiaCampos();
       telaEscura.style.opacity = 1;
       telaEscura.style.display = "none";
       campodados.style.display = "block";
@@ -437,7 +548,9 @@ function exibeIntroducao() {
       contatextos++;
       break;
   }
-  document.querySelector(".titulo").textContent = textos[contatextos];
+
+  if (saida != 1)
+    document.querySelector(".titulo").textContent = textos[contatextos];
 }
 
 
