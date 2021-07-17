@@ -1,3 +1,24 @@
+let textos = [
+  'Bem vindo ao introdutorio do TBPT, onde voce aprendera o básico para utilizar a nossa gamificação!',
+  'Ao fundo temos a estrutura principal da nossa gamificação.',
+  'Nossa fase é composto pelo nosso canhão, que é de onde será arremessado o nosso projetil.',
+  'Temos também o cenário. Fique atento ao plano de fundo, pois a gravidade muda conforme o cenário muda',
+  'Temos o nosso projetil, que é o elemento que será arremessado assim que solicitado.',
+  'E por fim, temos a principal ferramenta do jogo: a tabela de variáveis.',
+  'Por ela você poderá digitar valores referentes ao lançamento de projéteis desejado.',
+  'No modo livre, digite o valores que quizer na tabela e ela calculará os demais valores.',
+  'Fique ATENTO! Nem todos os valores de váriaveis combinados geram outros valores, como o exemplo da tabela.',
+  'No modo competitivo, alguns valores virão travados. Voce pode perceber a diferença entre valores trabados e destravados na tabela.',
+  'O objetivo no modo competitivo é calcular os valores que não estão travados na tabela.',
+  'Use as formulas de lançamento de projéteis e seu conhecimento sobre Física para achar a resposta correta.',
+  'No modo competitivo, sua pontuação aparecerá aqui, e ela condiz com a corretude e tempo de resposta de cada fase.',
+  'Quanto menor o tempo de resposta e quanto mais perto da resposta estiver os valores digitados, mais pontos serão ganhos.',
+  'Boa sorte, e bons estudos!'
+];
+var ntextos = textos.length;
+var contatextos=0;
+console.log(ntextos);
+
 var canvas = document.getElementById("canvas");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -134,11 +155,23 @@ document.addEventListener("click", (event) => {
   }
 });
 
-function auxBlock(){
-    telaEscura.style.display = "none";
-    minhatela.style.display = "block";
-    campodados.style.display = "block";
-    exitb.style.display = "block";
+document.addEventListener("click", (event) => {
+  if (event.target.matches("#introducao")) {
+    gmenu.style.display = "none";
+    auxBlock();
+    contatextos=0;
+    exibeIntroducao();
+    em_jogo = true;
+    modoJogo = "L";
+    loop();
+  }
+});
+
+function auxBlock() {
+  telaEscura.style.display = "none";
+  minhatela.style.display = "block";
+  campodados.style.display = "block";
+  exitb.style.display = "block";
 }
 
 document.addEventListener("click", (event) => {
@@ -146,7 +179,7 @@ document.addEventListener("click", (event) => {
     gmenu.style.display = "none";
     auxBlock();
     em_jogo = true;
-    modoJogo= "L";
+    modoJogo = "L";
     loop();
   }
 });
@@ -159,7 +192,7 @@ document.addEventListener("click", (event) => {
   }
 });
 document.addEventListener("click", (event) => {
-  if(event.target.matches("#faseFacil")){
+  if (event.target.matches("#faseFacil")) {
     smenu.style.display = "none";
     modoJogo = "C";
     auxBlock();
@@ -195,6 +228,16 @@ document.addEventListener("click", (event) => {
     window.location.replace("./Ranking.html");
   }
 });
+
+document.addEventListener("click", (event) => {
+  if (event.target.matches("#tela-escura")) {
+    console.log(contatextos);
+    if(contatextos<=15)
+    contatextos++;
+  }
+});
+
+
 
 var lancar = false;
 document.addEventListener("click", (event) => {
@@ -270,14 +313,42 @@ function modoLivre() {
   document.getElementById('campo3').value = voy.toFixed(2);
 }
 
+function exibeIntroducao() {
+  switch (contatextos) {
+    case 0:
+      telaEscura.style.display = "block";
+      telaEscura.style.opacity = 0.7;
+      exitb.style.zIndex = 12;
+      break;
+      case 1:
+        break;
+      case 2:
+        canvas.style.zIndex=12;
+        break;
+      case 3:
+        canvas.style.zIndex=1;
+        break;
+      case 15:
+        telaEscura.style.display="none";
+        break;
 
-function bloqueiaCampos(){
-  for(let i=1; i<9; i++){
+
+  }
+  //texto
+  //texto
+  //console.log(contatextos);
+  document.querySelector(".titulo").textContent = textos[contatextos];
+  if(contatextos<ntextos)
+  requestAnimationFrame(exibeIntroducao);
+}
+
+function bloqueiaCampos() {
+  for (let i = 1; i < 9; i++) {
     document.getElementById('campo' + i).disabled = true;
   }
 }
 
-function faseFacil(){
+function faseFacil() {
   bloqueiaCampos();
   modoLivre();
 }
@@ -288,7 +359,7 @@ function modoCompetitivo() {
 
 function loop() {
   if (em_jogo) {
-    switch(modoJogo) {
+    switch (modoJogo) {
       case "L":
         modoLivre();
         break;
@@ -304,4 +375,3 @@ function loop() {
 }
 
 window.addEventListener("keydown", canhao.move);
-
