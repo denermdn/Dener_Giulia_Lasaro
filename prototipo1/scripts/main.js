@@ -348,7 +348,6 @@ function modoLivre() {
   try {
     document.getElementById('campo2').value = vox.toFixed(2);
     document.getElementById('campo3').value = voy.toFixed(2);
-
   } catch (e) {
 
   }
