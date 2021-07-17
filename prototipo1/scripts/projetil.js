@@ -25,8 +25,9 @@ class Projetil {
         projetil_sprite[0].src = "./imagens/balls.png";
     }
 
-    componentes() {
-        this.velocidade0 = document.getElementById("campo1").value;
+    componentes(v) {
+        // this.velocidade0 = document.getElementById("campo1").value;
+        this.velocidade0 = v;
         this.vx = this.velocidade0 * Math.cos((this.angulo * Math.PI) / 180);
         this.vy = -this.velocidade0 * Math.sin((this.angulo * Math.PI) / 180);
         this.alcance = this.vx * 2 * ((-this.vy) / (this.g)) + 46;
@@ -36,8 +37,8 @@ class Projetil {
         context.clearRect(0, 0, context.width, context.height);
     }
 
-    reset(posicao) {
-        this.velocidade0 = document.getElementById("campo1").value;
+    reset(v, posicao) {
+        this.velocidade0 = v;
         this.angulo = 0;
         this.posicao.posX = posicao.posX;
         this.posicao.posY = posicao.posY;

@@ -1,7 +1,7 @@
 let textos = [
   'Bem vindo ao introdutorio do TBPT, onde voce aprendera o básico para utilizar a nossa gamificação! 1',
   'Ao fundo temos a estrutura principal da nossa gamificação. 2',
-  'Nossa fase é composto pelo nosso canhão, que é de onde será arremessado o nosso projetil. 3',
+  'A fase é composta por um canhão, de onde será arremessado um projétil. 3',
   'Temos também o cenário. Fique atento ao plano de fundo, pois a gravidade muda conforme o cenário muda 4',
   'E por fim, temos a principal ferramenta do jogo: a tabela de variáveis. 5',
   'Por ela você poderá digitar valores referentes ao lançamento de projéteis desejado. 6',
@@ -14,6 +14,7 @@ let textos = [
   'Quanto menor o tempo de resposta e quanto mais perto da resposta estiver os valores digitados, mais pontos serão ganhos. 12',
   'Boa sorte, e bons estudos! 14'
 ];
+const imputs = document.querySelectorAll(".inputdados");
 var ntextos = textos.length;
 var contatextos = 0;
 console.log(ntextos);
@@ -55,6 +56,7 @@ var em_jogo = false;
 var modoJogo = "";
 var dificuldade = "";
 var pos;
+var resposta;
 
 telaEscura.style.display = "block";
 tmenu.style.display = "block";
@@ -163,12 +165,10 @@ document.addEventListener("click", (event) => {
 document.addEventListener("click", (event) => {
   if (event.target.matches("#introducao")) {
     gmenu.style.display = "none";
-    auxBlock();
     contatextos = 0;
-    exibeIntroducao();
     em_jogo = true;
     modoJogo = "T";
-    loop();
+    auxBlock();
   }
 });
 
@@ -261,15 +261,20 @@ document.addEventListener("click", (event) => {
 
 var velocidade, vox, voy, gravidade, tempo, angulo, alcance, hmax;
 var lancar = false;
+
 document.addEventListener("click", (event) => {
 
   if (event.target.matches("#botaolancar") && !lancar && modoJogo != 'T') {
     // projetil.angulo = Math.floor(((180 * (-aux_angulo + toRadiano(25))) / Math.PI));
     projetil.angulo = Math.floor(toGrau(-aux_angulo + toRadiano(25)));
-    projetil.componentes();
+
+    // velocidade = document.getElementById("campo1").value;
+    
+    velocidade = imputs[0].value;
+    projetil.componentes(velocidade);
     alvo.setPosicao(projetil.alcance - 46, canvas.height - 70);
     lancar = true;
-    projetil.reset(canhao.posicao);
+    projetil.reset(velocidade, canhao.posicao);
     context_3.clearRect(0, 0, canvas.width, canvas.height);
 
     vox = calc_Vx(velocidade, toRadiano(angulo));
@@ -280,10 +285,14 @@ document.addEventListener("click", (event) => {
     alcance = calc_Alcance(vox, tempo);
     hmax = calc_AlturaMax(voy, gravidade);
 
-    document.getElementById('campo5').value = (tempo).toFixed(2);
-    document.getElementById('campo7').value = (alcance).toFixed(2);
-    document.getElementById('campo8').value = (hmax).toFixed(2);
+    ///
+    // document.getElementById('campo5').value = (tempo).toFixed(2);
+    // document.getElementById('campo7').value = (alcance).toFixed(2);
+    // document.getElementById('campo8').value = (hmax).toFixed(2);
 
+    imputs[4].value = (tempo).toFixed(2);
+    imputs[6].value = (alcance).toFixed(2);
+    imputs[7].value= (hmax).toFixed(2);
     projetil.em_movimento = 1;
   }
 
@@ -307,11 +316,17 @@ const alvo = new Alvo();
 function calcular() {
   // let aux = -aux_angulo + 25 * Math.PI / 180;
   let aux = (-aux_angulo) + toRadiano(25);
-  velocidade = parseFloat(document.getElementById('campo1').value);
-  angulo = parseFloat(document.getElementById('campo6').value = Math.floor(toGrau(aux)));
+  // velocidade = parseFloat(document.getElementById('campo1').value);
+  velocidade = parseFloat(imputs[0].value);
+  // angulo = parseFloat(document.getElementById('campo6').value = Math.floor(toGrau(aux)));
+  angulo = parseFloat(imputs[5].value = Math.floor(toGrau(aux)));
   if (vox < 0) {
     vox = vox * -1;
   }
+  vox = calc_Vx(velocidade, toRadiano(angulo));
+  voy = calc_Vy(velocidade, toRadiano(angulo));
+
+
   // vox = velocidade * Math.cos(aux);
   // voy = velocidade * Math.sin(aux);
   // console.log(velocidade + "a"); 
@@ -335,7 +350,7 @@ function modoLivre() {
       alvo.draw(context);
   }
   if (cbtrajetoria.checked) {
-    canvas_p.style.display = "inline";
+    canvas_p.style.display = "block";
   } else {
     canvas_p.style.display = "none";
   }
@@ -344,14 +359,17 @@ function modoLivre() {
     projetil.desenhar(context_3, canvas.height, 40, 33);
     projetil.drawBall(context_4, 50, 35);
   }
-
   calcular();
-  try {
-    document.getElementById('campo2').value = vox.toFixed(2);
-    document.getElementById('campo3').value = voy.toFixed(2);
-  } catch (e) {
-
+  if (modoJogo == "L") {
+    // document.getElementById('campo2').value = vox.toFixed(2);
+    // document.getElementById('campo3').value = voy.toFixed(2);
+    imputs[1].value = vox.toFixed(2);
+    imputs[2].value = voy.toFixed(2);
   }
+  // try {
+  //   document.getElementById('campo2').value = vox.toFixed(2);
+  //   document.getElementById('campo3').value = voy.toFixed(2);
+  // } catch (e) { }
 }
 
 function exibeIntroducao() {
@@ -419,8 +437,6 @@ function exibeIntroducao() {
       contatextos++;
       break;
   }
-
-
   document.querySelector(".titulo").textContent = textos[contatextos];
 }
 
@@ -431,23 +447,24 @@ function bloqueiaCampos() {
     if (modoJogo == "C") {
       let cor = "green"
       if (i != campos[pos]) {
-        document.getElementById('campo' + i).disabled = true;
+        // document.getElementById('campo' + i).disabled = true;
+        imputs[i-1].disabled = true;
+
         cor = "red";
       }
-      document.getElementById('campo' + i).style.border = '2px solid ' + cor;
+      // document.getElementById('campo' + i).style.border = '2px solid ' + cor;
+      imputs[i-1].style.border = '2px solid ' + cor;
     }
     else {
-      document.getElementById('campo' + i).disabled = false;
-      document.getElementById('campo' + i).style.border = 'none';
-
+      // document.getElementById('campo' + i).disabled = false;
+      // document.getElementById('campo' + i).style.border = 'none';
+      imputs[i-1].disabled = false;
+      imputs[i-1].style.border = 'none';
     }
-
   }
 }
 
 function faseFacil() {
-  // console.log("Fácil");
-  // console.log(campos[pos] + ' ' + pos + 'Aqui');
 
 }
 
