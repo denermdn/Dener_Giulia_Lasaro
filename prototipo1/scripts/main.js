@@ -48,6 +48,7 @@ const minhatela = document.getElementById('canvaswrap');
 const campodados = document.getElementById('campodados');
 const exitb = document.getElementById('exitbutton');
 const pontuacao = document.getElementById('pontuacao');
+const movimentacao = document.getElementById('movimentacao');
 const tmenu = document.getElementById('menu');
 const confirme = document.getElementById('confirmexit');
 const gmenu = document.getElementById('modeselect');
@@ -88,6 +89,7 @@ document.addEventListener("click", (event) => {
 document.addEventListener("click", (event) => {
   if (event.target.matches("#confirmar")) {
     confirme.style.display = "none";
+    movimentacao.style.display = "none";
     tmenu.style.display = "block";
     aux_angulo = 0;
     canhao.rodar(context_2);
@@ -349,7 +351,7 @@ function toRadiano(angulo) {
 function toGrau(angulo) {
   return (angulo * 180) / Math.PI;
 }
-const cenario = new Cenarios(9.8, 1, canvas.width, canvas.height);
+const cenario = new Cenarios(9.8, 0, canvas.width, canvas.height);
 const canhao = new Canhao(0);
 const projetil = new Projetil(canhao.posicao);
 const alvo = new Alvo();
@@ -378,6 +380,7 @@ function calcular() {
 function modoLivre() {
   cenario.desenhar(context);
   canhao.draw(context);
+  
   canhao.rodar(context_2);
   if (projetil.em_movimento != 1) {
     lancar = false;
@@ -398,7 +401,7 @@ function modoLivre() {
   if (modoJogo == "L") {
     // document.getElementById('campo2').value = vox.toFixed(2);
     // document.getElementById('campo3').value = voy.toFixed(2);
-    imputs[1].value = vox.toFixed(1);
+    imputs[1].value = vox.toFixed(2);
     imputs[2].value = voy.toFixed(2);
   }
   // try {
@@ -450,6 +453,7 @@ function exibeIntroducao() {
     case 3:
       if (confirme.style.display != 'block') {
         context_2.clearRect(0, 0, canvas.width, canvas.height);
+        cenario.id=0;
         cenario.desenhar(context);
       }
       else {
@@ -502,8 +506,8 @@ function exibeIntroducao() {
         campodados.style.zIndex = 12;
         campodados.style.opacity = 1;
         modoJogo = 'C';
-        dificuldade='F';
-        posicao[0]=1;
+        dificuldade = 'F';
+        posicao[0] = 1;
         pos = 1;
         bloqueiaCampos();
         modoJogo = 'T';
@@ -556,9 +560,13 @@ function exibeIntroducao() {
 
     case 14:
       bloqueiaCampos();
+      cenario.id=1;
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      cenario.desenhar(context);
       telaEscura.style.opacity = 1;
       telaEscura.style.display = "none";
       campodados.style.display = "block";
+      movimentacao.style.display = "block";
       modoJogo = 'L';
       contatextos++;
       break;

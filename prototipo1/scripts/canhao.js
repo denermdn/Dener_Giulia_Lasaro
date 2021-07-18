@@ -11,7 +11,7 @@ class Canhao {
 
   _init() {
     for (var i = 0; i < canhao_e_roda.length; i++) {
-      canhao_e_roda[i] = new Array(2)
+      canhao_e_roda[i] = new Array(2);
       canhao_e_roda[i][0] = new Image();
       canhao_e_roda[i][0].src = "./imagens/canhao" + i.toString() + ".png";
       canhao_e_roda[i][1] = new Image();
