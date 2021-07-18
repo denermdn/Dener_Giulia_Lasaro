@@ -34,6 +34,7 @@ class Canhao {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.save();
     ctx.translate(x, y);
+    // ctx.rotate(aux_angulo);
     ctx.rotate(aux_angulo);
     this.draw_(ctx);
     ctx.restore();
@@ -51,7 +52,6 @@ class Canhao {
       if (this.angulo > 0) {
         aux_angulo += incremento;
       }
-
     }
     this.angulo = aux_angulo;
   }

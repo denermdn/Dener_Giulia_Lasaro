@@ -26,13 +26,11 @@ class Projetil {
     }
 
     componentes(v, g) {
-        // this.velocidade0 = document.getElementById("campo1").value;
         this.velocidade0 = v;
         this.g = g;
         this.vx = this.velocidade0 * Math.cos((this.angulo * Math.PI) / 180);
         this.vy = -this.velocidade0 * Math.sin((this.angulo * Math.PI) / 180);
         this.alcance = this.vx * 2 * ((-this.vy) / (this.g)) + 46;
-
         this.tempo = (this.alcance - 46) / this.vx;
         this.altura_maxima = Math.pow(this.vy, 2) / (this.g * 2);
         context.clearRect(0, 0, context.width, context.height);
@@ -63,7 +61,6 @@ class Projetil {
             40, 40);
     }
 
-
     calcxdiferenca(altura) {
         var alt = (altura - 135) / (this.posicao.posY);
         this.posicao.posX = this.posicao.posX - (this.posicao.posX * alt);
@@ -71,7 +68,6 @@ class Projetil {
 
     update(altura) {
         var limY = altura - 159;
-        console.log(limY)
         if (this.posicao.posY <= limY) {
             this.posicao.posY += this.vy / 8;
             this.posicao.posX += this.vx / 8;
@@ -79,9 +75,7 @@ class Projetil {
         else {
             this.em_movimento = 2;
         }
-
         this.vy += this.g / 8;
-        console.log(this.posicao.posX);
     }
 
 }
