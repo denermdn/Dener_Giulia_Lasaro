@@ -50,11 +50,9 @@ class Canhao {
     if (tecla == 39) {
       if (this.angulo > 0) {
         aux_angulo += incremento;
-      } 
-      
+      }
+
     }
-    // this.angulo = Math.floor(((180 * (-aux_angulo + 0.4375)) / Math.PI));
     this.angulo = aux_angulo;
-    // console.log("Angulo= " + this.angulo + "t= " + aux_angulo);
   }
 }

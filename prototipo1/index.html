@@ -10,6 +10,7 @@
 
 <body>
 	<div id="exitbutton">X</div>
+	<div id="pontuacao">Pontos : 0</div>
 	<div id="sobre">
 		<a href="https://github.com/denermdn/Dener_Giulia_Lasaro" target="_blank"><button>Sobre</button></a>
 	</div>
@@ -17,11 +18,11 @@
 		<table id="tabeladados">
 			<tr>
 				<td class="tabdados">Velocidade (m/s):</td>
-				<td class="tabdados"> <input class="inputdados" name="campo1" id="campo1" value="130" /></td>
+				<td class="tabdados"> <input class="inputdados" name="campo1" id="campo1" value="100" /></td>
 			</tr>
 			<tr>
 				<td class="tabdados">Vox (m/s):</td>
-				<td class="tabdados"> <input class="inputdados" name="campo2" id="campo2" value="130" /></td>
+				<td class="tabdados"> <input class="inputdados" name="campo2" id="campo2" value="100" /></td>
 			</tr>
 			<tr>
 				<td class="tabdados">Voy (m/s):</td>
@@ -81,7 +82,7 @@
 		<div class="container" id="modeselect">
 			<table>
 				<tr>
-					<td style="background-color: blue;">Introdução</td>
+					<td id="introducao" style="background-color: blue;">Introdução</td>
 					<td id="modoLivre" style="background-color: yellow;">Modo<br>Livre</td>
 				</tr>
 				<tr>
@@ -92,7 +93,7 @@
 				</tr>
 			</table>
 		</div>
-		
+
 		<div class="container" id="playselect">
 			<table>
 				<tr>
@@ -100,11 +101,17 @@
 					<td id="faseMedia" style="background-color: green;">Médio</td>
 				</tr>
 				<tr>
-					<td id="faseDificil" style="background-color: yellow;">Dificil
+					<td id="faseDificil" style="background-color: yellow;">Difícil
 					</td>
 					<td id="exitp" style="background-color: blue;">Exit</td>
 				</tr>
 			</table>
+			<!-- <ul>
+				<li id="faseFacil" style="background-color: red;">Fácil</li>
+				<li id="faseMedia" style="background-color: green;">Médio</li>
+				<li id="faseDificil" style="background-color: yellow;">Difícil</li>
+				<li id="exitp" style="background-color: blue;">Voltar</li>
+			</ul> -->
 		</div>
 		<div class="container" id="confirmexit">Deseja Sair?
 			<br>
@@ -128,6 +135,8 @@
 	<script src="scripts/projetil.js"></script>
 	<script src="scripts/posicao.js"></script>
 	<script src="scripts/alvo.js"></script>
+	<script src="scripts/usuario.js"></script>
+	<script src="scripts/equacoes.js"></script>
 	<script src="scripts/main.js"></script>
 </body>
 
