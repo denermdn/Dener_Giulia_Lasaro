@@ -505,6 +505,8 @@ function exibeIntroducao() {
         campodados.style.zIndex = 12;
         campodados.style.opacity = 1;
         modoJogo = 'C';
+        dificuldade='F';
+        posicao[0]=1;
         pos = 1;
         bloqueiaCampos();
         modoJogo = 'T';
