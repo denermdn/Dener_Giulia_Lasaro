@@ -61,6 +61,7 @@ var resposta;
 var saida = 0;
 var posicao = new Array();
 var indice = 0;
+var travaCanhao = true;
 
 
 telaEscura.style.display = "block";
@@ -107,7 +108,8 @@ document.addEventListener("click", (event) => {
     document.querySelector(".titulo").textContent = texto_menu;
     modoJogo = "FF";
     bloqueiaCampos();
-    posicao.kill();
+    // posicao.kill();
+    clearDados();
   }
 });
 
@@ -224,7 +226,7 @@ document.addEventListener("click", (event) => {
     pontuacao.textContent = "Pontos : 0";
     modoJogo = "C";
     indice = 0;
-    velocidade = Math.floor(Math.random() * 70 + 30);
+    velocidade = Math.floor(Math.random() * 70 + 40);
   }
 });
 
@@ -293,6 +295,10 @@ document.addEventListener("click", (event) => {
   }
 });
 
+const cenario = new Cenarios(9.8, 1, canvas.width, canvas.height);
+const canhao = new Canhao(0);
+const projetil = new Projetil(canhao.posicao);
+const alvo = new Alvo();
 var velocidade, vox, voy, gravidade, tempo, angulo, alcance, hmax;
 var lancar = false;
 
@@ -301,6 +307,7 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#botaolancar") && !lancar && modoJogo != 'T') {
     // projetil.angulo = Math.floor(((180 * (-aux_angulo + toRadiano(25))) / Math.PI));
     projetil.angulo = Math.floor(toGrau(-aux_angulo + toRadiano(25)));
+    // projetil.angulo = Math.floor(toGrau(canhao.angulo + toRadiano(25)));
 
     // velocidade = document.getElementById("campo1").value;
 
@@ -341,7 +348,6 @@ document.addEventListener("click", (event) => {
 
 });
 
-
 ///////////////////////////////////////////////////////////////
 function toRadiano(angulo) {
   return (angulo * Math.PI / 180);
@@ -350,11 +356,6 @@ function toRadiano(angulo) {
 function toGrau(angulo) {
   return (angulo * 180) / Math.PI;
 }
-const cenario = new Cenarios(9.8, 1, canvas.width, canvas.height);
-const canhao = new Canhao(0);
-const projetil = new Projetil(canhao.posicao);
-const alvo = new Alvo();
-
 
 function calcular() {
   // let aux = -aux_angulo + 25 * Math.PI / 180;
@@ -369,8 +370,6 @@ function calcular() {
     vox = vox * -1;
   }
   //console.log(voy);
-
-
   // vox = velocidade * Math.cos(aux);
   // voy = velocidade * Math.sin(aux);
 }
@@ -408,6 +407,11 @@ function modoLivre() {
   // } catch (e) { }
 }
 
+function clearDados() {
+  velocidade = vox = voy = gravidade = tempo = angulo = alcance = hmax = 0;
+  imputs[0].value = 100;
+}
+
 function initCampos() {
 
 }
@@ -421,7 +425,6 @@ function exibeIntroducao() {
       campodados.style.display = "none";
       pontuacao.style.display = "none";
       break;
-
     case 1:
       if (confirme.style.display != 'block') {
         cenario.desenhar(context);
@@ -435,7 +438,6 @@ function exibeIntroducao() {
         campodados.style.display = "none";
       }
       break;
-
     case 2:
       if (confirme.style.display != 'block') {
 
@@ -449,7 +451,6 @@ function exibeIntroducao() {
         context_2.clearRect(0, 0, canvas.width, canvas.height);
       }
       break;
-
     case 3:
       if (confirme.style.display != 'block') {
         context_2.clearRect(0, 0, canvas.width, canvas.height);
@@ -459,9 +460,7 @@ function exibeIntroducao() {
         context.clearRect(0, 0, canvas.width, canvas.height);
       }
       break;
-
     case 4:
-
       if (confirme.style.display != 'block') {
         context.clearRect(0, 0, canvas.width, canvas.height);
         campodados.style.display = "block";
@@ -470,26 +469,19 @@ function exibeIntroducao() {
       }
       else
         campodados.style.display = "none";
-
       break;
-
     case 5:
-
       if (confirme.style.display != 'block')
         campodados.style.opacity = 1;
       else
         campodados.style.opacity = 0;
-
       break;
-
     case 6:
-
       if (confirme.style.display != 'block')
         campodados.style.opacity = 1;
       else
         campodados.style.opacity = 0;
       break;
-
     case 7:
       if (confirme.style.display != 'block') {
         campodados.style.opacity = 0.7;
@@ -499,14 +491,13 @@ function exibeIntroducao() {
         campodados.style.opacity = 0;
       }
       break;
-
     case 8:
       if (confirme.style.display != 'block') {
         campodados.style.zIndex = 12;
         campodados.style.opacity = 1;
         modoJogo = 'C';
-        dificuldade='F';
-        posicao[0]=1;
+        dificuldade = 'F';
+        posicao[0] = 1;
         pos = 1;
         bloqueiaCampos();
         modoJogo = 'T';
@@ -515,22 +506,18 @@ function exibeIntroducao() {
         campodados.style.opacity = 0;
       }
       break;
-
     case 9:
-
       if (confirme.style.display != 'block')
         campodados.style.opacity = 1;
       else
         campodados.style.opacity = 0;
 
       break;
-
     case 10:
       campodados.style.zIndex = 8;
       campodados.style.opacity = 0.7;
       campodados.style.display = "none";
       break;
-
     case 11:
       if (confirme.style.display != 'block') {
         campodados.style.zIndex = 8;
@@ -543,20 +530,17 @@ function exibeIntroducao() {
         pontuacao.style.zIndex = 9;
       }
       break;
-
     case 12:
       if (confirme.style.display != 'block')
         pontuacao.style.display = "block";
       else
         pontuacao.style.display = "none";
       break;
-
     case 13:
       pontuacao.style.zIndex = 9;
       pontuacao.style.display = "none";
       pontuacao.textContent = "Pontos : 0";
       break;
-
     case 14:
       bloqueiaCampos();
       telaEscura.style.opacity = 1;
@@ -566,7 +550,6 @@ function exibeIntroducao() {
       contatextos++;
       break;
   }
-
   if (saida != 1)
     document.querySelector(".titulo").textContent = textos[contatextos];
 }
@@ -578,16 +561,13 @@ function bloqueiaCampos() {
   for (let i = 0; i < 8; i++) {
     if (modoJogo == "C") {
       let cor = "green"
-      // document.getElementById('campo' + i).disabled = true;
       if (i != posicao[indice]) {
         imputs[i].disabled = true;
-
         cor = "red";
       } else {
         if (dificuldade == "M" && indice < 1) {
           indice++;
         }
-
         if (dificuldade == "D" && indice < 2) {
           indice++;
         }
@@ -595,6 +575,13 @@ function bloqueiaCampos() {
       imputs[i].style.border = '2px solid ' + cor;
       // document.getElementById('campo' + i).style.border = '2px solid ' + cor;
     }
+    let a;
+    for (let i = 0; i < posicao.length; i++) {
+      if (posicao[i] == 5) {
+        a = 1
+      }
+    }
+    (a == 1) ? travaCanhao = true : travaCanhao = false;
 
     if (modoJogo != "C") {
       // document.getElementById('campo' + i).disabled = false;
@@ -606,8 +593,9 @@ function bloqueiaCampos() {
 }
 
 function faseFacil() {
-
   imputs[0].value = velocidade;
+  // imputs[5].value = canhao.angulo = toRadiano(45);
+  // angulo= canhao.angulo;
 }
 
 function faseMedia() {
@@ -654,4 +642,5 @@ function loop() {
   //console.log(modoJogo);
 }
 
-window.addEventListener("keydown", canhao.move);
+// window.addEventListener("keydown", canhao.move);
+window.addEventListener("keydown", () => { if (travaCanhao) canhao.move(event) });
