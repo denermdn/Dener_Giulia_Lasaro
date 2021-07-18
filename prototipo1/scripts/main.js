@@ -304,7 +304,7 @@ document.addEventListener("click", (event) => {
     // velocidade = document.getElementById("campo1").value;
 
     velocidade = imputs[0].value;
-    projetil.componentes(velocidade);
+    projetil.componentes(velocidade, 9.788);
     alvo.setPosicao(projetil.alcance - 46, canvas.height - 70);
     lancar = true;
     projetil.reset(velocidade, canhao.posicao);
@@ -329,12 +329,13 @@ document.addEventListener("click", (event) => {
     // document.getElementById('campo8').value = (hmax).toFixed(2);
     try {
       imputs[4].value = (tempo).toFixed(2);
+      imputs[3].value = (gravidade).toFixed(2);
       imputs[6].value = (alcance).toFixed(2);
       imputs[7].value = (hmax).toFixed(2);
+
       projetil.em_movimento = 1;
     } catch (e) {
     }
-
   }
 
 });
@@ -371,14 +372,6 @@ function calcular() {
 
   // vox = velocidade * Math.cos(aux);
   // voy = velocidade * Math.sin(aux);
-  // console.log(velocidade + "a"); 
-  // console.log(vox +"a");
-  // console.log(voy +"a");
-  // console.log(gravidade +"a");
-  // console.log(tempo +"a");
-  // console.log(angulo +"a");
-  // console.log(alcance +"a");
-  // console.log(hmax +"a");
 }
 
 
