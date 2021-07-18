@@ -224,6 +224,7 @@ document.addEventListener("click", (event) => {
     pontuacao.textContent = "Pontos : 0";
     modoJogo = "C";
     indice = 0;
+    velocidade = Math.floor(Math.random() * 70 + 30);
   }
 });
 
@@ -304,7 +305,7 @@ document.addEventListener("click", (event) => {
     // velocidade = document.getElementById("campo1").value;
 
     velocidade = imputs[0].value;
-    projetil.componentes(velocidade, 9.788);
+    projetil.componentes(velocidade, 9.8); ///Aqui é passada a gravidade
     alvo.setPosicao(projetil.alcance - 46, canvas.height - 70);
     lancar = true;
     projetil.reset(velocidade, canhao.posicao);
@@ -362,11 +363,11 @@ function calcular() {
   velocidade = parseFloat(imputs[0].value);
   // angulo = parseFloat(document.getElementById('campo6').value = Math.floor(toGrau(aux)));
   angulo = parseFloat(imputs[5].value = Math.floor(toGrau(aux)));
+  vox = calc_Vx(velocidade, toRadiano(angulo));
+  voy = calc_Vy(velocidade, toRadiano(angulo));
   if (vox < 0) {
     vox = vox * -1;
   }
-  vox = calc_Vx(velocidade, toRadiano(angulo));
-  voy = calc_Vy(velocidade, toRadiano(angulo));
   //console.log(voy);
 
 
@@ -407,10 +408,12 @@ function modoLivre() {
   // } catch (e) { }
 }
 
+function initCampos() {
+
+}
+
 function exibeIntroducao() {
-
   switch (contatextos) {
-
     case 0:
       telaEscura.style.display = "block";
       telaEscura.style.opacity = 0.7;
@@ -602,6 +605,7 @@ function bloqueiaCampos() {
 
 function faseFacil() {
 
+  imputs[0].value = velocidade;
 }
 
 function faseMedia() {
