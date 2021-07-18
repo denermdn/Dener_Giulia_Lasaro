@@ -201,7 +201,7 @@ function auxBlock() {
   minhatela.style.display = "block";
   campodados.style.display = "block";
   exitb.style.display = "block";
-  pontuacao.style.display="block";
+  pontuacao.style.display = "block";
   loop();
 }
 
@@ -209,7 +209,7 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#modoLivre")) {
     modoJogo = "L";
     auxBlock();
-    pontuacao.style.display="none";
+    pontuacao.style.display = "none";
   }
 });
 
@@ -217,7 +217,7 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#modoCompetitivo")) {
     gmenu.style.display = "none";
     smenu.style.display = "block";
-    pontuacao.textContent="Pontos : 0";
+    pontuacao.textContent = "Pontos : 0";
     modoJogo = "C";
   }
 });
@@ -281,7 +281,7 @@ document.addEventListener("click", (event) => {
     projetil.angulo = Math.floor(toGrau(-aux_angulo + toRadiano(25)));
 
     // velocidade = document.getElementById("campo1").value;
-    
+
     velocidade = imputs[0].value;
     projetil.componentes(velocidade);
     alvo.setPosicao(projetil.alcance - 46, canvas.height - 70);
@@ -289,22 +289,26 @@ document.addEventListener("click", (event) => {
     projetil.reset(velocidade, canhao.posicao);
     context_3.clearRect(0, 0, canvas.width, canvas.height);
 
-    vox = calc_Vx(velocidade, toRadiano(angulo));
-    voy = calc_Vy(velocidade, toRadiano(angulo));
-
-    gravidade = calc_Gravidade(voy, projetil.altura_maxima);
-    tempo = calc_TempoVoo(voy, gravidade);
-    alcance = calc_Alcance(vox, tempo);
-    hmax = calc_AlturaMax(voy, gravidade);
-
+    // vox = calc_Vx(velocidade, toRadiano(angulo));
+    // voy = calc_Vy(velocidade, toRadiano(angulo));
+    if (voy != 0) {
+      gravidade = calc_Gravidade(voy, projetil.altura_maxima);
+      tempo = calc_TempoVoo(voy, gravidade);
+      alcance = calc_Alcance(vox, tempo);
+      hmax = calc_AlturaMax(voy, gravidade);
+    }
     ///
     // document.getElementById('campo5').value = (tempo).toFixed(2);
     // document.getElementById('campo7').value = (alcance).toFixed(2);
     // document.getElementById('campo8').value = (hmax).toFixed(2);
 
-    imputs[4].value = (tempo).toFixed(2);
-    imputs[6].value = (alcance).toFixed(2);
-    imputs[7].value= (hmax).toFixed(2);
+    try {
+      imputs[4].value = (tempo).toFixed(2);
+      imputs[6].value = (alcance).toFixed(2);
+      imputs[7].value = (hmax).toFixed(2);
+    }
+    catch (e) { }
+
     projetil.em_movimento = 1;
   }
 
@@ -375,7 +379,7 @@ function modoLivre() {
   if (modoJogo == "L") {
     // document.getElementById('campo2').value = vox.toFixed(2);
     // document.getElementById('campo3').value = voy.toFixed(2);
-    imputs[1].value = vox.toFixed(2);
+    imputs[1].value = vox.toFixed(1);
     imputs[2].value = voy.toFixed(2);
   }
   // try {
@@ -393,18 +397,17 @@ function exibeIntroducao() {
       telaEscura.style.opacity = 0.7;
       exitb.style.zIndex = 12;
       campodados.style.display = "none";
-      pontuacao.style.display="none";
+      pontuacao.style.display = "none";
       break;
 
     case 1:
-      if(confirme.style.display!='block'){
+      if (confirme.style.display != 'block') {
         cenario.desenhar(context);
         canhao.draw(context);
         canhao.rodar(context_2);
         campodados.style.display = "block";
       }
-      else
-      {
+      else {
         context.clearRect(0, 0, canvas.width, canvas.height);
         context_2.clearRect(0, 0, canvas.width, canvas.height);
         campodados.style.display = "none";
@@ -412,77 +415,71 @@ function exibeIntroducao() {
       break;
 
     case 2:
-      if(confirme.style.display!='block'){
+      if (confirme.style.display != 'block') {
 
         campodados.style.display = "none";
         context.clearRect(0, 0, canvas.width, canvas.height);
         canhao.draw(context);
         canhao.rodar(context_2);
       }
-      else
-      {
+      else {
         context.clearRect(0, 0, canvas.width, canvas.height);
         context_2.clearRect(0, 0, canvas.width, canvas.height);
       }
       break;
 
     case 3:
-      if(confirme.style.display!='block'){
+      if (confirme.style.display != 'block') {
         context_2.clearRect(0, 0, canvas.width, canvas.height);
         cenario.desenhar(context);
       }
-      else
-      {
+      else {
         context.clearRect(0, 0, canvas.width, canvas.height);
       }
       break;
 
     case 4:
 
-      if(confirme.style.display!='block')
-      {
+      if (confirme.style.display != 'block') {
         context.clearRect(0, 0, canvas.width, canvas.height);
         campodados.style.display = "block";
         campodados.style.zIndex = 12;
         campodados.style.opacity = 1;
       }
       else
-      campodados.style.display = "none";
+        campodados.style.display = "none";
 
       break;
 
     case 5:
 
-      if(confirme.style.display!='block')
-      campodados.style.opacity = 1;
+      if (confirme.style.display != 'block')
+        campodados.style.opacity = 1;
       else
-      campodados.style.opacity = 0;
+        campodados.style.opacity = 0;
 
       break;
 
     case 6:
 
-      if(confirme.style.display!='block')
-      campodados.style.opacity = 1;
+      if (confirme.style.display != 'block')
+        campodados.style.opacity = 1;
       else
-      campodados.style.opacity = 0;
+        campodados.style.opacity = 0;
       break;
 
     case 7:
-      if(confirme.style.display!='block')
-      {
+      if (confirme.style.display != 'block') {
         campodados.style.opacity = 0.7;
         campodados.style.zIndex = 8;
       }
-      else
-      {
+      else {
         campodados.style.opacity = 0;
       }
       break;
 
     case 8:
-      if(confirme.style.display!='block')
-      {
+      if (confirme.style.display != 'block') {
         campodados.style.zIndex = 12;
         campodados.style.opacity = 1;
         modoJogo = 'C';
@@ -490,18 +487,17 @@ function exibeIntroducao() {
         bloqueiaCampos();
         modoJogo = 'T';
       }
-      else
-      {
+      else {
         campodados.style.opacity = 0;
       }
       break;
 
     case 9:
 
-      if(confirme.style.display!='block')
-      campodados.style.opacity = 1;
+      if (confirme.style.display != 'block')
+        campodados.style.opacity = 1;
       else
-      campodados.style.opacity = 0;
+        campodados.style.opacity = 0;
 
       break;
 
@@ -512,35 +508,33 @@ function exibeIntroducao() {
       break;
 
     case 11:
-      if(confirme.style.display!='block')
-      {
+      if (confirme.style.display != 'block') {
         campodados.style.zIndex = 8;
-        pontuacao.textContent="Pontos : 2578";
-        pontuacao.style.display="block";
-        pontuacao.style.zIndex=12;
+        pontuacao.textContent = "Pontos : 2578";
+        pontuacao.style.display = "block";
+        pontuacao.style.zIndex = 12;
       }
-      else
-      {
-        pontuacao.style.display="none";
-        pontuacao.style.zIndex=9;
+      else {
+        pontuacao.style.display = "none";
+        pontuacao.style.zIndex = 9;
       }
       break;
 
-      case 12:
-        if(confirme.style.display!='block')
-        pontuacao.style.display="block";
+    case 12:
+      if (confirme.style.display != 'block')
+        pontuacao.style.display = "block";
       else
-      pontuacao.style.display="none";
-        break;
-
-      case 13:
-        pontuacao.style.zIndex=9;
-        pontuacao.style.display="none";
-        pontuacao.textContent="Pontos : 0";
+        pontuacao.style.display = "none";
       break;
-      
-      case 14:
-        bloqueiaCampos();
+
+    case 13:
+      pontuacao.style.zIndex = 9;
+      pontuacao.style.display = "none";
+      pontuacao.textContent = "Pontos : 0";
+      break;
+
+    case 14:
+      bloqueiaCampos();
       telaEscura.style.opacity = 1;
       telaEscura.style.display = "none";
       campodados.style.display = "block";
@@ -561,18 +555,18 @@ function bloqueiaCampos() {
       let cor = "green"
       if (i != campos[pos]) {
         // document.getElementById('campo' + i).disabled = true;
-        imputs[i-1].disabled = true;
+        imputs[i - 1].disabled = true;
 
         cor = "red";
       }
       // document.getElementById('campo' + i).style.border = '2px solid ' + cor;
-      imputs[i-1].style.border = '2px solid ' + cor;
+      imputs[i - 1].style.border = '2px solid ' + cor;
     }
     else {
       // document.getElementById('campo' + i).disabled = false;
       // document.getElementById('campo' + i).style.border = 'none';
-      imputs[i-1].disabled = false;
-      imputs[i-1].style.border = 'none';
+      imputs[i - 1].disabled = false;
+      imputs[i - 1].style.border = 'none';
     }
   }
 }
