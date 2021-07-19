@@ -92,7 +92,30 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#confirmar")) {
-    confirme.style.display = "none";
+    resetAux();
+  }
+});
+
+document.addEventListener("click", (event) => {
+  if (event.target.matches("#voltar-menu")) {
+    telaEscura.style.display="block";
+    alerta_pontuacao.style.display="none";
+    resetAux();
+  }
+});
+
+document.addEventListener("click", (event) => {
+  if (event.target.matches("#reset-fase")) {
+    alerta_pontuacao.style.display="none";
+    velocidade = Math.floor(Math.random() * 70 + 40);
+    angulo = Math.floor(Math.random() * 91);
+    modoCompetitivo();
+  }
+});
+
+function resetAux()
+{
+  confirme.style.display = "none";
     travaCanhao = true;
     movimentacao.style.display = "none";
     tmenu.style.display = "block";
@@ -117,8 +140,7 @@ document.addEventListener("click", (event) => {
     // posicao.kill();
     clearDados();
     controle = 0;
-  }
-});
+}
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#desconfirmar")) {
