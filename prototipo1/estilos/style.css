@@ -249,6 +249,18 @@ th {
   cursor: default;
 }
 
+#alerta-pontuacao {
+  font-size: 200%;
+  font-weight: bold;
+  text-align: center;
+  top: 1%;
+  left: 37%;
+  background-color: rgb(255, 255, 255);
+  z-index: 9;
+  position: absolute;
+  color: black;
+}
+
 #movimentacao {
   font-size: 130%;
   width: 20%;
@@ -347,4 +359,5 @@ th {
   height: 30%;
   width: 35%;
   font-size: 60%;
+
 }

@@ -54,6 +54,8 @@ const confirme = document.getElementById('confirmexit');
 const gmenu = document.getElementById('modeselect');
 const smenu = document.getElementById('playselect');
 const cbtrajetoria = document.getElementById('trajet');
+const alerta_pontuacao = document.getElementById('alerta-pontuacao');
+
 var em_jogo = false;
 var modoJogo = "";
 var dificuldade;
@@ -437,8 +439,19 @@ document.addEventListener("click", (event) => {
       projetil.reset(velocidade, canhao.posicao);
       context_3.clearRect(0, 0, canvas.width, canvas.height);
       projetil.em_movimento=1;
-
       pontuacao.textContent="Pontos : "+ pontos ;
+      document.getElementById("texto-pontuacao").textContent = "Parabéns! Voce Acertou. Voce ganhou : "+pontos+" pontos";
+      document.getElementById("reset-fase").textContent = "Proxima Fase";
+      // alerta_pontuacao.textContent="Parabens! ";
+      // alerta_pontuacao.textContent+="Voce ganhou "+pontos+" pontos";
+
+      alerta_pontuacao.style.display="block";
+    }else
+    {
+      pontuacao.textContent="Pontos : "+ pontos ;
+      document.getElementById("texto-pontuacao").textContent = "Voce errou. Voce ganhou : "+pontos+" pontos";
+      document.getElementById("reset-fase").textContent = "Tente Novamente";
+      alerta_pontuacao.style.display="block";
     }
 
     console.log(pontos);
@@ -734,7 +747,7 @@ function valor_campos() {
 
   if (dificuldade == 'D')
     imputs[posicao[2]].value = 0;
-
+  
   canhao.muda_angulo(toRadiano(-angulo + 25));
 }
 
