@@ -58,12 +58,13 @@ var em_jogo = false;
 var modoJogo = "";
 var dificuldade;
 var pos;
-var resposta;
+var resposta = new Array(3);
 var saida = 0;
 var posicao = new Array();
 var indice = 0;
 var travaCanhao = true;
-
+var controle = 0;
+var pontos = 0;
 
 telaEscura.style.display = "block";
 tmenu.style.display = "block";
@@ -90,6 +91,7 @@ document.addEventListener("click", (event) => {
 document.addEventListener("click", (event) => {
   if (event.target.matches("#confirmar")) {
     confirme.style.display = "none";
+    travaCanhao = true;
     movimentacao.style.display = "none";
     tmenu.style.display = "block";
     aux_angulo = 0;
@@ -112,6 +114,7 @@ document.addEventListener("click", (event) => {
     bloqueiaCampos();
     // posicao.kill();
     clearDados();
+    controle = 0;
   }
 });
 
@@ -229,6 +232,7 @@ document.addEventListener("click", (event) => {
     modoJogo = "C";
     indice = 0;
     velocidade = Math.floor(Math.random() * 70 + 40);
+    angulo = Math.floor(Math.random() * 91);
   }
 });
 
@@ -304,9 +308,10 @@ const alvo = new Alvo();
 var velocidade, vox, voy, gravidade, tempo, angulo, alcance, hmax;
 var lancar = false;
 
+gravidade = 9.8;
 document.addEventListener("click", (event) => {
 
-  if (event.target.matches("#botaolancar") && !lancar && modoJogo != 'T') {
+  if (event.target.matches("#botaolancar") && !lancar && modoJogo != 'T' && modoJogo != 'C') {
     // projetil.angulo = Math.floor(((180 * (-aux_angulo + toRadiano(25))) / Math.PI));
     projetil.angulo = Math.floor(toGrau(-aux_angulo + toRadiano(25)));
     // projetil.angulo = Math.floor(toGrau(canhao.angulo + toRadiano(25)));
@@ -314,7 +319,7 @@ document.addEventListener("click", (event) => {
     // velocidade = document.getElementById("campo1").value;
 
     velocidade = imputs[0].value;
-    projetil.componentes(velocidade, 9.8); ///Aqui é passada a gravidade
+    projetil.componentes(velocidade, gravidade); ///Aqui é passada a gravidade
     alvo.setPosicao(projetil.alcance - 46, canvas.height - 70);
     lancar = true;
     projetil.reset(velocidade, canhao.posicao);
@@ -348,7 +353,98 @@ document.addEventListener("click", (event) => {
     }
   }
 
+  if (event.target.matches("#botaolancar") && modoJogo == 'C') {
+
+    //projetil.angulo = Math.floor(toGrau(-aux_angulo + toRadiano(25)));
+    console.log("Projetil " + projetil.angulo);
+    // projetil.angulo = Math.floor(toGrau(canhao.angulo + toRadiano(25)));
+
+    // velocidade = document.getElementById("campo1").value;
+
+    // velocidade = imputs[0].value;
+
+
+
+
+    var j;
+    if (dificuldade == 'F')
+      j = 1;
+    else if (dificuldade == 'M')
+      j = 2;
+    else if (dificuldade == 'D')
+      j = 3;
+
+    var eh_correta = 0;
+    for (var i = 0; i < j; i++) {
+      switch (posicao[i]) {
+
+        case 0:
+          if (parseFloat(imputs[0].value) == velocidade)
+            eh_correta += 1;
+          break;
+
+        case 1:
+          if (parseFloat(imputs[1].value) == vox.toFixed(2))
+            eh_correta += 1;
+          break;
+
+        case 2:
+          if (parseFloat(imputs[2].value) == voy.toFixed(2))
+            eh_correta += 1;
+          break;
+
+          case 3:
+          if (parseFloat(imputs[4].value) == gravidade.toFixed(2))
+            eh_correta += 1;
+          break;
+
+        case 4:
+          if (parseFloat(imputs[4].value) == tempo.toFixed(2))
+            eh_correta += 1;
+          break;
+
+        case 5:
+          if (parseFloat(imputs[5].value) == var_angulo)
+            eh_correta += 1;
+          console.log(angulo);
+          break;
+
+        case 6:
+          if (parseFloat(imputs[6].value) == alcance.toFixed(2))
+            eh_correta += 1;
+          break;
+
+        case 7:
+          if (parseFloat(imputs[7].value) == hmax.toFixed(2))
+            eh_correta += 1;
+          break;
+      }
+    }
+
+    pontos = pontos + 100 * eh_correta;
+
+    console.log(j);
+    console.log(eh_correta);
+
+    if (eh_correta == j) {
+
+      projetil.angulo = Math.floor(toGrau(-angulo + toRadiano(25)));
+
+      console.log(angulo);
+      lancar=true;
+      projetil.componentes(velocidade, 9.8); ///Aqui é passada a gravidade
+      alvo.setPosicao(projetil.alcance - 46, canvas.height - 70);
+      projetil.reset(velocidade, canhao.posicao);
+      context_3.clearRect(0, 0, canvas.width, canvas.height);
+      projetil.em_movimento=1;
+
+      pontuacao.textContent="Pontos : "+ pontos ;
+    }
+
+    console.log(pontos);
+  }
 });
+
 
 ///////////////////////////////////////////////////////////////
 function toRadiano(angulo) {
@@ -365,7 +461,8 @@ function calcular() {
   // velocidade = parseFloat(document.getElementById('campo1').value);
   velocidade = parseFloat(imputs[0].value);
   // angulo = parseFloat(document.getElementById('campo6').value = Math.floor(toGrau(aux)));
-  angulo = parseFloat(imputs[5].value = Math.floor(toGrau(aux)));
+  if (modoJogo == 'L')
+    angulo = parseFloat(imputs[5].value = Math.floor(toGrau(aux)));
   vox = calc_Vx(velocidade, toRadiano(angulo));
   voy = calc_Vy(velocidade, toRadiano(angulo));
   if (vox < 0) {
@@ -380,7 +477,7 @@ function calcular() {
 function modoLivre() {
   cenario.desenhar(context);
   canhao.draw(context);
-  
+
   canhao.rodar(context_2);
   if (projetil.em_movimento != 1) {
     lancar = false;
@@ -397,8 +494,10 @@ function modoLivre() {
     projetil.desenhar(context_3, canvas.height, 40, 33);
     projetil.drawBall(context_4, 50, 35);
   }
-  calcular();
+
+
   if (modoJogo == "L") {
+    calcular();
     // document.getElementById('campo2').value = vox.toFixed(2);
     // document.getElementById('campo3').value = voy.toFixed(2);
     imputs[1].value = vox.toFixed(2);
@@ -411,7 +510,8 @@ function modoLivre() {
 }
 
 function clearDados() {
-  velocidade = vox = voy = gravidade = tempo = angulo = alcance = hmax = 0;
+  velocidade = vox = voy = tempo = angulo = alcance = hmax = 0;
+  gravidade = 9.8;
   imputs[0].value = 100;
 }
 
@@ -457,7 +557,7 @@ function exibeIntroducao() {
     case 3:
       if (confirme.style.display != 'block') {
         context_2.clearRect(0, 0, canvas.width, canvas.height);
-        cenario.id=0;
+        cenario.id = 0;
         cenario.desenhar(context);
       }
       else {
@@ -547,7 +647,7 @@ function exibeIntroducao() {
       break;
     case 14:
       bloqueiaCampos();
-      cenario.id=1;
+      cenario.id = 1;
       context.clearRect(0, 0, canvas.width, canvas.height);
       cenario.desenhar(context);
       telaEscura.style.opacity = 1;
@@ -583,13 +683,7 @@ function bloqueiaCampos() {
       imputs[i].style.border = '2px solid ' + cor;
       // document.getElementById('campo' + i).style.border = '2px solid ' + cor;
     }
-    let a;
-    for (let i = 0; i < posicao.length; i++) {
-      if (posicao[i] == 5) {
-        a = 1
-      }
-    }
-    (a == 1) ? travaCanhao = true : travaCanhao = false;
+
 
     if (modoJogo != "C") {
       // document.getElementById('campo' + i).disabled = false;
@@ -601,8 +695,6 @@ function bloqueiaCampos() {
 }
 
 function faseFacil() {
-  imputs[0].value = velocidade;
-  // imputs[5].value = canhao.angulo = toRadiano(45);
   // angulo= canhao.angulo;
 }
 
@@ -616,8 +708,57 @@ function faseDificil() {
 
 }
 
+
+function valor_campos() {
+
+  gravidade = 9.8;
+  vox = calc_Vx(velocidade, toRadiano(angulo));
+  voy = calc_Vy(velocidade, toRadiano(angulo));
+
+  console.log("gravidade  " + gravidade);
+  tempo = calc_TempoVoo(voy, gravidade);
+  alcance = calc_Alcance(vox, tempo);
+  hmax = calc_AlturaMax(voy, gravidade);
+
+  imputs[1].value = vox.toFixed(2);
+  imputs[2].value = voy.toFixed(2);
+  imputs[3].value = (gravidade).toFixed(2);
+  imputs[4].value = (tempo).toFixed(2);
+  imputs[6].value = (alcance).toFixed(2);
+  imputs[7].value = (hmax).toFixed(2);
+
+  imputs[posicao[0]].value = 0;
+
+  if (dificuldade == 'M' || dificuldade == 'D')
+    imputs[posicao[1]].value = 0;
+
+  if (dificuldade == 'D')
+    imputs[posicao[2]].value = 0;
+
+  canhao.muda_angulo(toRadiano(-angulo + 25));
+}
+
+var var_angulo;
 function modoCompetitivo() {
+  if (controle == 0) {
+    imputs[0].value = velocidade;
+    imputs[5].value = canhao.angulo = angulo;
+    var_angulo = angulo;
+    console.log(velocidade);
+    console.log(angulo);
+    controle = 1;
+    valor_campos();
+  }
+
   // bloqueiaCampos();
+  let a;
+  for (let i = 0; i < posicao.length; i++) {
+    if (posicao[i] == 5) {
+      a = 1
+    }
+  }
+  (a == 1) ? travaCanhao = true : travaCanhao = false;
+
   switch (dificuldade) {
     case "F":
       faseFacil();
@@ -650,5 +791,5 @@ function loop() {
   //console.log(modoJogo);
 }
 
-// window.addEventListener("keydown", canhao.move);
-window.addEventListener("keydown", () => { if (travaCanhao) canhao.move(event) });
+window.addEventListener("keydown", canhao.move);
+// window.addEventListener("keydown", () => { if (travaCanhao) canhao.move(event) });

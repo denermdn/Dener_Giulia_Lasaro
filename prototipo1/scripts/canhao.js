@@ -48,6 +48,7 @@ class Canhao {
         aux_angulo -= incremento;
       }
     }
+
     if (tecla == 39) {
       if (this.angulo > 0) {
         aux_angulo += incremento;
@@ -55,4 +56,10 @@ class Canhao {
     }
     this.angulo = aux_angulo;
   }
+
+  muda_angulo(valor)
+  {
+    aux_angulo=valor;
+  }
+
 }
