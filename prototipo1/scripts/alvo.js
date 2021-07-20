@@ -17,6 +17,7 @@ class Alvo {
     }
 
     draw(context) {
+        context.fillStyle ="gray";
         context.fillRect(this.alvo_posicao.posX, this.alvo_posicao.posY - 29, 200, 30);
         context.drawImage(sprite_alvo, this.alvo_posicao.posX, this.alvo_posicao.posY - 40, 200, 20);
     }

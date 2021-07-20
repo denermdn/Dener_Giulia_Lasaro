@@ -41,6 +41,7 @@ var context_4 = canvas_4.getContext("2d");
 
 var texto_menu = "Menu";
 var texto_selecaoModo = "Seleção de Modos";
+var texto_dificuldade = "Seleção de Fases";
 var texto_sair = "Vitória sem luta é triunfo sem glória.";
 
 const telaEscura = document.getElementById("tela-escura");
@@ -98,15 +99,14 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#voltar-menu")) {
-    telaEscura.style.display="block";
-    alerta_pontuacao.style.display="none";
+    telaEscura.style.display = "block";
+    alerta_pontuacao.style.display = "none";
     resetAux();
   }
 });
 
 
-function resetAux()
-{
+function resetAux() {
   confirme.style.display = "none";
   travaCanhao = true;
   movimentacao.style.display = "none";
@@ -117,7 +117,7 @@ function resetAux()
   projetil.em_movimento = 0;
   em_jogo = false;
   campodados.style.display = "none";
-  alerta_pontuacao.style.display="none";
+  alerta_pontuacao.style.display = "none";
   campodados.style.opacity = 1;
   telaEscura.style.opacity = 1;
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -130,83 +130,83 @@ function resetAux()
   document.querySelector(".titulo").textContent = texto_menu;
   modoJogo = "FF";
   bloqueiaCampos();
-    clearDados();
-    controle = 0;
-    posicao=new Array();
-  }
-  
-  document.addEventListener("click", (event) => {
-    if (event.target.matches("#desconfirmar")) {
-      saida = 0;
-      if (modoJogo != 'T')
+  clearDados();
+  controle = 0;
+  posicao = new Array();
+}
+
+document.addEventListener("click", (event) => {
+  if (event.target.matches("#desconfirmar")) {
+    saida = 0;
+    if (modoJogo != 'T')
       telaEscura.style.display = "none";
-      confirme.style.display = "none";
-    }
-  });
-  
-  document.addEventListener("mouseover", (event) => {
-    if (event.target.matches(".tabdados")
+    confirme.style.display = "none";
+  }
+});
+
+document.addEventListener("mouseover", (event) => {
+  if (event.target.matches(".tabdados")
     || event.target.matches("#tabeladados")
     || event.target.matches("#botaolancar")
     || event.target.matches("#trajet")
     || event.target.matches(".inputdados")) {
-      campodados.style.opacity = "1";
-    }
-  });
-  
-  document.addEventListener("mouseout", (event) => {
-    if (event.target.matches(".tabdados")
+    campodados.style.opacity = "1";
+  }
+});
+
+document.addEventListener("mouseout", (event) => {
+  if (event.target.matches(".tabdados")
     || event.target.matches("#tabeladados")
     || event.target.matches("#botaolancar")
     || event.target.matches("#trajet")
     || event.target.matches(".inputdados")) {
-      campodados.style.opacity = "0.3";
-    }
-  });
-  
-  document.addEventListener("mouseover", (event) => {
-    if (event.target.matches("cd")) {
-      campodados.style.opacity = "1";
-    }
-  });
-  
-  document.addEventListener("mouseout", (event) => {
-    if (event.target.matches("cd")) {
-      campodados.style.opacity = "0.5";
-    }
-  });
-  
-  document.addEventListener("mouseover", (event) => {
-    if (event.target.matches("#exitbutton")) {
-      exitb.style.backgroundColor = "red";
-    }
-  });
-  
-  document.addEventListener("mouseout", (event) => {
-    if (event.target.matches("#exitbutton")) {
-      exitb.style.backgroundColor = "gray";
-    }
-  });
-  
-  document.addEventListener("click", (event) => {
-    if (event.target.matches("#gamemode")) {
-      tmenu.style.display = "none";
-      gmenu.style.display = "block";
-      document.querySelector(".titulo").textContent = texto_selecaoModo;
-    }
-  });
-  
-  document.addEventListener("click", (event) => {
-    if (event.target.matches("#introducao")) {
-      gmenu.style.display = "none";
-      saida = 0;
-      contatextos = 0;
-      parar = 1;
-      em_jogo = true;
-      modoJogo = "T";
-      auxBlock();
-    }
-  });
+    campodados.style.opacity = "0.3";
+  }
+});
+
+document.addEventListener("mouseover", (event) => {
+  if (event.target.matches("cd")) {
+    campodados.style.opacity = "1";
+  }
+});
+
+document.addEventListener("mouseout", (event) => {
+  if (event.target.matches("cd")) {
+    campodados.style.opacity = "0.5";
+  }
+});
+
+document.addEventListener("mouseover", (event) => {
+  if (event.target.matches("#exitbutton")) {
+    exitb.style.backgroundColor = "red";
+  }
+});
+
+document.addEventListener("mouseout", (event) => {
+  if (event.target.matches("#exitbutton")) {
+    exitb.style.backgroundColor = "gray";
+  }
+});
+
+document.addEventListener("click", (event) => {
+  if (event.target.matches("#gamemode")) {
+    tmenu.style.display = "none";
+    gmenu.style.display = "block";
+    document.querySelector(".titulo").textContent = texto_selecaoModo;
+  }
+});
+
+document.addEventListener("click", (event) => {
+  if (event.target.matches("#introducao")) {
+    gmenu.style.display = "none";
+    saida = 0;
+    contatextos = 0;
+    parar = 1;
+    em_jogo = true;
+    modoJogo = "T";
+    auxBlock();
+  }
+});
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#tela-escura") && saida != 1) {
@@ -245,6 +245,7 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#modoCompetitivo")) {
     gmenu.style.display = "none";
     smenu.style.display = "block";
+    document.querySelector(".titulo").textContent = texto_dificuldade;
     pontuacao.textContent = "Pontos : 0";
     modoJogo = "C";
     indice = 0;
@@ -276,7 +277,7 @@ document.addEventListener("click", (event) => {
     dificuldade = "D";
     aux_faseDificil();
     auxBlock();
-    
+
   }
 });
 
@@ -285,54 +286,54 @@ document.addEventListener("click", (event) => {
     context.clearRect(0, 0, canvas.width, canvas.height);
     context_3.clearRect(0, 0, canvas.width, canvas.height);
     context_4.clearRect(0, 0, canvas.width, canvas.height);
-    projetil.em_movimento=0;
-    alerta_pontuacao.style.display="none";
+    projetil.em_movimento = 0;
+    alerta_pontuacao.style.display = "none";
 
-    posicao=new Array();
+    posicao = new Array();
     indice = 0;
     clearDados();
     controle = 0;
     velocidade = Math.floor(Math.random() * 70 + 40);
     angulo = Math.floor(Math.random() * 91);
-    
+
     console.log(dificuldade);
-    
-    if(dificuldade=='F')
-    aux_faseFacil();
-    else if(dificuldade=='M')
-    aux_faseMedia();
-    else if(dificuldade=='D')
-    aux_faseDificil();
-    
-    
-    modoJogo='L';
+
+    if (dificuldade == 'F')
+      aux_faseFacil();
+    else if (dificuldade == 'M')
+      aux_faseMedia();
+    else if (dificuldade == 'D')
+      aux_faseDificil();
+
+
+    modoJogo = 'L';
     bloqueiaCampos();
-    modoJogo='C';
+    modoJogo = 'C';
     bloqueiaCampos();
 
   }
 
-  if (event.target.matches("#reset-fase") && document.getElementById("reset-fase").textContent == "Proxima Fase") {
+  if (event.target.matches("#reset-fase")
+   && document.getElementById("reset-fase").textContent == "Proxima Fase") {
     //lancar=false;
-    if(cenario.id==1)
-    cenario.id=0;
-    else if(cenario.id==0)
-    cenario.id=1;
+    if (cenario.id == 1)
+      cenario.id = 0;
+    else if (cenario.id == 0)
+      cenario.id = 1;
 
     cenario.desenhar(context);
-}});
+  }
+});
 
-function aux_faseDificil()
-{
+function aux_faseDificil() {
   posicao[0] = Math.floor(Math.random() * 8);
-    while (posicao.length < 3) {
-      posicao.push(Math.floor(Math.random() * 8))
-      posicao = [...new Set(posicao)];
-    }
+  while (posicao.length < 3) {
+    posicao.push(Math.floor(Math.random() * 8))
+    posicao = [...new Set(posicao)];
+  }
 }
 
-function aux_faseMedia()
-{
+function aux_faseMedia() {
   while (posicao.length < 2) {
     let a = Math.floor(Math.random() * 8);
     if (a != 5 && a != 3) {
@@ -342,10 +343,10 @@ function aux_faseMedia()
   }
 }
 
-function aux_faseFacil(){
+function aux_faseFacil() {
   posicao[0] = Math.floor(Math.random() * 4);
-    if (posicao[0] == 3)
-      posicao[0] = 6;
+  if (posicao[0] == 3)
+    posicao[0] = 6;
 }
 
 document.addEventListener("click", (event) => {
@@ -360,7 +361,7 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#exitp")) {
     smenu.style.display = "none";
     gmenu.style.display = "block";
-    document.querySelector(".titulo").textContent = texto_menu;
+    document.querySelector(".titulo").textContent = texto_selecaoModo;
   }
 });
 
@@ -456,7 +457,7 @@ document.addEventListener("click", (event) => {
             eh_correta += 1;
           break;
 
-          case 3:
+        case 3:
           if (parseFloat(imputs[3].value) == gravidade.toFixed(1))
             eh_correta += 1;
           break;
@@ -494,27 +495,26 @@ document.addEventListener("click", (event) => {
       projetil.angulo = Math.floor(toGrau(-angulo + toRadiano(25)));
 
       console.log(angulo);
-      lancar=true;
+      lancar = true;
       projetil.componentes(velocidade, 9.8); ///Aqui é passada a gravidade
       alvo.setPosicao(projetil.alcance - 46, canvas.height - 70);
       projetil.reset(velocidade, canhao.posicao);
       context_3.clearRect(0, 0, canvas.width, canvas.height);
-      projetil.em_movimento=1;
-      pontuacao.textContent="Pontos : "+ pontos ;
-      document.getElementById("texto-pontuacao").textContent = "Parabéns! Voce Acertou. Voce ganhou : "+eh_correta*100+" pontos";
+      projetil.em_movimento = 1;
+      pontuacao.textContent = "Pontos : " + pontos;
+      document.getElementById("texto-pontuacao").textContent = "Parabéns! Voce Acertou. Voce ganhou : " + eh_correta * 100 + " pontos";
       document.getElementById("reset-fase").textContent = "Proxima Fase";
       // alerta_pontuacao.textContent="Parabens! ";
       // alerta_pontuacao.textContent+="Voce ganhou "+pontos+" pontos";
 
-      alerta_pontuacao.style.display="block";
-      
-    }else
-    {
-      pontuacao.textContent="Pontos : "+ pontos ;
-      document.getElementById("texto-pontuacao").textContent = "Voce errou. Voce tem: "+eh_correta*100+" pontos";
+      alerta_pontuacao.style.display = "block";
+
+    } else {
+      pontuacao.textContent = "Pontos : " + pontos;
+      document.getElementById("texto-pontuacao").textContent = "Voce errou. Voce tem: " + eh_correta * 100 + " pontos";
       // document.getElementById("texto-pontuacao").innerHTML= "<div id=\"texto-pontuacao\">Voce errou!<br>" + "Voce ganhou: " + pontos + " pontos</div>";
       document.getElementById("reset-fase").textContent = "Tente Novamente";
-      alerta_pontuacao.style.display="block";
+      alerta_pontuacao.style.display = "block";
     }
 
     console.log(pontos);
@@ -811,7 +811,7 @@ function valor_campos() {
 
   if (dificuldade == 'D')
     imputs[posicao[2]].value = 0;
-  
+
   canhao.muda_angulo(toRadiano(-angulo + 25));
 }
 
