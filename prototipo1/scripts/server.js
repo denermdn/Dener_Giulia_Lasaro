@@ -1,8 +1,11 @@
+import cors from "cors";
+
 const {Client} = require('pg');
 const express = require('express');
 const app = express();
-
+const router = express.Router();
 app.use(express.json());
+app.use(cors());
 
 
 // ------------------- Configurações de segurança (sem elas dá meio ruim) -----------------
@@ -44,7 +47,7 @@ app.get("/users", async (req, res) => {
 })
 
 
-app.post("/users", async (req, res) => {
+app.post("/api/users", async (req, res) => {
     let result = {}
     try{
         const reqJson = req.body;
@@ -57,12 +60,12 @@ app.post("/users", async (req, res) => {
         res.setHeader("content-type", "application/json")
         res.send(JSON.stringify(result))
     }
-   
+   //res.json(req.body);
 })
 
 
 
-
+//------- Função para chaamr a função delete -------------
 
 app.delete("/users", async (req, res) => {
     let result = {}
@@ -81,6 +84,8 @@ app.delete("/users", async (req, res) => {
    
 })
 
+
+// ---------------- "Ligar" o servidor ------------------
 
 app.listen(8080, () => console.log("Conectado na porta 8080"))
 
@@ -130,7 +135,7 @@ async function readUsers () {
 async function createUsers(userText) {
     try {
         console.log(userText);
-        await client.query("INSERT INTO TB_USER VALUES ($1);", [userText]);
+        await client.query("INSERT INTO TB_USER (USER_ID, USER_NAME, USER_LOGIN, USER_SENHA) VALUES (20, $1);", [userText]);
     
         return true;
     }

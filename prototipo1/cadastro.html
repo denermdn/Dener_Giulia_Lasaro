@@ -11,14 +11,14 @@
 <body>
     <div class="tela-escura" id="login">
         <h1>Cadastro</h1> <br>
-        <form action="" method="POST">
-        <input type="text" id="campoNome" placeholder="Nome">
+        <form  method="POST">
+        <input type="text" id="campoNome" placeholder="Nome" name="nome">
         <br><br>
-        <input type="text" id="campoEmail" placeholder="E-mail">
+        <input type="text" id="campoEmail" placeholder="E-mail" name="login">
         <br><br>
         <input type="text" id="campoConfEmail" placeholder="Confirmação do e-mail">
         <br><br>
-        <input type="password" id="campoSenha" placeholder="Senha">
+        <input type="password" id="campoSenha" placeholder="Senha" name="senha">
         <br><br>
         <input type="password" id="campoConfSenha" placeholder="Confirmação de Senha">
         <br><br>
@@ -30,19 +30,7 @@
     </div>
 
 
-    <script>
-        const btnCadastrar = document.getElementById("btnCadastrar");
-        btnCadastrar.addEventListener("click", async e=> {
-            const jsonRequest = {}
-                    jsonRequest.users = document.getElementById("campoNome").value;
-                    let result = await fetch("http://localhost:8080/users", {method: "POST", 
-                    headers: {"content-type": "application/json"}, body: JSON.stringify(jsonRequest) })
-                    result = await result.json();
-                    console.log(result);
-                    readUsers()
-                    if (!result.success)  alert("FAILED! ")
-        });
-    </script>
+    <script src="scripts/requisicaoCadastro.js"></script>
 
 </body>
 
