@@ -421,7 +421,7 @@ document.addEventListener("click", (event) => {
     }
   }
 
-  if (event.target.matches("#botaolancar") && modoJogo == 'C' && alerta_pontuacao.style.display==="block") {
+  if (event.target.matches("#botaolancar") && modoJogo == 'C') {
 
 
     console.log("Projetil " + projetil.angulo);
