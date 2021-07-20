@@ -1,18 +1,18 @@
 let textos = [
-  'Bem vindo ao introdutorio do TBPT, onde voce aprendera o básico para utilizar a nossa gamificação! 1',
-  'Ao fundo temos a estrutura principal da nossa gamificação. 2',
-  'A fase é composta por um canhão, de onde será arremessado um projétil. 3',
-  'Temos também o cenário. Fique atento ao plano de fundo, pois a gravidade muda conforme o cenário muda 4',
-  'E por fim, temos a principal ferramenta do jogo: a tabela de variáveis. 5',
-  'Por ela você poderá digitar valores referentes ao lançamento de projéteis desejado. 6',
-  'No modo livre, digite o valores que quizer na tabela e ela calculará os demais valores.',
-  'Fique ATENTO! Nem todos os valores de váriaveis combinados geram outros valores, como o exemplo da tabela. 7',
-  'No modo competitivo, alguns valores virão travados. Voce pode perceber a diferença entre valores trabados e destravados na tabela. 8',
-  'O objetivo no modo competitivo é calcular os valores que não estaram travados na tabela. 9',
-  'Use as formulas de lançamento de projéteis e seu conhecimento sobre Física para achar a resposta correta. 10',
-  'No modo competitivo, sua pontuação aparecerá aqui, e ela condiz com a corretude e tempo de resposta de cada fase. 11',
-  'Quanto menor o tempo de resposta e quanto mais perto da resposta estiver os valores digitados, mais pontos serão ganhos. 12',
-  'Boa sorte, e bons estudos! 14'
+  'Bem vindo ao introdutorio do TBPT, onde você aprenderá o básico para utilizar a nossa gamificação!',
+  'Ao fundo temos a estrutura principal da nossa gamificação.',
+  'A fase é composta por um canhão, de onde será arremessado um projétil.',
+  'Temos também o cenário. Fique atento ao plano de fundo, pois a gravidade pode variar conforme o cenário muda.',
+  'E, por fim, temos a principal ferramenta do jogo: a tabela de variáveis.',
+  'Por ela você poderá digitar valores referentes ao lançamento de projéteis desejado.',
+  'No modo livre, digite os valores que quizer na tabela e ela calculará os demais valores.',
+  'Fique ATENTO! Nem todos os valores de váriaveis combinados geram outros valores, como o exemplo da tabela.',
+  'No modo competitivo, alguns valores virão travados. Voce pode perceber a diferença entre valores travados e destravados na tabela.',
+  'O objetivo no modo competitivo é calcular os valores que não estarão travados na tabela.',
+  'Use as formulas de lançamento de projéteis e seu conhecimento sobre Física para achar a resposta correta.',
+  'No modo competitivo, sua pontuação aparecerá aqui, e ela condiz com a corretude das respostas de cada fase.',
+  'Quanto maior o número de respostas corretas, maior será sua pontuação.',
+  'Boa sorte, e bons estudos!'
 ];
 const imputs = document.querySelectorAll(".inputdados");
 var ntextos = textos.length;
@@ -104,116 +104,109 @@ document.addEventListener("click", (event) => {
   }
 });
 
-document.addEventListener("click", (event) => {
-  if (event.target.matches("#reset-fase")) {
-    alerta_pontuacao.style.display="none";
-    velocidade = Math.floor(Math.random() * 70 + 40);
-    angulo = Math.floor(Math.random() * 91);
-    modoCompetitivo();
-  }
-});
 
 function resetAux()
 {
   confirme.style.display = "none";
-    travaCanhao = true;
-    movimentacao.style.display = "none";
-    tmenu.style.display = "block";
-    aux_angulo = 0;
-    canhao.rodar(context_2);
-    aux_angulo = 25 * Math.PI / 180;
-    projetil.em_movimento = 0;
-    em_jogo = false;
-    campodados.style.display = "none";
-    campodados.style.opacity = 1;
-    telaEscura.style.opacity = 1;
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context_2.clearRect(0, 0, canvas.width, canvas.height);
-    context_3.clearRect(0, 0, canvas.width, canvas.height);
-    context_4.clearRect(0, 0, canvas.width, canvas.height);
-    document.getElementById('campo7').value = 0;
-    document.getElementById('campo5').value = 0;
-    document.getElementById('campo8').value = 0;
-    document.querySelector(".titulo").textContent = texto_menu;
-    modoJogo = "FF";
-    bloqueiaCampos();
-    // posicao.kill();
+  travaCanhao = true;
+  movimentacao.style.display = "none";
+  tmenu.style.display = "block";
+  aux_angulo = 0;
+  canhao.rodar(context_2);
+  aux_angulo = 25 * Math.PI / 180;
+  projetil.em_movimento = 0;
+  em_jogo = false;
+  campodados.style.display = "none";
+  alerta_pontuacao.style.display="none";
+  campodados.style.opacity = 1;
+  telaEscura.style.opacity = 1;
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context_2.clearRect(0, 0, canvas.width, canvas.height);
+  context_3.clearRect(0, 0, canvas.width, canvas.height);
+  context_4.clearRect(0, 0, canvas.width, canvas.height);
+  document.getElementById('campo7').value = 0;
+  document.getElementById('campo5').value = 0;
+  document.getElementById('campo8').value = 0;
+  document.querySelector(".titulo").textContent = texto_menu;
+  modoJogo = "FF";
+  bloqueiaCampos();
     clearDados();
     controle = 0;
-}
-
-document.addEventListener("click", (event) => {
-  if (event.target.matches("#desconfirmar")) {
-    saida = 0;
-    if (modoJogo != 'T')
+    posicao=new Array();
+  }
+  
+  document.addEventListener("click", (event) => {
+    if (event.target.matches("#desconfirmar")) {
+      saida = 0;
+      if (modoJogo != 'T')
       telaEscura.style.display = "none";
-    confirme.style.display = "none";
-  }
-});
-
-document.addEventListener("mouseover", (event) => {
-  if (event.target.matches(".tabdados")
+      confirme.style.display = "none";
+    }
+  });
+  
+  document.addEventListener("mouseover", (event) => {
+    if (event.target.matches(".tabdados")
     || event.target.matches("#tabeladados")
     || event.target.matches("#botaolancar")
     || event.target.matches("#trajet")
     || event.target.matches(".inputdados")) {
-    campodados.style.opacity = "1";
-  }
-});
-
-document.addEventListener("mouseout", (event) => {
-  if (event.target.matches(".tabdados")
+      campodados.style.opacity = "1";
+    }
+  });
+  
+  document.addEventListener("mouseout", (event) => {
+    if (event.target.matches(".tabdados")
     || event.target.matches("#tabeladados")
     || event.target.matches("#botaolancar")
     || event.target.matches("#trajet")
     || event.target.matches(".inputdados")) {
-    campodados.style.opacity = "0.3";
-  }
-});
-
-document.addEventListener("mouseover", (event) => {
-  if (event.target.matches("cd")) {
-    campodados.style.opacity = "1";
-  }
-});
-
-document.addEventListener("mouseout", (event) => {
-  if (event.target.matches("cd")) {
-    campodados.style.opacity = "0.5";
-  }
-});
-
-document.addEventListener("mouseover", (event) => {
-  if (event.target.matches("#exitbutton")) {
-    exitb.style.backgroundColor = "red";
-  }
-});
-
-document.addEventListener("mouseout", (event) => {
-  if (event.target.matches("#exitbutton")) {
-    exitb.style.backgroundColor = "gray";
-  }
-});
-
-document.addEventListener("click", (event) => {
-  if (event.target.matches("#gamemode")) {
-    tmenu.style.display = "none";
-    gmenu.style.display = "block";
-    document.querySelector(".titulo").textContent = texto_selecaoModo;
-  }
-});
-
-document.addEventListener("click", (event) => {
-  if (event.target.matches("#introducao")) {
-    gmenu.style.display = "none";
-    saida = 0;
-    contatextos = 0;
-    parar = 1;
-    em_jogo = true;
-    modoJogo = "T";
-    auxBlock();
-  }
-});
+      campodados.style.opacity = "0.3";
+    }
+  });
+  
+  document.addEventListener("mouseover", (event) => {
+    if (event.target.matches("cd")) {
+      campodados.style.opacity = "1";
+    }
+  });
+  
+  document.addEventListener("mouseout", (event) => {
+    if (event.target.matches("cd")) {
+      campodados.style.opacity = "0.5";
+    }
+  });
+  
+  document.addEventListener("mouseover", (event) => {
+    if (event.target.matches("#exitbutton")) {
+      exitb.style.backgroundColor = "red";
+    }
+  });
+  
+  document.addEventListener("mouseout", (event) => {
+    if (event.target.matches("#exitbutton")) {
+      exitb.style.backgroundColor = "gray";
+    }
+  });
+  
+  document.addEventListener("click", (event) => {
+    if (event.target.matches("#gamemode")) {
+      tmenu.style.display = "none";
+      gmenu.style.display = "block";
+      document.querySelector(".titulo").textContent = texto_selecaoModo;
+    }
+  });
+  
+  document.addEventListener("click", (event) => {
+    if (event.target.matches("#introducao")) {
+      gmenu.style.display = "none";
+      saida = 0;
+      contatextos = 0;
+      parar = 1;
+      em_jogo = true;
+      modoJogo = "T";
+      auxBlock();
+    }
+  });
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#tela-escura") && saida != 1) {
@@ -260,12 +253,12 @@ document.addEventListener("click", (event) => {
   }
 });
 
+
+
 document.addEventListener("click", (event) => {
   if (event.target.matches("#faseFacil")) {
     dificuldade = "F";
-    posicao[0] = Math.floor(Math.random() * 4);
-    if (posicao[0] == 3)
-      posicao[0] = 6;
+    aux_faseFacil();
     auxBlock();
   }
 })
@@ -273,14 +266,7 @@ document.addEventListener("click", (event) => {
 document.addEventListener("click", (event) => {
   if (event.target.matches("#faseMedia")) {
     dificuldade = "M";
-    // posicao.push(Math.floor(Math.random() * 8));
-    while (posicao.length < 2) {
-      let a = Math.floor(Math.random() * 8);
-      if (a != 5 && a != 3) {
-        posicao.push(a);
-      }
-      posicao = [...new Set(posicao)];
-    }
+    aux_faseMedia();
     auxBlock();
   }
 })
@@ -288,14 +274,79 @@ document.addEventListener("click", (event) => {
 document.addEventListener("click", (event) => {
   if (event.target.matches("#faseDificil")) {
     dificuldade = "D";
-    posicao[0] = Math.floor(Math.random() * 8);
+    aux_faseDificil();
+    auxBlock();
+    
+  }
+});
+
+document.addEventListener("click", (event) => {
+  if (event.target.matches("#reset-fase")) {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context_3.clearRect(0, 0, canvas.width, canvas.height);
+    context_4.clearRect(0, 0, canvas.width, canvas.height);
+    projetil.em_movimento=0;
+    alerta_pontuacao.style.display="none";
+
+    posicao=new Array();
+    indice = 0;
+    clearDados();
+    controle = 0;
+    velocidade = Math.floor(Math.random() * 70 + 40);
+    angulo = Math.floor(Math.random() * 91);
+    
+    console.log(dificuldade);
+    
+    if(dificuldade=='F')
+    aux_faseFacil();
+    else if(dificuldade=='M')
+    aux_faseMedia();
+    else if(dificuldade=='D')
+    aux_faseDificil();
+    
+    
+    modoJogo='L';
+    bloqueiaCampos();
+    modoJogo='C';
+    bloqueiaCampos();
+
+  }
+
+  if (event.target.matches("#reset-fase") && document.getElementById("reset-fase").textContent == "Proxima Fase") {
+    //lancar=false;
+    if(cenario.id==1)
+    cenario.id=0;
+    else if(cenario.id==0)
+    cenario.id=1;
+
+    cenario.desenhar(context);
+}});
+
+function aux_faseDificil()
+{
+  posicao[0] = Math.floor(Math.random() * 8);
     while (posicao.length < 3) {
       posicao.push(Math.floor(Math.random() * 8))
       posicao = [...new Set(posicao)];
     }
-    auxBlock();
+}
+
+function aux_faseMedia()
+{
+  while (posicao.length < 2) {
+    let a = Math.floor(Math.random() * 8);
+    if (a != 5 && a != 3) {
+      posicao.push(a);
+    }
+    posicao = [...new Set(posicao)];
   }
-})
+}
+
+function aux_faseFacil(){
+  posicao[0] = Math.floor(Math.random() * 4);
+    if (posicao[0] == 3)
+      posicao[0] = 6;
+}
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#voltar")) {
@@ -336,11 +387,8 @@ gravidade = 9.8;
 document.addEventListener("click", (event) => {
 
   if (event.target.matches("#botaolancar") && !lancar && modoJogo != 'T' && modoJogo != 'C') {
-    // projetil.angulo = Math.floor(((180 * (-aux_angulo + toRadiano(25))) / Math.PI));
-    projetil.angulo = Math.floor(toGrau(-aux_angulo + toRadiano(25)));
-    // projetil.angulo = Math.floor(toGrau(canhao.angulo + toRadiano(25)));
 
-    // velocidade = document.getElementById("campo1").value;
+    projetil.angulo = Math.floor(toGrau(-aux_angulo + toRadiano(25)));
 
     velocidade = imputs[0].value;
     projetil.componentes(velocidade, gravidade); ///Aqui é passada a gravidade
@@ -362,10 +410,6 @@ document.addEventListener("click", (event) => {
       imputs[4].value = imputs[6].value = imputs[7].value = 0;
     }
 
-    ///
-    // document.getElementById('campo5').value = (tempo).toFixed(2);
-    // document.getElementById('campo7').value = (alcance).toFixed(2);
-    // document.getElementById('campo8').value = (hmax).toFixed(2);
     try {
       imputs[4].value = (tempo).toFixed(2);
       imputs[3].value = (gravidade).toFixed(2);
@@ -377,15 +421,10 @@ document.addEventListener("click", (event) => {
     }
   }
 
-  if (event.target.matches("#botaolancar") && modoJogo == 'C') {
+  if (event.target.matches("#botaolancar") && modoJogo == 'C' && alerta_pontuacao.style.display==="block") {
 
-    //projetil.angulo = Math.floor(toGrau(-aux_angulo + toRadiano(25)));
+
     console.log("Projetil " + projetil.angulo);
-    // projetil.angulo = Math.floor(toGrau(canhao.angulo + toRadiano(25)));
-
-    // velocidade = document.getElementById("campo1").value;
-
-    // velocidade = imputs[0].value;
 
 
 
@@ -418,7 +457,7 @@ document.addEventListener("click", (event) => {
           break;
 
           case 3:
-          if (parseFloat(imputs[4].value) == gravidade.toFixed(2))
+          if (parseFloat(imputs[3].value) == gravidade.toFixed(1))
             eh_correta += 1;
           break;
 
@@ -462,16 +501,18 @@ document.addEventListener("click", (event) => {
       context_3.clearRect(0, 0, canvas.width, canvas.height);
       projetil.em_movimento=1;
       pontuacao.textContent="Pontos : "+ pontos ;
-      document.getElementById("texto-pontuacao").textContent = "Parabéns! Voce Acertou. Voce ganhou : "+pontos+" pontos";
+      document.getElementById("texto-pontuacao").textContent = "Parabéns! Voce Acertou. Voce ganhou : "+eh_correta*100+" pontos";
       document.getElementById("reset-fase").textContent = "Proxima Fase";
       // alerta_pontuacao.textContent="Parabens! ";
       // alerta_pontuacao.textContent+="Voce ganhou "+pontos+" pontos";
 
       alerta_pontuacao.style.display="block";
+      
     }else
     {
       pontuacao.textContent="Pontos : "+ pontos ;
-      document.getElementById("texto-pontuacao").textContent = "Voce errou. Voce ganhou : "+pontos+" pontos";
+      document.getElementById("texto-pontuacao").textContent = "Voce errou. Voce tem: "+eh_correta*100+" pontos";
+      // document.getElementById("texto-pontuacao").innerHTML= "<div id=\"texto-pontuacao\">Voce errou!<br>" + "Voce ganhou: " + pontos + " pontos</div>";
       document.getElementById("reset-fase").textContent = "Tente Novamente";
       alerta_pontuacao.style.display="block";
     }
@@ -685,6 +726,7 @@ function exibeIntroducao() {
       cenario.id = 1;
       context.clearRect(0, 0, canvas.width, canvas.height);
       cenario.desenhar(context);
+      exitb.style.zIndex = 9;
       telaEscura.style.opacity = 1;
       telaEscura.style.display = "none";
       campodados.style.display = "block";
@@ -823,7 +865,6 @@ function loop() {
     }
     requestAnimationFrame(loop);
   }
-  //console.log(modoJogo);
 }
 
 window.addEventListener("keydown", canhao.move);

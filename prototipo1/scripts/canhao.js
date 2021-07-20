@@ -43,13 +43,13 @@ class Canhao {
   move(event) {
     var tecla = event.keyCode;
     var incremento = Math.PI / 180;
-    if (tecla == 37 && modoJogo!='C') {
+    if (tecla == 37 && modoJogo=='L') {
       if (this.angulo < 90) {
         aux_angulo -= incremento;
       }
     }
 
-    if (tecla == 39 && modoJogo!='C') {
+    if (tecla == 39 && modoJogo=='L') {
       if (this.angulo > 0) {
         aux_angulo += incremento;
       }
