@@ -11,6 +11,14 @@
 <body>
 	<div id="exitbutton">X</div>
 	<div id="pontuacao">Pontos : 0</div>
+	<div class="container" id="alerta-pontuacao">
+		<div id="texto-pontuacao">Parabéns! <br> Voce ganhou :</div>
+		<br>
+		<br>
+		<button class="botoes_sair" id="reset-fase">Next Level</button>
+		<button class="botoes_sair" id="voltar-menu">Menu</button>
+	</div>
+	<div id="movimentacao">Movimente o canhão com as setas direcionais do teclado (esquerda e direita) e clique em "LANÇAR"" quando tiver terminado de inserir as informações. </div>
 	<div id="sobre">
 		<a href="https://github.com/denermdn/Dener_Giulia_Lasaro" target="_blank"><button>Sobre</button></a>
 	</div>
@@ -18,40 +26,40 @@
 		<table id="tabeladados">
 			<tr>
 				<td class="tabdados">Velocidade (m/s):</td>
-				<td class="tabdados"> <input class="inputdados" name="campo1" id="campo1" value="100" /></td>
+				<td class="tabdados"> <input class="inputdados" name="campo1" id="campo1" value="100" maxlength="10"/></td>
 			</tr>
 			<tr>
 				<td class="tabdados">Vox (m/s):</td>
-				<td class="tabdados"> <input class="inputdados" name="campo2" id="campo2" value="100" /></td>
+				<td class="tabdados"> <input class="inputdados" name="campo2" id="campo2" value="100" maxlength="10"/></td>
 			</tr>
 			<tr>
 				<td class="tabdados">Voy (m/s):</td>
-				<td class="tabdados"> <input class="inputdados" name="campo3" id="campo3" value="0" /></td>
+				<td class="tabdados"> <input class="inputdados" name="campo3" id="campo3" value="0" maxlength="10"/></td>
 			</tr>
 			<tr>
 				<td class="tabdados">Gravidade (m/s^2):</td>
-				<td class="tabdados"> <input class="inputdados" name="campo4" id="campo4" value="9.8" /></td>
+				<td class="tabdados"> <input class="inputdados" name="campo4" id="campo4" value="9.80" maxlength="10"/></td>
 			</tr>
 			<tr>
 				<td class="tabdados">Tempo (s):</td>
-				<td class="tabdados"> <input class="inputdados" name="campo5" id="campo5" value="0" /></td>
+				<td class="tabdados"> <input class="inputdados" name="campo5" id="campo5" value="0" maxlength="10"/></td>
 			</tr>
 			<tr>
 				<td class="tabdados">Angulo (graus):</td>
-				<td class="tabdados"> <input class="inputdados" name="campo6" id="campo6" value="0" /></td>
+				<td class="tabdados"> <input class="inputdados" name="campo6" id="campo6" value="0" maxlength="10"/></td>
 			</tr>
 			<tr>
 				<td class="tabdados">Alcance Horizontal (m)</td>
-				<td class="tabdados"> <input class="inputdados" name="campo7" id="campo7" value="0" /></td>
+				<td class="tabdados"> <input class="inputdados" name="campo7" id="campo7" value="0" maxlength="10"/></td>
 			</tr>
 			<tr>
 				<td class="tabdados">Altura Máxima (m):</td>
-				<td class="tabdados"> <input class="inputdados" name="campo8" id="campo8" value="0" /></td>
+				<td class="tabdados"> <input class="inputdados" name="campo8" id="campo8" value="0" maxlength="10" /></td>
 			</tr>
 			<tr>
 				<td class="tabdados">Marcar Trajetória</td>
-				<td class="tabdados"><input class="inputdados" id="trajet" style="cursor: pointer;" type="checkbox"
-						id="trajetoria" name="traj" checked>
+				<td class="tabdados"><input class="inputdados" id="trajet" style="cursor: pointer;" type="checkbox" 
+						id="trajetoria" name="traj" checked> 
 				</td>
 			</tr>
 			<tr>
@@ -82,14 +90,14 @@
 		<div class="container" id="modeselect">
 			<table>
 				<tr>
-					<td id="introducao" style="background-color: blue;">Introdução</td>
-					<td id="modoLivre" style="background-color: yellow;">Modo<br>Livre</td>
+					<td id="introducao" style="background-color: rgb(238, 22, 155);">Introdução</td>
+					<td id="modoLivre" style="background-color:  rgb(0, 255, 76);">Modo<br>Livre</td>
 				</tr>
 				<tr>
-					<td id="modoCompetitivo" style="background-color: green;">Modo
+					<td id="modoCompetitivo" style="background-color: rgb(0, 160, 253);">Modo
 						<br>Competitivo
 					</td>
-					<td id="voltar" style="background-color: red;">Voltar</td>
+					<td id="voltar" style="background-color: rgb(236, 72, 72);">Voltar</td>
 				</tr>
 			</table>
 		</div>
@@ -97,21 +105,15 @@
 		<div class="container" id="playselect">
 			<table>
 				<tr>
-					<td id="faseFacil" style="background-color: red;">Fácil</td>
-					<td id="faseMedia" style="background-color: green;">Médio</td>
+					<td id="faseFacil" style="background-color: rgb(6, 253, 18);">Fácil</td>
+					<td id="faseMedia" style="background-color: rgb(0, 102, 255);">Médio</td>
 				</tr>
 				<tr>
-					<td id="faseDificil" style="background-color: yellow;">Difícil
+					<td id="faseDificil" style="background-color: rgb(253, 10, 132);">Difícil
 					</td>
-					<td id="exitp" style="background-color: blue;">Exit</td>
+					<td id="exitp" style="background-color: rgb(255, 230, 0) ;">Exit</td>
 				</tr>
 			</table>
-			<!-- <ul>
-				<li id="faseFacil" style="background-color: red;">Fácil</li>
-				<li id="faseMedia" style="background-color: green;">Médio</li>
-				<li id="faseDificil" style="background-color: yellow;">Difícil</li>
-				<li id="exitp" style="background-color: blue;">Voltar</li>
-			</ul> -->
 		</div>
 		<div class="container" id="confirmexit">Deseja Sair?
 			<br>
@@ -137,7 +139,7 @@
 	<script src="scripts/alvo.js"></script>
 	<script src="scripts/usuario.js"></script>
 	<script src="scripts/equacoes.js"></script>
-	<script src="scripts/main.js"></script>
+	<script src="scripts/jogar.js"></script>
 </body>
 
 </html>

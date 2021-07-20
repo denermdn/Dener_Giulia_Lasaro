@@ -11,7 +11,7 @@ class Canhao {
 
   _init() {
     for (var i = 0; i < canhao_e_roda.length; i++) {
-      canhao_e_roda[i] = new Array(2)
+      canhao_e_roda[i] = new Array(2);
       canhao_e_roda[i][0] = new Image();
       canhao_e_roda[i][0].src = "./imagens/canhao" + i.toString() + ".png";
       canhao_e_roda[i][1] = new Image();
@@ -34,6 +34,7 @@ class Canhao {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.save();
     ctx.translate(x, y);
+    // ctx.rotate(aux_angulo);
     ctx.rotate(aux_angulo);
     this.draw_(ctx);
     ctx.restore();
@@ -42,17 +43,23 @@ class Canhao {
   move(event) {
     var tecla = event.keyCode;
     var incremento = Math.PI / 180;
-    if (tecla == 37) {
+    if (tecla == 37 && modoJogo=='L') {
       if (this.angulo < 90) {
         aux_angulo -= incremento;
       }
     }
-    if (tecla == 39) {
+
+    if (tecla == 39 && modoJogo=='L') {
       if (this.angulo > 0) {
         aux_angulo += incremento;
       }
-
     }
     this.angulo = aux_angulo;
   }
+
+  muda_angulo(valor)
+  {
+    aux_angulo=valor;
+  }
+
 }
