@@ -184,7 +184,7 @@ document.addEventListener("mouseover", (event) => {
 
 document.addEventListener("mouseout", (event) => {
   if (event.target.matches("#exitbutton")) {
-    exitb.style.backgroundColor = "gray";
+    exitb.style.removeProperty("background-color");
   }
 });
 
@@ -513,7 +513,7 @@ document.addEventListener("click", (event) => {
       pontuacao.textContent = "Pontos : " + pontos;
       document.getElementById("texto-pontuacao").textContent = "Voce errou. Voce tem: " + eh_correta * 100 + " pontos";
       // document.getElementById("texto-pontuacao").innerHTML= "<div id=\"texto-pontuacao\">Voce errou!<br>" + "Voce ganhou: " + pontos + " pontos</div>";
-      document.getElementById("reset-fase").textContent = "Tente Novamente";
+      document.getElementById("reset-fase").textContent = "Tente de novo";
       alerta_pontuacao.style.display = "block";
     }
 

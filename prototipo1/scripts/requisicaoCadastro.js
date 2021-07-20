@@ -36,5 +36,5 @@ btnCadastrar.addEventListener("click", async e=> {
     }
     console.log(userName)
     console.log(data)
-      request.send(data);
+      //request.send(data);
 });
