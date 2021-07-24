@@ -56,7 +56,7 @@ table {
   font-size: 100%;
 }
 
-#rankingg input {
+#rankingg input {/*OLHAR ISSO AQUI*/
   padding: 2%;
   border: none;
   width: 90%;
@@ -90,6 +90,7 @@ th {
   height: 33.33%;
 }
 
+
 .cd tr {
   width: 50%;
   height: auto;
@@ -100,6 +101,7 @@ th {
   height: auto;
   text-align: right;
   font-size: 100%;
+  /* font-size: 100%; */
   font-weight: bold;
 }
 
@@ -118,7 +120,8 @@ th {
   display: none;
   color: white;
   position: absolute;
-  background-color: gray;
+  /* background-color: gray; */
+  background-color:#0373f8;
   z-index: 11;
 }
 
@@ -327,19 +330,19 @@ th {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: 0px;
-  width: 40%;
+  width: 36%;
   transform: translate(-50%, -50%);
-  padding: 2%;
+  padding: 1%;
   border-radius: 2%;
   color: black;
-  background-color: darkgray;
-  opacity: 0.5;
+  background-color: white;
+  font-size: 2vw;
 }
+
 
 .botoes_sair {
   height: 30%;
   width: 35%;
-  font-size: 58%;
+  font-size: 50%;
 
 }

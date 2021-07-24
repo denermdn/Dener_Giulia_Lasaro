@@ -192,6 +192,7 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#gamemode")) {
     tmenu.style.display = "none";
     gmenu.style.display = "block";
+    telaEscura.style.backgroundColor = "#0076ff";
     document.querySelector(".titulo").textContent = texto_selecaoModo;
   }
 });
@@ -245,6 +246,7 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#modoCompetitivo")) {
     gmenu.style.display = "none";
     smenu.style.display = "block";
+    telaEscura.style.backgroundColor = "#00a1ff";
     document.querySelector(".titulo").textContent = texto_dificuldade;
     pontuacao.textContent = "Pontos : 0";
     modoJogo = "C";
@@ -353,6 +355,8 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#voltar")) {
     tmenu.style.display = "block";
     gmenu.style.display = "none";
+    telaEscura.style.backgroundColor = "#0373f8";
+    // telaEscura.style.backgroundColor = "#0076ff";
     document.querySelector(".titulo").textContent = texto_menu;
   }
 });
