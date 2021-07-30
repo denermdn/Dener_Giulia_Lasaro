@@ -374,13 +374,16 @@ document.addEventListener("click", (event) => {
     window.location.replace("./login.html");
   }
 });
-
+///////////////////
 document.addEventListener("click", (event) => {
-  if (event.target.matches("#rank")) {
-    window.location.replace("./Ranking.html");
-  }
+  // if (event.target.matches("#rank")) {
+  //   window.location.replace("./Ranking.html");
+  // }
+  // if(event.target.matches("#perfil")) {
+  //   window.location.replace("./perfil.html");
+  // }
 });
-
+////////////////////
 const cenario = new Cenarios(9.8, 1, canvas.width, canvas.height);
 const canhao = new Canhao(0);
 const projetil = new Projetil(canhao.posicao);
