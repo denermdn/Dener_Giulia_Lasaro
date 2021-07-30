@@ -56,6 +56,7 @@ const gmenu = document.getElementById('modeselect');
 const smenu = document.getElementById('playselect');
 const cbtrajetoria = document.getElementById('trajet');
 const alerta_pontuacao = document.getElementById('alerta-pontuacao');
+const dica = document.getElementById('dica');
 
 var em_jogo = false;
 var modoJogo = "";
@@ -116,6 +117,10 @@ function resetAux() {
   aux_angulo = 25 * Math.PI / 180;
   projetil.em_movimento = 0;
   em_jogo = false;
+  dica.style.width = "3%";
+  dica.style.height = "3%";
+  dica.style.left = "50%";
+  dica.textContent="Dica";
   campodados.style.display = "none";
   alerta_pontuacao.style.display = "none";
   campodados.style.opacity = 1;
@@ -177,6 +182,18 @@ document.addEventListener("mouseout", (event) => {
 });
 
 document.addEventListener("mouseover", (event) => {
+  if (event.target.matches("#dica")) {
+    dica.style.backgroundColor = "yellow";
+  }
+});
+
+document.addEventListener("mouseout", (event) => {
+  if (event.target.matches("#dica")) {
+    dica.style.removeProperty("background-color");
+  }
+});
+
+document.addEventListener("mouseover", (event) => {
   if (event.target.matches("#exitbutton")) {
     exitb.style.backgroundColor = "red";
   }
@@ -231,6 +248,7 @@ function auxBlock() {
   campodados.style.display = "block";
   exitb.style.display = "block";
   pontuacao.style.display = "block";
+  dica.style.display = "block";
   loop();
 }
 
@@ -239,6 +257,7 @@ document.addEventListener("click", (event) => {
     modoJogo = "L";
     auxBlock();
     pontuacao.style.display = "none";
+    dica.style.display = "none";
   }
 });
 
@@ -284,13 +303,23 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
+  if (event.target.matches("#dica")) {
+    exibedica();
+
+  }
+});
+
+document.addEventListener("click", (event) => {
   if (event.target.matches("#reset-fase")) {
     context.clearRect(0, 0, canvas.width, canvas.height);
     context_3.clearRect(0, 0, canvas.width, canvas.height);
     context_4.clearRect(0, 0, canvas.width, canvas.height);
     projetil.em_movimento = 0;
     alerta_pontuacao.style.display = "none";
-
+    dica.style.width = "3%";
+    dica.style.height = "3%";
+    dica.style.left = "50%";
+    dica.textContent = "Dica";
     posicao = new Array();
     indice = 0;
     clearDados();
@@ -316,7 +345,7 @@ document.addEventListener("click", (event) => {
   }
 
   if (event.target.matches("#reset-fase")
-   && document.getElementById("reset-fase").textContent == "Proxima Fase") {
+    && document.getElementById("reset-fase").textContent == "Proxima Fase") {
     //lancar=false;
     if (cenario.id == 1)
       cenario.id = 0;
@@ -400,7 +429,7 @@ document.addEventListener("click", (event) => {
 
     velocidade = imputs[0].value;
     projetil.componentes(velocidade, gravidade); ///Aqui é passada a gravidade
-    alvo.setPosicao(projetil.alcance - 46, canvas.height - 70);
+    alvo.setPosicao(projetil.alcance - 62, canvas.height - 70);
     lancar = true;
     projetil.reset(velocidade, canhao.posicao);
     context_3.clearRect(0, 0, canvas.width, canvas.height);
@@ -528,7 +557,82 @@ document.addEventListener("click", (event) => {
   }
 });
 
+function exibedica() {
+  let qdica = 0;
+  if (dificuldade == 'F')
+    qdica = 0;
 
+  if (dificuldade == 'M')
+    qdica = Math.floor(Math.random() * 2);
+
+  if (dificuldade == 'D')
+    qdica = Math.floor(Math.random() * 3);
+
+  console.log(qdica);
+  switch (posicao[qdica]) {
+    case 0:
+      if (imputs[1].disabled == true && imputs[2].disabled == true)
+        dica.textContent = "Para a Velocidade eleve os valores de Vox e Voy ao quadrado, some-os e tire a raiz";
+      else if (imputs[1].disabled == true && imputs[5].disabled == true)
+        dica.textContent = "Para a Velocidade divida Vox pelo cosseno do Ângulo";
+      else if (imputs[2].disabled == true && imputs[5].disabled == true)
+        dica.textContent = "Para a Velocidade divida Voy pelo seno do angulo";
+      else dica.textContent = "Dica para Velocidade indisponivel";
+      break;
+
+    case 1:
+      if (imputs[0].disabled == true && imputs[5].disabled == true)
+        dica.textContent = "Para Vox multiplique a Velocidade pelo cosseno do Ângulo";
+      else if (imputs[0].disabled == true && imputs[2].disabled == true)
+        dica.textContent = "Para Vox eleve os valores da Velocidade e Voy ao quadrado, subtraia o primeiro do segundo e tire a raiz";
+      else dica.textContent = "Dica para Vox indisponivel";
+      break;
+
+    case 2:
+      if (imputs[0].disabled == true && imputs[5].disabled == true)
+        dica.textContent = "Para Voy multiplique a Velocidade pelo seno do Ângulo";
+      else if (imputs[0].disabled == true && imputs[2].disabled == true)
+        dica.textContent = "Para Voy eleve os valores da Velocidade e Vox ao quadrado, subtraia o primeiro do segundo e tire a raiz";
+      else dica.textContent = "Dica para Voy indisponivel";
+      break;
+
+    case 3:
+      //Gravidade
+      dica.textContent = "Dica para Gravidade indisponivel";
+      break;
+
+    case 4:
+      if (imputs[1].disabled == true && imputs[6].disabled == true)
+        dica.textContent = "Para o Tempo divida o Alcance Horizontal pelo Vox";
+      else if (imputs[1].disabled == true && imputs[3].disabled == true && imputs[7].disabled == true)
+        dica.textContent = "Para o Tempo use a formula de baskara onde a=Gravidade/2, b=-(Voy) e c=Altura Máxima";
+      else dica.textContent = "Dica para Tempo indisponivel";
+      break;
+
+      case 5:
+        if (imputs[0].disabled == true && imputs[1].disabled == true)
+          dica.textContent = "Para o Ângulo divida Vox pela Velocidade e aplique o arco cosseno nesta divisão";
+        else if (imputs[0].disabled == true && imputs[2].disabled == true)
+        dica.textContent = "Para o Ângulo divida Voy pela Velocidade e aplique o arco seno nesta divisão";
+        else dica.textContent = "Dica para Angulo indisponivel";
+        break;
+
+        case 6:
+        if (imputs[1].disabled == true && imputs[4].disabled == true)
+          dica.textContent = "Para o Alcance Horizontal multiplique o Vox pelo tempo";
+        else dica.textContent = "Dica para Alcance Horizontal indisponivel";
+        break;
+
+        case 6:
+        if (imputs[3].disabled == true && imputs[3].disabled == true)
+          dica.textContent = "Para a Altura Máxima eleve o Voy ao quadrado, multiplique a Gravidade por 2 e divida o primeiro pelo segundo";
+        else dica.textContent = "Dica para Alcance Horizontal indisponivel";
+        break;
+  }
+  dica.style.width = "10%";
+  dica.style.height = "10%";
+  dica.style.left = "45%";
+}
 ///////////////////////////////////////////////////////////////
 function toRadiano(angulo) {
   return (angulo * Math.PI / 180);
@@ -559,7 +663,7 @@ function calcular() {
 
 function modoLivre() {
   cenario.desenhar(context);
-  
+
   canhao.rodar(context_2);
   canhao.draw(context_2); // mudar para context se quiser que alvo sobreponha canhao
   if (projetil.em_movimento != 1) {
@@ -610,6 +714,8 @@ function exibeIntroducao() {
       exitb.style.zIndex = 12;
       campodados.style.display = "none";
       pontuacao.style.display = "none";
+      dica.style.display = "none";
+
       break;
     case 1:
       if (confirme.style.display != 'block') {
@@ -820,8 +926,8 @@ function valor_campos() {
 
   if (dificuldade == 'D')
     imputs[posicao[2]].value = 0;
-    projetil.em_movimento=2;
-    lancar=1;
+  projetil.em_movimento = 2;
+  lancar = 1;
   canhao.muda_angulo(toRadiano(-angulo + 25));
 }
 

@@ -57,7 +57,7 @@ class Projetil {
         context.drawImage(projetil_sprite[0],
             dados_sprite.xOrigin, dados_sprite.yOrigin,
             dados_sprite.width, dados_sprite.height,
-            this.posicao.posX + tamX - 32, this.posicao.posY + tamY - 13,
+            this.posicao.posX + tamX -33, this.posicao.posY + tamY - 18,
             40, 40);
     }
 
