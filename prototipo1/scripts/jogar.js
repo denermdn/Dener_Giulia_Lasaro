@@ -251,7 +251,7 @@ document.addEventListener("click", (event) => {
     pontuacao.textContent = "Pontos : 0";
     modoJogo = "C";
     indice = 0;
-    velocidade = Math.floor(Math.random() * 70 + 40);
+    velocidade = Math.floor(Math.random() * 95 + 40);
     angulo = Math.floor(Math.random() * 91);
   }
 });
@@ -295,7 +295,7 @@ document.addEventListener("click", (event) => {
     indice = 0;
     clearDados();
     controle = 0;
-    velocidade = Math.floor(Math.random() * 70 + 40);
+    velocidade = Math.floor(Math.random() * 95 + 40);
     angulo = Math.floor(Math.random() * 91);
 
     console.log(dificuldade);
@@ -811,6 +811,8 @@ function valor_campos() {
   imputs[6].value = (alcance).toFixed(2);
   imputs[7].value = (hmax).toFixed(2);
 
+  alvo.setPosicao(alcance, canvas.height - 70);
+  alvo.draw(context);//context_4 para esconder canhao
   imputs[posicao[0]].value = 0;
 
   if (dificuldade == 'M' || dificuldade == 'D')
