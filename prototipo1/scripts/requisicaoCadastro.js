@@ -24,11 +24,12 @@ btnCadastrar.addEventListener("click", async e=> {
     const request = new XMLHttpRequest();
     request.open("POST", "http://localhost:8080/user");
     request.setRequestHeader("Content-Type", "application/json");
-    //request.setRequestHeader('Accept', '/');
+    request.setRequestHeader('Accept', '/');
 
 
     request.onload = function () {
-        console.log(JSON.parse(this.responseText))
+        console.log("teste");
+        console.log(JSON.parse(this.responseText));
       }
     
       request.onerror = function () {
@@ -36,5 +37,5 @@ btnCadastrar.addEventListener("click", async e=> {
     }
     console.log(userName)
     console.log(data)
-      //request.send(data);
+      request.send(data);
 });
