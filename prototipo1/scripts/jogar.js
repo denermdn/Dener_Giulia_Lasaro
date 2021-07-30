@@ -559,9 +559,9 @@ function calcular() {
 
 function modoLivre() {
   cenario.desenhar(context);
-  canhao.draw(context);
-
+  
   canhao.rodar(context_2);
+  canhao.draw(context_2); // mudar para context se quiser que alvo sobreponha canhao
   if (projetil.em_movimento != 1) {
     lancar = false;
     if (projetil.em_movimento == 2)
@@ -614,8 +614,8 @@ function exibeIntroducao() {
     case 1:
       if (confirme.style.display != 'block') {
         cenario.desenhar(context);
-        canhao.draw(context);
         canhao.rodar(context_2);
+        canhao.draw(context_2);
         campodados.style.display = "block";
       }
       else {
@@ -629,8 +629,8 @@ function exibeIntroducao() {
 
         campodados.style.display = "none";
         context.clearRect(0, 0, canvas.width, canvas.height);
-        canhao.draw(context);
         canhao.rodar(context_2);
+        canhao.draw(context_2);
       }
       else {
         context.clearRect(0, 0, canvas.width, canvas.height);
