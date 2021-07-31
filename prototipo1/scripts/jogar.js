@@ -69,6 +69,7 @@ var indice = 0;
 var travaCanhao = true;
 var controle = 0;
 var pontos = 0;
+var dicaUnica = 0;
 
 telaEscura.style.display = "block";
 tmenu.style.display = "block";
@@ -120,7 +121,8 @@ function resetAux() {
   dica.style.width = "3%";
   dica.style.height = "3%";
   dica.style.left = "50%";
-  dica.textContent="Dica";
+  dica.textContent = "Dica";
+  dicaUnica=0;
   campodados.style.display = "none";
   alerta_pontuacao.style.display = "none";
   campodados.style.opacity = 1;
@@ -320,6 +322,7 @@ document.addEventListener("click", (event) => {
     dica.style.height = "3%";
     dica.style.left = "50%";
     dica.textContent = "Dica";
+    dicaUnica=0;
     posicao = new Array();
     indice = 0;
     clearDados();
@@ -520,9 +523,13 @@ document.addEventListener("click", (event) => {
           break;
       }
     }
-
+    var auxPontos=100*eh_correta;
     pontos = pontos + 100 * eh_correta;
-
+    if(dicaUnica==1 && pontos>0)
+    {
+      pontos=pontos-50;
+      auxPontos=auxPontos-50;
+    }
     console.log(j);
     console.log(eh_correta);
 
@@ -538,7 +545,7 @@ document.addEventListener("click", (event) => {
       context_3.clearRect(0, 0, canvas.width, canvas.height);
       projetil.em_movimento = 1;
       pontuacao.textContent = "Pontos : " + pontos;
-      document.getElementById("texto-pontuacao").textContent = "Parabéns! Voce Acertou. Voce ganhou : " + eh_correta * 100 + " pontos";
+      document.getElementById("texto-pontuacao").textContent = "Parabéns! Voce Acertou. Voce ganhou : " + auxPontos + " pontos";
       document.getElementById("reset-fase").textContent = "Proxima Fase";
       // alerta_pontuacao.textContent="Parabens! ";
       // alerta_pontuacao.textContent+="Voce ganhou "+pontos+" pontos";
@@ -547,7 +554,7 @@ document.addEventListener("click", (event) => {
 
     } else {
       pontuacao.textContent = "Pontos : " + pontos;
-      document.getElementById("texto-pontuacao").textContent = "Voce errou. Voce tem: " + eh_correta * 100 + " pontos";
+      document.getElementById("texto-pontuacao").textContent = "Voce errou. Voce tem: " + auxPontos + " pontos";
       // document.getElementById("texto-pontuacao").innerHTML= "<div id=\"texto-pontuacao\">Voce errou!<br>" + "Voce ganhou: " + pontos + " pontos</div>";
       document.getElementById("reset-fase").textContent = "Tente de novo";
       alerta_pontuacao.style.display = "block";
@@ -569,69 +576,81 @@ function exibedica() {
     qdica = Math.floor(Math.random() * 3);
 
   console.log(qdica);
-  switch (posicao[qdica]) {
-    case 0:
-      if (imputs[1].disabled == true && imputs[2].disabled == true)
-        dica.textContent = "Para a Velocidade eleve os valores de Vox e Voy ao quadrado, some-os e tire a raiz";
-      else if (imputs[1].disabled == true && imputs[5].disabled == true)
-        dica.textContent = "Para a Velocidade divida Vox pelo cosseno do Ângulo";
-      else if (imputs[2].disabled == true && imputs[5].disabled == true)
-        dica.textContent = "Para a Velocidade divida Voy pelo seno do angulo";
-      else dica.textContent = "Dica para Velocidade indisponivel";
-      break;
+  if (dicaUnica == 0) {
+    switch (posicao[qdica]) {
+      case 0:
+        if (imputs[1].disabled == true && imputs[2].disabled == true)
+          dica.textContent = "Para a Velocidade eleve os valores de Vox e Voy ao quadrado, some-os e tire a raiz";
+        else if (imputs[1].disabled == true && imputs[5].disabled == true)
+          dica.textContent = "Para a Velocidade divida Vox pelo cosseno do Ângulo";
+        else if (imputs[2].disabled == true && imputs[5].disabled == true)
+          dica.textContent = "Para a Velocidade divida Voy pelo seno do angulo";
+        else dica.textContent = "Dica para Velocidade indisponivel";
+        break;
 
-    case 1:
-      if (imputs[0].disabled == true && imputs[5].disabled == true)
-        dica.textContent = "Para Vox multiplique a Velocidade pelo cosseno do Ângulo";
-      else if (imputs[0].disabled == true && imputs[2].disabled == true)
-        dica.textContent = "Para Vox eleve os valores da Velocidade e Voy ao quadrado, subtraia o primeiro do segundo e tire a raiz";
-      else dica.textContent = "Dica para Vox indisponivel";
-      break;
+      case 1:
+        if (imputs[0].disabled == true && imputs[5].disabled == true)
+          dica.textContent = "Para Vox multiplique a Velocidade pelo cosseno do Ângulo";
+        else if (imputs[0].disabled == true && imputs[2].disabled == true)
+          dica.textContent = "Para Vox eleve os valores da Velocidade e Voy ao quadrado, subtraia o primeiro do segundo e tire a raiz";
+        else dica.textContent = "Dica para Vox indisponivel";
+        break;
 
-    case 2:
-      if (imputs[0].disabled == true && imputs[5].disabled == true)
-        dica.textContent = "Para Voy multiplique a Velocidade pelo seno do Ângulo";
-      else if (imputs[0].disabled == true && imputs[2].disabled == true)
-        dica.textContent = "Para Voy eleve os valores da Velocidade e Vox ao quadrado, subtraia o primeiro do segundo e tire a raiz";
-      else dica.textContent = "Dica para Voy indisponivel";
-      break;
+      case 2:
+        if (imputs[0].disabled == true && imputs[5].disabled == true)
+          dica.textContent = "Para Voy multiplique a Velocidade pelo seno do Ângulo";
+        else if (imputs[0].disabled == true && imputs[2].disabled == true)
+          dica.textContent = "Para Voy eleve os valores da Velocidade e Vox ao quadrado, subtraia o primeiro do segundo e tire a raiz";
+        else if(imputs[3].disabled == true && imputs[7].disabled == true)
+          dica.textContent = "Para Voy multiplique a Gravidade pela Altura Maxima, multiplique por 2 e tire a raiz";
+        else dica.textContent = "Dica para Voy indisponivel";
+        break;
 
-    case 3:
-      //Gravidade
-      dica.textContent = "Dica para Gravidade indisponivel";
-      break;
+      case 3:
+        //Gravidade
+        if (imputs[2].disabled == true && imputs[7].disabled == true)
+        dica.textContent="Para a Gravidade eleve o Voy ao quadrado e divida pela Altura Máxima multiplicada por 2";
+        else
+        dica.textContent = "Dica para Gravidade indisponivel";
+        break;
 
-    case 4:
-      if (imputs[1].disabled == true && imputs[6].disabled == true)
-        dica.textContent = "Para o Tempo divida o Alcance Horizontal pelo Vox";
-      else if (imputs[1].disabled == true && imputs[3].disabled == true && imputs[7].disabled == true)
-        dica.textContent = "Para o Tempo use a formula de baskara onde a=Gravidade/2, b=-(Voy) e c=Altura Máxima";
-      else dica.textContent = "Dica para Tempo indisponivel";
-      break;
+      case 4:
+        if (imputs[1].disabled == true && imputs[6].disabled == true)
+          dica.textContent = "Para o Tempo divida o Alcance Horizontal pelo Vox";
+        else if (imputs[1].disabled == true && imputs[3].disabled == true && imputs[7].disabled == true)
+          dica.textContent = "Para o Tempo use a formula de baskara onde a=Gravidade/2, b=-(Voy) e c=Altura Máxima";
+        else dica.textContent = "Dica para Tempo indisponivel";
+        break;
 
       case 5:
         if (imputs[0].disabled == true && imputs[1].disabled == true)
           dica.textContent = "Para o Ângulo divida Vox pela Velocidade e aplique o arco cosseno nesta divisão";
         else if (imputs[0].disabled == true && imputs[2].disabled == true)
-        dica.textContent = "Para o Ângulo divida Voy pela Velocidade e aplique o arco seno nesta divisão";
+          dica.textContent = "Para o Ângulo divida Voy pela Velocidade e aplique o arco seno nesta divisão";
         else dica.textContent = "Dica para Angulo indisponivel";
         break;
 
-        case 6:
+      case 6:
         if (imputs[1].disabled == true && imputs[4].disabled == true)
           dica.textContent = "Para o Alcance Horizontal multiplique o Vox pelo tempo";
         else dica.textContent = "Dica para Alcance Horizontal indisponivel";
         break;
 
-        case 6:
-        if (imputs[3].disabled == true && imputs[3].disabled == true)
-          dica.textContent = "Para a Altura Máxima eleve o Voy ao quadrado, multiplique a Gravidade por 2 e divida o primeiro pelo segundo";
+      case 7:
+        if (imputs[2].disabled == true && imputs[3].disabled == true)
+          dica.textContent = "Para a Altura Máxima eleve o Voy ao quadrado e divida pela Gravidade multiplicada por 2";
         else dica.textContent = "Dica para Alcance Horizontal indisponivel";
         break;
+    }
+    dica.style.width = "10%";
+    dica.style.height = "10%";
+    dica.style.left = "45%";
+    var auxText;
+    auxText = dica.textContent.substring(0, dica.textContent.indexOf(" "));
+    if (auxText != "Dica")
+      dicaUnica = 1;
+
   }
-  dica.style.width = "10%";
-  dica.style.height = "10%";
-  dica.style.left = "45%";
 }
 ///////////////////////////////////////////////////////////////
 function toRadiano(angulo) {
