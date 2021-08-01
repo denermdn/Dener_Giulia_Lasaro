@@ -12,7 +12,9 @@ let textos = [
   'Use as formulas de lançamento de projéteis e seu conhecimento sobre Física para achar a resposta correta.',
   'No modo competitivo, sua pontuação aparecerá aqui, e ela condiz com a corretude das respostas de cada fase.',
   'Quanto maior o número de respostas corretas, maior será sua pontuação.',
-  'Boa sorte, e bons estudos!'
+  'Use o botão de dica quando não souber da resposta e precisar de ajuda.',
+  'Ao pressionar dica parte da pontuação total da fase será removida. Só use quando realmente necessário!',
+  'Aqui o tutorial se fnaliza. Boa sorte, e bons estudos!'
 ];
 const imputs = document.querySelectorAll(".inputdados");
 var ntextos = textos.length;
@@ -84,7 +86,7 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
-  if (event.target.matches("#exitbutton")) {
+  if (event.target.matches("#exitbutton") && alerta_pontuacao.style.display!='block') {
     telaEscura.style.display = "block";
     tmenu.style.display = "none";
     confirme.style.display = "block";
@@ -122,7 +124,7 @@ function resetAux() {
   dica.style.height = "3%";
   dica.style.left = "50%";
   dica.textContent = "Dica";
-  dicaUnica=0;
+  dicaUnica = 0;
   campodados.style.display = "none";
   alerta_pontuacao.style.display = "none";
   campodados.style.opacity = 1;
@@ -269,7 +271,7 @@ document.addEventListener("click", (event) => {
     smenu.style.display = "block";
     telaEscura.style.backgroundColor = "#00a1ff";
     document.querySelector(".titulo").textContent = texto_dificuldade;
-    pontuacao.textContent = "Pontos : 0";
+    pontuacao.textContent = "Pontos : " + pontos;
     modoJogo = "C";
     indice = 0;
     velocidade = Math.floor(Math.random() * 95 + 40);
@@ -305,7 +307,7 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
-  if (event.target.matches("#dica")) {
+  if (event.target.matches("#dica") && modoJogo=='C' && alerta_pontuacao.style.display!='block') {
     exibedica();
 
   }
@@ -322,7 +324,7 @@ document.addEventListener("click", (event) => {
     dica.style.height = "3%";
     dica.style.left = "50%";
     dica.textContent = "Dica";
-    dicaUnica=0;
+    dicaUnica = 0;
     posicao = new Array();
     indice = 0;
     clearDados();
@@ -461,7 +463,7 @@ document.addEventListener("click", (event) => {
     }
   }
 
-  if (event.target.matches("#botaolancar") && modoJogo == 'C') {
+  if (event.target.matches("#botaolancar") && modoJogo == 'C' && alerta_pontuacao.style.display!='block') {
 
 
     console.log("Projetil " + projetil.angulo);
@@ -492,7 +494,7 @@ document.addEventListener("click", (event) => {
           break;
 
         case 2:
-          if (parseFloat(imputs[2].value) == voy.toFixed(2))
+          if (parseFloat(imputs[2].value) == voy.toFixed(2) || parseFloat(imputs[2].value) == voy.toFixed(2)-0.01)
             eh_correta += 1;
           break;
 
@@ -523,12 +525,11 @@ document.addEventListener("click", (event) => {
           break;
       }
     }
-    var auxPontos=100*eh_correta;
+    var auxPontos = 100 * eh_correta;
     pontos = pontos + 100 * eh_correta;
-    if(dicaUnica==1 && pontos>0)
-    {
-      pontos=pontos-50;
-      auxPontos=auxPontos-50;
+    if (dicaUnica == 1 && pontos > 0) {
+      pontos = pontos - 50;
+      auxPontos = auxPontos - 50;
     }
     console.log(j);
     console.log(eh_correta);
@@ -554,7 +555,7 @@ document.addEventListener("click", (event) => {
 
     } else {
       pontuacao.textContent = "Pontos : " + pontos;
-      document.getElementById("texto-pontuacao").textContent = "Voce errou. Voce tem: " + auxPontos + " pontos";
+      document.getElementById("texto-pontuacao").textContent = "Voce errou. Voce obteve: " + auxPontos + " pontos";
       // document.getElementById("texto-pontuacao").innerHTML= "<div id=\"texto-pontuacao\">Voce errou!<br>" + "Voce ganhou: " + pontos + " pontos</div>";
       document.getElementById("reset-fase").textContent = "Tente de novo";
       alerta_pontuacao.style.display = "block";
@@ -592,32 +593,33 @@ function exibedica() {
         if (imputs[0].disabled == true && imputs[5].disabled == true)
           dica.textContent = "Para Vox multiplique a Velocidade pelo cosseno do Ângulo";
         else if (imputs[0].disabled == true && imputs[2].disabled == true)
-          dica.textContent = "Para Vox eleve os valores da Velocidade e Voy ao quadrado, subtraia o primeiro do segundo e tire a raiz";
+          dica.textContent = "Para Vox eleve a Velocidade ao quadrado e subtraia dela o valor de Voy ao quadrado. Por fim tire a raiz do resultado";
+        else if (imputs[4].disabled == true && imputs[6].disabled == true)
+          dica.textContent = "Para Vox divida o valor do Alcance Horizontal pelo Tempo";
         else dica.textContent = "Dica para Vox indisponivel";
         break;
 
       case 2:
         if (imputs[0].disabled == true && imputs[5].disabled == true)
           dica.textContent = "Para Voy multiplique a Velocidade pelo seno do Ângulo";
-        else if (imputs[0].disabled == true && imputs[2].disabled == true)
-          dica.textContent = "Para Voy eleve os valores da Velocidade e Vox ao quadrado, subtraia o primeiro do segundo e tire a raiz";
-        else if(imputs[3].disabled == true && imputs[7].disabled == true)
-          dica.textContent = "Para Voy multiplique a Gravidade pela Altura Maxima, multiplique por 2 e tire a raiz";
-        else dica.textContent = "Dica para Voy indisponivel";
+        else if (imputs[0].disabled == true && imputs[1].disabled == true)
+          dica.textContent = "Para Voy eleve a Velocidade ao quadrado e subtraia dela o valor de Vox ao quadrado. Por fim tire a raiz do resultado";
+        else if (imputs[3].disabled == true && imputs[7].disabled == true)
+          dica.textContent = "Para Voy multiplique a Gravidade pela Altura Máxima, multiplique por 2. Por fim tire a raiz do resultado";
+        else dica.textContent = "Dica para Vox indisponivel";
         break;
 
       case 3:
         //Gravidade
         if (imputs[2].disabled == true && imputs[7].disabled == true)
-        dica.textContent="Para a Gravidade eleve o Voy ao quadrado e divida pela Altura Máxima multiplicada por 2";
-        else
-        dica.textContent = "Dica para Gravidade indisponivel";
+          dica.textContent = "Para a Gravidade multiplique a Altura Máxima por 2. Eleve o valor de Voy ao quadrado e divida pelo primeiro valor";
+        else dica.textContent = "Dica para Gravidade indisponivel";
         break;
 
       case 4:
         if (imputs[1].disabled == true && imputs[6].disabled == true)
           dica.textContent = "Para o Tempo divida o Alcance Horizontal pelo Vox";
-        else if (imputs[1].disabled == true && imputs[3].disabled == true && imputs[7].disabled == true)
+        else if (imputs[2].disabled == true && imputs[3].disabled == true && imputs[7].disabled == true)
           dica.textContent = "Para o Tempo use a formula de baskara onde a=Gravidade/2, b=-(Voy) e c=Altura Máxima";
         else dica.textContent = "Dica para Tempo indisponivel";
         break;
@@ -849,11 +851,20 @@ function exibeIntroducao() {
         pontuacao.style.display = "none";
       break;
     case 13:
+      dica.style.display = "block";
+      dica.style.zIndex = 12;
       pontuacao.style.zIndex = 9;
       pontuacao.style.display = "none";
       pontuacao.textContent = "Pontos : 0";
       break;
     case 14:
+      
+      break;
+    case 15:
+      dica.style.display = "none";
+      dica.style.zIndex = 9;
+      break;
+    case 16:
       bloqueiaCampos();
       cenario.id = 1;
       context.clearRect(0, 0, canvas.width, canvas.height);
