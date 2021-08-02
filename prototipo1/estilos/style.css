@@ -235,6 +235,21 @@ th {
   cursor: default;
 }
 
+#estrelas {
+  font-size: 130%;
+  width: 10%;
+  height: 3%;
+  text-align: center;
+  display: none;
+  position: absolute;
+  line-height: 100%;
+  top: 1%;
+  left: 55.5%;
+  border-radius: 5%;
+  z-index: 9;
+  cursor: default;
+}
+
 #alerta-pontuacao {
   font-size: 200%;
   font-weight: bold;

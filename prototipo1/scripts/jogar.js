@@ -51,6 +51,7 @@ const minhatela = document.getElementById('canvaswrap');
 const campodados = document.getElementById('campodados');
 const exitb = document.getElementById('exitbutton');
 const pontuacao = document.getElementById('pontuacao');
+const estrelas_texto = document.getElementById('estrelas');
 const movimentacao = document.getElementById('movimentacao');
 const tmenu = document.getElementById('menu');
 const confirme = document.getElementById('confirmexit');
@@ -72,6 +73,7 @@ var travaCanhao = true;
 var controle = 0;
 var pontos = 0;
 var dicaUnica = 0;
+var estrelas=0;
 
 telaEscura.style.display = "block";
 tmenu.style.display = "block";
@@ -125,6 +127,7 @@ function resetAux() {
   dica.style.left = "50%";
   dica.textContent = "Dica";
   dicaUnica = 0;
+  cenario.id = 1;
   campodados.style.display = "none";
   alerta_pontuacao.style.display = "none";
   campodados.style.opacity = 1;
@@ -252,6 +255,7 @@ function auxBlock() {
   campodados.style.display = "block";
   exitb.style.display = "block";
   pontuacao.style.display = "block";
+  estrelas_texto.style.display="block";
   dica.style.display = "block";
   loop();
 }
@@ -261,6 +265,7 @@ document.addEventListener("click", (event) => {
     modoJogo = "L";
     auxBlock();
     pontuacao.style.display = "none";
+    estrelas_texto.style.display = "none";
     dica.style.display = "none";
   }
 });
@@ -272,6 +277,7 @@ document.addEventListener("click", (event) => {
     telaEscura.style.backgroundColor = "#00a1ff";
     document.querySelector(".titulo").textContent = texto_dificuldade;
     pontuacao.textContent = "Pontos : " + pontos;
+    estrelas_texto.textContent = "Estrelas : " + estrelas + " x ★";
     modoJogo = "C";
     indice = 0;
     velocidade = Math.floor(Math.random() * 95 + 40);
@@ -486,6 +492,8 @@ document.addEventListener("click", (event) => {
         case 0:
           if (parseFloat(imputs[0].value) == velocidade)
             eh_correta += 1;
+          else if(parseFloat(imputs[0].value) >= velocidade-1 && imputs[0].value <= velocidade+1)
+            eh_correta+=0.7;
           break;
 
         case 1:
@@ -526,10 +534,25 @@ document.addEventListener("click", (event) => {
       }
     }
     var auxPontos = 100 * eh_correta;
+    var auxEstrelas=0;
     pontos = pontos + 100 * eh_correta;
     if (dicaUnica == 1 && pontos > 0) {
       pontos = pontos - 50;
       auxPontos = auxPontos - 50;
+    }
+    if(j==1)
+    {
+      auxEstrelas=Math.floor(auxPontos/33.33)
+      estrelas+=auxEstrelas;
+      console.log(estrelas);
+    }else if(j==2)
+    {
+      estrelas+=Math.floor(auxPontos/66.66);
+      console.log(estrelas);
+    }else if(j==3)
+    {
+      estrelas+=Math.floor(auxPontos/100);
+      console.log(estrelas);
     }
     console.log(j);
     console.log(eh_correta);
@@ -546,7 +569,19 @@ document.addEventListener("click", (event) => {
       context_3.clearRect(0, 0, canvas.width, canvas.height);
       projetil.em_movimento = 1;
       pontuacao.textContent = "Pontos : " + pontos;
-      document.getElementById("texto-pontuacao").textContent = "Parabéns! Voce Acertou. Voce ganhou : " + auxPontos + " pontos";
+      estrelas_texto.textContent = "Estrelas : " + estrelas + " x ★";
+      document.getElementById("texto-pontuacao").textContent = "Parabéns! Voce Acertou.";
+      document.getElementById("texto-pontuacao2").textContent = "Voce ganhou : " + auxPontos;
+
+      if(auxEstrelas==0)
+      document.getElementById("texto-estrelas").textContent = "✰✰✰";
+      else if(auxEstrelas==1)
+      document.getElementById("texto-estrelas").textContent = "★✰✰";
+      else if(auxEstrelas==2)
+      document.getElementById("texto-estrelas").textContent = "★★✰";
+      else if(auxEstrelas==3)
+      document.getElementById("texto-estrelas").textContent = "★★★";
+
       document.getElementById("reset-fase").textContent = "Proxima Fase";
       // alerta_pontuacao.textContent="Parabens! ";
       // alerta_pontuacao.textContent+="Voce ganhou "+pontos+" pontos";
@@ -555,7 +590,17 @@ document.addEventListener("click", (event) => {
 
     } else {
       pontuacao.textContent = "Pontos : " + pontos;
-      document.getElementById("texto-pontuacao").textContent = "Voce errou. Voce obteve: " + auxPontos + " pontos";
+      estrelas_texto.textContent = "Estrelas : " + estrelas + " x ★";
+      document.getElementById("texto-pontuacao").textContent = "Voce errou.";
+      document.getElementById("texto-pontuacao2").textContent = "Voce obteve: " + auxPontos + " pontos";
+      if(auxEstrelas==0)
+      document.getElementById("texto-estrelas").textContent = "✰✰✰";
+      else if(auxEstrelas==1)
+      document.getElementById("texto-estrelas").textContent = "★✰✰";
+      else if(auxEstrelas==2)
+      document.getElementById("texto-estrelas").textContent = "★★✰";
+      else if(auxEstrelas==3)
+      document.getElementById("texto-estrelas").textContent = "★★★";
       // document.getElementById("texto-pontuacao").innerHTML= "<div id=\"texto-pontuacao\">Voce errou!<br>" + "Voce ganhou: " + pontos + " pontos</div>";
       document.getElementById("reset-fase").textContent = "Tente de novo";
       alerta_pontuacao.style.display = "block";
@@ -735,6 +780,7 @@ function exibeIntroducao() {
       exitb.style.zIndex = 12;
       campodados.style.display = "none";
       pontuacao.style.display = "none";
+      estrelas_texto.style.display = "none";
       dica.style.display = "none";
 
       break;
