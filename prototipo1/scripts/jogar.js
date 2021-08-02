@@ -73,7 +73,7 @@ var travaCanhao = true;
 var controle = 0;
 var pontos = 0;
 var dicaUnica = 0;
-var estrelas=0;
+var estrelas = 0;
 
 telaEscura.style.display = "block";
 tmenu.style.display = "block";
@@ -88,7 +88,7 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
-  if (event.target.matches("#exitbutton") && alerta_pontuacao.style.display!='block') {
+  if (event.target.matches("#exitbutton") && alerta_pontuacao.style.display != 'block') {
     telaEscura.style.display = "block";
     tmenu.style.display = "none";
     confirme.style.display = "block";
@@ -255,7 +255,7 @@ function auxBlock() {
   campodados.style.display = "block";
   exitb.style.display = "block";
   pontuacao.style.display = "block";
-  estrelas_texto.style.display="block";
+  estrelas_texto.style.display = "block";
   dica.style.display = "block";
   loop();
 }
@@ -313,7 +313,7 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
-  if (event.target.matches("#dica") && modoJogo=='C' && alerta_pontuacao.style.display!='block') {
+  if (event.target.matches("#dica") && modoJogo == 'C' && alerta_pontuacao.style.display != 'block') {
     exibedica();
 
   }
@@ -469,7 +469,7 @@ document.addEventListener("click", (event) => {
     }
   }
 
-  if (event.target.matches("#botaolancar") && modoJogo == 'C' && alerta_pontuacao.style.display!='block') {
+  if (event.target.matches("#botaolancar") && modoJogo == 'C' && alerta_pontuacao.style.display != 'block') {
 
 
     console.log("Projetil " + projetil.angulo);
@@ -492,66 +492,75 @@ document.addEventListener("click", (event) => {
         case 0:
           if (parseFloat(imputs[0].value) == velocidade)
             eh_correta += 1;
-          else if(parseFloat(imputs[0].value) >= velocidade-1 && imputs[0].value <= velocidade+1)
-            eh_correta+=0.7;
+          else if (parseFloat(imputs[0].value) >= velocidade - 1 && parseFloat(imputs[0].value) <= velocidade + 1)//margem de 1 pra cima e para baixo na velocidade
+            eh_correta += 0.75;
           break;
 
         case 1:
           if (parseFloat(imputs[1].value) == vox.toFixed(2))
             eh_correta += 1;
+          else if (parseFloat(imputs[1].value) >= (vox-0.5).toFixed(2) && parseFloat(imputs[1].value) <= (vox+0.5).toFixed(2))//+-0.5 para vox
+            eh_correta += 0.75;
           break;
 
         case 2:
-          if (parseFloat(imputs[2].value) == voy.toFixed(2) || parseFloat(imputs[2].value) == voy.toFixed(2)-0.01)
+          if (parseFloat(imputs[2].value) == voy.toFixed(2) || parseFloat(imputs[2].value) == voy.toFixed(2) - 0.01)
             eh_correta += 1;
+            else if (parseFloat(imputs[2].value) >= (voy-0.5).toFixed(2) && parseFloat(imputs[2].value) <= (voy+0.5).toFixed(2))//+-0.5 para voy
+            eh_correta += 0.75;
           break;
 
         case 3:
-          if (parseFloat(imputs[3].value) == gravidade.toFixed(1))
+          if (parseFloat(imputs[3].value) == gravidade.toFixed(1))//gravidade sem margem
             eh_correta += 1;
           break;
 
         case 4:
           if (parseFloat(imputs[4].value) == tempo.toFixed(2))
             eh_correta += 1;
+          else if (parseFloat(imputs[4].value) >= (tempo-1).toFixed(2) && parseFloat(imputs[4].value) <= (tempo+1).toFixed(2))//margem de +-1 para o tempo
+          eh_correta += 0.75;
           break;
 
         case 5:
           if (parseFloat(imputs[5].value) == var_angulo)
             eh_correta += 1;
+          else if (parseFloat(imputs[5].value) >= var_angulo-1 && parseFloat(imputs[5].value) <= var_angulo+1)//margem de +-1 para o angulo
+          eh_correta += 1;
           console.log(angulo);
           break;
 
         case 6:
           if (parseFloat(imputs[6].value) == alcance.toFixed(2))
             eh_correta += 1;
+            else if (parseFloat(imputs[6].value) >= (alcance-5).toFixed(2) && parseFloat(imputs[6].value) <= (alcance+5).toFixed(2))//margem de +-5 para o alcance
+            eh_correta += 0.75;
           break;
 
         case 7:
           if (parseFloat(imputs[7].value) == hmax.toFixed(2))
             eh_correta += 1;
+            else if (parseFloat(imputs[7].value) >= (hmax-5).toFixed(2) && parseFloat(imputs[7].value) <= (hmax+5).toFixed(2))//margem de +-5 para a altura
+            eh_correta += 0.75;
           break;
       }
     }
     var auxPontos = 100 * eh_correta;
-    var auxEstrelas=0;
+    var auxEstrelas = 0;
     pontos = pontos + 100 * eh_correta;
     if (dicaUnica == 1 && pontos > 0) {
       pontos = pontos - 50;
       auxPontos = auxPontos - 50;
     }
-    if(j==1)
-    {
-      auxEstrelas=Math.floor(auxPontos/33.33)
-      estrelas+=auxEstrelas;
+    if (j == 1) {
+      auxEstrelas = Math.floor(auxPontos / 33.33)
+      estrelas += auxEstrelas;
       console.log(estrelas);
-    }else if(j==2)
-    {
-      estrelas+=Math.floor(auxPontos/66.66);
+    } else if (j == 2) {
+      estrelas += Math.floor(auxPontos / 66.66);
       console.log(estrelas);
-    }else if(j==3)
-    {
-      estrelas+=Math.floor(auxPontos/100);
+    } else if (j == 3) {
+      estrelas += Math.floor(auxPontos / 100);
       console.log(estrelas);
     }
     console.log(j);
@@ -573,14 +582,14 @@ document.addEventListener("click", (event) => {
       document.getElementById("texto-pontuacao").textContent = "Parabéns! Voce Acertou.";
       document.getElementById("texto-pontuacao2").textContent = "Voce ganhou : " + auxPontos;
 
-      if(auxEstrelas==0)
-      document.getElementById("texto-estrelas").textContent = "✰✰✰";
-      else if(auxEstrelas==1)
-      document.getElementById("texto-estrelas").textContent = "★✰✰";
-      else if(auxEstrelas==2)
-      document.getElementById("texto-estrelas").textContent = "★★✰";
-      else if(auxEstrelas==3)
-      document.getElementById("texto-estrelas").textContent = "★★★";
+      if (auxEstrelas == 0)
+        document.getElementById("texto-estrelas").textContent = "✰✰✰";
+      else if (auxEstrelas == 1)
+        document.getElementById("texto-estrelas").textContent = "★✰✰";
+      else if (auxEstrelas == 2)
+        document.getElementById("texto-estrelas").textContent = "★★✰";
+      else if (auxEstrelas == 3)
+        document.getElementById("texto-estrelas").textContent = "★★★";
 
       document.getElementById("reset-fase").textContent = "Proxima Fase";
       // alerta_pontuacao.textContent="Parabens! ";
@@ -593,14 +602,14 @@ document.addEventListener("click", (event) => {
       estrelas_texto.textContent = "Estrelas : " + estrelas + " x ★";
       document.getElementById("texto-pontuacao").textContent = "Voce errou.";
       document.getElementById("texto-pontuacao2").textContent = "Voce obteve: " + auxPontos + " pontos";
-      if(auxEstrelas==0)
-      document.getElementById("texto-estrelas").textContent = "✰✰✰";
-      else if(auxEstrelas==1)
-      document.getElementById("texto-estrelas").textContent = "★✰✰";
-      else if(auxEstrelas==2)
-      document.getElementById("texto-estrelas").textContent = "★★✰";
-      else if(auxEstrelas==3)
-      document.getElementById("texto-estrelas").textContent = "★★★";
+      if (auxEstrelas == 0)
+        document.getElementById("texto-estrelas").textContent = "✰✰✰";
+      else if (auxEstrelas == 1)
+        document.getElementById("texto-estrelas").textContent = "★✰✰";
+      else if (auxEstrelas == 2)
+        document.getElementById("texto-estrelas").textContent = "★★✰";
+      else if (auxEstrelas == 3)
+        document.getElementById("texto-estrelas").textContent = "★★★";
       // document.getElementById("texto-pontuacao").innerHTML= "<div id=\"texto-pontuacao\">Voce errou!<br>" + "Voce ganhou: " + pontos + " pontos</div>";
       document.getElementById("reset-fase").textContent = "Tente de novo";
       alerta_pontuacao.style.display = "block";
@@ -904,7 +913,7 @@ function exibeIntroducao() {
       pontuacao.textContent = "Pontos : 0";
       break;
     case 14:
-      
+
       break;
     case 15:
       dica.style.display = "none";
@@ -982,9 +991,9 @@ function valor_campos() {
   voy = calc_Vy(velocidade, toRadiano(angulo));
 
   console.log("gravidade  " + gravidade);
-  tempo = calc_TempoVoo(voy, gravidade);
-  alcance = calc_Alcance(vox, tempo);
-  hmax = calc_AlturaMax(voy, gravidade);
+  tempo = calc_TempoVoo(voy.toFixed(2), gravidade);
+  alcance = calc_Alcance(vox.toFixed(2), tempo.toFixed(2));
+  hmax = calc_AlturaMax(voy.toFixed(2), gravidade);
 
   imputs[1].value = vox.toFixed(2);
   imputs[2].value = voy.toFixed(2);
