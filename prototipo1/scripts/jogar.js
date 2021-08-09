@@ -10,11 +10,11 @@ let textos = [
   'No modo competitivo, alguns valores virão travados. Voce pode perceber a diferença entre valores travados e destravados na tabela.',
   'O objetivo no modo competitivo é calcular os valores que não estarão travados na tabela.',
   'Use as formulas de lançamento de projéteis e seu conhecimento sobre Física para achar a resposta correta.',
-  'No modo competitivo, sua pontuação aparecerá aqui, e ela condiz com a corretude das respostas de cada fase.',
-  'Quanto maior o número de respostas corretas, maior será sua pontuação.',
+  'No modo competitivo, sua pontuação e suas estrelas aparecerão aqui, e estas informações condizem com sua pontuação e estrelas totais.',
+  'Quanto maior o número de respostas corretas, maior será sua pontuação e mais estrelas você vai ganhar.',
   'Use o botão de dica quando não souber da resposta e precisar de ajuda.',
   'Ao pressionar dica parte da pontuação total da fase será removida. Só use quando realmente necessário!',
-  'Aqui o tutorial se fnaliza. Boa sorte, e bons estudos!'
+  'Aqui o tutorial se finaliza. Boa sorte, e bons estudos!'
 ];
 const imputs = document.querySelectorAll(".inputdados");
 var ntextos = textos.length;
@@ -504,7 +504,7 @@ document.addEventListener("click", (event) => {
           break;
 
         case 2:
-          if (parseFloat(imputs[2].value) == voy.toFixed(2) || parseFloat(imputs[2].value) == voy.toFixed(2) - 0.01)
+          if (parseFloat(imputs[2].value) == voy.toFixed(2) || parseFloat(imputs[2].value) == voy.toFixed(2))
             eh_correta += 1;
             else if (parseFloat(imputs[2].value) >= (voy-0.5).toFixed(2) && parseFloat(imputs[2].value) <= (voy+0.5).toFixed(2))//+-0.5 para voy
             eh_correta += 0.75;
@@ -547,11 +547,23 @@ document.addEventListener("click", (event) => {
     }
     var auxPontos = 100 * eh_correta;
     var auxEstrelas = 0;
-    pontos = pontos + 100 * eh_correta;
-    if (dicaUnica == 1 && pontos > 0) {
-      pontos = pontos - 50;
+    if (dicaUnica == 1 && auxPontos >=50 ) {
+      if(dificuldade=='F')
+      auxPontos = auxPontos - 25;
+      else if(dificuldade=='M')
       auxPontos = auxPontos - 50;
-    }
+      else if(dificuldade=='D')
+      auxPontos = auxPontos - 75;
+      // pontos = pontos - 50;
+    } else if(dicaUnica == 1 && auxPontos <50)
+    auxPontos=0;
+    pontos = pontos +auxPontos;
+    // if(pontos<0)
+    // {
+    //   pontos=0;
+    // }
+    // if(auxPontos<0)
+    // auxPontos=0;
     if (j == 1) {
       auxEstrelas = Math.floor(auxPontos / 33.33)
       estrelas += auxEstrelas;
@@ -583,11 +595,11 @@ document.addEventListener("click", (event) => {
       document.getElementById("texto-pontuacao2").textContent = "Voce ganhou : " + auxPontos;
 
       if (auxEstrelas == 0)
-        document.getElementById("texto-estrelas").textContent = "✰✰✰";
+        document.getElementById("texto-estrelas").textContent = "";
       else if (auxEstrelas == 1)
-        document.getElementById("texto-estrelas").textContent = "★✰✰";
+        document.getElementById("texto-estrelas").textContent = "★";
       else if (auxEstrelas == 2)
-        document.getElementById("texto-estrelas").textContent = "★★✰";
+        document.getElementById("texto-estrelas").textContent = "★★";
       else if (auxEstrelas == 3)
         document.getElementById("texto-estrelas").textContent = "★★★";
 
@@ -603,11 +615,11 @@ document.addEventListener("click", (event) => {
       document.getElementById("texto-pontuacao").textContent = "Voce errou.";
       document.getElementById("texto-pontuacao2").textContent = "Voce obteve: " + auxPontos + " pontos";
       if (auxEstrelas == 0)
-        document.getElementById("texto-estrelas").textContent = "✰✰✰";
+        document.getElementById("texto-estrelas").textContent = "";
       else if (auxEstrelas == 1)
-        document.getElementById("texto-estrelas").textContent = "★✰✰";
+        document.getElementById("texto-estrelas").textContent = "★";
       else if (auxEstrelas == 2)
-        document.getElementById("texto-estrelas").textContent = "★★✰";
+        document.getElementById("texto-estrelas").textContent = "★★";
       else if (auxEstrelas == 3)
         document.getElementById("texto-estrelas").textContent = "★★★";
       // document.getElementById("texto-pontuacao").innerHTML= "<div id=\"texto-pontuacao\">Voce errou!<br>" + "Voce ganhou: " + pontos + " pontos</div>";
@@ -640,7 +652,7 @@ function exibedica() {
           dica.textContent = "Para a Velocidade divida Vox pelo cosseno do Ângulo";
         else if (imputs[2].disabled == true && imputs[5].disabled == true)
           dica.textContent = "Para a Velocidade divida Voy pelo seno do angulo";
-        else dica.textContent = "Dica para Velocidade indisponivel";
+        else dica.textContent = "Dica para Velocidade indisponivel.  Clique novamente sem perda adicional de pontos.";
         break;
 
       case 1:
@@ -650,7 +662,7 @@ function exibedica() {
           dica.textContent = "Para Vox eleve a Velocidade ao quadrado e subtraia dela o valor de Voy ao quadrado. Por fim tire a raiz do resultado";
         else if (imputs[4].disabled == true && imputs[6].disabled == true)
           dica.textContent = "Para Vox divida o valor do Alcance Horizontal pelo Tempo";
-        else dica.textContent = "Dica para Vox indisponivel";
+        else dica.textContent = "Dica para Vox indisponivel.  Clique novamente sem perda adicional de pontos.";
         break;
 
       case 2:
@@ -660,14 +672,14 @@ function exibedica() {
           dica.textContent = "Para Voy eleve a Velocidade ao quadrado e subtraia dela o valor de Vox ao quadrado. Por fim tire a raiz do resultado";
         else if (imputs[3].disabled == true && imputs[7].disabled == true)
           dica.textContent = "Para Voy multiplique a Gravidade pela Altura Máxima, multiplique por 2. Por fim tire a raiz do resultado";
-        else dica.textContent = "Dica para Vox indisponivel";
+        else dica.textContent = "Dica para Vox indisponivel.  Clique novamente sem perda adicional de pontos.";
         break;
 
       case 3:
         //Gravidade
         if (imputs[2].disabled == true && imputs[7].disabled == true)
           dica.textContent = "Para a Gravidade multiplique a Altura Máxima por 2. Eleve o valor de Voy ao quadrado e divida pelo primeiro valor";
-        else dica.textContent = "Dica para Gravidade indisponivel";
+        else dica.textContent = "Dica para Gravidade indisponivel.  Clique novamente sem perda adicional de pontos.";
         break;
 
       case 4:
@@ -675,7 +687,7 @@ function exibedica() {
           dica.textContent = "Para o Tempo divida o Alcance Horizontal pelo Vox";
         else if (imputs[2].disabled == true && imputs[3].disabled == true && imputs[7].disabled == true)
           dica.textContent = "Para o Tempo use a formula de baskara onde a=Gravidade/2, b=-(Voy) e c=Altura Máxima";
-        else dica.textContent = "Dica para Tempo indisponivel";
+        else dica.textContent = "Dica para Tempo indisponivel.  Clique novamente sem perda adicional de pontos.";
         break;
 
       case 5:
@@ -683,24 +695,24 @@ function exibedica() {
           dica.textContent = "Para o Ângulo divida Vox pela Velocidade e aplique o arco cosseno nesta divisão";
         else if (imputs[0].disabled == true && imputs[2].disabled == true)
           dica.textContent = "Para o Ângulo divida Voy pela Velocidade e aplique o arco seno nesta divisão";
-        else dica.textContent = "Dica para Angulo indisponivel";
+        else dica.textContent = "Dica para Angulo indisponivel.  Clique novamente sem perda adicional de pontos.";
         break;
 
       case 6:
         if (imputs[1].disabled == true && imputs[4].disabled == true)
           dica.textContent = "Para o Alcance Horizontal multiplique o Vox pelo tempo";
-        else dica.textContent = "Dica para Alcance Horizontal indisponivel";
+        else dica.textContent = "Dica para Alcance Horizontal indisponivel. Clique novamente sem perda adicional de pontos";
         break;
 
       case 7:
         if (imputs[2].disabled == true && imputs[3].disabled == true)
           dica.textContent = "Para a Altura Máxima eleve o Voy ao quadrado e divida pela Gravidade multiplicada por 2";
-        else dica.textContent = "Dica para Alcance Horizontal indisponivel";
+        else dica.textContent = "Dica para Alcance Horizontal indisponivel. Clique novamente sem perda adicional de pontos";
         break;
     }
-    dica.style.width = "10%";
+    dica.style.width = "15%";
     dica.style.height = "10%";
-    dica.style.left = "45%";
+    dica.style.left = "38%";
     var auxText;
     auxText = dica.textContent.substring(0, dica.textContent.indexOf(" "));
     if (auxText != "Dica")
@@ -891,19 +903,34 @@ function exibeIntroducao() {
       if (confirme.style.display != 'block') {
         campodados.style.zIndex = 8;
         pontuacao.textContent = "Pontos : 2578";
+        estrelas_texto.textContent = "Estrelas : " + 87 + " x ★";
+        estrelas_texto.style.display="block";
         pontuacao.style.display = "block";
         pontuacao.style.zIndex = 12;
+        estrelas_texto.style.zIndex = 12;
       }
       else {
         pontuacao.style.display = "none";
         pontuacao.style.zIndex = 9;
+        estrelas_texto.style.display = "none";
+        estrelas_texto.style.zIndex = 9;
       }
       break;
     case 12:
       if (confirme.style.display != 'block')
+        {
+        estrelas_texto.style.display="block";
         pontuacao.style.display = "block";
+        pontuacao.style.zIndex = 12;
+        estrelas_texto.style.zIndex = 12;
+        }
       else
-        pontuacao.style.display = "none";
+        {
+          pontuacao.style.display = "none";
+        pontuacao.style.zIndex = 9;
+        estrelas_texto.style.display = "none";
+        estrelas_texto.style.zIndex = 9;
+        }
       break;
     case 13:
       dica.style.display = "block";
@@ -911,6 +938,8 @@ function exibeIntroducao() {
       pontuacao.style.zIndex = 9;
       pontuacao.style.display = "none";
       pontuacao.textContent = "Pontos : 0";
+      estrelas_texto.style.display = "none";
+      estrelas_texto.textContent = "Estrelas : " + 0 + " x ★";
       break;
     case 14:
 
