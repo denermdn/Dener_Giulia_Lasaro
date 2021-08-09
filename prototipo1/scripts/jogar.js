@@ -499,14 +499,14 @@ document.addEventListener("click", (event) => {
         case 1:
           if (parseFloat(imputs[1].value) == vox.toFixed(2))
             eh_correta += 1;
-          else if (parseFloat(imputs[1].value) >= (vox-0.5).toFixed(2) && parseFloat(imputs[1].value) <= (vox+0.5).toFixed(2))//+-0.5 para vox
+          else if (parseFloat(imputs[1].value) >= (vox - 0.5).toFixed(2) && parseFloat(imputs[1].value) <= (vox + 0.5).toFixed(2))//+-0.5 para vox
             eh_correta += 0.75;
           break;
 
         case 2:
           if (parseFloat(imputs[2].value) == voy.toFixed(2) || parseFloat(imputs[2].value) == voy.toFixed(2))
             eh_correta += 1;
-            else if (parseFloat(imputs[2].value) >= (voy-0.5).toFixed(2) && parseFloat(imputs[2].value) <= (voy+0.5).toFixed(2))//+-0.5 para voy
+          else if (parseFloat(imputs[2].value) >= (voy - 0.5).toFixed(2) && parseFloat(imputs[2].value) <= (voy + 0.5).toFixed(2))//+-0.5 para voy
             eh_correta += 0.75;
           break;
 
@@ -518,29 +518,29 @@ document.addEventListener("click", (event) => {
         case 4:
           if (parseFloat(imputs[4].value) == tempo.toFixed(2))
             eh_correta += 1;
-          else if (parseFloat(imputs[4].value) >= (tempo-1).toFixed(2) && parseFloat(imputs[4].value) <= (tempo+1).toFixed(2))//margem de +-1 para o tempo
-          eh_correta += 0.75;
+          else if (parseFloat(imputs[4].value) >= (tempo - 1).toFixed(2) && parseFloat(imputs[4].value) <= (tempo + 1).toFixed(2))//margem de +-1 para o tempo
+            eh_correta += 0.75;
           break;
 
         case 5:
           if (parseFloat(imputs[5].value) == var_angulo)
             eh_correta += 1;
-          else if (parseFloat(imputs[5].value) >= var_angulo-1 && parseFloat(imputs[5].value) <= var_angulo+1)//margem de +-1 para o angulo
-          eh_correta += 1;
+          else if (parseFloat(imputs[5].value) >= var_angulo - 1 && parseFloat(imputs[5].value) <= var_angulo + 1)//margem de +-1 para o angulo
+            eh_correta += 1;
           console.log(angulo);
           break;
 
         case 6:
           if (parseFloat(imputs[6].value) == alcance.toFixed(2))
             eh_correta += 1;
-            else if (parseFloat(imputs[6].value) >= (alcance-5).toFixed(2) && parseFloat(imputs[6].value) <= (alcance+5).toFixed(2))//margem de +-5 para o alcance
+          else if (parseFloat(imputs[6].value) >= (alcance - 5).toFixed(2) && parseFloat(imputs[6].value) <= (alcance + 5).toFixed(2))//margem de +-5 para o alcance
             eh_correta += 0.75;
           break;
 
         case 7:
           if (parseFloat(imputs[7].value) == hmax.toFixed(2))
             eh_correta += 1;
-            else if (parseFloat(imputs[7].value) >= (hmax-5).toFixed(2) && parseFloat(imputs[7].value) <= (hmax+5).toFixed(2))//margem de +-5 para a altura
+          else if (parseFloat(imputs[7].value) >= (hmax - 5).toFixed(2) && parseFloat(imputs[7].value) <= (hmax + 5).toFixed(2))//margem de +-5 para a altura
             eh_correta += 0.75;
           break;
       }
@@ -710,9 +710,9 @@ function exibedica() {
         else dica.textContent = "Dica para Alcance Horizontal indisponivel. Clique novamente sem perda adicional de pontos";
         break;
     }
-    dica.style.width = "15%";
-    dica.style.height = "10%";
-    dica.style.left = "38%";
+    dica.style.width = "12%";
+    dica.style.height = "20%";
+    dica.style.left = "40%";
     var auxText;
     auxText = dica.textContent.substring(0, dica.textContent.indexOf(" "));
     if (auxText != "Dica")

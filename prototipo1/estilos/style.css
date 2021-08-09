@@ -84,7 +84,8 @@ button {
 button:hover {
   background-color: #6fa8a8 !important;
   color: white !important;
-  letter-spacing: 1.1px;
+  font-size: 1vw;
+  letter-spacing: 1.2px;
 }
 
 th {
@@ -221,7 +222,8 @@ th {
 }
 
 #pontuacao {
-  font-size: 130%;
+  /* font-size: 130%; */
+  font-size: 2vw;
   width: 10%;
   height: 3%;
   text-align: center;
@@ -233,10 +235,12 @@ th {
   border-radius: 5%;
   z-index: 9;
   cursor: default;
+  font-family: 'Bebas Neue', cursive;
 }
 
 #estrelas {
-  font-size: 130%;
+  /* font-size: 130%; */
+  font-size: 2vw;
   width: 10%;
   height: 3%;
   text-align: center;
@@ -248,6 +252,8 @@ th {
   border-radius: 5%;
   z-index: 9;
   cursor: default;
+  font-family: 'Bebas Neue', cursive;
+
 }
 
 #alerta-pontuacao {
@@ -293,7 +299,8 @@ th {
 }
 
 #dica {
-  font-size: 130%;
+  clear: both;
+  font-size: 1.5vw;
   width: 3%;
   height: 3%;
   text-align: center;
@@ -308,6 +315,7 @@ th {
   background-color: unset;
   z-index: 9;
   cursor: pointer;
+  font-family: 'Bebas Neue', cursive;
 }
 
 #modeselection {
@@ -398,4 +406,37 @@ th {
   width: 35%;
   font-size: 50%;
 
+}
+
+
+#area-principal {
+  width: 100%;
+  margin: 0 auto;
+  padding: 15px;
+  display: inline;
+  font-size: 150%;
+}
+
+
+#area-ponstagens {
+  width: 31%;
+  float: left;
+}
+
+.ponstagem {
+  padding: 20px;
+  margin-bottom: 20px;
+  background: white;
+  margin: 10%;
+}
+
+#rodape {
+  clear: both;
+  position: absolute ;
+  bottom: 0;
+  width:100%;
+  text-align: center;
+  padding: 15px;
+  background: #CCC;
+  font-family: Arial, Helvetica, sans-serif;
 }
