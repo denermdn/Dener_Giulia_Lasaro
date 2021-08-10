@@ -367,7 +367,7 @@ th {
   opacity: 1;
 }
 
-#ranking{
+#ranking {
   text-align: center;
   display: absolute;
   position: absolute;
@@ -382,7 +382,8 @@ th {
   font-size: 2vw;
 }
 
-#title_rank, #title_perfil {
+#title_rank,
+#title_perfil {
   text-align: center;
   background: blue;
   color: yellow;
@@ -391,11 +392,12 @@ th {
   font-family: 'Zen Tokyo Zoo', cursive;
 }
 
-#title_perfil{
+#title_perfil {
   padding: 10px;
-  background:#0373f8;
+  background: #0373f8;
   color: yellow;
 }
+
 /* #_perfil{
   display: inline-block;
   align-items: flex-start;
@@ -412,31 +414,51 @@ th {
 #area-principal {
   width: 100%;
   margin: 0 auto;
-  padding: 15px;
+  /* padding-left: 3%; */
   display: inline;
   font-size: 150%;
 }
 
 
-#area-ponstagens {
-  width: 31%;
+#containers {
   float: left;
+  width: 31%;
+  margin-left: 2%;
+  text-align: center;
 }
 
-.ponstagem {
-  padding: 20px;
+.box {
+  padding: 2%;
   margin-bottom: 20px;
   background: white;
-  margin: 10%;
+  margin-top: 10%;
+  height: auto;
 }
 
 #rodape {
   clear: both;
-  position: absolute ;
+  position: absolute;
   bottom: 0;
-  width:100%;
+  width: 100%;
   text-align: center;
   padding: 15px;
   background: #CCC;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.botao_perfil {
+  clear: both;
+  width: 100%;
+  height: 5%;
+  /* border: 1px solid black; */
+  text-align: center;
+  position: absolute;
+  bottom: 3%;
+}
+.botao_perfil input {
+  width: 15%;
+  height: 100%;
+  font-size: 100%;
+  /* border-radius: ; */
 }
