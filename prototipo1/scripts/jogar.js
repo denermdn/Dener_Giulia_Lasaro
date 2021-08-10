@@ -167,11 +167,11 @@ document.addEventListener("mouseover", (event) => {
 });
 
 document.addEventListener("mouseout", (event) => {
-  if (event.target.matches(".tabdados")
+  if ((event.target.matches(".tabdados")
     || event.target.matches("#tabeladados")
     || event.target.matches("#botaolancar")
     || event.target.matches("#trajet")
-    || event.target.matches(".inputdados")) {
+    || event.target.matches(".inputdados")) && modoJogo!='C') {
     campodados.style.opacity = "0.3";
   }
 });
@@ -183,13 +183,13 @@ document.addEventListener("mouseover", (event) => {
 });
 
 document.addEventListener("mouseout", (event) => {
-  if (event.target.matches("cd")) {
+  if (event.target.matches("cd") && modoJogo!='C') {
     campodados.style.opacity = "0.5";
   }
 });
 
 document.addEventListener("mouseover", (event) => {
-  if (event.target.matches("#dica")) {
+  if (event.target.matches("#dica") && alerta_pontuacao.style.display != 'block') {
     dica.style.backgroundColor = "yellow";
   }
 });
@@ -201,7 +201,7 @@ document.addEventListener("mouseout", (event) => {
 });
 
 document.addEventListener("mouseover", (event) => {
-  if (event.target.matches("#exitbutton")) {
+  if (event.target.matches("#exitbutton") && alerta_pontuacao.style.display != 'block') {
     exitb.style.backgroundColor = "red";
   }
 });
@@ -264,6 +264,7 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#modoLivre")) {
     modoJogo = "L";
     auxBlock();
+    campodados.style.opacity = "0.3";
     pontuacao.style.display = "none";
     estrelas_texto.style.display = "none";
     dica.style.display = "none";
@@ -279,6 +280,7 @@ document.addEventListener("click", (event) => {
     pontuacao.textContent = "Pontos : " + pontos;
     estrelas_texto.textContent = "Estrelas : " + estrelas + " x ★";
     modoJogo = "C";
+    campodados.style.opacity = "1";
     indice = 0;
     velocidade = Math.floor(Math.random() * 95 + 40);
     angulo = Math.floor(Math.random() * 91);
@@ -314,6 +316,7 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#dica") && modoJogo == 'C' && alerta_pontuacao.style.display != 'block') {
+    while(dicaUnica!=1)
     exibedica();
 
   }
@@ -632,6 +635,7 @@ document.addEventListener("click", (event) => {
 });
 
 function exibedica() {
+  console.log("Dica n");
   let qdica = 0;
   if (dificuldade == 'F')
     qdica = 0;
@@ -711,7 +715,7 @@ function exibedica() {
         break;
     }
     dica.style.width = "12%";
-    dica.style.height = "20%";
+    dica.style.height = "15%";
     dica.style.left = "40%";
     var auxText;
     auxText = dica.textContent.substring(0, dica.textContent.indexOf(" "));
@@ -940,6 +944,7 @@ function exibeIntroducao() {
       pontuacao.textContent = "Pontos : 0";
       estrelas_texto.style.display = "none";
       estrelas_texto.textContent = "Estrelas : " + 0 + " x ★";
+      estrelas_texto.style.zIndex = 9;
       break;
     case 14:
 
