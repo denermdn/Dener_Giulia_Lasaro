@@ -224,7 +224,7 @@ th {
 
 #pontuacao {
   /* font-size: 130%; */
-  font-size: 2vw;
+  font-size: 1.5vw;
   width: 10%;
   height: 3%;
   text-align: center;
@@ -241,7 +241,7 @@ th {
 
 #estrelas {
   /* font-size: 130%; */
-  font-size: 2vw;
+  font-size: 1.5vw;
   width: 10%;
   height: 3%;
   text-align: center;
@@ -301,7 +301,7 @@ th {
 
 #dica {
   clear: both;
-  font-size: 1.5vw;
+  font-size: 1.45vw;
   width: 3%;
   height: 3%;
   text-align: center;
