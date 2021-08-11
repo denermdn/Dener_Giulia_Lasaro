@@ -408,6 +408,7 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#exitp")) {
     smenu.style.display = "none";
     gmenu.style.display = "block";
+    telaEscura.style.backgroundColor = "#0076ff";
     document.querySelector(".titulo").textContent = texto_selecaoModo;
   }
 });
