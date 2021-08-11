@@ -37,8 +37,8 @@
             <div class="box">
                 <canvas class="canvas_perfil" id="box_cenario"></canvas>
                 <div class="botoes_navegacao">
-                    <input type="button" value="<< Voltar"></input>
-                    <input type="button" value="Próximo >>"></input>
+                    <input type="button" onclick="trocaCenario(-1);" value="<< Voltar"></input>
+                    <input type="button" onclick="trocaCenario(1);" value="Próximo >>"></input>
                 </div>
                 <!-- <img src="./imagens/cenario0.png" width="100%"> -->
             </div>
@@ -49,8 +49,8 @@
                 <canvas class="canvas_perfil" id="box_canhao"></canvas>
                 <!-- <img src="./imagens/cannon.png" height="100%"> -->
                 <div class="botoes_navegacao">
-                    <input type="button" value="<< Voltar"></input>
-                    <input type="button" value="Próximo >>"></input>
+                    <input type="button" onclick="trocaCanhao(-1);" value="<< Voltar"></input>
+                    <input type="button" onclick="trocaCanhao(1);" value="Próximo >>"></input>
                 </div>
             </div>
         </div>
@@ -59,8 +59,8 @@
             <div class="box">
                 <canvas class="canvas_perfil" id="box_projetil"></canvas>
                 <div class="botoes_navegacao">
-                    <input type="button" value="<< Voltar"></input>
-                    <input type="button" value="Próximo >>"></input>
+                    <input type="button" onclick="trocaProjetil(-1);" value="<< Voltar"></input>
+                    <input type="button" onclick="trocaProjetil(1);" value="Próximo >>"></input>
                 </div>
             </div>
         </div>
@@ -68,8 +68,6 @@
             <input type="button" value="Voltar"></input>
         </div> -->
     </div>
-    <!-- <script src="scripts/jogar.js"></script> -->
-    <script src="scripts/cenario.js"></script>
     <script src="scripts/js_Perfil.js"></script>
 </body>
 

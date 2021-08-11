@@ -473,6 +473,7 @@ th {
 
 .botao_perfil input,
 .botoes_navegacao input {
+  cursor:pointer;
   width: 19%;
   height: 90%;
 }
@@ -480,10 +481,13 @@ th {
   background-color: darkorange;
   color: black;
 }
+.botoes_navegacao input:hover{
+  background-color:chartreuse;
+}
 
 .canvas_perfil{
   height: 100%;
   width: 100%;
-  border: 1px solid black;
-  z-index: 3;
+  border: 1px solid red;
+  /* z-index: 3; */
 }
