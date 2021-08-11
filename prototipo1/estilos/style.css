@@ -392,62 +392,54 @@ th {
   font-weight: bold;
   font-family: 'Zen Tokyo Zoo', cursive;
 }
-
+/* /////////////////////////////////////////////////////////////////////////////// */
 #title_perfil {
   padding: 10px;
   background: #0373f8;
   color: yellow;
 }
 
-/* #_perfil{
-  display: inline-block;
-  align-items: flex-start;
-  
-} */
 .botoes_sair {
   height: 30%;
   width: 35%;
   font-size: 50%;
-
 }
-
 
 #area-principal {
   width: 100%;
   margin: 0 auto;
-  /* padding-left: 3%; */
   display: inline;
   font-size: 150%;
   font-family: 'Architects Daughter', cursive;
-  /* font-weight:bold; */
 }
 
-
-.containers, .containers_top {
+.containers,
+.containers_top {
   float: left;
   width: 31%;
   margin-left: 1.5%;
   text-align: center;
   height: 300px;
   margin-top: 2%;
-  background-color:rebeccapurple;
+  background-color: rebeccapurple;
   border: 1px solid red;
 }
-.containers{
+
+.containers {
   margin-top: 5%;
 }
 
 .box {
   margin: 2%;
   width: 96%;
-  /* margin-bottom: 20px; */
-  background: brown;
-  height: 80%
+  /* background: brown; */
+  height: 70%;
 }
 
-.titulo_box{
+.titulo_box {
   background-color: white;
 }
+
 #rodape {
   clear: both;
   position: absolute;
@@ -459,18 +451,16 @@ th {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.botoes_navegacao{
+.botoes_navegacao {
   position: absolute;
-  margin-bottom: 0;
-  border: 1px solid pink;
-  width: 30%;
+  display: block;
+  margin-top: -0.5%;
+  /* border: 1px solid pink; */
+  width: 29.5%;
+  height: 5%;
+  line-height: 0;
 }
 
-.botoes_navegacao input{
-  clear: both;
-  /* display: inline-block; */
-}
-/* 
 .botao_perfil {
   clear: both;
   width: 100%;
@@ -478,10 +468,22 @@ th {
   text-align: center;
   position: absolute;
   bottom: 3%;
-}
-.botao_perfil input {
-  width: 15%;
-  height: 100%;
   font-size: 100%;
-   border-radius: ; 
-} */
+}
+
+.botao_perfil input,
+.botoes_navegacao input {
+  width: 19%;
+  height: 90%;
+}
+.botoes_navegacao input{
+  background-color: darkorange;
+  color: black;
+}
+
+.canvas_perfil{
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  z-index: 3;
+}
