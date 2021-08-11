@@ -171,7 +171,7 @@ document.addEventListener("mouseout", (event) => {
     || event.target.matches("#tabeladados")
     || event.target.matches("#botaolancar")
     || event.target.matches("#trajet")
-    || event.target.matches(".inputdados")) && modoJogo!='C') {
+    || event.target.matches(".inputdados")) && modoJogo != 'C') {
     campodados.style.opacity = "0.3";
   }
 });
@@ -183,7 +183,7 @@ document.addEventListener("mouseover", (event) => {
 });
 
 document.addEventListener("mouseout", (event) => {
-  if (event.target.matches("cd") && modoJogo!='C') {
+  if (event.target.matches("cd") && modoJogo != 'C') {
     campodados.style.opacity = "0.5";
   }
 });
@@ -316,8 +316,8 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#dica") && modoJogo == 'C' && alerta_pontuacao.style.display != 'block') {
-    while(dicaUnica!=1)
-    exibedica();
+    while (dicaUnica != 1)
+      exibedica();
 
   }
 });
@@ -428,7 +428,7 @@ document.addEventListener("click", (event) => {
   // }
 });
 ////////////////////
-const cenario = new Cenarios(9.8, 1, canvas.width, canvas.height);
+const cenario = new Cenarios(9.8, canvas.width, canvas.height);
 const canhao = new Canhao(0);
 const projetil = new Projetil(canhao.posicao);
 const alvo = new Alvo();
@@ -551,17 +551,17 @@ document.addEventListener("click", (event) => {
     }
     var auxPontos = 100 * eh_correta;
     var auxEstrelas = 0;
-    if (dicaUnica == 1 && auxPontos >=50 ) {
-      if(dificuldade=='F')
-      auxPontos = auxPontos - 25;
-      else if(dificuldade=='M')
-      auxPontos = auxPontos - 50;
-      else if(dificuldade=='D')
-      auxPontos = auxPontos - 75;
+    if (dicaUnica == 1 && auxPontos >= 50) {
+      if (dificuldade == 'F')
+        auxPontos = auxPontos - 25;
+      else if (dificuldade == 'M')
+        auxPontos = auxPontos - 50;
+      else if (dificuldade == 'D')
+        auxPontos = auxPontos - 75;
       // pontos = pontos - 50;
-    } else if(dicaUnica == 1 && auxPontos <50)
-    auxPontos=0;
-    pontos = pontos +auxPontos;
+    } else if (dicaUnica == 1 && auxPontos < 50)
+      auxPontos = 0;
+    pontos = pontos + auxPontos;
     // if(pontos<0)
     // {
     //   pontos=0;
@@ -754,7 +754,7 @@ function calcular() {
 
 
 function modoLivre() {
-  cenario.desenhar(context);
+  cenario.desenhar(context,0);
 
   canhao.rodar(context_2);
   canhao.draw(context_2); // mudar para context se quiser que alvo sobreponha canhao
@@ -909,7 +909,7 @@ function exibeIntroducao() {
         campodados.style.zIndex = 8;
         pontuacao.textContent = "Pontos : 2578";
         estrelas_texto.textContent = "Estrelas : " + 87 + " x ★";
-        estrelas_texto.style.display="block";
+        estrelas_texto.style.display = "block";
         pontuacao.style.display = "block";
         pontuacao.style.zIndex = 12;
         estrelas_texto.style.zIndex = 12;
@@ -922,20 +922,18 @@ function exibeIntroducao() {
       }
       break;
     case 12:
-      if (confirme.style.display != 'block')
-        {
-        estrelas_texto.style.display="block";
+      if (confirme.style.display != 'block') {
+        estrelas_texto.style.display = "block";
         pontuacao.style.display = "block";
         pontuacao.style.zIndex = 12;
         estrelas_texto.style.zIndex = 12;
-        }
-      else
-        {
-          pontuacao.style.display = "none";
+      }
+      else {
+        pontuacao.style.display = "none";
         pontuacao.style.zIndex = 9;
         estrelas_texto.style.display = "none";
         estrelas_texto.style.zIndex = 9;
-        }
+      }
       break;
     case 13:
       dica.style.display = "block";

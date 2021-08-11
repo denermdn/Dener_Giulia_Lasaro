@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Tokyo+Zoo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos/style.css">
     <title>Perfil</title>
 </head>
@@ -16,44 +17,60 @@
             style="color:chartreuse">I</span><span style="color:orangered">L</span>
     </h1>
     <div id="area-principal">
-        <div id="containers">
+        <div class="containers_top">
+            <h3 class="titulo_box">Meus Dados</h3>
             <div class="box">
-                <h3>Meus Dados</h3>
             </div>
         </div>
-        <div id="containers">
+        <div class="containers_top">
+            <h3 class="titulo_box">Estrelas</h3>
             <div class="box">
-                <h3>Estrelas</h3>
             </div>
         </div>
-        <div id="containers">
+        <div class="containers_top">
+            <h3 class="titulo_box">Pontuação</h3>
             <div class="box">
-                <h3>Pontuação</h3>
             </div>
         </div>
-        <div id="containers">
+        <div class="containers">
+            <h3 class="titulo_box">Cenário</h3>
             <div class="box">
-                <h3>Cenário</h3>
-                <img src="./imagens/cenario0.png" width="100%">
+                <canvas class="canvas_perfil" id="box_cenario"></canvas>
+                <div class="botoes_navegacao">
+                    <input type="button" value="<< Voltar"></input>
+                    <input type="button" value="Próximo >>"></input>
+                </div>
+                <!-- <img src="./imagens/cenario0.png" width="100%"> -->
             </div>
         </div>
-        <div id="containers">
+        <div class="containers">
+            <h3 class="titulo_box">Canhão</h3>
             <div class="box">
-                <h3>Canhão</h3>
-                <img src="./imagens/cannon.png" height="100%">
+                <canvas class="canvas_perfil" id="box_canhao"></canvas>
+                <!-- <img src="./imagens/cannon.png" height="100%"> -->
+                <div class="botoes_navegacao">
+                    <input type="button" value="<< Voltar"></input>
+                    <input type="button" value="Próximo >>"></input>
+                </div>
             </div>
         </div>
-        <div id="containers">
+        <div class="containers">
+            <h3 class="titulo_box">Projéteis</h3>
             <div class="box">
-                <h3>Projéteis</h3>
-                <img src="./imagens/balls.png">
+                <canvas class="canvas_perfil" id="box_projetil"></canvas>
+                <div class="botoes_navegacao">
+                    <input type="button" value="<< Voltar"></input>
+                    <input type="button" value="Próximo >>"></input>
+                </div>
             </div>
         </div>
-        <div class="botao_perfil">
-            <!-- <button>Voltar</button> -->
+        <!-- <div class="botao_perfil">
             <input type="button" value="Voltar"></input>
-        </div>
+        </div> -->
     </div>
+    <!-- <script src="scripts/jogar.js"></script> -->
+    <script src="scripts/cenario.js"></script>
+    <script src="scripts/js_Perfil.js"></script>
 </body>
 
 </html>
