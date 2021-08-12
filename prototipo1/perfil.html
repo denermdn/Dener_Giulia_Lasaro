@@ -15,13 +15,62 @@
         <span style="color:orangered">P</span>E<span style="color:chartreuse">R</span>F<span
             style="color:chartreuse">I</span><span style="color:orangered">L</span>
     </h1>
-    <!-- <div id="_perfil">
-        <div style="background:beige">Meus dados</div>
-        <div style="background:beige">Pontuação</div>
-        <div style="background:beige">Estrelas</div>
-        <div style="background:beige">Personalizar</div>
-    </div> -->
-
+    <div id="area-principal">
+        <div class="containers_top">
+            <h3 class="titulo_box">Meus Dados</h3>
+            <div class="box">
+            </div>
+        </div>
+        <div class="containers_top">
+            <h3 class="titulo_box">Estrelas</h3>
+            <div class="box">
+            </div>
+        </div>
+        <div class="containers_top">
+            <h3 class="titulo_box">Pontuação</h3>
+            <div class="box">
+            </div>
+        </div>
+        <div class="containers">
+            <h3 class="titulo_box">Cenário</h3>
+            <div class="box">
+                <canvas class="canvas_perfil" id="box_cenario"></canvas>
+                <div class="botoes_navegacao">
+                    <input type="button" onclick="trocaCenario(-1);" value="<< Voltar"></input>
+                    <!-- <input type="button" onclick="trocaCenario(-1);" value="Selecionar" disabled></input> -->
+                    <input type="button" onclick="trocaCenario(1);" value="Próximo >>"></input>
+                </div>
+                <!-- <img src="./imagens/cenario0.png" width="100%"> -->
+            </div>
+        </div>
+        <div class="containers">
+            <h3 class="titulo_box">Canhão</h3>
+            <div class="box">
+                <canvas class="canvas_perfil" id="box_canhao"></canvas>
+                <!-- <img src="./imagens/cannon.png" height="100%"> -->
+                <div class="botoes_navegacao">
+                    <input type="button" onclick="trocaCanhao(-1);" value="<< Voltar"></input>
+                    <!-- <input type="button" onclick="trocaCenario(-1);" value="Selecionar" disabled></input> -->
+                    <input type="button" onclick="trocaCanhao(1);" value="Próximo >>"></input>
+                </div>
+            </div>
+        </div>
+        <div class="containers">
+            <h3 class="titulo_box">Projéteis</h3>
+            <div class="box">
+                <canvas class="canvas_perfil" id="box_projetil"></canvas>
+                <div class="botoes_navegacao">
+                    <input type="button" onclick="trocaProjetil(-1);" value="<< Voltar"></input>
+                    <!-- <input type="button" onclick="trocaCenario(-1);" value="Selecionar" disabled></input> -->
+                    <input type="button" onclick="trocaProjetil(1);" value="Próximo >>"></input>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="botao_perfil">
+            <input type="button" value="Voltar"></input>
+        </div> -->
+    </div>
+    <script src="scripts/js_Perfil.js"></script>
 </body>
 
 </html>

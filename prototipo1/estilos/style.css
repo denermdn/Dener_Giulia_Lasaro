@@ -432,23 +432,11 @@ th {
 .box {
   margin: 2%;
   width: 96%;
-  /* background: brown; */
   height: 70%;
 }
 
 .titulo_box {
   background-color: white;
-}
-
-#rodape {
-  clear: both;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  padding: 15px;
-  background: #CCC;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .botoes_navegacao {
@@ -474,8 +462,9 @@ th {
 .botao_perfil input,
 .botoes_navegacao input {
   cursor:pointer;
+  margin-top:1.5%;
   width: 19%;
-  height: 90%;
+  height: 75%;
 }
 .botoes_navegacao input{
   background-color: darkorange;
@@ -488,6 +477,7 @@ th {
 .canvas_perfil{
   height: 100%;
   width: 100%;
+  display:block;
   border: 1px solid red;
   /* z-index: 3; */
 }
