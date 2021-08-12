@@ -12,7 +12,7 @@
 <body>
     <div class="tela-escura" id="login">
         <h1>Cadastro</h1> <br>
-        <form  method="POST" action="./php/cadastraUsuario.php">
+        <form  method="POST" action="./login.php">
         <input type="text" id="nome" placeholder="Nome" name="nome">
         <br><br>
         <input type="date" name="dataNascimento" id="dataNascimento" required="required">
