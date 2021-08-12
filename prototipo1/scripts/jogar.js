@@ -366,9 +366,11 @@ document.addEventListener("click", (event) => {
     else if (cenario.id == 0)
       cenario.id = 1;
 
-    cenario.desenhar(context);
+    cenario.desenhar(context,cenario.id);
   }
 });
+
+
 
 function aux_faseDificil() {
   posicao[0] = Math.floor(Math.random() * 8);
@@ -408,7 +410,6 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#exitp")) {
     smenu.style.display = "none";
     gmenu.style.display = "block";
-    telaEscura.style.backgroundColor = "#0076ff";
     document.querySelector(".titulo").textContent = texto_selecaoModo;
   }
 });
@@ -569,16 +570,19 @@ document.addEventListener("click", (event) => {
     // if(auxPontos<0)
     // auxPontos=0;
     if (j == 1) {
-      auxEstrelas = Math.floor(auxPontos / 33.33)
+      auxEstrelas = Math.floor(auxPontos / 33.33);
       estrelas += auxEstrelas;
       console.log(estrelas);
     } else if (j == 2) {
-      estrelas += Math.floor(auxPontos / 66.66);
+      auxEstrelas = Math.floor(auxPontos / 66.66);
+      estrelas += auxEstrelas;
       console.log(estrelas);
     } else if (j == 3) {
-      estrelas += Math.floor(auxPontos / 100);
+      auxEstrelas = Math.floor(auxPontos / 100)
+      estrelas += auxEstrelas;
       console.log(estrelas);
     }
+    console.log(Math.floor(auxPontos / 100));
     console.log(j);
     console.log(eh_correta);
 

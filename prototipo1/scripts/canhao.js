@@ -1,4 +1,4 @@
-var canhao_e_roda = new Array(1);
+var canhao_e_roda = new Array(5);
 // var aux_angulo = 0.4375;
 var aux_angulo = 25 * Math.PI / 180;
 class Canhao {
@@ -21,11 +21,11 @@ class Canhao {
     }
   }
   draw(context) {
-    context.drawImage(canhao_e_roda[this.id][1], this.posicao.posX + 15, this.posicao.posY + 38, 55, 55);
+    context.drawImage(canhao_e_roda[4][1], this.posicao.posX + 15, this.posicao.posY + 38, 55, 55);
   }
 
   draw_(context, altura) {
-    context.drawImage(canhao_e_roda[this.id][0], -44, -65, 116, 80);
+    context.drawImage(canhao_e_roda[4][0], -44, -65, 116, 80);
   }
 
   rodar(ctx) {
