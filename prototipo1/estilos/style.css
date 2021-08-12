@@ -245,7 +245,7 @@ th {
   width: 10%;
   height: 3%;
   text-align: center;
-  display: none;
+  display: block;
   position: absolute;
   line-height: 100%;
   top: 1%;
@@ -461,6 +461,7 @@ th {
 
 .botao_perfil input,
 .botoes_navegacao input {
+  margin-top: 1.5%;
   cursor:pointer;
   margin-top:1.5%;
   width: 19%;
@@ -475,6 +476,7 @@ th {
 }
 
 .canvas_perfil{
+  display: block;
   height: 100%;
   width: 100%;
   display:block;

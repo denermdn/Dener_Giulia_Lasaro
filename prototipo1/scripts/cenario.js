@@ -17,7 +17,7 @@ var drawChao = {
 class Cenarios {
     constructor(gravidade, largura, altura) {
         this.gravidade = gravidade;
-        this.id;
+        this.id=0;
         this.largura = largura;
         this.altura = altura;
         this._init();
@@ -36,8 +36,8 @@ class Cenarios {
         drawChao.width_destination = this.largura / 2;
     }
 
-    desenhar(context, id) {
-        this.id= id;
+    desenhar(context, ide) {
+        this.id= ide;
         console.log("AQui");
         context.fillStyle = "skyblue";
         context.fillRect(0, 0, this.largura, this.altura);
