@@ -9,7 +9,7 @@ var canvas_box_projetil = document.getElementById("box_projetil");
 var context_box_projetil = canvas_box_projetil.getContext("2d");
 
 var idElementos = {
-    qtd_cenarios: 2,
+    qtd_cenarios: 4,
     qtd_canhao: 5,
     qtd_projetil: 7,
     idCenarios: 0,

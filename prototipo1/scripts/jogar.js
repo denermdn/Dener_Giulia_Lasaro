@@ -127,7 +127,7 @@ function resetAux() {
   dica.style.left = "50%";
   dica.textContent = "Dica";
   dicaUnica = 0;
-  cenario.id = 1;
+  cenario.id=0;
   campodados.style.display = "none";
   alerta_pontuacao.style.display = "none";
   campodados.style.opacity = 1;
@@ -263,6 +263,7 @@ function auxBlock() {
 document.addEventListener("click", (event) => {
   if (event.target.matches("#modoLivre")) {
     modoJogo = "L";
+    cenario.id=1;
     auxBlock();
     campodados.style.opacity = "0.3";
     pontuacao.style.display = "none";
@@ -338,7 +339,10 @@ document.addEventListener("click", (event) => {
     indice = 0;
     clearDados();
     controle = 0;
+    if(cenario.id != 2 && cenario.id!=3)
     velocidade = Math.floor(Math.random() * 95 + 40);
+    else
+    velocidade = Math.floor(Math.random() * 40 + 20);
     angulo = Math.floor(Math.random() * 91);
 
     console.log(dificuldade);
@@ -361,10 +365,20 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#reset-fase")
     && document.getElementById("reset-fase").textContent == "Proxima Fase") {
     //lancar=false;
-    if (cenario.id == 1)
-      cenario.id = 0;
-    else if (cenario.id == 0)
+    if (cenario.id == 0)
       cenario.id = 1;
+    else if (cenario.id == 1){
+      cenario.id = 2;
+      velocidade = Math.floor(Math.random() * 40 + 20);
+      exitb.style.color="white";
+    }
+    else if (cenario.id == 2)
+    {
+      velocidade = Math.floor(Math.random() * 40 + 20);
+      cenario.id=3;
+      exitb.style.color="black";
+    }else if (cenario.id == 3)
+      cenario.id=0;
 
     cenario.desenhar(context,cenario.id);
   }
@@ -592,7 +606,7 @@ document.addEventListener("click", (event) => {
 
       console.log(angulo);
       lancar = true;
-      projetil.componentes(velocidade, 9.8); ///Aqui é passada a gravidade
+      projetil.componentes(velocidade, projetil.g); ///Aqui é passada a gravidade
       alvo.setPosicao(projetil.alcance - 46, canvas.height - 70);
       projetil.reset(velocidade, canhao.posicao);
       context_3.clearRect(0, 0, canvas.width, canvas.height);
@@ -1024,7 +1038,16 @@ function faseDificil() {
 
 function valor_campos() {
 
-  gravidade = 9.8;
+  if(cenario.id==0)
+  gravidade = 10;
+  else if(cenario.id==1)
+  gravidade=9.8;
+  else if(cenario.id==2)
+  gravidade=1.62;
+  else if(cenario.id==3)
+  gravidade=3.72;
+  
+  projetil.g=gravidade;
   vox = calc_Vx(velocidade, toRadiano(angulo));
   voy = calc_Vy(velocidade, toRadiano(angulo));
 
