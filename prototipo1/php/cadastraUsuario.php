@@ -30,7 +30,7 @@ try{
     );
     
     if($stmst->execute($dados)){
-        header("Location: cadastro.php?msgSucesso= Cadastro realizado com sucesso!");
+        header("Location: ../login.php");
     }
     
     // if(!$query) {
