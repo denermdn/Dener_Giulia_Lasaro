@@ -17,9 +17,9 @@
             <input type="password" name="senha" id="senha" placeholder="Senha">
             <br><br>
             <button type="submit" id="btnLogin" name="btnLogin">Login</button>
-            <a href="./index.html"><button>Enviar</button></a>
+
             <br><br>
-            <a href="./cadastro.php"><button>Cadastrar-se</button></a>
+            <button><a href="./cadastro.php">Cadastrar-se</a></button>
         </form>
    </div>
 </body>
