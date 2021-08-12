@@ -803,6 +803,7 @@ function initCampos() {
 }
 
 function exibeIntroducao() {
+
   switch (contatextos) {
     case 0:
       telaEscura.style.display = "block";

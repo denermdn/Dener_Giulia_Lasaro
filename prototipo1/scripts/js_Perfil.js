@@ -32,9 +32,11 @@ const posicoes_corte = [
 ];
 
 function setaParemetrosTela() {
+    // tela.largura = canvas_box_cenario.offsetWidth - 50;
+    // tela.largura = canvas_box_cenario.offsetWidth -canvas_box_cenario.offsetWidth*0.1;
+    // tela.altura = canvas_box_cenario.offsetHeight - 45;
     tela.largura = 350;
     tela.altura = 150;
-    
 }
 
 var cenario = new Image();
