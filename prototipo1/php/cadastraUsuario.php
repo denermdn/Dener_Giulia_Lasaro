@@ -30,7 +30,7 @@ try{
     );
     
     if($stmst->execute($dados)){
-        header("Location: ../login.php");
+        header("Location: ../login.html");
     }
     
     // if(!$query) {
