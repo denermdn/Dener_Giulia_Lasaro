@@ -10,7 +10,7 @@ var context_box_projetil = canvas_box_projetil.getContext("2d");
 
 var idElementos = {
     qtd_cenarios: 2,
-    qtd_canhao: 1,
+    qtd_canhao: 5,
     qtd_projetil: 7,
     idCenarios: 0,
     idCanhao: 0,
@@ -32,8 +32,9 @@ const posicoes_corte = [
 ];
 
 function setaParemetrosTela() {
-    tela.largura = canvas_box_cenario.offsetWidth - 50;
-    tela.altura = canvas_box_cenario.offsetHeight - 45;
+    tela.largura = 350;
+    tela.altura = 150;
+    
 }
 
 var cenario = new Image();
@@ -54,7 +55,7 @@ function draw_boxCanhao() {
     context_box_canhao.fillStyle = "#D3D3D3";
     context_box_canhao.fillRect(0, 0, tela.largura, tela.altura);
     context_box_canhao.drawImage(canhao, tela.largura * 0.2, tela.altura * 0.2, tela.largura * 0.4, tela.altura * 0.53)
-    context_box_canhao.drawImage(roda, tela.largura * 0.25, tela.altura * 0.45, tela.largura * 0.2, tela.altura * 0.35);
+    context_box_canhao.drawImage(roda, tela.largura * 0.25, tela.altura * 0.449, tela.largura * 0.2, tela.altura * 0.35);
 }
 
 function draw_boxProjetil() {

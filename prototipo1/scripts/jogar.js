@@ -758,7 +758,7 @@ function calcular() {
 
 
 function modoLivre() {
-  cenario.desenhar(context,0);
+  cenario.desenhar(context,cenario.id);
 
   canhao.rodar(context_2);
   canhao.draw(context_2); // mudar para context se quiser que alvo sobreponha canhao
@@ -816,7 +816,7 @@ function exibeIntroducao() {
       break;
     case 1:
       if (confirme.style.display != 'block') {
-        cenario.desenhar(context);
+        cenario.desenhar(context,1);
         canhao.rodar(context_2);
         canhao.draw(context_2);
         campodados.style.display = "block";
@@ -844,7 +844,7 @@ function exibeIntroducao() {
       if (confirme.style.display != 'block') {
         context_2.clearRect(0, 0, canvas.width, canvas.height);
         cenario.id = 0;
-        cenario.desenhar(context);
+        cenario.desenhar(context,cenario.id);
       }
       else {
         context.clearRect(0, 0, canvas.width, canvas.height);
@@ -960,7 +960,7 @@ function exibeIntroducao() {
       bloqueiaCampos();
       cenario.id = 1;
       context.clearRect(0, 0, canvas.width, canvas.height);
-      cenario.desenhar(context);
+      cenario.desenhar(context,cenario.id);
       exitb.style.zIndex = 9;
       telaEscura.style.opacity = 1;
       telaEscura.style.display = "none";
