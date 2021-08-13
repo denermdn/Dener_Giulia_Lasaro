@@ -8,7 +8,7 @@ try{
     
     }catch (PDOException $e){
     // report error message
-    echo "DEU MERDA";
+    echo "DEU MERDA\n";
     die($e->getMessage()) ;
 } 
 
