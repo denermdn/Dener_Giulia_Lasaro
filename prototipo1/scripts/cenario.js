@@ -1,5 +1,5 @@
 var plano_deFundo = [];
-plano_deFundo.length = 2;
+plano_deFundo.length = 4;
 var chao = [];
 chao.length = 1;
 

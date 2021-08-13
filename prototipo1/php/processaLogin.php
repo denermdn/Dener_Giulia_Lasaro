@@ -2,44 +2,56 @@
 
 
 require_once ('connect.php');
-echo '<pre>';
-print_r($_POST);
-echo '</pre>';
+// echo '<pre>';
+// print_r($_POST);
+// echo '</pre>';
 
-//require('connect.php');
-die();
-try{
-    // $nome = $_POST['nome'];
-    // $email = $_POST['email'];
-    // $senha = md5($_POST['senha']);
-    // $dataNascimento = $_POST['dataNascimento'];
+session_start();
+if(!empty($_POST)) {
+    try{
+        $sql = "SELECT USER_EMAIL, USER_NASCIMENTO, USER_NAME, USER_PONT_TOTAL, USER_ULTM_FASE FROM TB_USER WHERE USER_EMAIL = :email and USER_SENHA = :senha";
 
-    echo "teste";
+        $stmt = $conn->prepare($sql);
 
-    $sql = "INSERT INTO tb_user (user_name, user_email, user_nascimento, user_senha) VALUES (:nome, :email, :dataNascimento, :senha)";
+        $dados = array(
+            ':email' => $_POST['email'],
+            ':senha' => md5($_POST['senha'])
+        );
+        
+        $stmt->execute($dados);
+
+        $result = $stmt->fetchAll();
+        if($stmt->rowCount() == 1){
+            $result = $result[0];
+
+            $_SESSION['nome'] = $result['user_name'];
+            $_SESSION['email'] = $result['user_email'];
+            $_SESSION['nascimento'] = $result['user_nascimento'];
+            $_SESSION['pontTotal'] = $result['user_pont_total'];        
+            $_SESSION['ultimaFase'] = $result['user_ultm_fase'];
 
 
-    $stmst = $conn->prepare($sql);
+            header("Location: ../index.html");
 
-    $dados = array(
-        ':nome' => $_POST['nome'],
-        ':email' => $_POST['email'],
-        ':dataNascimento' => $_POST['dataNascimento'],
-        ':senha' => md5($_POST['senha'])
-    );
-    
-    if($stmst->execute($dados)){
-        header("Location: cadastro.php?msgSucesso= Cadastro realizado com sucesso!");
+        } 
+        else {
+            session_destroy();
+            header("Location: ../login.html?msgErro=Usuário ou senha incorretos.");
+        }
+        
+
+        echo '<pre>';
+        print_r($result);
+        echo '</pre>';
+
+
+
+    } catch (PDOException $e) {
+        echo $e->getMessage();
     }
-    
-    // if(!$query) {
-    //     echo $sql->errno;
-    // }
-    // else {
-    //     header('Location: ../cadastro.php');
-    // }    
-} catch (PDOException $e) {
-    echo $e->getMessage();
+}
+else {
+    header("Location: ../login.html?msgErro=Sem Permissão.");
 }
 
-?>
+ ?>
