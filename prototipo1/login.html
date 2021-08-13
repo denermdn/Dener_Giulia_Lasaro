@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <link type="text/css" rel="stylesheet" href="estilos/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="estilos/style.css" />
     <title>TBPT - Login</title>
 </head>
 
@@ -12,13 +12,15 @@
     <div class="tela-escura" id="login">
         <h1>Login</h1> <br>
         <form  method="POST" action="./php/processaLogin.php">
-            <input type="text" name="email" id="email" placeholder="E-mail">
+            <input type="text" name="email" id="email" placeholder="E-mail" required>
             <br><br>
-            <input type="password" name="senha" id="senha" placeholder="Senha">
+            <input type="password" name="senha" id="senha" placeholder="Senha" required>
             <br><br>
-            <button type="submit" id="btnLogin" name="btnLogin">Login</button>
+            <!-- <button type="submit" id="btnLogin" name="btnLogin">Login</button> -->
+            <input class="botoes_autenticacao" type="submit" type="submit" id="btnLogin" name="btnLogin" value="Login">
             <br><br>
-            <button><a href="./cadastro.html">Cadastrar-se</a></button>
+            <!-- <button><a href="./cadastro.html">Cadastrar-se</a></button> -->
+            <a href="./cadastro.html" style="text-decoration:nome"><input class="botoes_autenticacao" type="button" value="Cadastrar"></a>
         </form>
    </div>
 </body>
