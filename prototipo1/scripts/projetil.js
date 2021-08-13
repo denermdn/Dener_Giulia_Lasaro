@@ -1,4 +1,4 @@
-var projetil_sprite = new Array(1);//Colocar um tamanho aqui
+var projetil_sprite = new Array(2);//Colocar um tamanho aqui
 
 var dados_sprite = {
     xOrigin: 0,

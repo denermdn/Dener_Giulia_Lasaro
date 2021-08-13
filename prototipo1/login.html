@@ -8,7 +8,7 @@
     <title>TBPT - Login</title>
 </head>
 
-<body>
+<body class="principal">
     <div class="tela-escura" id="login">
         <h1>Login</h1> <br>
         <form  method="POST" action="./php/processaLogin.php">
