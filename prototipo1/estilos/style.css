@@ -482,12 +482,33 @@ th {
   display:block;
   border: 1px solid red;
 }
-
-.botoes_autenticacao :hover{
-  /* letter-spacing: 2px; */
-  background-color: blueviolet;
+.input_autenticacao{
+  background-color: #4838a3;
+  color: #fff;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  max-width: 100%;
+  border-radius: 17px;
 }
+
 .botoes_autenticacao{
-    cursor: pointer;
-    background-color: #87CEFA;
+  cursor: pointer;
+  background-color: rgba(8, 165, 165, 0.76); 
+  color: #fff;
+  max-width: 50%;
+  border-radius: 17px;
+  border: none;
+  letter-spacing: 1.5px;
+}
+
+.botoes_autenticacao[type='button']:hover{
+  background-color: paleturquoise;
+  letter-spacing: 3px;
+  color: #000000;
+}
+
+.input_autenticacao:hover{
+  background-color: darkcyan;
+  letter-spacing: 3px;
+  font-weight: 500;
 }
