@@ -430,7 +430,7 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#tsair")) {
-    window.location.replace("./login.html");
+    window.location.replace("./index.html");
   }
 });
 ///////////////////

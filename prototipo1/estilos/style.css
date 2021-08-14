@@ -450,7 +450,6 @@ th {
 }
 
 .botao_perfil input[type="button"] {
-  /* clear: both; */
   width: 15%;
   max-height:50%;
   border-radius:5px;

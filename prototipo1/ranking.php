@@ -17,7 +17,7 @@
         <div style="margin-top: -2vw;">
             <table style="width: 100%; height: 100%; font-family: 'Bebas Neue', cursive; text-align: center;"
                 border="0">
-                <tr>
+                <!-- <tr>
                     <td>Posição</td>
                     <td>Nome</td>
                     <td>Pontuação</td>
@@ -71,11 +71,15 @@
                     <td>10</td>
                     <td>R. Sarah</td>
                     <td>6927</td>
-                </tr>
+                </tr> -->
+                <?php
+                include_once('./php/auxiliar.php');
+                montaTabela();
+                ?>
             </table>
             <br><br>
         </div>
-        <a href="./index.html"><button>Voltar ao menu</button></a>
+        <a href="./main.html"><button>Voltar ao menu</button></a>
     </div>
 </body>
 
