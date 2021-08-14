@@ -73,3 +73,33 @@ INSERT INTO TB_CENR(CENR_ID, CENR_GVDD, CENR_BON) VALUES(0, 9.8, TRUE);
 INSERT INTO TB_CENR(CENR_ID, CENR_GVDD, CENR_BON) VALUES(1, 9.78, TRUE);
 INSERT INTO TB_CENR(CENR_ID, CENR_GVDD, CENR_BON) VALUES(2, 1.62, FALSE);
 INSERT INTO TB_CENR(CENR_ID, CENR_GVDD, CENR_BON) VALUES(3, 3.72, FALSE);
+
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
+values ('Dener', 'dener@', 1, '2000-03-21', 8052, 0);
+
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
+values ('Giulia', 'giulia@', 1, '1999-10-14', 8012, 0);
+
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
+values ('Lásaro', 'lasaro@', 1, '1999-10-14', 7958, 0);
+
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
+values ('Zarref', 'zarref@', 1, '1999-10-14', 7880, 0);
+
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
+values ('A_ivil', 'a_ivil@', 1, '1999-10-14', 7764, 0);
+
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
+values ('Flavin do pneu', 'flavin_do_pneu@', 1, '1999-10-14', 7256, 0);
+
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
+values ('Ginzwar', 'ginzwar@', 1, '1999-10-14', 7115, 0);
+
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
+values ('Shambler', 'shambler@', 1, '1999-10-14', 7002, 0);
+
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
+values ('phfso', 'phfso@', 1, '1999-10-14', 6950, 0);
+
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
+values ('R. Sarah', 'r.sarah@', 1, '1999-10-14', 6927, 0);
