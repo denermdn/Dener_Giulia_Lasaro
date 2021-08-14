@@ -8,7 +8,7 @@ try{
     
     }catch (PDOException $e){
     // report error message
-    echo "DEU MERDA\n";
+    echo "ERRO NA CONEXÃO COM O BANCO\n";
     die($e->getMessage()) ;
 } 
 

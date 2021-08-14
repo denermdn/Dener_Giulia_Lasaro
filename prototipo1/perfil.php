@@ -11,16 +11,21 @@
     <title>Perfil</title>
 </head>
 
-<body overflow="nome">
+<body id="corpo_perfil" overflow="nome">
     <h1 id="title_perfil">
         <span style="color:orangered">P</span>E<span style="color:chartreuse">R</span>F<span
             style="color:chartreuse">I</span><span style="color:orangered">L</span>
     </h1>
     <div id="area-principal">
-        <div class="containers_top">
+        <div class="containers_top" style="text-align:left">
             <h3 class="titulo_box">Meus Dados</h3>
-            <div class="box">
-            </div>
+            <!-- <div class="box"> -->
+                <form action="">
+                   Nome: <input type="text" name="nome"><br>
+                   Data de Nascimento:<input type="text" name="data_nascimento"><br>
+                   E-mail:<input type="text" name="email"><br>
+                </form>
+            <!-- </div> -->
         </div>
         <div class="containers_top">
             <h3 class="titulo_box">Estrelas</h3>
@@ -67,9 +72,9 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="botao_perfil">
-            <input type="button" value="Voltar"></input>
-        </div> -->
+        <div class="botao_perfil">
+            <a href="./main.html"><input type="button" value="Menu Inicial"></input></a>
+        </div>
     </div>
     <script src="scripts/js_Perfil.js"></script>
 </body>

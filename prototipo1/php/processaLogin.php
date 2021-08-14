@@ -29,14 +29,14 @@ if(!empty($_POST)) {
             $_SESSION['nascimento'] = $result['user_nascimento'];
             $_SESSION['pontTotal'] = $result['user_pont_total'];        
             $_SESSION['ultimaFase'] = $result['user_ultm_fase'];
-
-
-            header("Location: ../index.html");
+            
+            
+            header("Location: ../main.html");
 
         } 
         else {
             session_destroy();
-            header("Location: ../login.html?msgErro=Usuário ou senha incorretos.");
+            header("Location: ../index.html?msgErro=Usuário ou senha incorretos.");
         }
         
 
@@ -51,7 +51,7 @@ if(!empty($_POST)) {
     }
 }
 else {
-    header("Location: ../login.html?msgErro=Sem Permissão.");
+    header("Location: ../index.html?msgErro=Sem Permissão.");
 }
 
  ?>

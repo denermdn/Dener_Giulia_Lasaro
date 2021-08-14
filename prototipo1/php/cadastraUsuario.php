@@ -1,9 +1,9 @@
 <?php
 
 
-echo '<pre>';
-print_r($_POST);
-echo '</pre>';
+// echo '<pre>';
+// print_r($_POST);
+// echo '</pre>';
 
 require_once ('connect.php');
 //require('connect.php');
@@ -30,7 +30,7 @@ try{
     );
     
     if($stmst->execute($dados)){
-        header("Location: ../login.html");
+        header("Location: ../index.html");
     }
     
     // if(!$query) {
