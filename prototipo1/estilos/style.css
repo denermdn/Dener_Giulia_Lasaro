@@ -481,5 +481,13 @@ th {
   width: 100%;
   display:block;
   border: 1px solid red;
-  /* z-index: 3; */
+}
+
+.botoes_autenticacao :hover{
+  /* letter-spacing: 2px; */
+  background-color: blueviolet;
+}
+.botoes_autenticacao{
+    cursor: pointer;
+    background-color: #87CEFA;
 }
