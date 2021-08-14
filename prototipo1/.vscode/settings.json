@@ -1,6 +1,4 @@
 {
     "php.validate.executablePath": "C:\\xampp\\php\\php.exe",
     "php.suggest.basic": false,
-    "phpSniffer.run": "onType",
-    "phpSniffer.autoDetect": true,
 }

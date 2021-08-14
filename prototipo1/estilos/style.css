@@ -449,17 +449,23 @@ th {
   line-height: 0;
 }
 
-.botao_perfil {
-  clear: both;
-  width: 100%;
-  height: 5%;
+.botao_perfil input[type="button"] {
+  /* clear: both; */
+  width: 15%;
+  max-height:50%;
+  border-radius:5px;
+  float: left;
+  margin-left: 50%;
+  margin-top: 1%;
+  margin-bottom:1%;
+  transform: translate(-50%);
   text-align: center;
-  position: absolute;
-  bottom: 3%;
+  display: block;
   font-size: 100%;
+  background-color: gold;
+  font-weight: 500;
 }
 
-.botao_perfil input,
 .botoes_navegacao input {
   margin-top: 1.5%;
   cursor:pointer;
@@ -512,3 +518,7 @@ th {
   letter-spacing: 3px;
   font-weight: 500;
 }
+
+#corpo_perfil{
+    background: #1e5fad;
+} 
