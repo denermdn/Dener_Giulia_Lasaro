@@ -1,19 +1,15 @@
 <?php
 
 
-// echo '<pre>';
-// print_r($_POST);
-// echo '</pre>';
+echo '<pre>';
+print_r($_POST);
+echo '</pre>';
 
 require_once ('connect.php');
-//require('connect.php');
+
 
 
 try{
-    // $nome = $_POST['nome'];
-    // $email = $_POST['email'];
-    // $senha = md5($_POST['senha']);
-    // $dataNascimento = $_POST['dataNascimento'];
 
     echo "teste";
 
@@ -30,15 +26,9 @@ try{
     );
     
     if($stmst->execute($dados)){
-        header("Location: ../index.html");
+        header("Location: ../login.html");
     }
     
-    // if(!$query) {
-    //     echo $sql->errno;
-    // }
-    // else {
-    //     header('Location: ../cadastro.php');
-    // }    
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
