@@ -15,14 +15,18 @@ function montaTabela()
                 from tb_user) op where  row_number = :id ";
 
     //---------------------------------------------------------------------
-    $open_tr = '<tr';
+    $open_tr = '<tr ';
     $close_tr = '</tr>';
     $open_td = '<td>';
     $close_td = '</td>';
     $cores = array(
-        '>', ' style="background: #ffbf00;">',  ' style="background: #C0C0C0;">',
+        'style="cursor: pointer;">',
+        ' style="background: #ffbf00;">',
+        ' style="background: #C0C0C0;">',
         ' style="background: #bf8970;">'
     );
+    // $action='onclick="script:location.href=\'http://google.com.br\'"';
+    $action='onclick="janela_info()"';
 
     echo $open_tr . '>';
     echo $open_td . 'Posição' . $close_td;
@@ -31,10 +35,10 @@ function montaTabela()
     echo $close_tr;
     for ($i = 0, $j = 1; $i < 10; $i++) {
         if ($j < 4) {
-            echo $open_tr . $cores[$j];
+            echo $open_tr.$action.$cores[$j];
             $j++;
         } else {
-            echo $open_tr . $cores[0];
+            echo $open_tr.$action.$cores[0];
         }
 
         $h = array(
@@ -45,7 +49,12 @@ function montaTabela()
         $stmt->execute($h);
         $result = $stmt->fetchColumn();
 
-        echo $open_td . ($i + 1) . 'º' . $close_td;
+        $classificacao = ($i + 1) . 'º';
+        if ($result == '') {
+            echo $close_tr;
+            break;
+        }
+        echo $open_td . $classificacao . $close_td;
         echo $open_td . $result . $close_td;
 
         $stmt = $conn->prepare($queryy);
@@ -55,4 +64,7 @@ function montaTabela()
         echo $open_td . $result . $close_td;
         echo $close_tr;
     }
+}
+function detalhes(){
+    // return '<div style="float:right;">TESTE</div>';
 }

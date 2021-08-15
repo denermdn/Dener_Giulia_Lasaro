@@ -10,13 +10,13 @@
     <title>TBPT - Ranking</title>
 </head>
 
-<body  class="principal">
+
+<body class="principal">
     <div class="tela-escura" id="ranking">
         <h1 id="title_rank">
             RANKING</h1> <br>
         <div style="margin-top: -2vw;">
-            <table style="width: 100%; height: 100%; font-family: 'Bebas Neue', cursive; text-align: center;"
-                border="0">
+            <table id="rank_">
                 <?php
                 include_once('./php/auxiliar.php');
                 montaTabela();
@@ -25,8 +25,26 @@
             </table>
             <br><br>
         </div>
-        <a href="./main.html"><button>Voltar ao menu</button></a>
+        <a href="./main.html"><button id='button_ranking'>Voltar ao menu</button></a>
     </div>
+    <div id="modal">TESTE</div>
+    <script>
+        <?php 
+        include_once('./php/auxiliar.php');
+        detalhes();
+        ?>
+        function janela_info() {//Essa função tem coisa a mais só pra testar
+            console.log("Chegou aqui");
+                
+            if (document.getElementById("modal").style.display == "block") {
+                document.getElementById("modal").style.display = "none";
+            } else {
+                document.getElementById("modal").innerText="TESTE";
+                document.getElementById("modal").style.display = "block";
+            }
+        }
+    </script>
+
 </body>
 
 </html>
