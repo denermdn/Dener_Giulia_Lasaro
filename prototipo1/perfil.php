@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="botao_perfil">
-            <a href="./main.html"><input type="button" value="Menu Inicial"></input></a>
+            <a href="./main.php"><input type="button" value="Menu Inicial"></input></a>
         </div>
     </div>
     <script src="scripts/js_Perfil.js"></script>
