@@ -10,11 +10,13 @@ function montaTabela()
 //------------------------------------------------------------------
                 require_once ('connect.php');
                 session_start();
-                $query = "select user_name from (select row_number() over() as id, t.*
-                from (select * from tb_user order by user_pont_total desc) t) t2 where id=:id";
+                $query = "select * FROM 
+                (select user_name, row_number() over(order by user_pont_total desc) 
+                from tb_user) op where  row_number = :id ";
 
-                $queryy = "select  user_pont_total from (select row_number() over() as id, t.*
-                from (select * from tb_user order by user_pont_total desc) t) t2 where id=:id";
+                $queryy = "select * FROM 
+                (select user_pont_total, row_number() over(order by user_pont_total desc) 
+                from tb_user) op where  row_number = :id ";
 
 //---------------------------------------------------------------------
     $open_tr = '<tr';
