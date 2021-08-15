@@ -368,6 +368,7 @@ th {
   opacity: 1;
 }
 
+/* ///////////////////////////////////////////////////////// */
 #ranking {
   text-align: center;
   display: absolute;
@@ -392,6 +393,51 @@ th {
   font-weight: bold;
   font-family: 'Zen Tokyo Zoo', cursive;
 }
+
+#rank_ {
+  width: 100%;
+  height: 100%;
+  font-family: 'Bebas Neue', cursive;
+  text-align: center;
+  border: 0;
+  border-collapse: collapse;
+}
+
+#rank_ tr {
+  cursor: pointer;
+}
+
+#rank_ tr:hover {
+  /* background-color: yellow !important;  */
+
+  color: crimson;
+}
+
+#modal {
+  width: 350px;
+  /* width: 25.7%; */
+  height: 350px;
+  /* height: 53%; */
+  background-color: #ddd;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate(-20%, -50%);
+  display: none;
+}
+
+#button_ranking {
+  background: #4838a3;
+  border-radius: 0;
+  color: white;
+  font-weight: 500;
+}
+
+#button_ranking:hover {
+  background: #5a8080 !important;
+  color: black !important;
+}
+
 /* /////////////////////////////////////////////////////////////////////////////// */
 #title_perfil {
   padding: 10px;
@@ -421,7 +467,7 @@ th {
   text-align: center;
   height: 300px;
   margin-top: 2%;
-  background-color: rebeccapurple;
+  /* background-color: rebeccapurple; */
   border: 1px solid red;
 }
 
@@ -437,13 +483,21 @@ th {
 
 .titulo_box {
   background-color: white;
+  /* text-align: center; */
+}
+
+.box_form {
+  margin: 2%;
+  width: 96%;
+  height: 70%;
+  z-index: 3;
+  background-color: red;
 }
 
 .botoes_navegacao {
   position: absolute;
   display: block;
   margin-top: -0.5%;
-  /* border: 1px solid pink; */
   width: 29.5%;
   height: 5%;
   line-height: 0;
@@ -451,12 +505,12 @@ th {
 
 .botao_perfil input[type="button"] {
   width: 15%;
-  max-height:50%;
-  border-radius:5px;
+  max-height: 50%;
+  border-radius: 5px;
   float: left;
   margin-left: 50%;
   margin-top: 1%;
-  margin-bottom:1%;
+  margin-bottom: 1%;
   transform: translate(-50%);
   text-align: center;
   display: block;
@@ -467,27 +521,30 @@ th {
 
 .botoes_navegacao input {
   margin-top: 1.5%;
-  cursor:pointer;
-  margin-top:1.5%;
+  cursor: pointer;
+  margin-top: 1.5%;
   width: 19%;
   height: 75%;
 }
-.botoes_navegacao input{
+
+.botoes_navegacao input {
   background-color: darkorange;
   color: black;
 }
-.botoes_navegacao input:hover{
-  background-color:chartreuse;
+
+.botoes_navegacao input:hover {
+  background-color: chartreuse;
 }
 
-.canvas_perfil{
+.canvas_perfil {
   display: block;
   height: 100%;
   width: 100%;
-  display:block;
+  display: block;
   border: 1px solid red;
 }
-.input_autenticacao{
+
+.input_autenticacao {
   background-color: #4838a3;
   color: #fff;
   letter-spacing: 1.5px;
@@ -496,9 +553,9 @@ th {
   border-radius: 17px;
 }
 
-.botoes_autenticacao{
+.botoes_autenticacao {
   cursor: pointer;
-  background-color: rgba(8, 165, 165, 0.76); 
+  background-color: rgba(8, 165, 165, 0.76);
   color: #fff;
   max-width: 50%;
   border-radius: 17px;
@@ -506,18 +563,18 @@ th {
   letter-spacing: 1.5px;
 }
 
-.botoes_autenticacao[type='button']:hover{
+.botoes_autenticacao[type='button']:hover {
   background-color: paleturquoise;
   letter-spacing: 3px;
   color: #000000;
 }
 
-.input_autenticacao:hover{
+.input_autenticacao:hover {
   background-color: darkcyan;
   letter-spacing: 3px;
   font-weight: 500;
 }
 
-#corpo_perfil{
-    background: #1e5fad;
-} 
+#corpo_perfil {
+  background: #1e5fad;
+}

@@ -2,9 +2,7 @@
 
 
 require_once ('connect.php');
-// echo '<pre>';
-// print_r($_POST);
-// echo '</pre>';
+
 
 session_start();
 if(!empty($_POST)) {
@@ -24,6 +22,7 @@ if(!empty($_POST)) {
         if($stmt->rowCount() == 1){
             $result = $result[0];
 
+            $_SESSION['id'] = $result['user_id'];
             $_SESSION['nome'] = $result['user_name'];
             $_SESSION['email'] = $result['user_email'];
             $_SESSION['nascimento'] = $result['user_nascimento'];
@@ -31,14 +30,14 @@ if(!empty($_POST)) {
             $_SESSION['ultimaFase'] = $result['user_ultm_fase'];
             $_SESSION['id'] = $result['user_id'];
 
-            //$em=$_SESSION['id'];
             
-        header("Location: ../main.php?"/*m=".$em*/);
+            
+        header("Location: ../main.php?");
 
         } 
         else {
             session_destroy();
-            header("Location: ../index.html?msgErro=Usuário ou senha incorretos.");
+            header("Location: ../login.html?msgErro=Usuário ou senha incorretos.");
         }
         
 
@@ -53,7 +52,9 @@ if(!empty($_POST)) {
     }
 }
 else {
-    header("Location: ../index.html?msgErro=Sem Permissão.");
+    header("Location: ../login.html?msgErro=Sem Permissão.");
 }
+
+die();
 
  ?>

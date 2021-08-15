@@ -1,21 +1,17 @@
 <?php
 
 
-// echo '<pre>';
-// print_r($_POST);
-// echo '</pre>';
+echo '<pre>';
+print_r($_POST);
+echo '</pre>';
 
 require_once ('connect.php');
-//require('connect.php');
+
 
 
 try{
-    // $nome = $_POST['nome'];
-    // $email = $_POST['email'];
-    // $senha = md5($_POST['senha']);
-    // $dataNascimento = $_POST['dataNascimento'];
 
-    echo "teste";
+    // echo "teste";
 
     $sql = "INSERT INTO tb_user (user_name, user_email, user_nascimento, user_senha) VALUES (:nome, :email, :dataNascimento, :senha)";
 
@@ -33,12 +29,6 @@ try{
         header("Location: ../index.html");
     }
     
-    // if(!$query) {
-    //     echo $sql->errno;
-    // }
-    // else {
-    //     header('Location: ../cadastro.php');
-    // }    
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
