@@ -30,7 +30,7 @@ if(!empty($_POST)) {
             $_SESSION['ultimaFase'] = $result['user_ultm_fase'];
 
 
-            header("Location: ../index.php");
+            header("Location: ../main.html");
 
         } 
         else {

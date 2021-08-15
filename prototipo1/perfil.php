@@ -17,15 +17,15 @@
             style="color:chartreuse">I</span><span style="color:orangered">L</span>
     </h1>
     <div id="area-principal">
-        <div class="containers_top" style="text-align:left">
+        <div class="containers_top" >
             <h3 class="titulo_box">Meus Dados</h3>
-            <!-- <div class="box"> -->
-                <form action="">
+            <div id="box_form">
+                <!-- <form action="">
                    Nome: <input type="text" name="nome"><br>
                    Data de Nascimento:<input type="text" name="data_nascimento"><br>
                    E-mail:<input type="text" name="email"><br>
-                </form>
-            <!-- </div> -->
+                </form> -->
+            </div>
         </div>
         <div class="containers_top">
             <h3 class="titulo_box">Estrelas</h3>

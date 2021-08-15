@@ -11,7 +11,7 @@ require_once ('connect.php');
 
 try{
 
-    echo "teste";
+    // echo "teste";
 
     $sql = "INSERT INTO tb_user (user_name, user_email, user_nascimento, user_senha) VALUES (:nome, :email, :dataNascimento, :senha)";
 
@@ -26,7 +26,7 @@ try{
     );
     
     if($stmst->execute($dados)){
-        header("Location: ../login.html");
+        header("Location: ../index.html");
     }
     
 } catch (PDOException $e) {

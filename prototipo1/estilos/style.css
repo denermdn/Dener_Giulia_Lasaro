@@ -421,7 +421,7 @@ th {
   text-align: center;
   height: 300px;
   margin-top: 2%;
-  background-color: rebeccapurple;
+  /* background-color: rebeccapurple; */
   border: 1px solid red;
 }
 
@@ -437,8 +437,15 @@ th {
 
 .titulo_box {
   background-color: white;
+  /* text-align: center; */
 }
-
+.box_form{
+  margin: 2%;
+  width: 96%;
+  height: 70%;
+  z-index: 3;
+  background-color:red;
+}
 .botoes_navegacao {
   position: absolute;
   display: block;
