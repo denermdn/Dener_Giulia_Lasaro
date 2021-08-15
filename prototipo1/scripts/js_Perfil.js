@@ -111,3 +111,4 @@ function trocaProjetil(direcao) {
         idElementos.idProjetil = idElementos.qtd_projetil - 1;
     }
 }
+

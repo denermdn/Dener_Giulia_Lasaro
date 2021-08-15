@@ -25,7 +25,7 @@
             </table>
             <br><br>
         </div>
-        <a href="./main.html"><button>Voltar ao menu</button></a>
+        <a href="./main.php"><button>Voltar ao menu</button></a>
     </div>
 </body>
 

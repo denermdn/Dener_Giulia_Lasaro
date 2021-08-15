@@ -19,7 +19,9 @@ let textos = [
 const imputs = document.querySelectorAll(".inputdados");
 var ntextos = textos.length;
 var contatextos = 0;
-console.log(ntextos);
+//console.log(ntextos);
+
+document.getElementById('pontosTotal').value = pontos;
 
 var canvas = document.getElementById("canvas");
 canvas.width = window.innerWidth;
@@ -75,8 +77,11 @@ var pontos = 0;
 var dicaUnica = 0;
 var estrelas = 0;
 
+
+
 telaEscura.style.display = "block";
 tmenu.style.display = "block";
+estrelas_texto.style.display = "none";
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#playbutton")) {
@@ -107,6 +112,7 @@ document.addEventListener("click", (event) => {
   if (event.target.matches("#voltar-menu")) {
     telaEscura.style.display = "block";
     alerta_pontuacao.style.display = "none";
+
     resetAux();
   }
 });
@@ -435,12 +441,12 @@ document.addEventListener("click", (event) => {
 });
 ///////////////////
 document.addEventListener("click", (event) => {
-  // if (event.target.matches("#rank")) {
+   if (event.target.matches("#rank")) {
   //   window.location.replace("./Ranking.html");
   // }
   // if(event.target.matches("#perfil")) {
   //   window.location.replace("./perfil.html");
-  // }
+   }
 });
 ////////////////////
 const cenario = new Cenarios(9.8, canvas.width, canvas.height);
@@ -458,6 +464,7 @@ document.addEventListener("click", (event) => {
     projetil.angulo = Math.floor(toGrau(-aux_angulo + toRadiano(25)));
 
     velocidade = imputs[0].value;
+    gravidade=imputs[3].value;
     projetil.componentes(velocidade, gravidade); ///Aqui é passada a gravidade
     alvo.setPosicao(projetil.alcance - 62, canvas.height - 70);
     lancar = true;
@@ -492,7 +499,6 @@ document.addEventListener("click", (event) => {
 
 
     console.log("Projetil " + projetil.angulo);
-
 
 
 
@@ -648,8 +654,8 @@ document.addEventListener("click", (event) => {
       document.getElementById("reset-fase").textContent = "Tente de novo";
       alerta_pontuacao.style.display = "block";
     }
-
     console.log(pontos);
+    document.getElementById('pontosTotal').value = pontos;
   }
 });
 

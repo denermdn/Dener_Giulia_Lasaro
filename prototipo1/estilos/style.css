@@ -245,7 +245,7 @@ th {
   width: 10%;
   height: 3%;
   text-align: center;
-  display: block;
+  display: none;
   position: absolute;
   line-height: 100%;
   top: 1%;

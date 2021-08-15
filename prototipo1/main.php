@@ -1,3 +1,6 @@
+ <?php
+	session_start();
+?> 
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -12,7 +15,7 @@
 <body class="principal">
 	<div id="exitbutton">X</div>
 	<div id="pontuacao">Pontos : 0</div>
-	<div id="estrelas">Estrelas : 0 </div>
+	<div id="estrelas" style="display: none">Estrelas : 0 </div>
 	<div class="container" id="alerta-pontuacao">
 		<div id="texto-pontuacao">Parabéns!</div>
 		<div id="texto-pontuacao2">Voce ganhou :</div>
@@ -76,7 +79,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="tabdados" colspan="2" style="text-align: center;"><button id="botaolancar">LANÇAR</button>
+				<td class="tabdados" colspan="2" style="text-align: center;">
+				<button id="botaolancar" type="submit">LANÇAR</button>				
 				</td>
 			</tr>
 		</table>
@@ -90,8 +94,14 @@
 			<table>
 				<tr>
 					<td id="perfil" onclick="location.href='./perfil.php';" style="background-color: red;">Perfil</td>
-					<td id="rank" onclick="location.href='./ranking.php';" style="background-color: green;">Ranking
+
+					<form method="POST" action="/Dener_Giulia_Lasaro/prototipo1/php/alteraPontuacao.php" name="formPontos">
+					<input type="hidden" name="pontosTotal" id="pontosTotal" value="2">
+					<input type="hidden" name="emailu" id="emailu" value="">
+
+					<td id="rank" style="background-color: green;" onclick="document.formPontos.submit()">Ranking
 					</td>
+					</form>
 				</tr>
 				<tr>
 					<td id="gamemode" style="background-color: rgb(255, 255, 0);">Modos
@@ -152,7 +162,22 @@
 	<script src="scripts/alvo.js"></script>
 	<script src="scripts/usuario.js"></script>
 	<script src="scripts/equacoes.js"></script>
-	<script src="scripts/jogar.js"></script>
-</body>
+	<script src="scripts/jogar.js">
+</script>
+	
+		<script>
+			
+		var pontos = <?php
+		echo $_SESSION['pontTotal'];
+		?>
 
+		var emails = '<?php
+		echo $_SESSION['email'];
+		?>'
+
+		document.getElementById('emailu').value = emails;
+		document.getElementById('pontosTotal').value = pontos;
+		
+		</script>
+</body>
 </html>
