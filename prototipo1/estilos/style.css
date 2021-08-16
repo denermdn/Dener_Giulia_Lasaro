@@ -267,6 +267,23 @@ th {
   z-index: 9;
   position: absolute;
   color: black;
+  overflow: visible;
+}
+
+#alerta-pontuacao button {
+  max-height: 16% !important;
+  border-radius: 0;
+  background-color: #0373f8;
+  color: white;
+  font-weight: 700;
+}
+
+#texto-pontuacao {
+  font-size: 1.9rem !important;
+}
+
+#texto-pontuacao2 {
+  font-size: 1.7rem !important;
 }
 
 #movimentacao {
@@ -408,8 +425,6 @@ th {
 }
 
 #rank_ tr:hover {
-  /* background-color: yellow !important;  */
-
   color: crimson;
 }
 

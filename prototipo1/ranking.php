@@ -27,24 +27,39 @@
         </div>
         <a href="./main.php"><button>Voltar ao menu</button></a>
     </div>
-    <div id="modal">TESTE</div>
+    <div id="modal">
+        <table>
+            <tr>
+                <td>Nome</td>
+            </tr>
+            <tr>
+                <td>Pontuação</td>
+            </tr>
+            <tr>
+                <td>Data de Nascimento</td>
+            </tr>
+            <tr>
+                <td>Contato</td>
+            </tr>
+        </table>
+    </div>
     <script>
-        <?php 
-        include_once('./php/auxiliar.php');
-        detalhes();
-        ?>
-        function janela_info() {//Essa função tem coisa a mais só pra testar
+
+        function janela_info() { //Essa função tem coisa a mais só pra testar
             console.log("Chegou aqui");
-                
+
             if (document.getElementById("modal").style.display == "block") {
                 document.getElementById("modal").style.display = "none";
             } else {
-                document.getElementById("modal").innerText="TESTE";
+                <?php
+                include_once('./php/auxiliar.php');
+                detalhes();
+                ?>
+                document.getElementById("modal").innerText = "TESTE";
                 document.getElementById("modal").style.display = "block";
             }
         }
     </script>
 
 </body>
-
 </html>

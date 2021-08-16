@@ -133,7 +133,7 @@ function resetAux() {
   dica.style.left = "50%";
   dica.textContent = "Dica";
   dicaUnica = 0;
-  cenario.id=0;
+  cenario.id = 0;
   campodados.style.display = "none";
   alerta_pontuacao.style.display = "none";
   campodados.style.opacity = 1;
@@ -269,7 +269,7 @@ function auxBlock() {
 document.addEventListener("click", (event) => {
   if (event.target.matches("#modoLivre")) {
     modoJogo = "L";
-    cenario.id=1;
+    cenario.id = 1;
     auxBlock();
     campodados.style.opacity = "0.3";
     pontuacao.style.display = "none";
@@ -345,10 +345,10 @@ document.addEventListener("click", (event) => {
     indice = 0;
     clearDados();
     controle = 0;
-    if(cenario.id != 2 && cenario.id!=3)
-    velocidade = Math.floor(Math.random() * 95 + 40);
+    if (cenario.id != 2 && cenario.id != 3)
+      velocidade = Math.floor(Math.random() * 95 + 40);
     else
-    velocidade = Math.floor(Math.random() * 40 + 20);
+      velocidade = Math.floor(Math.random() * 40 + 20);
     angulo = Math.floor(Math.random() * 91);
 
     console.log(dificuldade);
@@ -373,20 +373,19 @@ document.addEventListener("click", (event) => {
     //lancar=false;
     if (cenario.id == 0)
       cenario.id = 1;
-    else if (cenario.id == 1){
+    else if (cenario.id == 1) {
       cenario.id = 2;
       velocidade = Math.floor(Math.random() * 40 + 20);
-      exitb.style.color="white";
+      exitb.style.color = "white";
     }
-    else if (cenario.id == 2)
-    {
+    else if (cenario.id == 2) {
       velocidade = Math.floor(Math.random() * 40 + 20);
-      cenario.id=3;
-      exitb.style.color="black";
-    }else if (cenario.id == 3)
-      cenario.id=0;
+      cenario.id = 3;
+      exitb.style.color = "black";
+    } else if (cenario.id == 3)
+      cenario.id = 0;
 
-    cenario.desenhar(context,cenario.id);
+    cenario.desenhar(context, cenario.id);
   }
 });
 
@@ -421,7 +420,6 @@ document.addEventListener("click", (event) => {
     tmenu.style.display = "block";
     gmenu.style.display = "none";
     telaEscura.style.backgroundColor = "#0373f8";
-    // telaEscura.style.backgroundColor = "#0076ff";
     document.querySelector(".titulo").textContent = texto_menu;
   }
 });
@@ -441,12 +439,12 @@ document.addEventListener("click", (event) => {
 });
 ///////////////////
 document.addEventListener("click", (event) => {
-   if (event.target.matches("#rank")) {
-  //   window.location.replace("./Ranking.html");
-  // }
-  // if(event.target.matches("#perfil")) {
-  //   window.location.replace("./perfil.html");
-   }
+  if (event.target.matches("#rank")) {
+    //   window.location.replace("./Ranking.html");
+    // }
+    // if(event.target.matches("#perfil")) {
+    //   window.location.replace("./perfil.html");
+  }
 });
 ////////////////////
 const cenario = new Cenarios(9.8, canvas.width, canvas.height);
@@ -464,7 +462,7 @@ document.addEventListener("click", (event) => {
     projetil.angulo = Math.floor(toGrau(-aux_angulo + toRadiano(25)));
 
     velocidade = imputs[0].value;
-    gravidade=imputs[3].value;
+    gravidade = imputs[3].value;
     projetil.componentes(velocidade, gravidade); ///Aqui é passada a gravidade
     alvo.setPosicao(projetil.alcance - 62, canvas.height - 70);
     lancar = true;
@@ -496,12 +494,6 @@ document.addEventListener("click", (event) => {
   }
 
   if (event.target.matches("#botaolancar") && modoJogo == 'C' && alerta_pontuacao.style.display != 'block') {
-
-
-    console.log("Projetil " + projetil.angulo);
-
-
-
     var j;
     if (dificuldade == 'F')
       j = 1;
@@ -579,38 +571,28 @@ document.addEventListener("click", (event) => {
         auxPontos = auxPontos - 50;
       else if (dificuldade == 'D')
         auxPontos = auxPontos - 75;
-      // pontos = pontos - 50;
     } else if (dicaUnica == 1 && auxPontos < 50)
       auxPontos = 0;
     pontos = pontos + auxPontos;
-    // if(pontos<0)
-    // {
-    //   pontos=0;
-    // }
-    // if(auxPontos<0)
-    // auxPontos=0;
     if (j == 1) {
       auxEstrelas = Math.floor(auxPontos / 33.33);
       estrelas += auxEstrelas;
-      console.log(estrelas);
+      // console.log(estrelas);
     } else if (j == 2) {
       auxEstrelas = Math.floor(auxPontos / 66.66);
       estrelas += auxEstrelas;
-      console.log(estrelas);
+      // console.log(estrelas);
     } else if (j == 3) {
       auxEstrelas = Math.floor(auxPontos / 100)
       estrelas += auxEstrelas;
-      console.log(estrelas);
+      // console.log(estrelas);
     }
-    console.log(Math.floor(auxPontos / 100));
-    console.log(j);
-    console.log(eh_correta);
 
     if (eh_correta == j) {
 
       projetil.angulo = Math.floor(toGrau(-angulo + toRadiano(25)));
 
-      console.log(angulo);
+      // console.log(angulo);
       lancar = true;
       projetil.componentes(velocidade, projetil.g); ///Aqui é passada a gravidade
       alvo.setPosicao(projetil.alcance - 46, canvas.height - 70);
@@ -632,26 +614,26 @@ document.addEventListener("click", (event) => {
         document.getElementById("texto-estrelas").textContent = "★★★";
 
       document.getElementById("reset-fase").textContent = "Proxima Fase";
-      // alerta_pontuacao.textContent="Parabens! ";
-      // alerta_pontuacao.textContent+="Voce ganhou "+pontos+" pontos";
 
+      // await new Promise(r => setTimeout(r, 1000));
       alerta_pontuacao.style.display = "block";
-
+      
     } else {
       pontuacao.textContent = "Pontos : " + pontos;
       estrelas_texto.textContent = "Estrelas : " + estrelas + " x ★";
       document.getElementById("texto-pontuacao").textContent = "Voce errou.";
       document.getElementById("texto-pontuacao2").textContent = "Voce obteve: " + auxPontos + " pontos";
       if (auxEstrelas == 0)
-        document.getElementById("texto-estrelas").textContent = "";
+      document.getElementById("texto-estrelas").textContent = "";
       else if (auxEstrelas == 1)
-        document.getElementById("texto-estrelas").textContent = "★";
+      document.getElementById("texto-estrelas").textContent = "★";
       else if (auxEstrelas == 2)
-        document.getElementById("texto-estrelas").textContent = "★★";
+      document.getElementById("texto-estrelas").textContent = "★★";
       else if (auxEstrelas == 3)
-        document.getElementById("texto-estrelas").textContent = "★★★";
-      // document.getElementById("texto-pontuacao").innerHTML= "<div id=\"texto-pontuacao\">Voce errou!<br>" + "Voce ganhou: " + pontos + " pontos</div>";
+      document.getElementById("texto-estrelas").textContent = "★★★";
       document.getElementById("reset-fase").textContent = "Tente de novo";
+      
+      // await new Promise(r => setTimeout(r, 1000));
       alerta_pontuacao.style.display = "block";
     }
     console.log(pontos);
@@ -778,7 +760,7 @@ function calcular() {
 
 
 function modoLivre() {
-  cenario.desenhar(context,cenario.id);
+  cenario.desenhar(context, cenario.id);
 
   canhao.rodar(context_2);
   canhao.draw(context_2); // mudar para context se quiser que alvo sobreponha canhao
@@ -837,7 +819,7 @@ function exibeIntroducao() {
       break;
     case 1:
       if (confirme.style.display != 'block') {
-        cenario.desenhar(context,1);
+        cenario.desenhar(context, 1);
         canhao.rodar(context_2);
         canhao.draw(context_2);
         campodados.style.display = "block";
@@ -865,7 +847,7 @@ function exibeIntroducao() {
       if (confirme.style.display != 'block') {
         context_2.clearRect(0, 0, canvas.width, canvas.height);
         cenario.id = 0;
-        cenario.desenhar(context,cenario.id);
+        cenario.desenhar(context, cenario.id);
       }
       else {
         context.clearRect(0, 0, canvas.width, canvas.height);
@@ -981,7 +963,7 @@ function exibeIntroducao() {
       bloqueiaCampos();
       cenario.id = 1;
       context.clearRect(0, 0, canvas.width, canvas.height);
-      cenario.desenhar(context,cenario.id);
+      cenario.desenhar(context, cenario.id);
       exitb.style.zIndex = 9;
       telaEscura.style.opacity = 1;
       telaEscura.style.display = "none";
@@ -1044,16 +1026,16 @@ function faseDificil() {
 
 function valor_campos() {
 
-  if(cenario.id==0)
-  gravidade = 10;
-  else if(cenario.id==1)
-  gravidade=9.8;
-  else if(cenario.id==2)
-  gravidade=1.62;
-  else if(cenario.id==3)
-  gravidade=3.72;
-  
-  projetil.g=gravidade;
+  if (cenario.id == 0)
+    gravidade = 10;
+  else if (cenario.id == 1)
+    gravidade = 9.8;
+  else if (cenario.id == 2)
+    gravidade = 1.62;
+  else if (cenario.id == 3)
+    gravidade = 3.72;
+
+  projetil.g = gravidade;
   vox = calc_Vx(velocidade, toRadiano(angulo));
   voy = calc_Vy(velocidade, toRadiano(angulo));
 
