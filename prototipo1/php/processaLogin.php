@@ -7,7 +7,7 @@ require_once ('connect.php');
 session_start();
 if(!empty($_POST)) {
     try{
-        $sql = "SELECT USER_ID, USER_EMAIL, USER_NASCIMENTO, USER_NAME, USER_PONT_TOTAL, USER_ULTM_FASE FROM TB_USER WHERE USER_EMAIL = :email and USER_SENHA = :senha";
+        $sql = "SELECT USER_ID, USER_EMAIL, USER_NASCIMENTO, USER_NAME, USER_PONT_TOTAL, USER_ULTM_FASE, USER_ESTRELAS FROM TB_USER WHERE USER_EMAIL = :email and USER_SENHA = :senha";
 
         $stmt = $conn->prepare($sql);
 
@@ -28,6 +28,7 @@ if(!empty($_POST)) {
             $_SESSION['nascimento'] = $result['user_nascimento'];
             $_SESSION['pontTotal'] = $result['user_pont_total'];        
             $_SESSION['ultimaFase'] = $result['user_ultm_fase'];
+            $_SESSION['estrelasTotal'] = $result['user_estrelas'];
             $_SESSION['id'] = $result['user_id'];
 
             
