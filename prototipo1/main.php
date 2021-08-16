@@ -168,7 +168,7 @@
 
 
  	<script>
-		 
+
  		var pontos = <?php echo $_SESSION['pontTotal'];?>;
 
 
@@ -178,6 +178,7 @@
 			document.getElementById('who').value=who_sub;
 			document.formPontos.submit();
 		}
-		</script>
+	</script>
+
 </body>
 </html>

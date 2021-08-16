@@ -129,7 +129,7 @@ function montaTabela()
     } catch (PDOException $e) {
     }
     // $dados=$dados2;
-    session_destroy();
+    //session_destroy();
 }
 function detalhes()
 {
