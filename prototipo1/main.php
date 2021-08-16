@@ -96,6 +96,7 @@
 					
 					<form method="POST" action="/Dener_Giulia_Lasaro/prototipo1/php/alteraPontuacao.php" name="formPontos">
 					<input type="hidden" name="pontosTotal" id="pontosTotal" value="0">
+					<input type="hidden" name="estrelasT" id="estrelasT" value="0">
 					<!-- <input type="hidden" name="emailu" id="emailu" value=""> -->
 					<input type="hidden" name="who" id="who" value="">
 					</form>
@@ -171,8 +172,11 @@
 
  		var pontos = <?php echo $_SESSION['pontTotal'];?>;
 
+ 		var estrelas = <?php echo $_SESSION['estrelasTotal'];?>;
 
 		document.getElementById('pontosTotal').value = pontos;
+		document.getElementById('estrelasT').value = estrelas;
+
 		function whosub(who_sub)
 		{
 			document.getElementById('who').value=who_sub;
