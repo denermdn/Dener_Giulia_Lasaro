@@ -446,14 +446,14 @@ th {
   max-height: 90%;
   max-width: 93%;
 }
-.modal_td1{
+.nome_linha,.modal_td1{
   color: #000000;
   font-weight: 900;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.1rem;
   text-align: left;
 }
-.modal_td2{
+.dados_usuario,.modal_td2{
   text-align: right;
   font-size: 1.1rem;
   font-family: 'Courier New', Courier, monospace;
@@ -501,8 +501,7 @@ th {
   text-align: center;
   height: 300px;
   margin-top: 2%;
-  /* background-color: rebeccapurple; */
-  border: 1px solid red;
+  background-color: rgb(150, 233, 205);
 }
 
 .containers {
@@ -524,8 +523,18 @@ th {
   margin: 2%;
   width: 96%;
   height: 70%;
-  z-index: 3;
-  background-color: red;
+}
+
+.nome_linha{
+  font-family:'Architects Daughter', cursive;
+  text-transform: uppercase;
+}
+
+.dados_usuario{
+  margin-right: 2px !important;
+  clear: both;
+  border-bottom: 2px solid #1e5fad !important;
+  font-size: 82%;
 }
 
 .botoes_navegacao {

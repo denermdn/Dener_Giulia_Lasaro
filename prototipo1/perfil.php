@@ -1,6 +1,6 @@
 <?php
-	session_start();
-	?>
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,23 +16,37 @@
 
 <body id="corpo_perfil" overflow="nome">
     <h1 id="title_perfil">
-        <span style="color:orangered">P</span>E<span style="color:chartreuse">R</span>F<span
-            style="color:chartreuse">I</span><span style="color:orangered">L</span>
+        <span style="color:orangered">P</span>E<span style="color:chartreuse">R</span>F<span style="color:chartreuse">I</span><span style="color:orangered">L</span>
     </h1>
     <div id="area-principal">
-        <div class="containers_top" >
+        <div class="containers_top">
             <h3 class="titulo_box">Meus Dados</h3>
-            <div id="box_form">
-                Nome: <?php echo $_SESSION['nome']?> <br>
-                Data de Nascimento: <?php echo $_SESSION['nascimento']?> <br>
-                E-mail: <?php echo $_SESSION['email']?> <br><br>
+            <div id="box_form" >
+                <table >
+                    <tr>
+                        <td class="nome_linha">Nome: </td>
+                    </tr>
+                    <tr>
+                        <td class="dados_usuario"><?php echo $_SESSION['nome'] ?></td>
+
+                    </tr>
+                    <tr>
+
+                        <td class="nome_linha">Data de Nascimento:</td>
+                    </tr>
+                    <tr>
+
+                        <td class="dados_usuario"><?php echo date("d/m/Y", strtotime($_SESSION['nascimento'])) ?></td>
+                    </tr>
+                    <tr>
+
+                        <td class="nome_linha">E-mail:</td>
+                    </tr>
+                    <tr>
+                        <td class="dados_usuario"><?php echo $_SESSION['email'] ?></td>
+                    </tr>
+                </table>
                 <div class="botoes_navegacao"> <input type="button" value="Editar "></input></div>
-               
-                <!-- <form action="">
-                   Nome: <input type="text" name="nome"><br>
-                   Data de Nascimento:<input type="text" name="data_nascimento"><br>
-                   E-mail:<input type="text" name="email"><br>
-                </form> -->
             </div>
         </div>
         <div class="containers_top">
@@ -43,7 +57,7 @@
         <div class="containers_top">
             <h3 class="titulo_box">Pontuação</h3>
             <div class="box">
-                <?php echo $_SESSION['pontTotal']?>
+                <?php echo $_SESSION['pontTotal'] ?>
             </div>
         </div>
         <div class="containers">
