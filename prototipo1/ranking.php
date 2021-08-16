@@ -28,20 +28,7 @@
         <a href="./main.php"><button>Voltar ao menu</button></a>
     </div>
     <div id="modal">
-        <table>
-            <tr>
-                <td>Nome</td>
-            </tr>
-            <tr>
-                <td>Pontuação</td>
-            </tr>
-            <tr>
-                <td>Data de Nascimento</td>
-            </tr>
-            <tr>
-                <td>Contato</td>
-            </tr>
-        </table>
+        
     </div>
     <script>
        
