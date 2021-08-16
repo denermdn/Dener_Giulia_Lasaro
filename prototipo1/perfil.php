@@ -1,3 +1,6 @@
+<?php
+	session_start();
+	?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +23,11 @@
         <div class="containers_top" >
             <h3 class="titulo_box">Meus Dados</h3>
             <div id="box_form">
+                Nome: <?php echo $_SESSION['nome']?> <br>
+                Data de Nascimento: <?php echo $_SESSION['nascimento']?> <br>
+                E-mail: <?php echo $_SESSION['email']?> <br><br>
+                <div class="botoes_navegacao"> <input type="button" value="Editar "></input></div>
+               
                 <!-- <form action="">
                    Nome: <input type="text" name="nome"><br>
                    Data de Nascimento:<input type="text" name="data_nascimento"><br>
@@ -35,6 +43,7 @@
         <div class="containers_top">
             <h3 class="titulo_box">Pontuação</h3>
             <div class="box">
+                <?php echo $_SESSION['pontTotal']?>
             </div>
         </div>
         <div class="containers">
