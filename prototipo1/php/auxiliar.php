@@ -68,7 +68,7 @@ function montaTabela()
 
 
     require_once('connect.php');
-    //------------------------------------------------------------------
+    // ------------------------------------------------------------------
     try {
         session_start();
         $open_tr = '<tr ';
@@ -127,7 +127,7 @@ function montaTabela()
 function detalhes()
 {
     require_once('connect.php');
-    //  session_start();
+     session_start();
     $query = 'SELECT USER_NAME, USER_PONT_TOTAL, USER_EMAIL, USER_NASCIMENTO FROM TB_USER WHERE USER_ID=11;';
     $stmt = $conn->prepare($query);
     $stmt->execute($h);
@@ -147,3 +147,5 @@ function detalhes()
         </tr>
     </table>';
 }
+
+?>

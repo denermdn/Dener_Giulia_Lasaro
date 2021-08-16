@@ -434,7 +434,8 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#tsair")) {
-    window.location.replace("./php/logout.php");
+    whosub('tsair');
+    //window.location.replace("./php/logout.php");
   }
 });
 ///////////////////
@@ -783,25 +784,15 @@ function modoLivre() {
 
   if (modoJogo == "L") {
     calcular();
-    // document.getElementById('campo2').value = vox.toFixed(2);
-    // document.getElementById('campo3').value = voy.toFixed(2);
     imputs[1].value = vox.toFixed(2);
     imputs[2].value = voy.toFixed(2);
   }
-  // try {
-  //   document.getElementById('campo2').value = vox.toFixed(2);
-  //   document.getElementById('campo3').value = voy.toFixed(2);
-  // } catch (e) { }
 }
 
 function clearDados() {
   velocidade = vox = voy = tempo = angulo = alcance = hmax = 0;
   gravidade = 9.8;
   imputs[0].value = 100;
-}
-
-function initCampos() {
-
 }
 
 function exibeIntroducao() {

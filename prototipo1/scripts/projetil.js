@@ -16,7 +16,6 @@ class Projetil {
         this.alcance;
         this.tempo;
         this.altura_maxima;
-        console.log(this.velocidade);
         this._init();
     }
 
