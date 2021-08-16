@@ -27,28 +27,47 @@
         </div>
         <a href="./main.php"><button>Voltar ao menu</button></a>
     </div>
-    <div id="modal">TESTE</div>
+    <div id="modal">
+        <table>
+            <tr>
+                <td id="u_name">Nome : </td>
+            </tr>
+            <tr>
+                <td id="u_pont_total">Pontuação : </td>
+            </tr>
+            <tr>
+                <td id="u_nascimento">Data de Nascimento : </td>
+            </tr>
+            <tr>
+                <td id="u_email">Contato : </td>
+            </tr>
+        </table>
+    </div>
     <script>
-        <?php 
-        include_once('./php/auxiliar.php');
-        detalhes();
-        ?>
 
-        let tentativa;
-        function janela_info(indu) {//Essa função tem coisa a mais só pra testar
+        function janela_info(idu) {//Essa função tem coisa a mais só pra testar
             console.log("Chegou aqui");
-                
+
             if (document.getElementById("modal").style.display == "block") {
                 document.getElementById("modal").style.display = "none";
             } else {
-                // let t = ['<?php include_once('./php/auxiliar.php'); pegaDados(); ?>'];
-                //tentativa=t;
-                document.getElementById("modal").textContent=indu;
+                
+                
+                var result = document.getElementById(idu+'_').textContent;
+                result = result.split(" ",5);
+                document.getElementById("u_name").textContent ='Nome : '+ result[1];
+                document.getElementById("u_pont_total").textContent ='Pontuação : '+ result[2];
+                document.getElementById("u_nascimento").textContent ='Data de Nascimento : '+ result[4];
+                document.getElementById("u_email").textContent ='Contato : '+ result[3];
+
+                
+                
+
+                
                 document.getElementById("modal").style.display = "block";
             }
         }
     </script>
 
 </body>
-
 </html>

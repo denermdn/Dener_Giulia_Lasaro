@@ -37,7 +37,7 @@ if(!empty($_POST)) {
         } 
         else {
             session_destroy();
-            header("Location: ../login.html?msgErro=Usuário ou senha incorretos.");
+            header("Location: ../index.html?msgErro=Usuário ou senha incorretos.");
         }
         
 
@@ -56,5 +56,3 @@ else {
 }
 
 die();
-
- ?>

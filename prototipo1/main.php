@@ -1,16 +1,16 @@
  <?php
 	session_start();
-?> 
-<!DOCTYPE html>
-<html lang="pt-br">
+	?>
+ <!DOCTYPE html>
+ <html lang="pt-br">
 
-<head>
-	<meta charset="UTF-8">
-	<link type="text/css" rel="stylesheet" href="estilos/style.css" />
-	<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-	<title>TBPT</title>
-</head>
+ <head>
+ 	<meta charset="UTF-8">
+ 	<link type="text/css" rel="stylesheet" href="estilos/style.css" />
+ 	<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+ 	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+ 	<title>TBPT</title>
+ </head>
 
 <body class="principal">
 	<div id="exitbutton">X</div>
@@ -95,8 +95,8 @@
 				<tr>
 					
 					<form method="POST" action="/Dener_Giulia_Lasaro/prototipo1/php/alteraPontuacao.php" name="formPontos">
-					<input type="hidden" name="pontosTotal" id="pontosTotal" value="2">
-					<input type="hidden" name="emailu" id="emailu" value="">
+					<input type="hidden" name="pontosTotal" id="pontosTotal" value="0">
+					<!-- <input type="hidden" name="emailu" id="emailu" value=""> -->
 					<input type="hidden" name="who" id="who" value="">
 					</form>
 				
@@ -127,69 +127,57 @@
 			</table>
 		</div>
 
-		<div class="container" id="playselect">
-			<table>
-				<tr>
-					<td id="faseFacil" style="background-color: rgb(6, 253, 18);">Fácil</td>
-					<td id="faseMedia" style="background-color: rgb(0, 102, 255);">Médio</td>
-				</tr>
-				<tr>
-					<td id="faseDificil" style="background-color: rgb(253, 10, 132);">Difícil
-					</td>
-					<td id="exitp" style="background-color: rgb(255, 230, 0) ;">Exit</td>
-				</tr>
-			</table>
-		</div>
-		<div class="container" id="confirmexit">Deseja Sair?
-			<br>
-			<br>
-			<button class="botoes_sair" id="confirmar">Sim</button>
-			<button class="botoes_sair" id="desconfirmar">Não</button>
-		</div>
+ 		<div class="container" id="playselect">
+ 			<table>
+ 				<tr>
+ 					<td id="faseFacil" style="background-color: rgb(6, 253, 18);">Fácil</td>
+ 					<td id="faseMedia" style="background-color: rgb(0, 102, 255);">Médio</td>
+ 				</tr>
+ 				<tr>
+ 					<td id="faseDificil" style="background-color: rgb(253, 10, 132);">Difícil
+ 					</td>
+ 					<td id="exitp" style="background-color: rgb(255, 230, 0) ;">Exit</td>
+ 				</tr>
+ 			</table>
+ 		</div>
+ 		<div class="container" id="confirmexit">Deseja Sair?
+ 			<br>
+ 			<br>
+ 			<button class="botoes_sair" id="confirmar">Sim</button>
+ 			<button class="botoes_sair" id="desconfirmar">Não</button>
+ 		</div>
 
-	</div>
-	<div>
-		<div id="canvaswrap">
-			<canvas id="canvas"></canvas>
-			<canvas id="canvas_c"></canvas>
-			<canvas id="canvas_p"></canvas>
-			<canvas id="canvas_b"></canvas>
-		</div>
-	</div>
-	<script src="scripts/cenario.js"></script>
-	<script src="scripts/canhao.js"></script>
-	<script src="scripts/projetil.js"></script>
-	<script src="scripts/posicao.js"></script>
-	<script src="scripts/alvo.js"></script>
-	<script src="scripts/usuario.js"></script>
-	<script src="scripts/equacoes.js"></script>
-	<script src="scripts/jogar.js">
-</script>
-	
-		<script>
-			
-		var pontos = <?php
-		echo $_SESSION['pontTotal'];
-		?>
+ 	</div>
+ 	<div>
+ 		<div id="canvaswrap">
+ 			<canvas id="canvas"></canvas>
+ 			<canvas id="canvas_c"></canvas>
+ 			<canvas id="canvas_p"></canvas>
+ 			<canvas id="canvas_b"></canvas>
+ 		</div>
+ 	</div>
+ 	<script src="scripts/cenario.js"></script>
+ 	<script src="scripts/canhao.js"></script>
+ 	<script src="scripts/projetil.js"></script>
+ 	<script src="scripts/posicao.js"></script>
+ 	<script src="scripts/alvo.js"></script>
+ 	<script src="scripts/usuario.js"></script>
+ 	<script src="scripts/equacoes.js"></script>
+ 	<script src="scripts/jogar.js">
+ 	</script>
 
-		var emails = '<?php
-		echo $_SESSION['email'];
-		?>';
 
-		document.getElementById('emailu').value = emails;
+ 	<script>
+		 
+ 		var pontos = <?php echo $_SESSION['pontTotal'];?>;
+
+
 		document.getElementById('pontosTotal').value = pontos;
-		
-		
 		function whosub(who_sub)
 		{
 			document.getElementById('who').value=who_sub;
 			document.formPontos.submit();
 		}
-
-		// window.onbeforeunload = function(){
-//   return 'Are you sure you want to leave?';
-// };
-
 		</script>
 </body>
 </html>
