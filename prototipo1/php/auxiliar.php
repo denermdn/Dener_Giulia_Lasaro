@@ -6,14 +6,17 @@ function montaTabela()
     require_once('connect.php');
     //------------------------------------------------------------------
     session_start();
-    $query = "select * FROM 
+    $queryname = "select * FROM 
                 (select user_name, row_number() over(order by user_pont_total desc) 
                 from tb_user) op where  row_number = :id ";
 
-    $queryy = "select * FROM 
+    $querypoints = "select * FROM 
                 (select user_pont_total, row_number() over(order by user_pont_total desc) 
                 from tb_user) op where  row_number = :id ";
 
+    $queryid = "select * FROM 
+    (select user_id, row_number() over(order by user_pont_total desc) 
+    from tb_user) op where  row_number = :id ";
     //---------------------------------------------------------------------
     $open_tr = '<tr ';
     $close_tr = '</tr>';
@@ -26,7 +29,7 @@ function montaTabela()
         ' style="background: #bf8970;">'
     );
     // $action='onclick="script:location.href=\'http://google.com.br\'"';
-    $action='onclick="janela_info()"';
+    $action='onclick="janela_info(this.id)"';
 
     echo $open_tr . '>';
     echo $open_td . 'Posição' . $close_td;
@@ -34,18 +37,22 @@ function montaTabela()
     echo $open_td . 'Pontuação' . $close_td;
     echo $close_tr;
     for ($i = 0, $j = 1; $i < 10; $i++) {
-        if ($j < 4) {
-            echo $open_tr.$action.$cores[$j];
-            $j++;
-        } else {
-            echo $open_tr.$action.$cores[0];
-        }
-
         $h = array(
             ':id' => $i + 1
         );
 
-        $stmt = $conn->prepare($query);
+        $stmt = $conn->prepare($queryid);
+        $stmt->execute($h);
+        $result = $stmt->fetchColumn();
+
+        if ($j < 4) {
+            echo $open_tr.'id='.$result.' '.$action.$cores[$j];
+            $j++;
+        } else {
+            echo $open_tr.'id='.$result.' '.$action.$cores[0];
+        }
+
+        $stmt = $conn->prepare($queryname);
         $stmt->execute($h);
         $result = $stmt->fetchColumn();
 
@@ -57,7 +64,7 @@ function montaTabela()
         echo $open_td . $classificacao . $close_td;
         echo $open_td . $result . $close_td;
 
-        $stmt = $conn->prepare($queryy);
+        $stmt = $conn->prepare($querypoints);
         $stmt->execute($h);
         $result = $stmt->fetchColumn();
 

@@ -33,13 +33,13 @@
         include_once('./php/auxiliar.php');
         detalhes();
         ?>
-        function janela_info() {//Essa função tem coisa a mais só pra testar
+        function janela_info(idu) {//Essa função tem coisa a mais só pra testar
             console.log("Chegou aqui");
                 
             if (document.getElementById("modal").style.display == "block") {
                 document.getElementById("modal").style.display = "none";
             } else {
-                document.getElementById("modal").innerText="TESTE";
+                document.getElementById("modal").innerText=idu;
                 document.getElementById("modal").style.display = "block";
             }
         }

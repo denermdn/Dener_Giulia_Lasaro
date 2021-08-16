@@ -93,15 +93,16 @@
 		<div class="container" id="menu">
 			<table>
 				<tr>
-					<td id="perfil" onclick="location.href='./perfil.php';" style="background-color: red;">Perfil</td>
-
+					
 					<form method="POST" action="/Dener_Giulia_Lasaro/prototipo1/php/alteraPontuacao.php" name="formPontos">
 					<input type="hidden" name="pontosTotal" id="pontosTotal" value="2">
 					<input type="hidden" name="emailu" id="emailu" value="">
-
-					<td id="rank" style="background-color: green;" onclick="document.formPontos.submit()">Ranking
-					</td>
+					<input type="hidden" name="who" id="who" value="">
 					</form>
+				
+				<td id="perfil" style="background-color: red;" onclick="whosub(this.id)">Perfil</td>
+				<td id="rank" style="background-color: green;" onclick="whosub(this.id)">Ranking
+				</td>
 				</tr>
 				<tr>
 					<td id="gamemode" style="background-color: rgb(255, 255, 0);">Modos
@@ -178,6 +179,12 @@
 		document.getElementById('emailu').value = emails;
 		document.getElementById('pontosTotal').value = pontos;
 		
+		function whosub(who_sub)
+		{
+			document.getElementById('who').value=who_sub;
+			document.formPontos.submit();
+		}
+
 		</script>
 </body>
 </html>
