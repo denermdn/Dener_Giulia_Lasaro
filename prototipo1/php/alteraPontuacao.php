@@ -17,6 +17,7 @@ require_once('connect.php');
         
         
         $stmt->execute($mudaPontos);
+        
         if($_POST['who']=='rank')
         header("Location: /Dener_Giulia_Lasaro/prototipo1/ranking.php");
         else if($_POST['who']=='perfil')

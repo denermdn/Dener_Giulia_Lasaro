@@ -1135,6 +1135,8 @@ function loop() {
     requestAnimationFrame(loop);
   }
 }
-
+// window.onbeforeunload = function(){
+//   return 'Are you sure you want to leave?';
+// };
 window.addEventListener("keydown", canhao.move);
 // window.addEventListener("keydown", () => { if (travaCanhao) canhao.move(event) });

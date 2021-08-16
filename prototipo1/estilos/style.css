@@ -414,10 +414,10 @@ th {
 }
 
 #modal {
-  width: 350px;
-  /* width: 25.7%; */
-  height: 350px;
-  /* height: 53%; */
+  /* width: 350px; */
+  width: 25.7%;
+  /* height: 350px; */
+  height: 53%;
   background-color: #ddd;
   position: absolute;
   top: 50%;

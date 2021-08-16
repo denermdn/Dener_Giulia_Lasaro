@@ -33,13 +33,17 @@
         include_once('./php/auxiliar.php');
         detalhes();
         ?>
-        function janela_info(idu) {//Essa função tem coisa a mais só pra testar
+
+        let tentativa;
+        function janela_info(indu) {//Essa função tem coisa a mais só pra testar
             console.log("Chegou aqui");
                 
             if (document.getElementById("modal").style.display == "block") {
                 document.getElementById("modal").style.display = "none";
             } else {
-                document.getElementById("modal").innerText=idu;
+                // let t = ['<?php include_once('./php/auxiliar.php'); pegaDados(); ?>'];
+                //tentativa=t;
+                document.getElementById("modal").textContent=indu;
                 document.getElementById("modal").style.display = "block";
             }
         }

@@ -174,16 +174,21 @@
 
 		var emails = '<?php
 		echo $_SESSION['email'];
-		?>'
+		?>';
 
 		document.getElementById('emailu').value = emails;
 		document.getElementById('pontosTotal').value = pontos;
+		
 		
 		function whosub(who_sub)
 		{
 			document.getElementById('who').value=who_sub;
 			document.formPontos.submit();
 		}
+
+		// window.onbeforeunload = function(){
+//   return 'Are you sure you want to leave?';
+// };
 
 		</script>
 </body>
