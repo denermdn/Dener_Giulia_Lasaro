@@ -30,7 +30,8 @@ try{
     }
     
 } catch (PDOException $e) {
-    echo $e->getMessage();
+    header("Location: ../cadastro.html?msgErro=Usuário ja cadastrado.");
+    // echo $e->getMessage();
 }
 
 ?>

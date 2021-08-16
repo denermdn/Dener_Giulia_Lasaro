@@ -166,8 +166,12 @@
  	<script src="scripts/jogar.js">
  	</script>
 
+
  	<script>
+		 
  		var pontos = <?php echo $_SESSION['pontTotal'];?>;
+
+
 		document.getElementById('pontosTotal').value = pontos;
 		function whosub(who_sub)
 		{

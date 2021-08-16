@@ -28,21 +28,48 @@
         <a href="./main.php"><button>Voltar ao menu</button></a>
     </div>
     <div id="modal">
-        
+        <table id="table_modal">
+            <tr>
+                <td class="modal_td1">Nome:</td>
+            </tr>
+            <tr>
+                <td class="modal_td2" id="u_name"></td>
+            </tr>
+            <tr>
+                <td class="modal_td1">Pontuação : </td>
+            </tr>
+            <tr>
+                <td class="modal_td2" id="u_pont_total"></td>
+            </tr>
+            <tr>
+                <td class="modal_td1">Data de Nascimento : </td>
+            </tr>
+            <tr>
+                <td class="modal_td2" id="u_nascimento"></td>
+            </tr>
+            <tr>
+                <td class="modal_td1">Contato : </td>
+            </tr>
+            <tr>
+                <td class="modal_td2" id="u_email"></td>
+            </tr>
+        </table>
     </div>
     <script>
-       
-        function janela_info(idu) {//Essa função tem coisa a mais só pra testar
-            console.log("Chegou aqui");
-
+        function janela_info(idu) {
             if (document.getElementById("modal").style.display == "block") {
                 document.getElementById("modal").style.display = "none";
             } else {
-                document.getElementById("modal").innerText=idu;
+                var result = document.getElementById(idu + '_').textContent;
+                result = result.split(" ", 5);
+                document.getElementById("u_name").textContent = result[1];
+                document.getElementById("u_pont_total").textContent = result[2];
+                document.getElementById("u_nascimento").textContent = result[4];
+                document.getElementById("u_email").textContent = result[3];
                 document.getElementById("modal").style.display = "block";
             }
         }
     </script>
-
 </body>
+
 </html>
