@@ -51,6 +51,7 @@ session_start();
         </div>
         <div class="containers_top">
             <h3 class="titulo_box">Estrelas</h3>
+                <?php echo $_SESSION['estrelasTotal']?>
             <div class="box">
             </div>
         </div>

@@ -17,7 +17,9 @@ CREATE TABLE TB_USER(
     USER_SENHA VARCHAR NOT NULL,
     USER_NASCIMENTO DATE,
     USER_PONT_TOTAL INT DEFAULT 0,
+    USER_ESTRELAS INT DEFAULT 0,
     USER_ULTM_FASE INT DEFAULT 0,
+
     PRIMARY KEY (USER_ID)
 );
 
@@ -74,32 +76,32 @@ INSERT INTO TB_CENR(CENR_ID, CENR_GVDD, CENR_BON) VALUES(1, 9.78, TRUE);
 INSERT INTO TB_CENR(CENR_ID, CENR_GVDD, CENR_BON) VALUES(2, 1.62, FALSE);
 INSERT INTO TB_CENR(CENR_ID, CENR_GVDD, CENR_BON) VALUES(3, 3.72, FALSE);
 
-insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
-values ('Dener', 'dener@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '2000-03-21', 8052, 0);
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_estrelas, user_ultm_fase)
+values ('Dener', 'dener@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '2000-03-21', 8052, 202, 0);
 
-insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
-values ('Giulia', 'giulia@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 8012, 0);
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_estrelas,user_ultm_fase)
+values ('Giulia', 'giulia@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 8012, 199, 0);
 
-insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
-values ('Lásaro', 'lasaro@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 7958, 0);
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_estrelas,user_ultm_fase)
+values ('Lásaro', 'lasaro@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 7958, 194, 0);
 
-insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
-values ('Zarref', 'zarref@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 7880, 0);
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_estrelas,user_ultm_fase)
+values ('Zarref', 'zarref@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 7880, 193, 0);
 
-insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
-values ('A_ivil', 'a_ivil@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 7764, 0);
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_estrelas,user_ultm_fase)
+values ('A_ivil', 'a_ivil@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 7764, 182, 0);
 
-insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
-values ('Flavin do pneu', 'flavin_do_pneu@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 7256, 0);
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_estrelas,user_ultm_fase)
+values ('Flavin do pneu', 'flavin_do_pneu@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 7256, 177, 0);
 
-insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
-values ('Ginzwar', 'ginzwar@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 7115, 0);
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_estrelas,user_ultm_fase)
+values ('Ginzwar', 'ginzwar@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 7115, 160, 0);
 
-insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
-values ('Shambler', 'shambler@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 7002, 0);
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_estrelas,user_ultm_fase)
+values ('Shambler', 'shambler@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 7002, 158, 0);
 
-insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
-values ('phfso', 'phfso@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 6950, 0);
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_estrelas,user_ultm_fase)
+values ('phfso', 'phfso@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 6950, 157, 0);
 
-insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_ultm_fase)
-values ('R. Sarah', 'r.sarah@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 6927, 0);
+insert into tb_user (user_name, user_email, user_senha, user_nascimento, user_pont_total, user_estrelas,user_ultm_fase)
+values ('R. Sarah', 'r.sarah@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '1999-10-14', 6927, 150, 0);

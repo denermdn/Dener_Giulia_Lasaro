@@ -22,6 +22,7 @@ var contatextos = 0;
 //console.log(ntextos);
 
 document.getElementById('pontosTotal').value = pontos;
+document.getElementById('pontosTotal').value = estrelas;
 
 var canvas = document.getElementById("canvas");
 canvas.width = window.innerWidth;
@@ -639,6 +640,7 @@ document.addEventListener("click", (event) => {
     }
     console.log(pontos);
     document.getElementById('pontosTotal').value = pontos;
+    document.getElementById('estrelasT').value = estrelas;
   }
 });
 
