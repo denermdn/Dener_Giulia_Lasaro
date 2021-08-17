@@ -440,26 +440,31 @@ th {
   border-radius: 10px;
 }
 
-#table_modal{
+#table_modal {
   text-align: center;
   margin: 10px;
   max-height: 90%;
   max-width: 93%;
 }
-.nome_linha,.modal_td1{
+
+.nome_linha,
+.modal_td1 {
   color: #000000;
   font-weight: 900;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.1rem;
   text-align: left;
 }
-.dados_usuario,.modal_td2{
+
+.dados_usuario,
+.modal_td2 {
   text-align: right;
   font-size: 1.1rem;
   font-family: 'Courier New', Courier, monospace;
   border-bottom: 2px solid blue;
-  font-weight:600;
+  font-weight: 600;
 }
+
 #button_ranking {
   background: #4838a3;
   border-radius: 0;
@@ -525,16 +530,24 @@ th {
   height: 70%;
 }
 
-.nome_linha{
-  font-family:'Architects Daughter', cursive;
+.nome_linha {
+  font-family: 'Architects Daughter', cursive;
   text-transform: uppercase;
 }
 
-.dados_usuario{
+.dados_usuario {
   margin-right: 2px !important;
   clear: both;
   border-bottom: 2px solid #1e5fad !important;
   font-size: 82%;
+}
+
+.pont_estrelas {
+  font-size: 4rem !important;
+  color: #0373f8 ;
+  text-shadow: rgb(43, 41, 41) 0.1em 0.1em 0.1em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 500;
 }
 
 .botoes_navegacao {

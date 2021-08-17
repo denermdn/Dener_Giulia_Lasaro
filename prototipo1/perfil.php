@@ -21,8 +21,8 @@ session_start();
     <div id="area-principal">
         <div class="containers_top">
             <h3 class="titulo_box">Meus Dados</h3>
-            <div id="box_form" >
-                <table >
+            <div id="box_form">
+                <table>
                     <tr>
                         <td class="nome_linha">Nome: </td>
                     </tr>
@@ -51,14 +51,14 @@ session_start();
         </div>
         <div class="containers_top">
             <h3 class="titulo_box">Estrelas</h3>
-                <?php echo $_SESSION['estrelasTotal']?>
             <div class="box">
+                <p class="pont_estrelas" style="color:yellow;"><?php echo $_SESSION['estrelasTotal'] ?></p>
             </div>
         </div>
         <div class="containers_top">
             <h3 class="titulo_box">Pontuação</h3>
             <div class="box">
-                <?php echo $_SESSION['pontTotal'] ?>
+                <p class="pont_estrelas"><?php echo $_SESSION['pontTotal'] ?></p>
             </div>
         </div>
         <div class="containers">
@@ -67,20 +67,16 @@ session_start();
                 <canvas class="canvas_perfil" id="box_cenario"></canvas>
                 <div class="botoes_navegacao">
                     <input type="button" onclick="trocaCenario(-1);" value="<< Voltar"></input>
-                    <!-- <input type="button" onclick="trocaCenario(-1);" value="Selecionar" disabled></input> -->
                     <input type="button" onclick="trocaCenario(1);" value="Próximo >>"></input>
                 </div>
-                <!-- <img src="./imagens/cenario0.png" width="100%"> -->
             </div>
         </div>
         <div class="containers">
             <h3 class="titulo_box">Canhão</h3>
             <div class="box">
                 <canvas class="canvas_perfil" id="box_canhao"></canvas>
-                <!-- <img src="./imagens/cannon.png" height="100%"> -->
                 <div class="botoes_navegacao">
                     <input type="button" onclick="trocaCanhao(-1);" value="<< Voltar"></input>
-                    <!-- <input type="button" onclick="trocaCenario(-1);" value="Selecionar" disabled></input> -->
                     <input type="button" onclick="trocaCanhao(1);" value="Próximo >>"></input>
                 </div>
             </div>
@@ -91,7 +87,6 @@ session_start();
                 <canvas class="canvas_perfil" id="box_projetil"></canvas>
                 <div class="botoes_navegacao">
                     <input type="button" onclick="trocaProjetil(-1);" value="<< Voltar"></input>
-                    <!-- <input type="button" onclick="trocaCenario(-1);" value="Selecionar" disabled></input> -->
                     <input type="button" onclick="trocaProjetil(1);" value="Próximo >>"></input>
                 </div>
             </div>
