@@ -28,24 +28,21 @@ session_start();
                     </tr>
                     <tr>
                         <td class="dados_usuario"><?php echo $_SESSION['nome'] ?></td>
-
                     </tr>
                     <tr>
-
                         <td class="nome_linha">Data de Nascimento:</td>
                     </tr>
                     <tr>
-
                         <td class="dados_usuario"><?php echo date("d/m/Y", strtotime($_SESSION['nascimento'])) ?></td>
                     </tr>
                     <tr>
-
                         <td class="nome_linha">E-mail:</td>
                     </tr>
                     <tr>
                         <td class="dados_usuario"><?php echo $_SESSION['email'] ?></td>
                     </tr>
                 </table>
+                <br><br>
                 <div class="botoes_navegacao"> <input type="button" value="Editar "></input></div>
             </div>
         </div>
