@@ -10,7 +10,6 @@
     <title>TBPT - Ranking</title>
 </head>
 
-
 <body class="principal">
     <div class="tela-escura" id="ranking">
         <h1 id="title_rank">

@@ -38,7 +38,6 @@ class Cenarios {
 
     desenhar(context, ide) {
         this.id= ide;
-        console.log("AQui");
         context.fillStyle = "skyblue";
         context.fillRect(0, 0, this.largura, this.altura);
         context.drawImage(plano_deFundo[this.id], 0, 0, this.largura, this.altura);

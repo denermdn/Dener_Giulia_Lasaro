@@ -1,4 +1,4 @@
-var projetil_sprite = new Array(2);//Colocar um tamanho aqui
+var projetil_sprite;
 
 var dados_sprite = {
     xOrigin: 0,
@@ -6,22 +6,34 @@ var dados_sprite = {
     width: 32,
     height: 32,
 }
+
+const posicoes_corte = [
+    [0, 0],
+    [32, 0],
+    [64, 0],
+    [0, 32],
+    [32, 32],
+    [64, 32],
+    [0, 64]
+];
+
 class Projetil {
-    constructor(posicao) {
+    constructor(posicao, id) {
         this.em_movimento = false;
         this.angulo = 0;
-        this.posicao = Object.assign({}, posicao);
+        this.posicao = Object.assign({}, posicao,id);
         this.g;
         this.componentes();
         this.alcance;
         this.tempo;
         this.altura_maxima;
         this._init();
+        this.id=id;
     }
 
     _init() {
-        projetil_sprite[0] = new Image();
-        projetil_sprite[0].src = "./imagens/balls.png";
+        projetil_sprite= new Image();
+        projetil_sprite.src = "./imagens/balls.png";
     }
 
     componentes(v, g) {
@@ -53,11 +65,16 @@ class Projetil {
     drawBall(context, tamX, tamY) {
         context.save();
         context.clearRect(0, 0, canvas.width, canvas.height);
-        context.drawImage(projetil_sprite[0],
-            dados_sprite.xOrigin, dados_sprite.yOrigin,
+        context.drawImage(projetil_sprite,
+            posicoes_corte[this.id][0], posicoes_corte[this.id][1],
             dados_sprite.width, dados_sprite.height,
-            this.posicao.posX + tamX -33, this.posicao.posY + tamY - 18,
+            this.posicao.posX + tamX - 33, this.posicao.posY + tamY - 18,
             40, 40);
+        // context.drawImage(projetil_sprite,
+        //     dados_sprite.xOrigin, dados_sprite.yOrigin,
+        //     dados_sprite.width, dados_sprite.height,
+        //     this.posicao.posX + tamX - 33, this.posicao.posY + tamY - 18,
+        //     40, 40);
     }
 
     calcxdiferenca(altura) {
