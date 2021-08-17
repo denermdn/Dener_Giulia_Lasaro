@@ -83,7 +83,12 @@
             </div>
         </div>
         <div class="botao_perfil">
-            <a href="./main.php"><input type="button" value="Menu Inicial"></input></a>
+            <form method="POST" action="/Dener_Giulia_Lasaro/prototipo1/php/mudaobjetos.php" name="formObjetos">
+            <input type="hidden" name="idCenario" id="idCenario" value="0">
+            <input type="hidden" name="idCanhao" id="idCanhao" value="0">
+            <input type="hidden" name="idProjetil" id="idProjetil" value="0">
+            </form>
+            <input type="button" value="Menu Inicial" onclick="document.formObjetos.submit();"></input>
         </div>
     </div>
     <script src="scripts/js_Perfil.js"></script>

@@ -164,15 +164,22 @@
  	<script src="scripts/alvo.js"></script>
  	<script src="scripts/usuario.js"></script>
  	<script src="scripts/equacoes.js"></script>
+ 	<script>
+		 var pontos = <?php echo $_SESSION['pontTotal'];?>;
+
+		var estrelas = <?php echo $_SESSION['estrelasTotal'];?>;
+
+		var idCanhao = <?php echo $_SESSION['canhao'];?>;
+		var idCenario = <?php echo $_SESSION['cenario'];?>;
+		var idProjetil = <?php echo $_SESSION['projetil'];?>;
+
+	 </script>
  	<script src="scripts/jogar.js">
  	</script>
 
-
  	<script>
 
- 		var pontos = <?php echo $_SESSION['pontTotal'];?>;
-
- 		var estrelas = <?php echo $_SESSION['estrelasTotal'];?>;
+ 		
 
 		document.getElementById('pontosTotal').value = pontos;
 		document.getElementById('estrelasT').value = estrelas;

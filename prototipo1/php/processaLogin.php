@@ -30,6 +30,9 @@ if(!empty($_POST)) {
             $_SESSION['ultimaFase'] = $result['user_ultm_fase'];
             $_SESSION['estrelasTotal'] = $result['user_estrelas'];
             $_SESSION['id'] = $result['user_id'];
+            $_SESSION['canhao']=0;
+            $_SESSION['cenario']=0;
+            $_SESSION['projetil']=0;
 
             
             

@@ -21,11 +21,11 @@ class Canhao {
     }
   }
   draw(context) {
-    context.drawImage(canhao_e_roda[4][1], this.posicao.posX + 15, this.posicao.posY + 38, 55, 55);
+    context.drawImage(canhao_e_roda[this.id][1], this.posicao.posX + 15, this.posicao.posY + 38, 55, 55);
   }
 
   draw_(context, altura) {
-    context.drawImage(canhao_e_roda[4][0], -44, -65, 116, 80);
+    context.drawImage(canhao_e_roda[this.id][0], -44, -65, 116, 80);
   }
 
   rodar(ctx) {

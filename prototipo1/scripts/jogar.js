@@ -74,10 +74,12 @@ var posicao = new Array();
 var indice = 0;
 var travaCanhao = true;
 var controle = 0;
-var pontos = 0;
+// var pontos = 0;
 var dicaUnica = 0;
-var estrelas = 0;
-
+// var estrelas = 0;
+// var idCanhao=0;
+// var idCenario=0;
+// var idProjetil=0;
 
 
 telaEscura.style.display = "block";
@@ -270,7 +272,7 @@ function auxBlock() {
 document.addEventListener("click", (event) => {
   if (event.target.matches("#modoLivre")) {
     modoJogo = "L";
-    cenario.id = 1;
+    cenario.id = idCenario;
     auxBlock();
     campodados.style.opacity = "0.3";
     pontuacao.style.display = "none";
@@ -450,7 +452,7 @@ document.addEventListener("click", (event) => {
 });
 ////////////////////
 const cenario = new Cenarios(9.8, canvas.width, canvas.height);
-const canhao = new Canhao(0);
+var canhao = new Canhao(idCanhao);
 const projetil = new Projetil(canhao.posicao);
 const alvo = new Alvo();
 var velocidade, vox, voy, gravidade, tempo, angulo, alcance, hmax;

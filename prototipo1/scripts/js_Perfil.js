@@ -84,31 +84,40 @@ loop();
 
 function trocaCenario(direcao) {
     idElementos.idCenarios += direcao;
+    document.getElementById("idCenario").value=idElementos.idCenarios;
     if (idElementos.idCenarios == -1) {
         idElementos.idCenarios = 0;
+        document.getElementById("idCenario").value=idElementos.idCenarios;
     }
     if (idElementos.idCenarios == idElementos.qtd_cenarios) {
         idElementos.idCenarios = idElementos.qtd_cenarios - 1;
+        document.getElementById("idCenario").value=idElementos.idCenarios;
     }
 }
 
 function trocaCanhao(direcao) {
     idElementos.idCanhao += direcao;
+    document.getElementById("idCanhao").value=idElementos.idCanhao;
     if (idElementos.idCanhao == -1) {
         idElementos.idCanhao = 0;
+        document.getElementById("idCanhao").value=idElementos.idCanhao;
     }
     if (idElementos.idCanhao == idElementos.qtd_canhao) {
         idElementos.idCanhao = idElementos.qtd_canhao - 1;
+        document.getElementById("idCanhao").value=idElementos.idCanhao;
     }
 }
 
 function trocaProjetil(direcao) {
     idElementos.idProjetil += direcao;
+    document.getElementById("idProjetil").value=idElementos.idProjetil;
     if (idElementos.idProjetil == -1) {
         idElementos.idProjetil = 0;
+        document.getElementById("idProjetil").value=idElementos.idProjetil;
     }
     if (idElementos.idProjetil == idElementos.qtd_projetil) {
         idElementos.idProjetil = idElementos.qtd_projetil - 1;
+        document.getElementById("idProjetil").value=idElementos.idProjetil;
     }
 }
 
