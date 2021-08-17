@@ -50,9 +50,9 @@ function montaTabela()
                     break;
                 }
                 echo '<td style="display: none;" id="' . $result["user_id"] . '_" >';
-                echo $result['user_id'] . ' ' . $result["user_name"] . ' ' .
-                    $result["user_pont_total"] . ' ' . $result["user_email"] .
-                    ' ' . date("d/m/Y", strtotime($result["user_nascimento"]));
+                echo $result['user_id'] . '#' . $result["user_name"] . '#' .
+                    $result["user_pont_total"] . '#' . $result["user_email"] .
+                    '#' . date("d/m/Y", strtotime($result["user_nascimento"]));
                 echo $close_td;
 
                 echo $open_td . $classificacao . $close_td;
