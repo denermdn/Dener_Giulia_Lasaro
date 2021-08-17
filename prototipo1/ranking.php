@@ -61,7 +61,7 @@
                 document.getElementById("modal").style.display = "none";
             } else {
                 var result = document.getElementById(idu + '_').textContent;
-                result = result.split(" ", 5);
+                result = result.split("#", 5);
                 document.getElementById("u_name").textContent = result[1];
                 document.getElementById("u_pont_total").textContent = result[2];
                 document.getElementById("u_nascimento").textContent = result[4];
