@@ -1,5 +1,4 @@
 var canhao_e_roda = new Array(5);
-// var aux_angulo = 0.4375;
 var aux_angulo = 25 * Math.PI / 180;
 class Canhao {
   constructor(id) {

@@ -19,7 +19,6 @@ let textos = [
 const imputs = document.querySelectorAll(".inputdados");
 var ntextos = textos.length;
 var contatextos = 0;
-//console.log(ntextos);
 
 document.getElementById('pontosTotal').value = pontos;
 document.getElementById('pontosTotal').value = estrelas;
@@ -74,13 +73,7 @@ var posicao = new Array();
 var indice = 0;
 var travaCanhao = true;
 var controle = 0;
-// var pontos = 0;
 var dicaUnica = 0;
-// var estrelas = 0;
-// var idCanhao=0;
-// var idCenario=0;
-// var idProjetil=0;
-
 
 telaEscura.style.display = "block";
 tmenu.style.display = "block";
@@ -244,7 +237,6 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("#tela-escura") && saida != 1) {
-    console.log(contatextos);
     if (contatextos <= 15)
       contatextos++;
   }
@@ -354,8 +346,6 @@ document.addEventListener("click", (event) => {
       velocidade = Math.floor(Math.random() * 40 + 20);
     angulo = Math.floor(Math.random() * 91);
 
-    console.log(dificuldade);
-
     if (dificuldade == 'F')
       aux_faseFacil();
     else if (dificuldade == 'M')
@@ -373,7 +363,6 @@ document.addEventListener("click", (event) => {
 
   if (event.target.matches("#reset-fase")
     && document.getElementById("reset-fase").textContent == "Proxima Fase") {
-    //lancar=false;
     if (cenario.id == 0)
       cenario.id = 1;
     else if (cenario.id == 1) {
@@ -438,22 +427,12 @@ document.addEventListener("click", (event) => {
 document.addEventListener("click", (event) => {
   if (event.target.matches("#tsair")) {
     whosub('tsair');
-    //window.location.replace("./php/logout.php");
   }
 });
-///////////////////
-document.addEventListener("click", (event) => {
-  if (event.target.matches("#rank")) {
-    //   window.location.replace("./Ranking.html");
-    // }
-    // if(event.target.matches("#perfil")) {
-    //   window.location.replace("./perfil.html");
-  }
-});
-////////////////////
+
 const cenario = new Cenarios(9.8, canvas.width, canvas.height);
 var canhao = new Canhao(idCanhao);
-const projetil = new Projetil(canhao.posicao);
+const projetil = new Projetil(canhao.posicao, idProjetil);
 const alvo = new Alvo();
 var velocidade, vox, voy, gravidade, tempo, angulo, alcance, hmax;
 var lancar = false;
@@ -477,7 +456,6 @@ document.addEventListener("click", (event) => {
     voy = calc_Vy(velocidade, toRadiano(angulo));
     if (voy != 0) {
       gravidade = calc_Gravidade(voy, projetil.altura_maxima);
-      console.log("gravidade  " + gravidade);
       tempo = calc_TempoVoo(voy, gravidade);
       alcance = calc_Alcance(vox, tempo);
       hmax = calc_AlturaMax(voy, gravidade);
@@ -548,7 +526,6 @@ document.addEventListener("click", (event) => {
             eh_correta += 1;
           else if (parseFloat(imputs[5].value) >= var_angulo - 1 && parseFloat(imputs[5].value) <= var_angulo + 1)//margem de +-1 para o angulo
             eh_correta += 1;
-          console.log(angulo);
           break;
 
         case 6:
@@ -581,22 +558,18 @@ document.addEventListener("click", (event) => {
     if (j == 1) {
       auxEstrelas = Math.floor(auxPontos / 33.33);
       estrelas += auxEstrelas;
-      // console.log(estrelas);
     } else if (j == 2) {
       auxEstrelas = Math.floor(auxPontos / 66.66);
       estrelas += auxEstrelas;
-      // console.log(estrelas);
     } else if (j == 3) {
       auxEstrelas = Math.floor(auxPontos / 100)
       estrelas += auxEstrelas;
-      // console.log(estrelas);
     }
 
     if (eh_correta == j) {
 
       projetil.angulo = Math.floor(toGrau(-angulo + toRadiano(25)));
 
-      // console.log(angulo);
       lancar = true;
       projetil.componentes(velocidade, projetil.g); ///Aqui é passada a gravidade
       alvo.setPosicao(projetil.alcance - 46, canvas.height - 70);
@@ -637,17 +610,14 @@ document.addEventListener("click", (event) => {
       document.getElementById("texto-estrelas").textContent = "★★★";
       document.getElementById("reset-fase").textContent = "Tente de novo";
       
-      // await new Promise(r => setTimeout(r, 1000));
       alerta_pontuacao.style.display = "block";
     }
-    console.log(pontos);
     document.getElementById('pontosTotal').value = pontos;
     document.getElementById('estrelasT').value = estrelas;
   }
 });
 
 function exibedica() {
-  console.log("Dica n");
   let qdica = 0;
   if (dificuldade == 'F')
     qdica = 0;
@@ -658,7 +628,6 @@ function exibedica() {
   if (dificuldade == 'D')
     qdica = Math.floor(Math.random() * 3);
 
-  console.log(qdica);
   if (dicaUnica == 0) {
     switch (posicao[qdica]) {
       case 0:
@@ -746,11 +715,8 @@ function toGrau(angulo) {
 }
 
 function calcular() {
-  // let aux = -aux_angulo + 25 * Math.PI / 180;
   let aux = (-aux_angulo) + toRadiano(25);
-  // velocidade = parseFloat(document.getElementById('campo1').value);
   velocidade = parseFloat(imputs[0].value);
-  // angulo = parseFloat(document.getElementById('campo6').value = Math.floor(toGrau(aux)));
   if (modoJogo == 'L')
     angulo = parseFloat(imputs[5].value = Math.floor(toGrau(aux)));
   vox = calc_Vx(velocidade, toRadiano(angulo));
@@ -758,9 +724,6 @@ function calcular() {
   if (vox < 0) {
     vox = vox * -1;
   }
-  //console.log(voy);
-  // vox = velocidade * Math.cos(aux);
-  // voy = velocidade * Math.sin(aux);
 }
 
 
@@ -991,33 +954,15 @@ function bloqueiaCampos() {
         }
       }
       imputs[i].style.border = '2px solid ' + cor;
-      // document.getElementById('campo' + i).style.border = '2px solid ' + cor;
     }
 
 
     if (modoJogo != "C") {
-      // document.getElementById('campo' + i).disabled = false;
-      // document.getElementById('campo' + i).style.border = 'none';
       imputs[i].disabled = false;
       imputs[i].style.border = 'none';
     }
   }
 }
-
-function faseFacil() {
-  // angulo= canhao.angulo;
-}
-
-function faseMedia() {
-  // console.log("Média");
-
-}
-
-function faseDificil() {
-  // console.log("Difícil");
-
-}
-
 
 function valor_campos() {
 
@@ -1034,7 +979,6 @@ function valor_campos() {
   vox = calc_Vx(velocidade, toRadiano(angulo));
   voy = calc_Vy(velocidade, toRadiano(angulo));
 
-  console.log("gravidade  " + gravidade);
   tempo = calc_TempoVoo(voy.toFixed(2), gravidade);
   alcance = calc_Alcance(vox.toFixed(2), tempo.toFixed(2));
   hmax = calc_AlturaMax(voy.toFixed(2), gravidade);
@@ -1066,13 +1010,10 @@ function modoCompetitivo() {
     imputs[0].value = velocidade;
     imputs[5].value = canhao.angulo = angulo;
     var_angulo = angulo;
-    console.log(velocidade);
-    console.log(angulo);
     controle = 1;
     valor_campos();
   }
 
-  // bloqueiaCampos();
   let a;
   for (let i = 0; i < posicao.length; i++) {
     if (posicao[i] == 5) {
@@ -1081,17 +1022,6 @@ function modoCompetitivo() {
   }
   (a == 1) ? travaCanhao = true : travaCanhao = false;
 
-  switch (dificuldade) {
-    case "F":
-      faseFacil();
-      break;
-    case "M":
-      faseMedia();
-      break;
-    case "D":
-      faseDificil();
-      break;
-  }
   modoLivre();
 }
 
@@ -1111,8 +1041,5 @@ function loop() {
     requestAnimationFrame(loop);
   }
 }
-// window.onbeforeunload = function(){
-//   return 'Are you sure you want to leave?';
-// };
+
 window.addEventListener("keydown", canhao.move);
-// window.addEventListener("keydown", () => { if (travaCanhao) canhao.move(event) });

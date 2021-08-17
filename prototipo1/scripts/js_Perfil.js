@@ -32,9 +32,6 @@ const posicoes_corte = [
 ];
 
 function setaParemetrosTela() {
-    // tela.largura = canvas_box_cenario.offsetWidth - 50;
-    // tela.largura = canvas_box_cenario.offsetWidth -canvas_box_cenario.offsetWidth*0.1;
-    // tela.altura = canvas_box_cenario.offsetHeight - 45;
     tela.largura = 350;
     tela.altura = 150;
 }
@@ -62,13 +59,13 @@ function draw_boxCanhao() {
 
 function draw_boxProjetil() {
     ball.src = "./imagens/balls.png";
-    context_box_projetil.clearRect(0,0, tela.largura, tela.altura);
-    context_box_projetil.fillStyle="#D3D3D3";
-    context_box_projetil.fillRect(0,0, tela.largura, tela.altura)
+    context_box_projetil.clearRect(0, 0, tela.largura, tela.altura);
+    context_box_projetil.fillStyle = "#D3D3D3";
+    context_box_projetil.fillRect(0, 0, tela.largura, tela.altura)
     context_box_projetil.drawImage(ball,
         posicoes_corte[idElementos.idProjetil][0], posicoes_corte[idElementos.idProjetil][1],
         32, 32,
-        tela.largura*0.37, tela.altura*0.3,
+        tela.largura * 0.37, tela.altura * 0.3,
         40, 40);
 
 }
@@ -84,40 +81,40 @@ loop();
 
 function trocaCenario(direcao) {
     idElementos.idCenarios += direcao;
-    document.getElementById("idCenario").value=idElementos.idCenarios;
+    document.getElementById("idCenario").value = idElementos.idCenarios;
     if (idElementos.idCenarios == -1) {
         idElementos.idCenarios = 0;
-        document.getElementById("idCenario").value=idElementos.idCenarios;
+        document.getElementById("idCenario").value = idElementos.idCenarios;
     }
     if (idElementos.idCenarios == idElementos.qtd_cenarios) {
         idElementos.idCenarios = idElementos.qtd_cenarios - 1;
-        document.getElementById("idCenario").value=idElementos.idCenarios;
+        document.getElementById("idCenario").value = idElementos.idCenarios;
     }
 }
 
 function trocaCanhao(direcao) {
     idElementos.idCanhao += direcao;
-    document.getElementById("idCanhao").value=idElementos.idCanhao;
+    document.getElementById("idCanhao").value = idElementos.idCanhao;
     if (idElementos.idCanhao == -1) {
         idElementos.idCanhao = 0;
-        document.getElementById("idCanhao").value=idElementos.idCanhao;
+        document.getElementById("idCanhao").value = idElementos.idCanhao;
     }
     if (idElementos.idCanhao == idElementos.qtd_canhao) {
         idElementos.idCanhao = idElementos.qtd_canhao - 1;
-        document.getElementById("idCanhao").value=idElementos.idCanhao;
+        document.getElementById("idCanhao").value = idElementos.idCanhao;
     }
 }
 
 function trocaProjetil(direcao) {
     idElementos.idProjetil += direcao;
-    document.getElementById("idProjetil").value=idElementos.idProjetil;
+    document.getElementById("idProjetil").value = idElementos.idProjetil;
     if (idElementos.idProjetil == -1) {
         idElementos.idProjetil = 0;
-        document.getElementById("idProjetil").value=idElementos.idProjetil;
+        document.getElementById("idProjetil").value = idElementos.idProjetil;
     }
     if (idElementos.idProjetil == idElementos.qtd_projetil) {
         idElementos.idProjetil = idElementos.qtd_projetil - 1;
-        document.getElementById("idProjetil").value=idElementos.idProjetil;
+        document.getElementById("idProjetil").value = idElementos.idProjetil;
     }
 }
 
